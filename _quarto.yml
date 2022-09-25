@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Quinton Neville"
@@ -51,7 +52,6 @@ website:
       - icon: envelope
         href: mailto:<nevil066@umn.edu>
         
-    
 format:
   html:
     theme: pulse
@@ -59,7 +59,6 @@ format:
     toc: true
     code-block-bg: "#ECECEC"
     page-layout: full
-    
     
 
 
