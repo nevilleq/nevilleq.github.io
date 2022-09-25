@@ -1,0 +1,15 @@
+---
+title: "NYC Dog Bites"
+---
+
+<font size = "4"> 
+
+<center>
+Check out our [website](https://nevilleq.github.io/p8105_fp_qzal/)!
+
+![](./photos/dog_bite_nyc.png)  
+
+</center>
+
+
+</font>   

@@ -2,18 +2,65 @@ project:
   type: website
 
 website:
-  title: "nevilleq.github.io"
+  title: "Quinton Neville"
   navbar:
+    type: default
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
+      - text: "Home"
+        href: index.qmd
+      - text: "Resume"
+        href: qn_resume.html
+      - text: "Data Science for the Public Good"
+        menu:
+          - text: "DSPG Overview"
+            href: old_work/dspg_overview.html
+          - text: "Geospatial Composite Index"
+            href: old_work/fairfax.html
+          - text: "Innovation & ML Text Classification"
+            href: old_work/business_innovation.html
+          - text: "Dog Bites in NYC"
+            href: old_work/dog_bites.html
+      - text: "Biostatistics"
+        menu:
+          - text: "Bayesian Robust RCM"
+            href: https://nevilleq.github.io/bayesRCM/
+          - text: "RCM for Task-based fMRI"
+            href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
+          - text: "TCGA-KIRC Methylation"
+            href: old_work/stat_gen.html
+          - text: "Boosting SNP's"
+            href: old_work/ml_theory.html   
+      - text: "Teaching"
+        menu:
+          - text: "PUBH 7462 Adv. R Syllabus"
+            href: pubh_7462/syllabus.QMD
+    right:
+      - icon: github
+        href: http://github.com/nevilleq/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/quinton-neville/
+      - icon: envelope
+        href: mailto:<nevil066@umn.edu>
+  page-footer: 
+      left: "Copyright 2022 | QN" 
+      right: 
+      - icon: github
+        href: http://github.com/nevilleq/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/quinton-neville/
+      - icon: envelope
+        href: mailto:<nevil066@umn.edu>
+        
+    
 format:
   html:
-    theme: cosmo
+    theme: pulse
     css: styles.css
     toc: true
+    code-block-bg: "#ECECEC"
+    page-layout: full
+    
+    
 
 
 

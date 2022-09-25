@@ -1,0 +1,14 @@
+---
+title: "Publications"
+---
+
+<font size = "4"> 
+
+1. [Flynn, P., Neville, Q., & Scheel, A. (2019). Self-organized clusters in diffusive run-and-tumble processes. Discrete & Continuous Dynamical Systems-S, 23-152.](https://www.aimsciences.org/article/doi/10.3934/dcdss.2020069)
+
+![](./photos/qn_math_bio_paper-images/0001_trim.jpg)  
+
+
+
+
+</font>   

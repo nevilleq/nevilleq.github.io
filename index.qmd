@@ -1,11 +1,30 @@
 ---
-title: "nevilleq.github.io"
+title: ""
 ---
 
-This is a Quarto website.
+<div style= "float : left; position : relative; top: 0px; width : 280px; height : 280px; padding-right: 24px; padding-bottom: 0px; margin-bottom : 80px">
+![](./photos/linkedin_headshot.png)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+</div>
 
-```{r}
-1 + 1
-```
+#### Hey y'all -- I'm Q, nice to meet ya!  
+
+<font size = "4"> 
+I dabble in Biostatistics, Data Science, and Maths, and am currently a 4$^{\text{th}}$ year PhD candidate in Biostatistics at the University of Minnesota. Prior, I received a BA from St. Olaf College with Distinction in Mathematics in 2018 and an MS in Biostatistics from Columbia University in 2020. My dissertation work revolves around fMRI brain imaging, hierarchical graphical models for multivariate time-series, and deep learning methods for 'multiview' data (brain imaging + "-omics") with applications in mental health research -- while my current day-to-day biostatistics work concerns interim analyses and conditional power in COVID-related clinical trials.  
+
+With the navbar above you can check out my resume and some current work, presentations, & publications. *I'm an avid `R` user who's passionate about data science and looking to share my technical skills and biostatistics domain knowledge with an industry leader in the healthcare/data science field for an internship Summer 2023, and full time position 2024 upon graduation*.     
+</font>  
+
+
+---------------------------------------------------------------------------------------  
+
+#### About me   
+
+<font size = "4">
+In my spare time you're likely to catch me reading whatever new book my favourite non-fiction author, Leanord Mlodinow, has just published; or perhaps rereading a classic from the obscure fiction writer Stephen King, who you've probably never heard of. I'm a huge Lord of the Rings fan and have traveled all the way to New Zealand just to have a pint at the real-life Green Dragon in Hobbiton, and do some other stuff too I guess like sky and scuba diving or whatever. I also love music and still play some jazz bass & rock'n'roll guitar when the mood strikes. Though I'm getting older, I do still try to stay active and play some hockey, go rock climbing, lift a weight, or go for a jog when I can. Lastly, and probably most importantly, I am a firm, steadfast, unequivocal believer that hotdogs are sandwiches.  
+</font>  
+
+>"If it was easy, everyone would do it." - Dan Neville
+
+>"...and so do all who live to see such times. But that is not for them to decide. All we have to decide is what to do with the time that is given us." - Gandalf
+

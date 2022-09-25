@@ -1,0 +1,5 @@
+---
+title: "PUBH 7462: Advanced Programming and Data Analysis in R"
+---
+
+![](./syllabus/0001.jpg)
