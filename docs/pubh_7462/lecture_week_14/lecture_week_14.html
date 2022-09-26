@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+<meta name="dcterms.date" content="2022-04-22">
+
+<title>Quinton Neville - Week 14: Shiny Apps &amp; Dashboards II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link active" data-scroll-target="#i.-introduction">I. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#where-weve-been" id="toc-where-weve-been" class="nav-link" data-scroll-target="#where-weve-been">Where we’ve been –</a></li>
+  <li><a href="#where-were-going" id="toc-where-were-going" class="nav-link" data-scroll-target="#where-were-going">Where we’re going –</a></li>
+  </ul></li>
+  <li><a href="#so-what-exactly-are-we-going-to-do-today" id="toc-so-what-exactly-are-we-going-to-do-today" class="nav-link" data-scroll-target="#so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</a>
+  <ul class="collapse">
+  <li><a href="#first-dashboards" id="toc-first-dashboards" class="nav-link" data-scroll-target="#first-dashboards">First, Dashboards!</a></li>
+  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps">Shiny Apps</a></li>
+  </ul></li>
+  <li><a href="#ii.-developing-a-shiny-dashboard" id="toc-ii.-developing-a-shiny-dashboard" class="nav-link" data-scroll-target="#ii.-developing-a-shiny-dashboard">II. Developing a Shiny Dashboard</a></li>
+  <li><a href="#shiny-dashboard-template" id="toc-shiny-dashboard-template" class="nav-link" data-scroll-target="#shiny-dashboard-template">Shiny Dashboard Template</a></li>
+  <li><a href="#nyc-airbnb-shiny-dashboard-example" id="toc-nyc-airbnb-shiny-dashboard-example" class="nav-link" data-scroll-target="#nyc-airbnb-shiny-dashboard-example">NYC Airbnb Shiny Dashboard Example</a>
+  <ul class="collapse">
+  <li><a href="#some-important-notes" id="toc-some-important-notes" class="nav-link" data-scroll-target="#some-important-notes">Some Important Notes</a></li>
+  </ul></li>
+  <li><a href="#leaflet-shiny-dashboard" id="toc-leaflet-shiny-dashboard" class="nav-link" data-scroll-target="#leaflet-shiny-dashboard">Leaflet &amp; Shiny Dashboard</a>
+  <ul class="collapse">
+  <li><a href="#nyc-airbnb-shiny-dashboard-example-1" id="toc-nyc-airbnb-shiny-dashboard-example-1" class="nav-link" data-scroll-target="#nyc-airbnb-shiny-dashboard-example-1">NYC Airbnb Shiny Dashboard Example</a></li>
+  </ul></li>
+  <li><a href="#iii.-developing-a-shiny-app-cont." id="toc-iii.-developing-a-shiny-app-cont." class="nav-link" data-scroll-target="#iii.-developing-a-shiny-app-cont.">III. Developing a Shiny App (cont.)</a></li>
+  <li><a href="#files-sourcing-and-functions" id="toc-files-sourcing-and-functions" class="nav-link" data-scroll-target="#files-sourcing-and-functions">Files, Sourcing, and Functions</a></li>
+  <li><a href="#nyc-airbnb-example" id="toc-nyc-airbnb-example" class="nav-link" data-scroll-target="#nyc-airbnb-example">NYC Airbnb Example</a>
+  <ul class="collapse">
+  <li><a href="#reminder" id="toc-reminder" class="nav-link" data-scroll-target="#reminder">Reminder</a>
+  <ul class="collapse">
+  <li><a href="#ui.r" id="toc-ui.r" class="nav-link" data-scroll-target="#ui.r"><code>ui.R</code></a></li>
+  <li><a href="#server.r" id="toc-server.r" class="nav-link" data-scroll-target="#server.r"><code>server.R</code></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#v.-conclusion-resources" id="toc-v.-conclusion-resources" class="nav-link" data-scroll-target="#v.-conclusion-resources">V. Conclusion &amp; Resources</a></li>
+  <li><a href="#publishing-shiny-apps-dashboards-to-include-in-your-website" id="toc-publishing-shiny-apps-dashboards-to-include-in-your-website" class="nav-link" data-scroll-target="#publishing-shiny-apps-dashboards-to-include-in-your-website">Publishing Shiny Apps &amp; Dashboards (to include in your website)</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#v.-activity" id="toc-v.-activity" class="nav-link" data-scroll-target="#v.-activity">V. Activity</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#activity-1.-edit-the-shiny-dashboard" id="toc-activity-1.-edit-the-shiny-dashboard" class="nav-link" data-scroll-target="#activity-1.-edit-the-shiny-dashboard">Activity 1. Edit the Shiny Dashboard</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#spatial-scatterplotleaflet-by-rating" id="toc-spatial-scatterplotleaflet-by-rating" class="nav-link" data-scroll-target="#spatial-scatterplotleaflet-by-rating">(1) Spatial Scatterplot/Leaflet by <strong>Rating</strong></a></li>
+  <li><a href="#distribution-of-rating-by-neighbourhood" id="toc-distribution-of-rating-by-neighbourhood" class="nav-link" data-scroll-target="#distribution-of-rating-by-neighbourhood">(2) Distribution of <strong>Rating</strong> by Neighbourhood</a></li>
+  <li><a href="#number-of-avg.-listings-per-month-by-neighborhood" id="toc-number-of-avg.-listings-per-month-by-neighborhood" class="nav-link" data-scroll-target="#number-of-avg.-listings-per-month-by-neighborhood">(3) Number of <strong>Avg. Listings per Month</strong> by Neighborhood</a></li>
+  </ul></li>
+  <li><a href="#vi.-next-week" id="toc-vi.-next-week" class="nav-link" data-scroll-target="#vi.-next-week">VI. Next Week</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 14: Shiny Apps &amp; Dashboards II</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 22, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="i.-introduction" class="level1 jumbotron">
+<h1 class="jumbotron">I. Introduction</h1>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="where-weve-been" class="level2">
+<h2 class="anchored" data-anchor-id="where-weve-been">Where we’ve been –</h2>
+<p>The midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to <em>Course Objectives</em> (1)-(4,5) in the <a href="https://canvas.umn.edu/courses/293049/files?preview=26516582">syllabus</a>. Those skills break down into –</p>
+<ol type="1">
+<li><strong>Workflow</strong>
+<ul>
+<li>.Rprojects + Github, Rmarkdown, best <code>R</code> practices, reproducibility</li>
+</ul></li>
+<li><strong>Data Wrangling</strong>
+<ul>
+<li><code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>stringr</code>, <code>lubridate</code></li>
+<li>plus iteration with <code>purrr::map</code> family</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li><code>ggplot2</code>,<code>gt</code></li>
+</ul></li>
+<li><strong>Exploratory Data Analysis</strong>
+<ul>
+<li>Use the above to read, explore, clean/tidy, prepare for analysis and visualize <em>new</em> data</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="where-were-going" class="level2">
+<h2 class="anchored" data-anchor-id="where-were-going">Where we’re going –</h2>
+<p>As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize <code>R</code> and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –</p>
+<ol start="5" type="1">
+<li><strong>Enhanced Visualization</strong>
+<ul>
+<li>Interactivity w/ <code>ggplotly</code>, <code>reactable</code></li>
+<li>Enhance <code>gt</code> with <code>gtExtras</code> (and <code>flextable</code>, <code>ftExtra</code>)</li>
+<li>Intro to <code>flexdashboard</code></li>
+</ul></li>
+<li><strong>Websites in R + Github</strong>
+<ul>
+<li>Basics, personal webpage</li>
+<li>Websites as analytical display tools
+<ul>
+<li>Embedding <code>flexdashboard</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Spatial Visualization</strong>
+<ul>
+<li>‘Tidy Maps’ w/ <code>sf</code>or<code>sp</code> + <code>tidyverse</code> + <code>ggmaps</code> and <code>ggplot2</code></li>
+<li>Introduction to interactive maps with <code>ggplotly</code> and/or <code>leaflet</code></li>
+</ul></li>
+<li><strong>Github Collaboration &amp; Shiny Apps</strong> (<strong>today</strong>)
+<ul>
+<li>Working with others in the same Github repository
+<ul>
+<li>Best practices</li>
+<li>Branching, merging, merge conflicts</li>
+<li>reseting to previous versions</li>
+</ul></li>
+<li><strong>Developing a Shiny app for data communication</strong></li>
+<li><strong>Developing a Shiny <code>flexdashboard</code></strong></li>
+<li><strong>Resources for more advanced Shiny</strong></li>
+</ul></li>
+<li><strong>Miscellaneous</strong>
+<ul>
+<li>package development</li>
+<li>*Working with big data in R <code>dt_plyr</code>, <code>collapse</code>, <code>h2o</code>, <code>sparklyr</code></li>
+<li>*Working with databases in R <code>db_plyr</code></li>
+<li>*How to develop a package with Rstudio &amp; Github</li>
+<li>*Webscraping with R</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="so-what-exactly-are-we-going-to-do-today" class="level1">
+<h1>So what exactly are we going to do today?</h1>
+<section id="first-dashboards" class="level2">
+<h2 class="anchored" data-anchor-id="first-dashboards">First, Dashboards!</h2>
+<p>Today we’re going to walk through a demonstration of creating a Shiny <code>flexdashboard</code> with the same NYC Airbnb data we’ve used previously for interactive visualization (<code>plotly</code>), as well as wrapping multiple plots into a single dashboard (<code>flexdashboard</code>). The syntax/layout of the dashboard is exactly the same as before, except now we’ll add <code>runtime: shiny</code> to the <code>yaml</code> to indicate it’s a reactive shiny application and then utilize the same <code>ui.R</code> input and <code>server.R</code> <code>render...({})</code> output functions to do so (without explicitly defining a ui or server, it’s implied).</p>
+<p>In many ways, given our familiarity with <code>plotly</code> and <code>flexdashboards</code>, this avenue for interactive communication of data is ‘easier’ than building a full blown app because it respects the same .RMD <code>flexdashboard</code> structure.</p>
+</section>
+<section id="shiny-apps" class="level2">
+<h2 class="anchored" data-anchor-id="shiny-apps">Shiny Apps</h2>
+<p>Last week I attempted to develop a spatial shiny app with <code>ggplot</code> + <code>ggplotly</code> + <code>tidycensus</code> + <code>ggmap</code> and it turned out to be an inadvisable pursuit for a couple of reasons - (1) Renders way to slowly, (2) <code>plotly</code> syntax is preferable (renders faster) over <code>ggplotly</code>, (3) those specific types of maps have to be built with <code>ggplotly()</code>. This may happen to you as well while you are developing the final product(s) for your final projects. My reccomendations to avoid the slow rendering and unnecessary complications with <code>ggplotly</code> is to simply use <code>leaflet</code> if you’re going to make that type of map – they render almost instantaneously, are very user friendly, and play well with Shiny/dashboards.</p>
+<p>In that spirit, today we’ll wrap the dashboard above into a regular shiny application (although I think the dashboard is a better tool for this specific communication tool). In addition, I’ll also show how to embed a <code>leaflet</code> in both.</p>
+<blockquote class="blockquote">
+<p><em><strong>Good applications</strong> supplement <strong>good data science.</strong></em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em><strong>Bad data science</strong> creates <strong>bad applications</strong>, regardless of how <strong>fancy.</strong></em></p>
+</blockquote>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="ii.-developing-a-shiny-dashboard" class="level1 jumbotron">
+<h1 class="jumbotron">II. Developing a Shiny Dashboard</h1>
+<p>Creating an interactive dashboard will require the use of two tools we are now pretty familiar with - <code>shiny</code> and <code>flexdashboard</code>. Now unlike the design of a Shiny apps, Shiny Dashboards will still be generated an <code>.RMD</code> (like the usual <code>flexdashboard</code>) with the only addition to the <code>yaml</code> being <code>runtime: shiny</code>. <em>However</em>, we still need to define the same <code>ui()</code> input and <code>server(input, output)</code> output functions within the document – <em>but we don’t define a ui or server <strong>explicitly</strong></em>. Instead, we may simply utilize the associated input/output/render functions within “```{r}” chunks which are <strong>implicitly</strong> connected to a ui and a server.</p>
+</section>
+<section id="shiny-dashboard-template" class="level1">
+<h1>Shiny Dashboard Template</h1>
+<div class="cell" data-hash="lecture_week_14_cache/html/unnamed-chunk-1_375c4396bda4b575796714e0c47838e7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Shiny Dashboard"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  flexdashboard<span class="sc">::</span>flex_dashboard<span class="sc">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    orientation<span class="sc">:</span> columns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    vertical_layout<span class="sc">:</span> fill</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>runtime<span class="sc">:</span> shiny</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#```{r}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#library(shiny)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#```</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Column {data<span class="sc">-</span>width<span class="ot">=</span><span class="dv">650</span>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------------------------------------------------------------------</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">### Chart A</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Column {data<span class="sc">-</span>width<span class="ot">=</span><span class="dv">350</span>}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------------------------------------------------------------------</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="do">### Chart B</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="do">### Chart C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So does the order of the input/render functions matter?? Yes! Just like a normal <code>.RMD</code>, it is run line by line or chunk by chunk so inputs have to come before outputs - but the communication between the server and ui is taken care of for you.</p>
+</section>
+<section id="nyc-airbnb-shiny-dashboard-example" class="level1">
+<h1>NYC Airbnb Shiny Dashboard Example</h1>
+<p>Today’s dashboard/example can be found on Canvas under Week 14 Lecture materials (<code>nyc_airbnb_shiny_dashboard.RMD</code>). Please download, unzip, and then extract the files inside that now unzipped folder – open an R project and put the <code>.RMD</code> and <code>/data</code> folder there. In class I’m going to walk through the example(s) in depth but the general idea is we (1) Read/tidy the data (non-reactive) and store static variables, (2) Acquire user inputs via slider, buttons, drop-down-menus, etc. (a full list of ui widgets can be found <a href="https://shiny.rstudio.com/gallery/widget-gallery.html">here</a>) and (3) Utilize <em>reactive</em> functions to access inputs and <em>render</em> interactive visualizations.</p>
+<p><img src="./pics/shiny_dash.png" class="img-fluid"></p>
+<section id="some-important-notes" class="level2">
+<h2 class="anchored" data-anchor-id="some-important-notes">Some Important Notes</h2>
+<ol type="1">
+<li>Layout, structure, syntax, etc. remains the same as a normal <code>flexdashboard</code>/<code>.RMD</code></li>
+<li><strong>Static</strong> operations and object storage should occur first.
+<ul>
+<li>These are things that don’t/won’t change with user input/interaction</li>
+</ul></li>
+<li><strong>User Inputs</strong> ought to be acquired next
+<ul>
+<li>Putting these in a <code>Column {.sidebar data-width=300}</code> seems like a good stylistic choice (as in the example)</li>
+</ul></li>
+<li><strong>Reactive Operations</strong> occur after input but before output
+<ul>
+<li>For example, if you want to access an object in multiple places based on the user input, rather than performing that operation within each of the subsequent reactive functions, you can simply pass that object throughout the document with a <em>user defined reactive function</em></li>
+<li>ex. <code>myFunction &lt;- reactive({&lt;your_operations&gt;})</code></li>
+</ul></li>
+<li><strong>Reactive Output</strong> will occur last (or at least after it’s input has been acquired)
+<ul>
+<li><code>reactive({&lt;function of input&gt;})</code> will allow you to access input variables anywhere in the document
+<ul>
+<li>See my inline examples for titles, etc. taken from user input</li>
+</ul></li>
+<li><code>render...</code> (i.e.&nbsp;<code>renderPlot</code>, <code>renderPlotly</code>, etc.) is a <em>reactive function</em>
+<ul>
+<li>Meaning that you can access any user input within the scope of the function</li>
+<li>Can also access the output of any reactive function as well
+<ul>
+<li>i.e.&nbsp;can call <code>renderPlotly({ myFunction() })</code> from above</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>It’s difficult to trouble shoot reactive documents and functions
+<ul>
+<li>Can store “inputs” as static variables in the global environment while building dashboard</li>
+<li>Build it one layer at a time (minimize the number of new things that can go wrong)</li>
+<li>Will take some time to become familiar with these new reactive error messages (though a quick google usually helps)</li>
+<li>Start simple, get a minimal working example up and running, and then add to it</li>
+</ul></li>
+<li><strong>Themes</strong> - when using themes from the bootswatch library (css library for your website themes) some formatting may not be respected
+<ul>
+<li>Can download the newest <code>/bslib</code> with this code <code>install.packages("remotes")</code>, <code>remotes::install_github("rstudio/bslib")</code></li>
+<li>Can add to the <code>yaml</code> just like a website (see below)</li>
+</ul></li>
+</ol>
+<div class="cell" data-hash="lecture_week_14_cache/html/unnamed-chunk-2_b9e34fc5b4eb48b6482af6e6aab54d51">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#YAML</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Shiny Dashboard"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  flexdashboard<span class="sc">::</span>flex_dashboard<span class="sc">:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    orientation<span class="sc">:</span> columns</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    vertical_layout<span class="sc">:</span> fill</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      version<span class="sc">:</span> <span class="dv">4</span> <span class="co">#version of bslib (3 is older, 4 new)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      bootswatch<span class="sc">:</span> <span class="er">&lt;</span>theme name<span class="sc">&gt;</span> <span class="co">#flatly, darkly, etc.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>runtime<span class="sc">:</span> shiny</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="leaflet-shiny-dashboard" class="level1">
+<h1>Leaflet &amp; Shiny Dashboard</h1>
+<p><strong>Leaflet &amp; Shiny</strong> - If you intend to embed a <code>leaflet</code> app within a Shiny app or dashboard, this <a href="https://rstudio.github.io/leaflet/shiny.html">Using Leaflet with Shiny</a> Rstudio website is an awesome resource to get you up and running.</p>
+<section id="nyc-airbnb-shiny-dashboard-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="nyc-airbnb-shiny-dashboard-example-1">NYC Airbnb Shiny Dashboard Example</h2>
+<p>While the dashboard above is pretty good, it’d be awesome to have a leaflet instead of a plotly spatial scatterplot (w/no map features due to <code>ggplotly</code>/<code>geom_sf</code>/<code>ggmap</code> bugs with shiny). Luckily, <code>shiny</code> can handle leaflets just fine with <code>renderLeaflet</code> and <code>leafletOutput</code> (the second is for Shiny apps only). This dashboard/example can also be found on Canvas under Week 14 Lecture materials (<code>nyc_airbnb_shiny_dashboard_leaflet.RMD</code>)</p>
+<p><img src="./pics/shiny_leaflet_dash.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="iii.-developing-a-shiny-app-cont." class="level1 jumbotron">
+<h1 class="jumbotron">III. Developing a Shiny App (cont.)</h1>
+<p>Today we will mostly be walking through a reasonable workflow for developing Shiny applications in a clear, orderly fashion. To do so, please go to Canvas Week 14 Lecture Materials and download the associated .zip file. Please unzip and extract the contents into an <code>.Rproject</code>. When opening the project in your local directory, instead of just clicking the generic <code>New Project</code> at the top of the drop down, click the <code>Shiny App</code> third from the top. This will initilize a project that <em>expects</em> a Shiny app, comes with that same pre-built tutorial, etc. <em>Note - don’t put Shiny app and Shiny dashboard in the same directory/project or in nested directories/projects (why?), ensure that the directories are distinct and disjoint</em>.</p>
+</section>
+<section id="files-sourcing-and-functions" class="level1">
+<h1>Files, Sourcing, and Functions</h1>
+<p>Now, unlike the usual <code>.RMD</code> files we’re used to working with and knitting, for Shiny apps we’re actually only going to use <code>.R</code> scripts. We’ve been using <code>.RMD</code>’s both to generate static/interactive documents and ensure <strong>reproducibility</strong> of our work. When working with <code>.R</code> scripts, it’s a good idea to periodically clear your global environment (broom icon) and rerun your script to ensure it’s reproducible.</p>
+<p>When developing a Shiny app or any other more complicated workflow, application, etc., it is a good idea to separate distinct project/app functions and operations into their own distinct <code>.R</code> files with a <code>/src</code> folder or other file structure outside the root directory. These can be data acquisition steps, data wrangling, visulazation, user functions, etc. which can called/run via the <code>ui.R</code>, <code>server.R</code>, or other ‘meta’-script via <code>source(&lt;my_file&gt;.R)</code> (<code>render()</code> if .RMD). Why might this be a good idea?</p>
+<p><em>Hint - Think about Github collaboration, file structure, and reactive programming</em></p>
+</section>
+<section id="nyc-airbnb-example" class="level1">
+<h1>NYC Airbnb Example</h1>
+<p>From a raw coding perspective, there aren’t many differences between the dashboard above and a ‘regular’ shiny app; almost all of the important input, reactive, and render functions are identical. However, <em>structurally</em> they are very different in design, file-structure, and most importantly, <strong>explicit interaction between the ui &amp; server</strong>.</p>
+<section id="reminder" class="level2">
+<h2 class="anchored" data-anchor-id="reminder">Reminder</h2>
+<section id="ui.r" class="level3">
+<h3 class="anchored" data-anchor-id="ui.r"><code>ui.R</code></h3>
+<p>Here we define the layout, structure, user inputs, and output display.</p>
+</section>
+<section id="server.r" class="level3">
+<h3 class="anchored" data-anchor-id="server.r"><code>server.R</code></h3>
+<p>As a reactive function of <code>input</code> and <code>output</code>, this is where are the computation, visualization, and heavy lifting take place. In this example, we take in the user inputs from the <code>ui.R</code> and use them to generate the desired visualizations and outputs – sending them back to the <code>ui.R</code> for display/interaction.</p>
+<p>All that really means is within the <code>ui.R</code>, you need to include the same inputs <em>while also explicitly displaying the output from the server</em>. And a small technical detail is that different input functions or display functions need to be seperated by comma. Likewise, within the server all reactive and render functions operate the same, however you have to <strong>explicitly store output objects</strong> you’d like to be passed back to the <code>ui.R</code>.</p>
+<p><img src="./pics/shiny_app.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="v.-conclusion-resources" class="level1 jumbotron">
+<h1 class="jumbotron">V. Conclusion &amp; Resources</h1>
+<p>For the purposes of this course, and for most of the applications we are all likely to need Shiny as a communication tool for in the future, I think the Shiny Dashboard is probably the way to go. If you’re already familiar with <code>.RMD</code> and <code>flexdashboard</code>, it’s an easier, better-looking way to maximize R/Shiny as a communication tool. However, it’s important to know both since on the backend, Shiny Dashboards are still running the <code>ui.R</code> <span class="math inline">\(\longleftrightarrow\)</span> <code>server.R</code> connection under the hood.</p>
+</section>
+<section id="publishing-shiny-apps-dashboards-to-include-in-your-website" class="level1">
+<h1>Publishing Shiny Apps &amp; Dashboards (to include in your website)</h1>
+<p>Hosting a Shiny App or dashboard on your website (indirectly) can be down pretty easily with <strong>shinyapp.io</strong>. Unfortunately, you can’t share or display these reactive tools like normal – in order for something to be reactive in the <code>R</code> language it has to be hosted on a server (not the script, an actual server) which supports <code>R</code> (i.e.&nbsp;can run it in the background to host your app).</p>
+<p>Unfortunately Github and consequently Github Pages does no support <code>R</code> this way, <em>so you can’t simply embed it in your website like a dashboard or leaflet</em> (why?)</p>
+<p>But that’s okay! You can still display your Shiny apps on your website or elsewhere, you just need to host it elsewhere.</p>
+<p>Here is a <a href="https://shiny.rstudio.com/articles/shinyapps.html">shinyapps.io</a> tutorial to do just that! Following the directions will allow you to deploy a Shiny app on your group’s or personal website.</p>
+<p>Alternatively, <a href="https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/">here</a> is an another step-by-step screenshot guide for setting up and hosting with <code>shinyapps.io</code>.</p>
+</section>
+<section id="resources" class="level1">
+<h1>Resources</h1>
+<ul>
+<li><a href="https://pkgs.rstudio.com/flexdashboard/articles/shiny.html">Shiny with Flexdashboard tutorial</a> vignette/tutorial</li>
+<li><a href="https://pkgs.rstudio.com/flexdashboard/articles/examples.html">Examples of Shiny Dashboards</a></li>
+<li><a href="https://shiny.rstudio.com/articles/shinyapps.html">shinyapps.io set up</a></li>
+<li>Here is an <a href="https://shiny.rstudio.com/gallery/">awesome gallery</a> of Shiny apps for motivation, inspiration, or just awe.<br>
+</li>
+<li>Here is <a href="https://shiny.rstudio.com/tutorial/">Rstudio’s official Shiny App tutorial</a> before next week’s class</li>
+<li>Here is a slightly shorter, <a href="https://deanattali.com/blog/building-shiny-apps-tutorial/">interactive tutorial</a> from Dean Attali</li>
+</ul>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="v.-activity" class="level1 jumbotron">
+<h1 class="jumbotron">V. Activity</h1>
+</section>
+<section id="section" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="activity-1.-edit-the-shiny-dashboard" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-1.-edit-the-shiny-dashboard">Activity 1. Edit the Shiny Dashboard</h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+<p>Similarly to Week 7 Lecture’s Activity,</p>
+<p>For today’s activity, please</p>
+<ol type="1">
+<li>Start an .Rproject in the folder of your choice</li>
+<li>Download the <a href="https://canvas.umn.edu/courses/293049/pages/week-14-shiny-apps-and-dashboards-ii?module_item_id=7930621">NYC shiny dashboard .zip</a> from Canvas</li>
+<li>Unzip and put the <code>.RMD</code> and <code>/data</code> folde in that project</li>
+<li>Click <code>Run Document</code> at the top (where <code>Knit</code> usually is) to run the app and check it out on your own</li>
+<li>Then, alter the (3) visualization below (as directed)</li>
+</ol>
+</section>
+<section id="spatial-scatterplotleaflet-by-rating" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-scatterplotleaflet-by-rating">(1) Spatial Scatterplot/Leaflet by <strong>Rating</strong></h2>
+<p>Instead of looking at price, alter the scatter plot/leaflet to be coloured by rating.</p>
+</section>
+<section id="distribution-of-rating-by-neighbourhood" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-rating-by-neighbourhood">(2) Distribution of <strong>Rating</strong> by Neighbourhood</h2>
+<p>Instead of looking at the distribution of prices, let’s investigate the distribution of ratings by neighbourhood instead. Fix the title(s) accordingly.</p>
+</section>
+<section id="number-of-avg.-listings-per-month-by-neighborhood" class="level2">
+<h2 class="anchored" data-anchor-id="number-of-avg.-listings-per-month-by-neighborhood">(3) Number of <strong>Avg. Listings per Month</strong> by Neighborhood</h2>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="vi.-next-week" class="level1 jumbotron">
+<h1 class="jumbotron">VI. Next Week</h1>
+<ol type="1">
+<li>I will schedule group meetings (2) prior to the final project due date based on your groups submitted availability.</li>
+<li>Meeting 1 will be next week.</li>
+<li>You should have a reasonable amount of EDA done prior to the meeting
+<ul>
+<li>All this means is you’ve evaluated the validity of the data to answer your questions of interest</li>
+<li>You’ve inspected the data for issues with cleaning or tidying</li>
+<li>It would be good to have some very basic, preliminary (probably static) visualizations</li>
+</ul></li>
+<li>Start thinking about/laying the ground work for more advanced applications</li>
+<li>We’re going to cover <em>R Package Development</em> via github next week (and maybe some other miscellaneous topics
+<ul>
+<li>This will allow people not just to see your work on github, but download it directly and run your examples/code/etc.</li>
+</ul></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

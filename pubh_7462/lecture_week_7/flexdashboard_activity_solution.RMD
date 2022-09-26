@@ -1,0 +1,150 @@
+---
+title: "Solutions to Week 7 Activity: NYC Airbnb Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include = FALSE, echo = FALSE}
+library(tidyverse)
+library(lubridate)
+library(gt)
+library(paletteer)
+library(plotly)
+library(flexdashboard)
+
+#Working directory for .RMD
+# knitr::opts_knit$set(echo = TRUE,
+#                      root.dir = rprojroot::find_rstudio_root_file())
+
+#Controlling figure output in markdown
+knitr::opts_chunk$set(
+#  fig.height =   
+  fig.width = 6,
+#  fig.asp = .5,
+  out.width = "90%",
+#  out.height = 
+ fig.align  = "center",
+  cache = TRUE,
+  eval  = TRUE,
+  echo  = FALSE
+)
+
+#My Colours (from viridis)
+my_purple <- "#440154FF"
+my_yellow <- "#FDE725FF"
+
+#Set Theme for ggplot2
+theme_set(theme_bw() + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom"))
+
+#Set Scientific notation output and decimal places for knitr
+options(scipen = 999)
+options(digits = 4)
+options(dplyr.summarise.inform = FALSE)
+```
+
+
+```{r data_read, include = FALSE}
+#Read in the nyc airbnb data set
+nyc_airbnb.df <- read_csv("./data/nyc_airbnb.csv", show_col_types = FALSE) %>%
+  mutate(rating = review_scores_location / 2) %>%
+  filter(
+    neighbourhood_group %in% "Manhattan",
+    room_type %in% "Entire home/apt",
+    (!is.na(rating)),
+    price <= 1000
+  ) %>%
+  dplyr::select(neighbourhood, rating, price,
+                room_type, lat, long, contains("review"))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### (3) Number of Listings by Neighbourhood, Coloured by __Average Price__ 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+#Make our usual barplot
+bar.gg <- nyc_airbnb.df %>%
+  group_by(neighbourhood) %>%
+  summarise(
+    N          = n(),
+    avg_price = mean(price) 
+  ) %>%
+  ungroup() %>%
+  mutate(
+    neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE),
+    text_label    = str_c(neighbourhood, #add as text aesthetic
+                          "\nAvg. Price - ", round(avg_price, 2), 
+                          "\n# Reviews - ",   N)
+  ) %>%
+  ggplot(aes(x = neighbourhood, y = N, fill = avg_price, text = text_label)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(
+    title = "Manhattan Listings by Neighbourhood and Avg. Price",
+    y     = "Neighbourhood",
+    x     = "Number of Listings"
+  ) +
+  scale_fill_viridis_c("Avg. Price", 
+                       option = "magma", 
+                       alpha = 0.8) + #, 
+                       #limits = c(4, 5)) +
+  theme(legend.position = "right")
+
+#And let's turn it into a plotly object!
+ggplotly(bar.gg, tooltip = "text")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### (1) Spatial Scatterplot by __Rating__
+
+```{r echo = FALSE}
+#Our usual ggplot
+scatter.gg <- 
+  nyc_airbnb.df %>%
+  mutate(
+    text_label = str_c(neighbourhood, #add as text aesthetic
+                       "\nPrice - $"  ,  price, 
+                       "\nRating - ",    rating,
+                       "\n# Reviews - ", number_of_reviews)
+  ) %>%
+  ggplot(aes(x = lat, y = long, colour = rating, text = text_label)) +
+  geom_point(alpha = 0.25) +
+  coord_cartesian() +
+  labs(
+    title = "Spatial Scatterplot of Manhattan's Airbnb Prices",
+    x     = "Latitude",
+    y     = "Longitude"
+  ) + 
+  theme(legend.position = "right") +
+  scale_colour_viridis_c("Rating", 
+                         option = "magma", 
+                         alpha = 0.8, 
+                         limits = c(3, 5))
+  
+#ggplotly() + tooltip to control label
+ggplotly(scatter.gg, tooltip = "text") #tooltip controls text hover/label
+```
+
+### (2) Distribution of __Reviews per Month__ by Neighbourhood  
+
+```{r echo = FALSE}
+nyc_airbnb.df %>%
+  mutate(
+    neighbourhood = fct_reorder(neighbourhood, reviews_per_month, median, .desc = FALSE)
+  ) %>%
+  plot_ly(
+    x      = ~reviews_per_month,
+    color  = ~neighbourhood,
+    type   = "box",
+    colors = "viridis" 
+  ) %>%
+  layout(
+    title  = "Distribution of Reviews per Month by Neighbourhood",
+    xaxis  = list(title = "Reviews/Month")
+  )
+```

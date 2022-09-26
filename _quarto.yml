@@ -1,7 +1,17 @@
+#Define the type of quarto project (new from .RMD)
 project:
-  type: website
-  output-dir: docs
+  type: website #Make sure to `touch .nojekyll` in terminal to supress github jekyll auto 
+  output-dir: docs #Need to specify (something other than _site for github pages)
+  render: 
+    - "*qmd"
+    - "*.QMD"
+    - "*.rmd"
+    - "*.RMD"
+    - "*.Rmd"
+    - "!flexdashboard*"
+    - "!pubh_7462/lecture*"
 
+#Defines the main part(s) of the website: navbar, buttons, icons, links, etc.
 website:
   title: "Quinton Neville"
   navbar:
@@ -14,13 +24,13 @@ website:
       - text: "Data Science for the Public Good"
         menu:
           - text: "DSPG Overview"
-            href: old_work/dspg_overview.html
+            href: old_work/dspg_overview.Rmd
           - text: "Geospatial Composite Index"
-            href: old_work/fairfax.html
+            href: old_work/fairfax.Rmd
           - text: "Innovation & ML Text Classification"
-            href: old_work/business_innovation.html
+            href: old_work/business_innovation.Rmd
           - text: "Dog Bites in NYC"
-            href: old_work/dog_bites.html
+            href: old_work/dog_bites.Rmd
       - text: "Biostatistics"
         menu:
           - text: "Bayesian Robust RCM"
@@ -28,13 +38,31 @@ website:
           - text: "RCM for Task-based fMRI"
             href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
           - text: "TCGA-KIRC Methylation"
-            href: old_work/stat_gen.html
+            href: old_work/stat_gen.Rmd
           - text: "Boosting SNP's"
-            href: old_work/ml_theory.html   
-      - text: "Teaching"
+            href: old_work/ml_theory.Rmd   
+      - text: "Advanced Data Science in R"
         menu:
           - text: "PUBH 7462 Adv. R Syllabus"
             href: pubh_7462/syllabus.QMD
+          - text: "Intro to Data Viz (`gt`, `ggplot2`)"
+            href: pubh_7462/lecture_week_4/lecture_week_4.Rmd
+          - text: "Interactive Plots, Tables & Dashboards"
+            href: pubh_7462/lecture_week_7/lecture_week_7.Rmd
+          - text: "NYC Airbnb `flexdashboard` Example"
+            href: pubh_7462/lecture_week_7/flexdashboard_activity_solution.html
+          - text: "Websites with R & Github"
+            href: pubh_7462/lecture_week_9/lecture_week_9.Rmd
+          - text: "Advanced Spatial Mapping"
+            href: pubh_7462/lecture_week_11/lecture_week_11.Rmd
+          - text: "Git Collaboration & Intro to Shiny"
+            href: pubh_7462/lecture_week_12/lecture_week_12.Rmd
+          - text: "Shiny Apps & Dashboards"
+            href: pubh_7462/lecture_week_14/lecture_week_14.Rmd
+          # - text: "NYC Airbnb Shiny Dashboard"
+          #   href:
+          # - text: "NYC Airbnb Shiny App"
+          #   href:
     right:
       - icon: github
         href: http://github.com/nevilleq/
@@ -52,6 +80,7 @@ website:
       - icon: envelope
         href: mailto:<nevil066@umn.edu>
         
+#Define output format, .css, and other basic style options
 format:
   html:
     theme: pulse
@@ -59,7 +88,9 @@ format:
     toc: true
     code-block-bg: "#ECECEC"
     page-layout: full
-    
 
+#Execution (warning, message, echo, eval, etc.)
+execute:
+  cache: true
 
 

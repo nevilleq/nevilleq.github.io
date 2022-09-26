@@ -1,0 +1,3122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-03-04">
+
+<title>Quinton Neville - PUBH 7462 Midterm</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#global-covid-19-from-2020---present-directions-data-and-expectations" id="toc-global-covid-19-from-2020---present-directions-data-and-expectations" class="nav-link active" data-scroll-target="#global-covid-19-from-2020---present-directions-data-and-expectations">Global COVID-19 from 2020 - Present: Directions, Data, and Expectations</a>
+  <ul class="collapse">
+  <li><a href="#repository" id="toc-repository" class="nav-link" data-scroll-target="#repository">Repository</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#expectations" id="toc-expectations" class="nav-link" data-scroll-target="#expectations">Expectations</a></li>
+  </ul></li>
+  <li><a href="#i.-global-covid-19-from-2020---present-initial-iterative-data-read-description-exploration-clean-and-tidy-30pts" id="toc-i.-global-covid-19-from-2020---present-initial-iterative-data-read-description-exploration-clean-and-tidy-30pts" class="nav-link" data-scroll-target="#i.-global-covid-19-from-2020---present-initial-iterative-data-read-description-exploration-clean-and-tidy-30pts">I. Global COVID-19 from 2020 - Present: Initial (iterative) data read, description, exploration, clean, and tidy <strong>(30pts)</strong></a></li>
+  <li><a href="#ii.-global-covid-19-from-2020---present-summary-tables-35pts" id="toc-ii.-global-covid-19-from-2020---present-summary-tables-35pts" class="nav-link" data-scroll-target="#ii.-global-covid-19-from-2020---present-summary-tables-35pts">II. Global COVID-19 from 2020 - Present: Summary Tables <strong>(35pts)</strong></a>
+  <ul class="collapse">
+  <li><a href="#i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts" id="toc-i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts" class="nav-link" data-scroll-target="#i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts">i. Please summarise the <em>total number of cases and deaths</em> <strong>by continent</strong>, and include each continents’ <em>daily average</em> and <em>standard deviation</em> of <strong>new cases and deaths</strong>, in a single <code>gt()</code>. Comment on the trends you observe. <strong>(25pts)</strong></a></li>
+  <li><a href="#ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts" id="toc-ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts" class="nav-link" data-scroll-target="#ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts">ii. Extend the table above to also display the <strong>top 5 countries</strong> per continent <strong>by total cases</strong>; including all the same summary information, aesthetics, and ordering. <strong>(10pts)</strong></a></li>
+  </ul></li>
+  <li><a href="#iii.-global-covid-19-from-2020---present-temporal-trends-35pts" id="toc-iii.-global-covid-19-from-2020---present-temporal-trends-35pts" class="nav-link" data-scroll-target="#iii.-global-covid-19-from-2020---present-temporal-trends-35pts">III. Global COVID-19 from 2020 - Present: Temporal Trends <strong>(35pts)</strong></a></li>
+  <li><a href="#i.-globally-on-which-days-of-the-week-are-most-cases-and-deaths-reported-respectively-10pts" id="toc-i.-globally-on-which-days-of-the-week-are-most-cases-and-deaths-reported-respectively-10pts" class="nav-link" data-scroll-target="#i.-globally-on-which-days-of-the-week-are-most-cases-and-deaths-reported-respectively-10pts">i. Globally, on which days of the week are most cases and deaths reported, respectively? <strong>(10pts)</strong></a>
+  <ul class="collapse">
+  <li><a href="#ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts" id="toc-ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts" class="nav-link" data-scroll-target="#ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts">ii. Using <code>ggplot</code>, please recreate the global “rolling-average” plots (see below) for new cases <em>and</em> deaths, using <em>your own theme</em>, <em>colours</em> <strong>(25pts)</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PUBH 7462 Midterm</h1>
+<p class="subtitle lead">Current Global COVID-19 EDA &amp; Visualization</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 4, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="global-covid-19-from-2020---present-directions-data-and-expectations" class="level1">
+<h1>Global COVID-19 from 2020 - Present: Directions, Data, and Expectations</h1>
+<section id="repository" class="level2">
+<h2 class="anchored" data-anchor-id="repository">Repository</h2>
+<p>Please initialize a <strong>private</strong> Github repository entitled <code>pubh7462_midterm_</code><em>your email handle</em> AND add me (<code>@nevilleq</code>) as a collaborator on Github so I can access the repository for grading. Connect it with an .Rproject as usual and add <code>/data</code> to the <code>gitignore.txt</code> file.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>These COVID-19 Global data were extracted on February 25th, 2022, from <a href="https://ourworldindata.org/explorers/coronavirus-data-explorer"><em>Our World in Data (OWID)</em></a>. These data may be downloaded from OWID’s <a href="https://github.com/owid/covid-19-data/tree/master/public/data">Github page</a>, and are actually what Google uses in the data visualizations on their <a href="https://www.google.com/search?q=covid+global+stats">search page</a>. These data are aggregated from multiple sources, but are primarily drawn from Johns Hopkins University’s COVID-19 global data base. The full data and variable descriptions are found on OWID’s <a href="https://github.com/owid/covid-19-data/tree/master/public/data">Github page</a>, so please do familiarize yourself with the original data and it’s source(s).</p>
+<p>The data you will be using has been lightly cleaned, relevant variables extracted, and <em>seperated</em> by continent; and the files can be downloaded fro Canvas <a href="https://canvas.umn.edu/courses/293049/assignments/2360517">here</a>. Please download <strong>all files</strong> and put them in a <code>/data</code> folder (don’t forget to add the <code>/data</code> to gitignore!).</p>
+</section>
+<section id="expectations" class="level2">
+<h2 class="anchored" data-anchor-id="expectations">Expectations</h2>
+<p>While this assessment is ‘comprehensive’ in the sense that it utilizes all the skills we’ve learned thus far in the course, materials that will be most helpful/similar to these questions are found in the Disney Land Reviews activity, Homework 3, and Week 6 Lecture/Activities.</p>
+<p>I promise that you can solve all of these problems with tools and techniques we have covered in class up to this point. However, this assessment concerns real world data and real world questions, which means it will inherently be challenging. Don’t worry if you can’t get something to work properly – just do the best you can, document and comment your code so I can give maximum partial credit accordingly.</p>
+<p><strong>Make sure the repository is private</strong></p>
+<p>This assessment is “open-world” in the sense that you are allowed to use any resource available to you, online or in a text book. However, the work <em>must be your own</em>. This means you must rewrite the code in your own style (like paraphrasing or rewording in a regular paper to avoid plagiarism) <strong>and you may not discuss or share materials with anyone else in class</strong>. I will be personally grading and reviewing all code and I will be able to tell if code has been copy and pasted from another student or source.</p>
+<p>Other than that, this data is quite interesting, current, and relevant to the state of Global Public Health, so please don’t forget to have a little fun exploring and learning from these data.</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="i.-global-covid-19-from-2020---present-initial-iterative-data-read-description-exploration-clean-and-tidy-30pts" class="level1">
+<h1>I. Global COVID-19 from 2020 - Present: Initial (iterative) data read, description, exploration, clean, and tidy <strong>(30pts)</strong></h1>
+<p>Please perform the following tasks –</p>
+<ol type="i">
+<li>Iteratively read in continent specific .csv’s
+<ul>
+<li>and extract relevant meta-data from the file names in the process</li>
+</ul></li>
+<li>Explore the data, check for uniqueness and missingness, and use this to inform your data cleaning/tidying below
+<ul>
+<li><strong>Do not omit any <code>NA</code>s</strong></li>
+<li>You may transform them if you wish (see vi. below), but state clearly in the report how and why you’re doing so</li>
+</ul></li>
+<li>Utilize <code>lubridate</code> to transform temporal variables accordingly - and extract month (i.e January, February, …) and day of the week (i.e.&nbsp;Monday, Tuesday, …)</li>
+<li>Rename/name variables appropriately</li>
+<li>Manage/transform data types appropriately (factor vs.&nbsp;character vs.&nbsp;numeric, etc.)</li>
+<li>Add <em>2 new variables</em> describing the <em>cumulative totals</em> for cases and deaths <em>by country</em>, respectively
+<ul>
+<li><em>Hint</em> cumulative total by country is a “grouped” “summary” variable, but we want to retain all the original data as well</li>
+<li><em>Hint</em> <code>cumsum</code> will do a lot of the work for you, but you will need to handle <code>NA</code>s appropriately first</li>
+</ul></li>
+</ol>
+<p>After you have completed tasks (<em>i-vi.</em>), please describe the ‘final’ data (number of observations, features, what each describes, how you handled missingness, and anything interesting to note etc.).</p>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/data_read_tidy_07196415089ddef952fba25251aac758">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#List files</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>file_dir  <span class="ot">&lt;-</span> <span class="st">"./data/"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>file_list <span class="ot">&lt;-</span> <span class="fu">list.files</span>(file_dir, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"covid19"</span>, <span class="st">".csv"</span>)) <span class="co">#list files</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>file_list <span class="ot">&lt;-</span> file_list[<span class="sc">!</span><span class="fu">str_detect</span>(file_list, <span class="st">"aggregate"</span>)] <span class="co">#Remove files with "aggregate"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Read &amp; Tidy</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>covid.df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">file_list =</span> file_list, <span class="co">#files to be read</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">file_path =</span> <span class="fu">str_c</span>(file_dir, file_list), <span class="co">#make relative file path</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">continent =</span> <span class="fu">str_split</span>(file_list, <span class="st">"_"</span>, <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#extract contintent w stringr</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">map_chr</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">str_remove</span>(<span class="st">".csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">str_replace</span>(<span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">str_to_title</span>()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>( <span class="co">#Iteratively read in data</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> <span class="fu">map</span>(<span class="at">.x =</span> file_path, <span class="sc">~</span><span class="fu">read_csv</span>(.x, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(file_list, file_path)) <span class="sc">%&gt;%</span> <span class="co">#Remove extra vars</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">unnest</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>( <span class="co">#Clean up time/region</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">date    =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(date), <span class="co">#to date obj</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">month   =</span> month.name[lubridate<span class="sc">::</span><span class="fu">month</span>(date)] <span class="sc">%&gt;%</span> <span class="co">#month fct</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">as_factor</span>(),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">day     =</span> <span class="fu">wday</span>(date, </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                             <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="co">#return name i.e "Friday"</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                             <span class="at">abbr  =</span> <span class="cn">FALSE</span>, <span class="co">#Return full name</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                             <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">"lubridate.week.start"</span>, <span class="dv">1</span>)), <span class="co">#day of week (auto factor), starts Monday</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">country =</span> <span class="fu">as_factor</span>(location), <span class="co">#country, region factors</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>              <span class="at">continent =</span> <span class="fu">as_factor</span>(continent),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="fu">nest</span>(<span class="sc">-</span>country) <span class="sc">%&gt;%</span> <span class="co">#group by country</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> <span class="fu">map</span>(<span class="at">.x =</span> data, <span class="co">#for each country</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                         <span class="sc">~</span>.x <span class="sc">%&gt;%</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>( <span class="co">#compute cumulative totals</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                            <span class="at">new_cases_temp  =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(new_cases), <span class="dv">0</span>, new_cases), <span class="co">#handle NAs</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                            <span class="at">new_deaths_temp =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(new_deaths), <span class="dv">0</span>, new_deaths),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cum_cases  =</span> <span class="fu">cumsum</span>(new_cases_temp), <span class="co">#get cumulative sums by country</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cum_deaths =</span> <span class="fu">cumsum</span>(new_deaths_temp)                             </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                           ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                           dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">"temp"</span>)) <span class="co">#remove temp variables</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                         )</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            <span class="fu">unnest</span>(data) <span class="sc">%&gt;%</span> <span class="co">#transform back to full data</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            dplyr<span class="sc">::</span><span class="fu">select</span>(continent, date, day, month,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                          country, <span class="fu">contains</span>(<span class="st">"cases"</span>), <span class="fu">contains</span>(<span class="st">"deaths"</span>),</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">everything</span>(), <span class="sc">-</span><span class="fu">c</span>(location)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: All elements of `...` must be named.
+Did you want `data = -country`?</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#There are `r nrow(covid.df)` country level observations in these data, with `r ncol(covid.df)` features </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#describing the continent, country, date, new cases, new deaths (and smoothed 7-day rolling estimates of both),</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#as well as population, population density, diabetes prevalence, GDP per capita, median age, and human development index score.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="ii.-global-covid-19-from-2020---present-summary-tables-35pts" class="level1">
+<h1>II. Global COVID-19 from 2020 - Present: Summary Tables <strong>(35pts)</strong></h1>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/read_aggregate_2ea09ab7a65886402d3958390b757838">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Aggregated data (not from same source)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>aggregate.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./data/covid19_aggregate_data.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(<span class="sc">!</span>(location <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"World"</span>, <span class="st">"European Union"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">location_type =</span> <span class="fu">as.factor</span>(location_type),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">location      =</span> <span class="fu">as.factor</span>(location)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="fu">group_by</span>(location_type, location) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">summarise</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">across</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.cols  =</span> <span class="fu">contains</span>(<span class="st">"total"</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.fn    =</span> <span class="fu">list</span>(<span class="at">max =</span> max),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">na.rm  =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.names =</span> <span class="st">"{.col}"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'location_type'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/aggregate_table_7278e634f590153c510bdbc62e3855af">
+<div class="cell-output-display">
+
+<div id="qpvhsysruc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#qpvhsysruc) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#qpvhsysruc) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#qpvhsysruc) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#qpvhsysruc) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#qpvhsysruc) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#qpvhsysruc) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#qpvhsysruc) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#qpvhsysruc) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#qpvhsysruc) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#qpvhsysruc) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#qpvhsysruc) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#qpvhsysruc) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#qpvhsysruc) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qpvhsysruc) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#qpvhsysruc) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#qpvhsysruc) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qpvhsysruc) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#qpvhsysruc) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qpvhsysruc) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#qpvhsysruc) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qpvhsysruc) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qpvhsysruc) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qpvhsysruc) .gt_left {
+  text-align: left;
+}
+
+:where(#qpvhsysruc) .gt_center {
+  text-align: center;
+}
+
+:where(#qpvhsysruc) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#qpvhsysruc) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#qpvhsysruc) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#qpvhsysruc) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#qpvhsysruc) .gt_super {
+  font-size: 65%;
+}
+
+:where(#qpvhsysruc) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#qpvhsysruc) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#qpvhsysruc) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#qpvhsysruc) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#qpvhsysruc) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#qpvhsysruc) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">COVID-19 Case &amp; Death Aggregate Summary</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Classification</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Cases</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Deaths</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Economic Status</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">High income</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">230.96M</td>
+<td class="gt_row gt_right" style="background-color: #561F64; color: #FFFFFF;">2.19M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Upper middle income</td>
+<td class="gt_row gt_right" style="background-color: #9F7DA5; color: #000000;">117.15M</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">2.43M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Lower middle income</td>
+<td class="gt_row gt_right" style="background-color: #BCA3C0; color: #000000;">81.50M</td>
+<td class="gt_row gt_right" style="background-color: #9C79A2; color: #000000;">1.27M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Low income</td>
+<td class="gt_row gt_right" style="background-color: #FEFDFE; color: #000000;">1.80M</td>
+<td class="gt_row gt_right" style="background-color: #FCFAFC; color: #000000;">41.64K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Global Total</td>
+<td class="gt_row gt_center gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">431.41M</td>
+<td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">5.93M</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Geographic Region</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Europe</td>
+<td class="gt_row gt_right" style="background-color: #815589; color: #FFFFFF;">155.35M</td>
+<td class="gt_row gt_right" style="background-color: #7B4E84; color: #FFFFFF;">1.70M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Asia</td>
+<td class="gt_row gt_right" style="background-color: #A17FA7; color: #000000;">114.87M</td>
+<td class="gt_row gt_right" style="background-color: #96719D; color: #000000;">1.35M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">North America</td>
+<td class="gt_row gt_right" style="background-color: #B397B7; color: #000000;">92.72M</td>
+<td class="gt_row gt_right" style="background-color: #956F9B; color: #000000;">1.37M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">South America</td>
+<td class="gt_row gt_right" style="background-color: #D3C2D5; color: #000000;">53.83M</td>
+<td class="gt_row gt_right" style="background-color: #9D7BA4; color: #000000;">1.25M</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Africa</td>
+<td class="gt_row gt_right" style="background-color: #F6F2F6; color: #000000;">11.21M</td>
+<td class="gt_row gt_right" style="background-color: #EBE4EC; color: #000000;">247.87K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Oceania</td>
+<td class="gt_row gt_right" style="background-color: #FCFBFC; color: #000000;">3.44M</td>
+<td class="gt_row gt_right" style="background-color: #FEFEFE; color: #000000;">7.67K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Global Total</td>
+<td class="gt_row gt_center gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">431.42M</td>
+<td class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">5.93M</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">Data from Jan. 2020 - Feb. 2022, extracted from Our World In Data's Github</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<p>Above is a summary table from an aggregated version of the data contained in the same data download (in the <code>/data</code> folder). Please use this style and format as a rough template for the tables requested below (similar to those in Lecture Week 6), as well as the global estimates to check yours below.</p>
+<section id="i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts" class="level2">
+<h2 class="anchored" data-anchor-id="i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts">i. Please summarise the <em>total number of cases and deaths</em> <strong>by continent</strong>, and include each continents’ <em>daily average</em> and <em>standard deviation</em> of <strong>new cases and deaths</strong>, in a single <code>gt()</code>. Comment on the trends you observe. <strong>(25pts)</strong></h2>
+<p>Please include the following aesthetics in your <code>gt()</code> –</p>
+<ul>
+<li>Order continents by total cases <em>and</em> deaths (in that order)</li>
+<li>Colour the total cases and deaths column meaningfully</li>
+<li>Add column <code>tab_spanners</code> to distinguish case vs.&nbsp;death summaries</li>
+<li>Format numbers appropriately with abbreviations for thousand, million, etc. (<code>fmt_number</code>)</li>
+<li>Add a <code>summary row</code> at the bottom which describes the “<em>Global Total</em>” for cases and deaths<br>
+</li>
+<li>Add a <code>source note</code> describing the data and its source</li>
+</ul>
+<p><em>Hint</em> You can check your Global Totals against Google’s current estimate (will be approximately the same, slightly less due to time as your data was pulled on the morning of 2/25).<br>
+</p>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/continent_summary_df_4027e12bec9ee3426a9be41f423ee5ff">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>continent_sum.df <span class="ot">&lt;-</span> covid.df <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="sc">-</span><span class="fu">c</span>(country)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_cases  =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> data, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cum_cases) <span class="sc">%&gt;%</span> <span class="fu">max</span>()),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_deaths =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> data, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cum_deaths) <span class="sc">%&gt;%</span> <span class="fu">max</span>()), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>      <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">unique</span>(total_cases), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Avg. Cases/Day</span><span class="st">`</span>   <span class="ot">=</span> <span class="fu">mean</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">SD Cases/Day</span><span class="st">`</span>     <span class="ot">=</span> <span class="fu">sd</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>     <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">unique</span>(total_deaths), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Avg. Deaths/Day</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">mean</span>(new_deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">SD Deaths/Day</span><span class="st">`</span>    <span class="ot">=</span> <span class="fu">sd</span>(new_deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">Continent =</span> <span class="fu">fct_reorder2</span>(continent, <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>, <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Continent, <span class="fu">everything</span>(), <span class="sc">-</span>continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: All elements of `...` must be named.
+Did you want `data = -c(country)`?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cols` is now required when using unnest().
+Please use `cols = c(data)`</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/continent_summary_viz_0a0ab0e217cfa368510c5f70d19f27cc">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dispaly table</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>continent_sum.df <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Continent) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"COVID-19 Case &amp; Death Summary by Continent"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(continent_sum.df<span class="sc">$</span><span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(continent_sum.df<span class="sc">$</span><span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label   =</span> <span class="st">"Cases"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Cases"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">label   =</span> <span class="st">"Deaths"</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Deaths"</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns   =</span> <span class="fu">where</span>(is.numeric),</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary_rows</span>(</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">groups  =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Total"</span>),</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">fns =</span> <span class="fu">list</span>(</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Global Total</span><span class="st">`</span> <span class="ot">=</span> <span class="er">~</span><span class="fu">sum</span>(.)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">formatter =</span> fmt_number,</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="st">"Data from Jan. 2020 - Feb. 2022, extracted from Our World In Data's Github"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="ohxlytwcwx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#ohxlytwcwx) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#ohxlytwcwx) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#ohxlytwcwx) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#ohxlytwcwx) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#ohxlytwcwx) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#ohxlytwcwx) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#ohxlytwcwx) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#ohxlytwcwx) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#ohxlytwcwx) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#ohxlytwcwx) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#ohxlytwcwx) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#ohxlytwcwx) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#ohxlytwcwx) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ohxlytwcwx) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#ohxlytwcwx) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#ohxlytwcwx) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ohxlytwcwx) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#ohxlytwcwx) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ohxlytwcwx) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#ohxlytwcwx) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ohxlytwcwx) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ohxlytwcwx) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ohxlytwcwx) .gt_left {
+  text-align: left;
+}
+
+:where(#ohxlytwcwx) .gt_center {
+  text-align: center;
+}
+
+:where(#ohxlytwcwx) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#ohxlytwcwx) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#ohxlytwcwx) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#ohxlytwcwx) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#ohxlytwcwx) .gt_super {
+  font-size: 65%;
+}
+
+:where(#ohxlytwcwx) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#ohxlytwcwx) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#ohxlytwcwx) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#ohxlytwcwx) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#ohxlytwcwx) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#ohxlytwcwx) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">COVID-19 Case &amp; Death Summary by Continent</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="2" colspan="1">Continent</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner">Cases</span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner">Deaths</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Cases</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Avg. Cases/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SD Cases/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Deaths</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Avg. Deaths/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SD Deaths/Day</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Europe</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">154.92M</td>
+<td class="gt_row gt_right">4.33K</td>
+<td class="gt_row gt_right">17.64K</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">1.70M</td>
+<td class="gt_row gt_right">50.68</td>
+<td class="gt_row gt_right">140.97</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Asia</td>
+<td class="gt_row gt_right" style="background-color: #75467F; color: #FFFFFF;">114.05M</td>
+<td class="gt_row gt_right">3.24K</td>
+<td class="gt_row gt_right">16.01K</td>
+<td class="gt_row gt_right" style="background-color: #6B3A76; color: #FFFFFF;">1.34M</td>
+<td class="gt_row gt_right">42.65</td>
+<td class="gt_row gt_right">188.84</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">North America</td>
+<td class="gt_row gt_right" style="background-color: #8E6796; color: #FFFFFF;">92.72M</td>
+<td class="gt_row gt_right">3.83K</td>
+<td class="gt_row gt_right">31.99K</td>
+<td class="gt_row gt_right" style="background-color: #693774; color: #FFFFFF;">1.37M</td>
+<td class="gt_row gt_right">68.29</td>
+<td class="gt_row gt_right">323.04</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">South America</td>
+<td class="gt_row gt_right" style="background-color: #BDA5C1; color: #000000;">53.70M</td>
+<td class="gt_row gt_right">5.75K</td>
+<td class="gt_row gt_right">16.11K</td>
+<td class="gt_row gt_right" style="background-color: #764880; color: #FFFFFF;">1.24M</td>
+<td class="gt_row gt_right">146.33</td>
+<td class="gt_row gt_right">352.61</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Africa</td>
+<td class="gt_row gt_right" style="background-color: #F1ECF2; color: #000000;">11.19M</td>
+<td class="gt_row gt_right">288.21</td>
+<td class="gt_row gt_right">1.21K</td>
+<td class="gt_row gt_right" style="background-color: #E3D8E5; color: #000000;">247.16K</td>
+<td class="gt_row gt_right">6.79</td>
+<td class="gt_row gt_right">31.12</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Oceania</td>
+<td class="gt_row gt_right" style="background-color: #FBF9FB; color: #000000;">3.44M</td>
+<td class="gt_row gt_right">429.99</td>
+<td class="gt_row gt_right">5.07K</td>
+<td class="gt_row gt_right" style="background-color: #FEFEFE; color: #000000;">7.03K</td>
+<td class="gt_row gt_right">1.92</td>
+<td class="gt_row gt_right">7.76</td></tr>
+    <tr><td class="gt_row gt_right gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">Global Total</td>
+<td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">430.02M</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">5.90M</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="8">Data from Jan. 2020 - Feb. 2022, extracted from Our World In Data's Github</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts">ii. Extend the table above to also display the <strong>top 5 countries</strong> per continent <strong>by total cases</strong>; including all the same summary information, aesthetics, and ordering. <strong>(10pts)</strong></h2>
+<p><em>Note:</em> The row summary will no longer be a “Global Total” but a “Top 5 Country Total”.</p>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/continent_country_df_8f7ddccd9ddb6d34736f15129a3a8d5a">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>continent_sum.df <span class="ot">&lt;-</span> covid.df <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="sc">-</span><span class="fu">c</span>(country)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_cases  =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> data, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cum_cases) <span class="sc">%&gt;%</span> <span class="fu">max</span>()),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_deaths =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> data, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cum_deaths) <span class="sc">%&gt;%</span> <span class="fu">max</span>()), </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent, country) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>      <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">unique</span>(total_cases), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Avg. Cases/Day</span><span class="st">`</span>   <span class="ot">=</span> <span class="fu">mean</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">SD Cases/Day</span><span class="st">`</span>     <span class="ot">=</span> <span class="fu">sd</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>     <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">unique</span>(total_deaths), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Avg. Deaths/Day</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">mean</span>(new_deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">SD Deaths/Day</span><span class="st">`</span>    <span class="ot">=</span> <span class="fu">sd</span>(new_deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country   =</span> <span class="fu">fct_lump_n</span>(country, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">w =</span> <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">fct_reorder2</span>(continent, <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>, <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>, <span class="at">.fun =</span> max) <span class="sc">%&gt;%</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">str_c</span>(<span class="fu">as.numeric</span>(.), ., <span class="at">sep =</span> <span class="st">". "</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(country <span class="sc">%in%</span> <span class="st">"Other"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: All elements of `...` must be named.
+Did you want `data = -c(country)`?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cols` is now required when using unnest().
+Please use `cols = c(data)`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/continent_country_viz_d7e03c31db842a42cf6fd4c7725f4f0d">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dispaly table</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>continent_sum.df <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Country =</span> country) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">"COVID19 Case &amp; Death Summary by Continent"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Top 5 Countries by Total Cases"</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">20000</span>, <span class="fu">max</span>(continent_sum.df<span class="sc">$</span><span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>))</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="fu">max</span>(continent_sum.df<span class="sc">$</span><span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>))</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">label   =</span> <span class="st">"Cases"</span>,</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Cases"</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">label   =</span> <span class="st">"Deaths"</span>,</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Deaths"</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns   =</span> <span class="fu">where</span>(is.numeric),</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary_rows</span>(</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">groups  =</span> <span class="cn">NULL</span>,</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Total"</span>),</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">fns =</span> <span class="fu">list</span>(</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Global Top 5 Total(s)</span><span class="st">`</span> <span class="ot">=</span> <span class="er">~</span><span class="fu">sum</span>(.)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">formatter =</span> fmt_number,</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="st">"Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Some values were outside the color scale and will be treated as NA</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div id="axtnvjieme" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#axtnvjieme) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#axtnvjieme) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#axtnvjieme) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#axtnvjieme) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#axtnvjieme) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#axtnvjieme) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#axtnvjieme) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#axtnvjieme) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#axtnvjieme) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#axtnvjieme) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#axtnvjieme) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#axtnvjieme) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#axtnvjieme) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#axtnvjieme) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#axtnvjieme) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#axtnvjieme) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#axtnvjieme) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#axtnvjieme) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#axtnvjieme) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#axtnvjieme) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#axtnvjieme) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#axtnvjieme) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#axtnvjieme) .gt_left {
+  text-align: left;
+}
+
+:where(#axtnvjieme) .gt_center {
+  text-align: center;
+}
+
+:where(#axtnvjieme) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#axtnvjieme) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#axtnvjieme) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#axtnvjieme) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#axtnvjieme) .gt_super {
+  font-size: 65%;
+}
+
+:where(#axtnvjieme) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#axtnvjieme) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#axtnvjieme) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#axtnvjieme) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#axtnvjieme) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#axtnvjieme) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="8" class="gt_heading gt_title gt_font_normal" style="">COVID19 Case &amp; Death Summary by Continent</th>
+    </tr>
+    <tr>
+      <th colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Top 5 Countries by Total Cases</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="2" colspan="1">Country</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner">Cases</span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner">Deaths</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Cases</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Avg. Cases/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SD Cases/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Deaths</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Avg. Deaths/Day</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SD Deaths/Day</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">1. North America</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">United States</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">78.80M</td>
+<td class="gt_row gt_right">103.14K</td>
+<td class="gt_row gt_right">148.53K</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">944.83K</td>
+<td class="gt_row gt_right">1.30K</td>
+<td class="gt_row gt_right">988.10</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Mexico</td>
+<td class="gt_row gt_right" style="background-color: #F2ECF2; color: #000000;">5.47M</td>
+<td class="gt_row gt_right">7.52K</td>
+<td class="gt_row gt_right">10.83K</td>
+<td class="gt_row gt_right" style="background-color: #C0A9C4; color: #000000;">313.03K</td>
+<td class="gt_row gt_right">442.76</td>
+<td class="gt_row gt_right">374.07</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Canada</td>
+<td class="gt_row gt_right" style="background-color: #F7F4F7; color: #000000;">3.27M</td>
+<td class="gt_row gt_right">4.29K</td>
+<td class="gt_row gt_right">6.89K</td>
+<td class="gt_row gt_right" style="background-color: #F8F5F8; color: #000000;">36.33K</td>
+<td class="gt_row gt_right">50.60</td>
+<td class="gt_row gt_right">50.45</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Cuba</td>
+<td class="gt_row gt_right" style="background-color: #FCFBFD; color: #000000;">1.07M</td>
+<td class="gt_row gt_right">1.49K</td>
+<td class="gt_row gt_right">2.51K</td>
+<td class="gt_row gt_right" style="background-color: #FDFDFD; color: #000000;">8.49K</td>
+<td class="gt_row gt_right">11.98</td>
+<td class="gt_row gt_right">23.45</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Costa Rica</td>
+<td class="gt_row gt_right" style="background-color: #FDFCFD; color: #000000;">799.83K</td>
+<td class="gt_row gt_right">1.11K</td>
+<td class="gt_row gt_right">1.74K</td>
+<td class="gt_row gt_right" style="background-color: #FDFDFD; color: #000000;">7.98K</td>
+<td class="gt_row gt_right">11.28</td>
+<td class="gt_row gt_right">15.50</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">2. Asia</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">India</td>
+<td class="gt_row gt_right" style="background-color: #98749F; color: #000000;">42.89M</td>
+<td class="gt_row gt_right">56.66K</td>
+<td class="gt_row gt_right">82.57K</td>
+<td class="gt_row gt_right" style="background-color: #9A76A0; color: #000000;">505.85K</td>
+<td class="gt_row gt_right">707.49</td>
+<td class="gt_row gt_right">901.64</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Turkey</td>
+<td class="gt_row gt_right" style="background-color: #E0D3E1; color: #000000;">13.02M</td>
+<td class="gt_row gt_right">18.21K</td>
+<td class="gt_row gt_right">22.36K</td>
+<td class="gt_row gt_right" style="background-color: #ECE5ED; color: #000000;">93.54K</td>
+<td class="gt_row gt_right">131.75</td>
+<td class="gt_row gt_right">90.20</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Iran</td>
+<td class="gt_row gt_right" style="background-color: #EEE7EF; color: #000000;">7.01M</td>
+<td class="gt_row gt_right">9.51K</td>
+<td class="gt_row gt_right">9.45K</td>
+<td class="gt_row gt_right" style="background-color: #E4D9E5; color: #000000;">135.95K</td>
+<td class="gt_row gt_right">184.47</td>
+<td class="gt_row gt_right">143.53</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Indonesia</td>
+<td class="gt_row gt_right" style="background-color: #F2EDF3; color: #000000;">5.41M</td>
+<td class="gt_row gt_right">7.46K</td>
+<td class="gt_row gt_right">11.66K</td>
+<td class="gt_row gt_right" style="background-color: #E1D6E3; color: #000000;">147.34K</td>
+<td class="gt_row gt_right">205.78</td>
+<td class="gt_row gt_right">347.28</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Japan</td>
+<td class="gt_row gt_right" style="background-color: #F3EFF4; color: #000000;">4.75M</td>
+<td class="gt_row gt_right">6.22K</td>
+<td class="gt_row gt_right">16.93K</td>
+<td class="gt_row gt_right" style="background-color: #FAF9FB; color: #000000;">22.79K</td>
+<td class="gt_row gt_right">30.67</td>
+<td class="gt_row gt_right">40.03</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">3. South America</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Brazil</td>
+<td class="gt_row gt_right" style="background-color: #BBA1BE; color: #000000;">28.46M</td>
+<td class="gt_row gt_right">39.05K</td>
+<td class="gt_row gt_right">37.24K</td>
+<td class="gt_row gt_right" style="background-color: #7E5287; color: #FFFFFF;">647.70K</td>
+<td class="gt_row gt_right">912.26</td>
+<td class="gt_row gt_right">765.47</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Argentina</td>
+<td class="gt_row gt_right" style="background-color: #E9E1EB; color: #000000;">8.88M</td>
+<td class="gt_row gt_right">12.26K</td>
+<td class="gt_row gt_right">19.59K</td>
+<td class="gt_row gt_right" style="background-color: #E6DCE7; color: #000000;">125.87K</td>
+<td class="gt_row gt_right">175.07</td>
+<td class="gt_row gt_right">205.38</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Colombia</td>
+<td class="gt_row gt_right" style="background-color: #F0EAF1; color: #000000;">6.06M</td>
+<td class="gt_row gt_right">8.40K</td>
+<td class="gt_row gt_right">7.93K</td>
+<td class="gt_row gt_right" style="background-color: #E3D8E4; color: #000000;">138.42K</td>
+<td class="gt_row gt_right">196.34</td>
+<td class="gt_row gt_right">167.32</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Peru</td>
+<td class="gt_row gt_right" style="background-color: #F7F3F7; color: #000000;">3.51M</td>
+<td class="gt_row gt_right">4.86K</td>
+<td class="gt_row gt_right">8.52K</td>
+<td class="gt_row gt_right" style="background-color: #D5C4D7; color: #000000;">210.12K</td>
+<td class="gt_row gt_right">291.42</td>
+<td class="gt_row gt_right">278.87</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Chile</td>
+<td class="gt_row gt_right" style="background-color: #F8F5F8; color: #000000;">2.95M</td>
+<td class="gt_row gt_right">4.03K</td>
+<td class="gt_row gt_right">6.38K</td>
+<td class="gt_row gt_right" style="background-color: #F7F3F7; color: #000000;">41.80K</td>
+<td class="gt_row gt_right">59.28</td>
+<td class="gt_row gt_right">68.24</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">4. Europe</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">France</td>
+<td class="gt_row gt_right" style="background-color: #C8B3CB; color: #000000;">23.00M</td>
+<td class="gt_row gt_right">30.31K</td>
+<td class="gt_row gt_right">70.45K</td>
+<td class="gt_row gt_right" style="background-color: #E3D8E5; color: #000000;">137.84K</td>
+<td class="gt_row gt_right">186.02</td>
+<td class="gt_row gt_right">319.20</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">United Kingdom</td>
+<td class="gt_row gt_right" style="background-color: #D4C3D6; color: #000000;">17.98M</td>
+<td class="gt_row gt_right">23.81K</td>
+<td class="gt_row gt_right">32.07K</td>
+<td class="gt_row gt_right" style="background-color: #DFD2E0; color: #000000;">160.12K</td>
+<td class="gt_row gt_right">222.40</td>
+<td class="gt_row gt_right">304.72</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Russia</td>
+<td class="gt_row gt_right" style="background-color: #D9CADB; color: #000000;">15.70M</td>
+<td class="gt_row gt_right">20.76K</td>
+<td class="gt_row gt_right">30.02K</td>
+<td class="gt_row gt_right" style="background-color: #BAA1BE; color: #000000;">341.62K</td>
+<td class="gt_row gt_right">482.52</td>
+<td class="gt_row gt_right">330.52</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Germany</td>
+<td class="gt_row gt_right" style="background-color: #DCCEDE; color: #000000;">14.46M</td>
+<td class="gt_row gt_right">19.02K</td>
+<td class="gt_row gt_right">41.62K</td>
+<td class="gt_row gt_right" style="background-color: #E6DDE8; color: #000000;">122.38K</td>
+<td class="gt_row gt_right">170.45</td>
+<td class="gt_row gt_right">232.63</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Italy</td>
+<td class="gt_row gt_right" style="background-color: #E0D4E2; color: #000000;">12.65M</td>
+<td class="gt_row gt_right">16.73K</td>
+<td class="gt_row gt_right">34.86K</td>
+<td class="gt_row gt_right" style="background-color: #E0D4E2; color: #000000;">154.01K</td>
+<td class="gt_row gt_right">209.54</td>
+<td class="gt_row gt_right">218.66</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">5. Africa</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">South Africa</td>
+<td class="gt_row gt_right" style="background-color: #F6F3F7; color: #000000;">3.65M</td>
+<td class="gt_row gt_right">5.06K</td>
+<td class="gt_row gt_right">5.68K</td>
+<td class="gt_row gt_right" style="background-color: #EBE3EC; color: #000000;">98.47K</td>
+<td class="gt_row gt_right">140.87</td>
+<td class="gt_row gt_right">147.28</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Morocco</td>
+<td class="gt_row gt_right" style="background-color: #FCFBFC; color: #000000;">1.16M</td>
+<td class="gt_row gt_right">1.60K</td>
+<td class="gt_row gt_right">2.22K</td>
+<td class="gt_row gt_right" style="background-color: #FCFBFC; color: #000000;">15.95K</td>
+<td class="gt_row gt_right">22.25</td>
+<td class="gt_row gt_right">26.13</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Tunisia</td>
+<td class="gt_row gt_right" style="background-color: #FDFCFD; color: #000000;">992.57K</td>
+<td class="gt_row gt_right">1.37K</td>
+<td class="gt_row gt_right">2.15K</td>
+<td class="gt_row gt_right" style="background-color: #F9F7FA; color: #000000;">27.64K</td>
+<td class="gt_row gt_right">39.04</td>
+<td class="gt_row gt_right">50.09</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Libya</td>
+<td class="gt_row gt_right" style="background-color: #FEFDFE; color: #000000;">491.22K</td>
+<td class="gt_row gt_right">698.74</td>
+<td class="gt_row gt_right">825.65</td>
+<td class="gt_row gt_right" style="background-color: #FEFDFE; color: #000000;">6.23K</td>
+<td class="gt_row gt_right">8.98</td>
+<td class="gt_row gt_right">9.13</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Egypt</td>
+<td class="gt_row gt_right" style="background-color: #FEFDFE; color: #000000;">477.17K</td>
+<td class="gt_row gt_right">643.09</td>
+<td class="gt_row gt_right">530.86</td>
+<td class="gt_row gt_right" style="background-color: #FAF8FA; color: #000000;">23.93K</td>
+<td class="gt_row gt_right">33.28</td>
+<td class="gt_row gt_right">21.84</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="8" class="gt_group_heading">6. Oceania</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Australia</td>
+<td class="gt_row gt_right" style="background-color: #F7F4F8; color: #000000;">3.15M</td>
+<td class="gt_row gt_right">4.14K</td>
+<td class="gt_row gt_right">15.96K</td>
+<td class="gt_row gt_right" style="background-color: #FEFEFE; color: #000000;">5.09K</td>
+<td class="gt_row gt_right">7.02</td>
+<td class="gt_row gt_right">15.97</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">French Polynesia</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">65.58K</td>
+<td class="gt_row gt_right">91.85</td>
+<td class="gt_row gt_right">358.13</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">638.00</td>
+<td class="gt_row gt_right">1.20</td>
+<td class="gt_row gt_right">4.36</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Fiji</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">63.69K</td>
+<td class="gt_row gt_right">89.95</td>
+<td class="gt_row gt_right">242.31</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">826.00</td>
+<td class="gt_row gt_right">1.44</td>
+<td class="gt_row gt_right">3.72</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">New Zealand</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">57.50K</td>
+<td class="gt_row gt_right">78.98</td>
+<td class="gt_row gt_right">554.41</td>
+<td class="gt_row gt_right" style="background-color: #808080; color: #000000;">56.00</td>
+<td class="gt_row gt_right">0.08</td>
+<td class="gt_row gt_right">0.36</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">New Caledonia</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">52.32K</td>
+<td class="gt_row gt_right">73.90</td>
+<td class="gt_row gt_right">360.62</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">299.00</td>
+<td class="gt_row gt_right">1.79</td>
+<td class="gt_row gt_right">3.50</td></tr>
+    <tr><td class="gt_row gt_right gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">Global Top 5 Total(s)</td>
+<td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">306.30M</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">4.48M</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="8">Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="iii.-global-covid-19-from-2020---present-temporal-trends-35pts" class="level1">
+<h1>III. Global COVID-19 from 2020 - Present: Temporal Trends <strong>(35pts)</strong></h1>
+</section>
+<section id="i.-globally-on-which-days-of-the-week-are-most-cases-and-deaths-reported-respectively-10pts" class="level1">
+<h1>i. Globally, on which days of the week are most cases and deaths reported, respectively? <strong>(10pts)</strong></h1>
+<p>You may answer the question with a table, plot, or simply inline <code>R</code> to report your answer; your choice.</p>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/unnamed-chunk-2_d808ac83b7d7471b316fe776bbefd885">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>covid.df <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, day) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_deaths =</span> <span class="fu">sum</span>(new_deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_cases  =</span> <span class="fu">sum</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(day) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">sum</span>(n_cases),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(n_deaths),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">day =</span> <span class="fu">as.factor</span>(day) <span class="sc">%&gt;%</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">fct_reorder2</span>(<span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>, <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Day of the Week</span><span class="st">`</span> <span class="ot">=</span> day) <span class="sc">%&gt;%</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Day of the Week</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"COVID-19 Cases &amp; Deaths Reported by Day of the Week"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="fu">min</span>(<span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>), <span class="fu">max</span>(<span class="st">`</span><span class="at">Total Cases</span><span class="st">`</span>))</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>,</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="fu">min</span>(<span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>), <span class="fu">max</span>(<span class="st">`</span><span class="at">Total Deaths</span><span class="st">`</span>))</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns   =</span> <span class="fu">where</span>(is.numeric),</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary_rows</span>(</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">groups  =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">contains</span>(<span class="st">"Total"</span>),</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">fns =</span> <span class="fu">list</span>(</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Global Total</span><span class="st">`</span> <span class="ot">=</span> <span class="er">~</span><span class="fu">sum</span>(.)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">formatter =</span> fmt_number,</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals  =</span> <span class="dv">2</span>,</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="st">"Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'country'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div id="gigyymdrje" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#gigyymdrje) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#gigyymdrje) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#gigyymdrje) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#gigyymdrje) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#gigyymdrje) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#gigyymdrje) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#gigyymdrje) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#gigyymdrje) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#gigyymdrje) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#gigyymdrje) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#gigyymdrje) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#gigyymdrje) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#gigyymdrje) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gigyymdrje) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#gigyymdrje) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#gigyymdrje) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gigyymdrje) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#gigyymdrje) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gigyymdrje) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#gigyymdrje) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gigyymdrje) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gigyymdrje) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gigyymdrje) .gt_left {
+  text-align: left;
+}
+
+:where(#gigyymdrje) .gt_center {
+  text-align: center;
+}
+
+:where(#gigyymdrje) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#gigyymdrje) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#gigyymdrje) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#gigyymdrje) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#gigyymdrje) .gt_super {
+  font-size: 65%;
+}
+
+:where(#gigyymdrje) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#gigyymdrje) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#gigyymdrje) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#gigyymdrje) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#gigyymdrje) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#gigyymdrje) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">COVID-19 Cases &amp; Deaths Reported by Day of the Week</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Day of the Week</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Cases</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total Deaths</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Wednesday</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">69.81M</td>
+<td class="gt_row gt_right" style="background-color: #440154; color: #FFFFFF;">992.23K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Thursday</td>
+<td class="gt_row gt_right" style="background-color: #470657; color: #FFFFFF;">69.43M</td>
+<td class="gt_row gt_right" style="background-color: #582165; color: #FFFFFF;">949.28K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Friday</td>
+<td class="gt_row gt_right" style="background-color: #561E63; color: #FFFFFF;">67.61M</td>
+<td class="gt_row gt_right" style="background-color: #673472; color: #FFFFFF;">918.51K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Tuesday</td>
+<td class="gt_row gt_right" style="background-color: #6C3C77; color: #FFFFFF;">64.78M</td>
+<td class="gt_row gt_right" style="background-color: #50165E; color: #FFFFFF;">966.90K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Monday</td>
+<td class="gt_row gt_right" style="background-color: #AA8AAF; color: #000000;">57.15M</td>
+<td class="gt_row gt_right" style="background-color: #C3ACC6; color: #000000;">720.94K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Saturday</td>
+<td class="gt_row gt_right" style="background-color: #BFA7C3; color: #000000;">54.51M</td>
+<td class="gt_row gt_right" style="background-color: #B295B6; color: #000000;">758.12K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub"></td>
+<td class="gt_row gt_center">Sunday</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">46.73M</td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">595.89K</td></tr>
+    <tr><td class="gt_row gt_right gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">Global Total</td>
+<td class="gt_row gt_center gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">430.02M</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">5.90M</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<section id="ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts">ii. Using <code>ggplot</code>, please recreate the global “rolling-average” plots (see below) for new cases <em>and</em> deaths, using <em>your own theme</em>, <em>colours</em> <strong>(25pts)</strong></h2>
+<p>The “rolling-average” plots are a combination barplot + lineplot, where the bars are the raw counts and the lines represent the ‘smoothed’ <em>7-day rolling average</em> (included as a variable in these data, <strong>you do not need to compute this</strong>). An example of each, taken directly from Google, is given below. <strong>Do not</strong> try to copy the theme or colours of the examples below, please make the the plots your own; and ignore the interactive panel with the date, cases/deaths, and rolling averages as well (we will learn how to make these interactive plots after the break with <code>ggplotly</code> though!). Please just include the usual title, informative axes and legends, and proper names/titles. You may facet if you wish but it is not required.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./pictures/rolling_new_cases.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">New cases over time with 7-day rolling average overlaid.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./pictures/rolling_deaths.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">New deaths over time with 7-day rolling average overlaid.</figcaption><p></p>
+</figure>
+</div>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/rolling_avg_df_5bcba192978b402b6a7eada960b263af">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot longer twice by count and average</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rolling_avg.df <span class="ot">&lt;-</span> covid.df <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"new_"</span>, <span class="st">"smooth"</span>)),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns  =</span> <span class="fu">list</span>(<span class="at">sum =</span> sum),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">"{.col}"</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"new_cases"</span>, <span class="st">"new_deaths"</span>),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"count"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"n_type"</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"smoothed"</span>),</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"avg"</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"avg_type"</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">str_detect</span>(n_type, <span class="st">"case"</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(avg_type, <span class="st">"case"</span>))   <span class="sc">~</span> <span class="st">"Case"</span>,</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">str_detect</span>(n_type, <span class="st">"death"</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(avg_type, <span class="st">"death"</span>)) <span class="sc">~</span> <span class="st">"Death"</span>,</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                                          <span class="sc">~</span> <span class="st">"Mismatch"</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(type <span class="sc">%in%</span> <span class="st">"Mismatch"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(date, count, avg, type)         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="pubh_7462_midterm_cache/html/rolling_avg_plot_6b1d0041c287341e23fb25547039eed1">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rolling_avg.df <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> count, <span class="at">fill =</span> type), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> avg), <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">span =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Observations"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"COVID-19"</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Outcome"</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Outcome"</span>) <span class="sc">+</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"1 year"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_minor_breaks =</span> <span class="st">"1 month"</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_labels =</span> <span class="st">"%Y%M"</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">" K"</span>, <span class="at">scale =</span> <span class="fl">1e-3</span>, <span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">vjust =</span> <span class="fl">1.24</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust =</span> <span class="fl">1.2</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size  =</span> <span class="dv">11</span>),</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : k-d tree limited by memory. ncmax= 786</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in predLoess(object$y, object$x, newx = if
+(is.null(newdata)) object$x else if (is.data.frame(newdata))
+as.matrix(model.frame(delete.response(terms(object)), : k-d tree limited by
+memory. ncmax= 786</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : k-d tree limited by memory. ncmax= 786</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in predLoess(object$y, object$x, newx = if
+(is.null(newdata)) object$x else if (is.data.frame(newdata))
+as.matrix(model.frame(delete.response(terms(object)), : k-d tree limited by
+memory. ncmax= 786</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 44 rows containing missing values (geom_bar).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="pubh_7462_midterm_files/figure-html/rolling_avg_plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

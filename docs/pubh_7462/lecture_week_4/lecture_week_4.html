@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+<meta name="dcterms.date" content="2022-02-11">
+
+<title>Quinton Neville - Week 4: Visualization I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-visualization-i" id="toc-data-visualization-i" class="nav-link active" data-scroll-target="#data-visualization-i">Data Visualization I</a>
+  <ul class="collapse">
+  <li><a href="#but-before-we-discuss-how-we-ought-to-ask-ourselves-what-is-the-fundamental-purpose-of-a-data-visualization" id="toc-but-before-we-discuss-how-we-ought-to-ask-ourselves-what-is-the-fundamental-purpose-of-a-data-visualization" class="nav-link" data-scroll-target="#but-before-we-discuss-how-we-ought-to-ask-ourselves-what-is-the-fundamental-purpose-of-a-data-visualization">But before we discuss how, we ought to ask ourselves what is the fundamental purpose of a data visualization?</a></li>
+  <li><a href="#how-do-we-tell-a-compelling-story-with-data" id="toc-how-do-we-tell-a-compelling-story-with-data" class="nav-link" data-scroll-target="#how-do-we-tell-a-compelling-story-with-data">How do we tell a compelling story with data?</a></li>
+  </ul></li>
+  <li><a href="#fundamentals" id="toc-fundamentals" class="nav-link" data-scroll-target="#fundamentals">Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#visualization-with-ggplot" id="toc-visualization-with-ggplot" class="nav-link" data-scroll-target="#visualization-with-ggplot">Visualization with <code>ggplot()</code></a>
+  <ul class="collapse">
+  <li><a href="#the-ggplot-sandwich" id="toc-the-ggplot-sandwich" class="nav-link" data-scroll-target="#the-ggplot-sandwich">The <code>ggplot</code> sandwich</a></li>
+  </ul></li>
+  <li><a href="#tables-with-gt" id="toc-tables-with-gt" class="nav-link" data-scroll-target="#tables-with-gt">Tables with <code>gt()</code></a>
+  <ul class="collapse">
+  <li><a href="#the-gt-onion" id="toc-the-gt-onion" class="nav-link" data-scroll-target="#the-gt-onion">The <code>gt</code> onion</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#warning-note-about-gt-github_documents" id="toc-warning-note-about-gt-github_documents" class="nav-link" data-scroll-target="#warning-note-about-gt-github_documents">Warning: Note about <code>gt</code> &amp; <code>github_documents</code></a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  </ul></li>
+  <li><a href="#telling-a-story" id="toc-telling-a-story" class="nav-link" data-scroll-target="#telling-a-story">Telling a Story</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-read-clean-and-get-comfortable" id="toc-step-1.-read-clean-and-get-comfortable" class="nav-link" data-scroll-target="#step-1.-read-clean-and-get-comfortable">Step 1. Read, clean and get comfortable</a></li>
+  <li><a href="#step-2.-wrangle-the-data" id="toc-step-2.-wrangle-the-data" class="nav-link" data-scroll-target="#step-2.-wrangle-the-data">Step 2. Wrangle the data</a></li>
+  <li><a href="#step-3.-ask-some-real-world-questions-of-interest" id="toc-step-3.-ask-some-real-world-questions-of-interest" class="nav-link" data-scroll-target="#step-3.-ask-some-real-world-questions-of-interest">Step 3. Ask some <em>real world</em> questions of interest</a></li>
+  <li><a href="#step-4.-do-data-science-to-answer-these-questions" id="toc-step-4.-do-data-science-to-answer-these-questions" class="nav-link" data-scroll-target="#step-4.-do-data-science-to-answer-these-questions">Step 4. Do data science to answer these questions</a></li>
+  </ul></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a>
+  <ul class="collapse">
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a>
+  <ul class="collapse">
+  <li><a href="#activity-3.1-what-are-the-top-5-reviewer-locations-of-origin-by-branch" id="toc-activity-3.1-what-are-the-top-5-reviewer-locations-of-origin-by-branch" class="nav-link" data-scroll-target="#activity-3.1-what-are-the-top-5-reviewer-locations-of-origin-by-branch">Activity 3.1 What are the top 5 reviewer location(s) of origin by branch?</a></li>
+  </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  </ul></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a>
+  <ul class="collapse">
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a>
+  <ul class="collapse">
+  <li><a href="#activity-3.2-what-is-the-average-rating-by-branch" id="toc-activity-3.2-what-is-the-average-rating-by-branch" class="nav-link" data-scroll-target="#activity-3.2-what-is-the-average-rating-by-branch">Activity 3.2 What is the average rating by branch?</a></li>
+  </ul></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  </ul></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a>
+  <ul class="collapse">
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a>
+  <ul class="collapse">
+  <li><a href="#activity-3.2.1-has-this-average-rating-changed-over-time" id="toc-activity-3.2.1-has-this-average-rating-changed-over-time" class="nav-link" data-scroll-target="#activity-3.2.1-has-this-average-rating-changed-over-time">Activity 3.2.1 Has this average rating changed over time?</a></li>
+  </ul></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  </ul></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a>
+  <ul class="collapse">
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a>
+  <ul class="collapse">
+  <li><a href="#activity-3.2.2-does-the-avg.-rating-vary-within-each-branch-by-top-5-location-vs.-other" id="toc-activity-3.2.2-does-the-avg.-rating-vary-within-each-branch-by-top-5-location-vs.-other" class="nav-link" data-scroll-target="#activity-3.2.2-does-the-avg.-rating-vary-within-each-branch-by-top-5-location-vs.-other">Activity 3.2.2 Does the avg. rating vary within each branch by top 5 location? vs.&nbsp;other?</a></li>
+  </ul></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  </ul></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"></a>
+  <ul class="collapse">
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"></a>
+  <ul class="collapse">
+  <li><a href="#activity-3.3-is-there-any-association-between-rating-and-text-analysis-variables" id="toc-activity-3.3-is-there-any-association-between-rating-and-text-analysis-variables" class="nav-link" data-scroll-target="#activity-3.3-is-there-any-association-between-rating-and-text-analysis-variables">Activity 3.3 Is there any association between rating and text analysis variables?</a></li>
+  </ul></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 4: Visualization I</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 11, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="data-visualization-i" class="level1 jumbotron">
+<h1 class="jumbotron">Data Visualization I</h1>
+<p>Today we are going to –</p>
+<ol type="1">
+<li>Learn how to wrangle and visualize data to answer <em>real world questions</em><br>
+</li>
+<li>Learn what separates a <em>good</em> plot/table from a <em>bad</em> plot/table<br>
+</li>
+<li>Learn how to make the <em>good</em> kind</li>
+</ol>
+<section id="but-before-we-discuss-how-we-ought-to-ask-ourselves-what-is-the-fundamental-purpose-of-a-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="but-before-we-discuss-how-we-ought-to-ask-ourselves-what-is-the-fundamental-purpose-of-a-data-visualization">But before we discuss how, we ought to ask ourselves what is the fundamental purpose of a data visualization?</h2>
+<p>A data visualization is nothing more or less than a <em>communication tool</em>, and a good visualization tells a <strong>compelling story</strong>. One which –</p>
+<ul>
+<li>Explains a phenomenon</li>
+<li>Supports a hypothesis</li>
+<li>Persuades us of an argument</li>
+<li>Answers or investigates a <em>real world question of interest</em> by
+<ul>
+<li>Drawing inference from the past</li>
+<li>Predicting the future</li>
+</ul></li>
+</ul>
+</section>
+<section id="how-do-we-tell-a-compelling-story-with-data" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-we-tell-a-compelling-story-with-data">How do we tell a compelling story with data?</h2>
+<p><em>If we wrangle, clean, and reshape our data appropriately, pretty easily!</em></p>
+<ul>
+<li>The <strong>four</strong> keys to good data visualizations are<br>
+<strong>1. Clean, wrangled, tidy data</strong><br>
+<strong>2. Appropriate choice of communication tool or figure type</strong><br>
+<strong>3. Clear, organized, self-explanatory structure</strong><br>
+<strong>4. <em>Attention to detail</em> </strong></li>
+</ul>
+<p><span class="math inline">\(~\)</span><br>
+<span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="fundamentals" class="level1 jumbotron">
+<h1 class="jumbotron">Fundamentals</h1>
+<section id="visualization-with-ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-with-ggplot">Visualization with <code>ggplot()</code></h2>
+<p><code>ggplot</code>’s, much like onions, have layers –</p>
+<p><img src="./figures/graphs_have_layers.png" class="img-fluid"></p>
+<p>Unlike an onion, however, the layers in <code>ggplot</code> are more analogous to the layers of a hearty sandwich –</p>
+<section id="the-ggplot-sandwich" class="level3">
+<h3 class="anchored" data-anchor-id="the-ggplot-sandwich">The <code>ggplot</code> sandwich</h3>
+<ol type="1">
+<li><strong>Meat</strong> – mapping &amp; geom(s)
+<ol type="i">
+<li><code>DataExplorer</code> <span class="math inline">\(\longrightarrow\)</span> <em>Data Wrangling I</em> <span class="math inline">\(\longrightarrow\)</span> <em>tidy data</em> <code>%&gt;%</code></li>
+<li><code>ggplot(aes(x = , y =, colour = , fill = , group = , size = , ...)) +</code></li>
+<li><code>geom_point, geom_line, geom_histogram, geom_density, geom_smooth, ...</code></li>
+</ol></li>
+<li><strong>Fixings</strong> – aesthetics &amp; facets
+<ol type="i">
+<li><code>alpha</code>, <code>size</code>, <code>shape</code>, <code>linetype</code>, <code>span</code>, <code>jitter</code> etc.</li>
+<li><code>facet_wrap(~ v1 + v2, ncol = , nrow = , scales = "free?")</code></li>
+</ol></li>
+<li><strong>Sauce</strong> – theme &amp; colour palette
+<ol type="i">
+<li><a href="https://mran.microsoft.com/snapshot/2016-08-19/web/packages/ggthemes/vignettes/ggthemes.html"><code>ggthemes</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html"><code>scale_colour_viridis</code></a> colourblind friendly</li>
+<li><a href="https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html"><code>RColorBrewer</code></a></li>
+<li><a href="https://github.com/EmilHvitfeldt/paletteer"><code>paleteer</code></a></li>
+<li><code>theme(axis.text.x = element_text(angle =, vjust =, hjust =, size = ...))</code></li>
+</ol></li>
+<li><strong>Bread</strong> – scale/axes, titles, names
+<ol type="i">
+<li><code>scale_x_continuous</code>, <code>scale_x_date_time</code>, <code>..,_discrete</code>, <code>scale_y_...</code></li>
+<li><code>labs(x = , y = , title = , subtitle = , caption = )</code></li>
+</ol></li>
+</ol>
+<p><span class="math inline">\(~\)</span></p>
+<p><img src="./figures/ggplot_cheat_sheet_1.png" class="img-fluid"></p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="tables-with-gt" class="level2">
+<h2 class="anchored" data-anchor-id="tables-with-gt">Tables with <code>gt()</code></h2>
+<p><code>gt</code> is like the <code>ggplot</code> of tables, but functions differently with different syntax (due to being developed much later than ggplot). <code>gt</code>’s also have layers, except unlike <code>ggplot</code>, the order of aesthetics doesn’t matter – which implies that <code>gt</code> is exactly like an onion! <em>Note-</em> <code>ggplot</code> is piped with <code>+</code> and <code>gt</code> with <code>%&gt;%</code> (like everything else).</p>
+<p>While the full functionality of <code>gt</code> is expansive, and greater detail / function description can be found <a href="https://gt.rstudio.com/articles/intro-creating-gt-tables.html">here</a> and <a href="https://gt.rstudio.com/reference/index.html">here</a>, today we’re going to cover the 4-5 main features you’ll need to generate a <em>beautifully</em> layered <code>gt</code> onion.</p>
+<p><span class="math inline">\(~\)</span></p>
+<section id="the-gt-onion" class="level3">
+<h3 class="anchored" data-anchor-id="the-gt-onion">The <code>gt</code> onion</h3>
+<ol type="1">
+<li><strong>Layer I</strong> – <code>gt(data, rowname_col = "rowname", groupname_col = dplyr::group_vars(data))</code></li>
+<li><strong>Layer II</strong> – Titles &amp; headers
+<ol type="i">
+<li><code>tab_header(title, subtitle)</code> (main title, subtitle)</li>
+<li><code>tab_spanner(data, label, columns)</code> (spans columns)</li>
+</ol></li>
+<li><strong>Layer III</strong> – Colours, footnotes, source notes
+<ol type="i">
+<li><code>data_color(columns = , colors = scales::col_numeric(palette = , domain  =))</code></li>
+<li><code>tab_footnote(footnote = "", locations = cells_column_labels(columns = )))</code></li>
+<li><code>tab_source_note(source_note = "")</code></li>
+</ol></li>
+<li><strong>Layer IV</strong> – Style &amp; Options
+<ol type="i">
+<li><a href="https://gt.rstudio.com/reference/tab_style.html"><code>tab_style()</code></a></li>
+<li><a href="https://gt.rstudio.com/reference/tab_options.html"><code>tab_options()</code></a></li>
+</ol></li>
+</ol>
+<p><span class="math inline">\(~\)</span></p>
+<p><img src="./figures/gt_table.png" class="img-fluid"></p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+</section>
+<section id="section" class="level1 panel panel-warning">
+<h1 class="panel panel-warning"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="warning-note-about-gt-github_documents" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="warning-note-about-gt-github_documents">Warning: Note about <code>gt</code> &amp; <code>github_documents</code></h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+<p>Not everything that normally works in .html will work in <code>github_documents</code>; and one of those things is <code>gt()</code>’s displaying properly. To get around that, we’ll have to <code>gtsave</code> our <code>gt's</code> as a .png and call it directly from Rmarkdown like so –</p>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-1_eeaf225c4cfd3519f0ec9cefdc4c4e1c">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Save gt</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a figures directory and save the gt as a .png in there</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"./figures/"</span>)  <span class="co">#create directory</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(table.gt, <span class="st">"./figures/gt_table.png"</span>) <span class="co">#save it</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Display the .png inline with ![](./figures/gt_table.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(~\)</span><br>
+<span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="telling-a-story" class="level1 jumbotron">
+<h1 class="jumbotron">Telling a Story</h1>
+<p>Today, the story we are going to tell is one of <em>fantasy</em>, quite literally, as it pertains to customer reviews from the most magical place(s) on earth: <strong>Disney Land</strong></p>
+<p>These data were acquired from <a href="https://www.kaggle.com/arushchillar/disneyland-reviews">Kaggle</a> and describe ~42,000 customer reviews from Disneyland(s) in California, Hong Kong, and Paris, extracted from posts on <a href="https://www.tripadvisor.com/">Trip Advisor</a>. The data may be found on Canvas <a href="https://canvas.umn.edu/courses/293049/assignments/2417258">here</a>.</p>
+<section id="step-1.-read-clean-and-get-comfortable" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-read-clean-and-get-comfortable">Step 1. Read, clean and get comfortable</h2>
+<p>First, we utilize <a href="https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html"><code>DataExplorer</code></a> to</p>
+<ul>
+<li>Conduct an initial exploration to inform our <em>cleaning</em> and <em>tidying</em><br>
+</li>
+<li>Generate potential Data Science questions<br>
+</li>
+<li>Re-write our pipe to read, clean, and tidy appropriately</li>
+</ul>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-2_9011769ea140ebb3d978dd606d13d622">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read data and do some initial cleaning</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./data/disneyland_reviews.csv"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na =</span> <span class="st">"missing"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>             janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Explore a little with DataExplorer</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Table of general info</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">introduce</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 x 9
+   rows columns discrete_columns conti~1 all_m~2 total~3 compl~4 total~5 memor~6
+  &lt;int&gt;   &lt;int&gt;            &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt;
+1 42656       6                4       2       0    2613   40043  255936  3.40e7
+# ... with abbreviated variable names 1: continuous_columns,
+#   2: all_missing_columns, 3: total_missing_values, 4: complete_rows,
+#   5: total_observations, 6: memory_usage</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A random few observations</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">36</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(disney.df), <span class="dv">10</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Display</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 x 6
+   review_id rating year_month reviewer_location review_text              branch
+       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                    &lt;chr&gt; 
+ 1 326116517      4 2015-10    United States     My family had a good ti~ Disne~
+ 2 561114590      4 2018-2     Indonesia         I'll start by reminding~ Disne~
+ 3  65297363      5 &lt;NA&gt;       Canada            I just got back from a ~ Disne~
+ 4 174308145      3 2013-8     United Kingdom    The two parks are withi~ Disne~
+ 5 155788938      5 &lt;NA&gt;       Belgium           The only ride that REAL~ Disne~
+ 6 421639027      5 2016-3     Philippines       I enjoyed our whole day~ Disne~
+ 7 126485364      5 2012-3     United States     After visiting Disney W~ Disne~
+ 8 202672130      4 2014-4     Australia         Having not been to a Di~ Disne~
+ 9 574949379      5 2018-4     United States     Great fun for first or ~ Disne~
+10 250866714      5 2015-1     United States     I actually went Tuesday~ Disne~</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot str() (names and types)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We note here that there are NAs in <code>year_month</code>, they just aren’t labeled appropriately. The <code>year_month</code> and <code>branch</code> variables need to be mutated with <code>stringr</code> (or <code>lubridate</code>). Some variable names still require more tidying and variable types need to be fixed appropriately.</p>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-3_2425ab99c141a0822d40b681f6546d29">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot missing</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot categorical</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot conintuous distributions</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_histogram</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We also note that the number of California reviews is nearly double that of Hong Kong, and ~35% larger than that of Paris. In addition, the distribution of reviews is heavily <em>left-skewed</em>, with mostly 4 and 5 star reviews and very few 1’s, 2’s, and 3’s.</p>
+<p><span class="math inline">\(~\)</span><br>
+<span class="math inline">\(~\)</span></p>
+</section>
+<section id="step-2.-wrangle-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-wrangle-the-data">Step 2. Wrangle the data</h2>
+<p>Next, we re-write our <em>data wrangling pipeline</em> to include the necessary steps to clean, transform, rename, and tidy thse data to answer any potential questions of interest. This includes</p>
+<ol type="1">
+<li>Declaring NA = <code>r</code>“missing”`</li>
+<li>Renaming redundant <code>review_</code> from features<br>
+</li>
+<li>Extracting/creating time variables (numeric &amp; factor)<br>
+</li>
+<li>Creating text analysis variables like word count, avg. length, etc.<br>
+</li>
+<li>Retaining only the features relevant to our analysis<br>
+</li>
+<li>Checking for unique observations / multiple reviews per ID<br>
+</li>
+<li>Retaining only unique/valid observations</li>
+</ol>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-4_090a4a7ceeb0a3e110c46f0bb46bdecc">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read data and do some initial cleaning</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./data/disneyland_reviews.csv"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"missing"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>             janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rename</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">id       =</span> review_id,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">text     =</span> review_text, <span class="co">#trimming unnecessary review_</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">location =</span> reviewer_location</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>             ) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>( <span class="co">#Time</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">id    =</span> <span class="fu">as.factor</span>(id),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">date  =</span> lubridate<span class="sc">::</span><span class="fu">ym</span>(year_month), <span class="co">#Cleaning up time as date, y/m factors</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">year  =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(date) <span class="sc">%&gt;%</span> <span class="co">#See the lubridate package</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">as.factor</span>(),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">month =</span> month.name[lubridate<span class="sc">::</span><span class="fu">month</span>(date)] <span class="sc">%&gt;%</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">as.factor</span>()</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>             ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>( <span class="co">#Text analysis</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">n_words    =</span> <span class="fu">str_split</span>(text, <span class="st">" "</span>) <span class="sc">%&gt;%</span> <span class="co">#proxy for number of words</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map_dbl</span>(length),</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">avg_length =</span> <span class="fu">str_split</span>(text, <span class="st">" "</span>) <span class="sc">%&gt;%</span> <span class="co">#proxy for average length</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map</span>(str_length) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map_dbl</span>(mean),</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>               <span class="at">n_unique   =</span> <span class="fu">str_split</span>(text, <span class="st">" "</span>) <span class="sc">%&gt;%</span> <span class="co">#proxy for no. unique words</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map</span>(unique) <span class="sc">%&gt;%</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map_dbl</span>(length),</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>               <span class="at">branch     =</span> <span class="fu">str_split</span>(branch, <span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="co">#extracting branch w stringr</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">map_chr</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">as.factor</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">fct_recode</span>(<span class="st">"Hong Kong"</span> <span class="ot">=</span> <span class="st">"HongKong"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">fct_relevel</span>(<span class="st">"California"</span>, <span class="st">"Paris"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>             ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>             dplyr<span class="sc">::</span><span class="fu">select</span>(id, rating, location, branch, <span class="fu">everything</span>(), <span class="sc">-</span><span class="fu">c</span>(year_month, text))</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#Let's check it out now</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 x 10
+   id       rating locat~1 branch date       year  month n_words avg_l~2 n_uni~3
+   &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;fct&gt;  &lt;date&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 3261165~      4 United~ Calif~ 2015-10-01 2015  Octo~     120    4.25      91
+ 2 5611145~      4 Indone~ Hong ~ 2018-02-01 2018  Febr~     126    4.71      93
+ 3 65297363      5 Canada  Calif~ NA         &lt;NA&gt;  &lt;NA&gt;      160    4.25     112
+ 4 1743081~      3 United~ Calif~ 2013-08-01 2013  Augu~     120    4.18      85
+ 5 1557889~      5 Belgium Paris  NA         &lt;NA&gt;  &lt;NA&gt;       34    4.76      30
+ 6 4216390~      5 Philip~ Hong ~ 2016-03-01 2016  March      38    4.82      31
+ 7 1264853~      5 United~ Calif~ 2012-03-01 2012  March     117    4.32      85
+ 8 2026721~      4 Austra~ Hong ~ 2014-04-01 2014  April     140    4.34     103
+ 9 5749493~      5 United~ Calif~ 2018-04-01 2018  April      85    4.35      69
+10 2508667~      5 United~ Calif~ 2015-01-01 2015  Janu~      84    4.26      76
+# ... with abbreviated variable names 1: location, 2: avg_length, 3: n_unique</code></pre>
+</div>
+</div>
+<p>Note that not every observation is independent, as 20 ID’s submitted 2 reviews –</p>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-5_9a3c63ac25942ff09bda256d1b2e030c">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Repeated id data frame</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 x 2
+   f             n
+   &lt;fct&gt;     &lt;int&gt;
+ 1 121568004     2
+ 2 121570980     2
+ 3 121578357     2
+ 4 121580686     2
+ 5 121586148     2
+ 6 121615136     2
+ 7 121615246     2
+ 8 129207323     2
+ 9 129214104     2
+10 129231609     2
+11 164830205     2
+12 164862064     2
+13 166730734     2
+14 166753649     2
+15 166754595     2
+16 166784597     2
+17 166787525     2
+18 166787635     2
+19 168489234     2
+20 226905150     2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract only the first occurance of these id's</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>keep_index <span class="ot">&lt;-</span> disney.df <span class="sc">%&gt;%</span> <span class="fu">pull</span>(id) <span class="sc">%&gt;%</span> <span class="fu">match</span>(<span class="fu">unique</span>(.), .)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Retain only the first occurance (final df 20 less obs)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>disney.df <span class="ot">&lt;-</span> disney.df <span class="sc">%&gt;%</span> <span class="fu">slice</span>(keep_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I went back and cross-referenced these repeated ID’s with their reviews and they are indeed ‘true’ duplicates even though the computer hasn’t recognized that due to small changes in punctuation/spacing/text parsing. Above is a small bit of code to keep only the first occurence of each review ID by index.</p>
+<p><span class="math inline">\(~\)</span><br>
+<span class="math inline">\(~\)</span></p>
+</section>
+<section id="step-3.-ask-some-real-world-questions-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-ask-some-real-world-questions-of-interest">Step 3. Ask some <em>real world</em> questions of interest</h2>
+<p>Some natural questions we may ask of these data, given our cleaning and transformation, are –</p>
+<p>3.1 What are the top 5 reviewer location(s) of origin by branch?</p>
+<p>3.2 What is the average rating by branch?<br>
+- Has the average rating changed over time?<br>
+- Does the avg. rating vary within each branch by top 5 location? vs.&nbsp;other?</p>
+<p>3.3 Is there any association between rating and text analysis variables?</p>
+<p><span class="math inline">\(~\)</span><br>
+<span class="math inline">\(~\)</span></p>
+</section>
+<section id="step-4.-do-data-science-to-answer-these-questions" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-do-data-science-to-answer-these-questions">Step 4. Do data science to answer these questions</h2>
+</section>
+</section>
+<section id="section-3" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-4" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-4"></h2>
+<section id="activity-3.1-what-are-the-top-5-reviewer-locations-of-origin-by-branch" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-3.1-what-are-the-top-5-reviewer-locations-of-origin-by-branch">Activity 3.1 What are the top 5 reviewer location(s) of origin by branch?</h3>
+</section>
+</section>
+<section id="section-5" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-5"></h2>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-6_118c0d08051c8cec488e71aaf81b7e4e">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gt, need the paletteer package for colours</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"paleteer"</span>)) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"paleteer"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-7_94a03b4265e34ae7d697bbba37daab02">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a table of top 5 w/ dplyr</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>top_5.df <span class="ot">&lt;-</span> disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, location) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="fu">n</span>()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(branch, <span class="fu">desc</span>(N)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Display table with gt</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>top_5.df <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at"># Reviews</span><span class="st">`</span> <span class="ot">=</span> N,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Location of Origin</span><span class="st">`</span> <span class="ot">=</span> location) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"Top 5 Reviewer Locations by Branch"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at"># Reviews</span><span class="st">`</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, my_purple),</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">13000</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Reviews extracted from Trip Advisor 2010-2019"</span>,</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at"># Reviews</span><span class="st">`</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="hnzkavqvyd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#hnzkavqvyd) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#hnzkavqvyd) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#hnzkavqvyd) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#hnzkavqvyd) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#hnzkavqvyd) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#hnzkavqvyd) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#hnzkavqvyd) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#hnzkavqvyd) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#hnzkavqvyd) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#hnzkavqvyd) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#hnzkavqvyd) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#hnzkavqvyd) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#hnzkavqvyd) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hnzkavqvyd) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#hnzkavqvyd) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#hnzkavqvyd) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hnzkavqvyd) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#hnzkavqvyd) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hnzkavqvyd) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#hnzkavqvyd) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hnzkavqvyd) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hnzkavqvyd) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hnzkavqvyd) .gt_left {
+  text-align: left;
+}
+
+:where(#hnzkavqvyd) .gt_center {
+  text-align: center;
+}
+
+:where(#hnzkavqvyd) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#hnzkavqvyd) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#hnzkavqvyd) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#hnzkavqvyd) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#hnzkavqvyd) .gt_super {
+  font-size: 65%;
+}
+
+:where(#hnzkavqvyd) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#hnzkavqvyd) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#hnzkavqvyd) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#hnzkavqvyd) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#hnzkavqvyd) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#hnzkavqvyd) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Location of Origin</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"># Reviews<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">California</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #4E125C; color: #FFFFFF;">12335</td></tr>
+    <tr><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #DBCDDD; color: #000000;">2447</td></tr>
+    <tr><td class="gt_row gt_left">Canada</td>
+<td class="gt_row gt_right" style="background-color: #E4D9E5; color: #000000;">1842</td></tr>
+    <tr><td class="gt_row gt_left">United Kingdom</td>
+<td class="gt_row gt_right" style="background-color: #F0EAF1; color: #000000;">1019</td></tr>
+    <tr><td class="gt_row gt_left">New Zealand</td>
+<td class="gt_row gt_right" style="background-color: #F7F4F8; color: #000000;">527</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Paris</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">United Kingdom</td>
+<td class="gt_row gt_right" style="background-color: #8B6393; color: #FFFFFF;">7992</td></tr>
+    <tr><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #EBE4EC; color: #000000;">1330</td></tr>
+    <tr><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #F6F3F7; color: #000000;">595</td></tr>
+    <tr><td class="gt_row gt_left">Ireland</td>
+<td class="gt_row gt_right" style="background-color: #F9F6F9; color: #000000;">430</td></tr>
+    <tr><td class="gt_row gt_left">India</td>
+<td class="gt_row gt_right" style="background-color: #FBF9FB; color: #000000;">293</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Hong Kong</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #E7DEE8; color: #000000;">1634</td></tr>
+    <tr><td class="gt_row gt_left">India</td>
+<td class="gt_row gt_right" style="background-color: #EFE9F0; color: #000000;">1082</td></tr>
+    <tr><td class="gt_row gt_left">Philippines</td>
+<td class="gt_row gt_right" style="background-color: #F0EBF1; color: #000000;">991</td></tr>
+    <tr><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #F2EDF3; color: #000000;">877</td></tr>
+    <tr><td class="gt_row gt_left">Singapore</td>
+<td class="gt_row gt_right" style="background-color: #F2EEF3; color: #000000;">849</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="2"><sup class="gt_footnote_marks">1</sup> Reviews extracted from Trip Advisor 2010-2019</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-6" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-7" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-7"></h2>
+<section id="activity-3.2-what-is-the-average-rating-by-branch" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-3.2-what-is-the-average-rating-by-branch">Activity 3.2 What is the average rating by branch?</h3>
+</section>
+</section>
+<section id="section-8" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-8"></h2>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-8_de8ffb5fc14c9f20e5b092bfcb74dc4c">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_rating =</span> <span class="fu">mean</span>(rating)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_rating)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Branch =</span> branch,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span> <span class="ot">=</span> avg_rating</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"Average Rating by Branch"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Reviews extracted from Trip Advisor 2010-2019"</span>,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="gzxeqqkljd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#gzxeqqkljd) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#gzxeqqkljd) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#gzxeqqkljd) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#gzxeqqkljd) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#gzxeqqkljd) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#gzxeqqkljd) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#gzxeqqkljd) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#gzxeqqkljd) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#gzxeqqkljd) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#gzxeqqkljd) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#gzxeqqkljd) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#gzxeqqkljd) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#gzxeqqkljd) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gzxeqqkljd) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#gzxeqqkljd) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#gzxeqqkljd) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gzxeqqkljd) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#gzxeqqkljd) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gzxeqqkljd) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#gzxeqqkljd) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gzxeqqkljd) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#gzxeqqkljd) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#gzxeqqkljd) .gt_left {
+  text-align: left;
+}
+
+:where(#gzxeqqkljd) .gt_center {
+  text-align: center;
+}
+
+:where(#gzxeqqkljd) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#gzxeqqkljd) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#gzxeqqkljd) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#gzxeqqkljd) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#gzxeqqkljd) .gt_super {
+  font-size: 65%;
+}
+
+:where(#gzxeqqkljd) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#gzxeqqkljd) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#gzxeqqkljd) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#gzxeqqkljd) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#gzxeqqkljd) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#gzxeqqkljd) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Average Rating by Branch</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Branch</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Average Rating<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center">California</td>
+<td class="gt_row gt_right">4.405361</td></tr>
+    <tr><td class="gt_row gt_center">Hong Kong</td>
+<td class="gt_row gt_right">4.204226</td></tr>
+    <tr><td class="gt_row gt_center">Paris</td>
+<td class="gt_row gt_right">3.960012</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="2"><sup class="gt_footnote_marks">1</sup> Reviews extracted from Trip Advisor 2010-2019</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-9" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-10" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-10"></h2>
+<section id="activity-3.2.1-has-this-average-rating-changed-over-time" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-3.2.1-has-this-average-rating-changed-over-time">Activity 3.2.1 Has this average rating changed over time?</h3>
+</section>
+</section>
+<section id="section-11" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-11"></h2>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-9_5da56e847f165525fc1b04b6e99de7d3">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, date) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_rating =</span> <span class="fu">mean</span>(rating)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">branch =</span> <span class="fu">fct_reorder</span>(branch, avg_rating, <span class="at">.desc =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">ymd</span>(date), <span class="at">y =</span> avg_rating, <span class="at">colour =</span> branch, <span class="at">fill =</span> branch)) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">alpha   =</span> <span class="fl">0.2</span>, </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">size    =</span> <span class="fl">1.2</span>, </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">method  =</span> <span class="st">"loess"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula =</span> <span class="st">"y ~ x"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">span    =</span> <span class="fl">0.2</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">se      =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha    =</span> <span class="fl">0.24</span>, </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">"jitter"</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">size     =</span> <span class="dv">2</span>, </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape    =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Rating"</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Average Rating by Branch from 2010-2019"</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">ymd</span>(<span class="st">"2013-07-1"</span>), </span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fl">4.66</span>,</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">label  =</span> <span class="st">"Mean Trend"</span>,</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>           <span class="co">#family = "AvantGarde",</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> my_purple) <span class="sc">+</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Disneyland Branch"</span>) <span class="sc">+</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Disneyland Branch"</span>) <span class="sc">+</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"1 year"</span>,</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_minor_breaks =</span> <span class="st">"1 year"</span>,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_labels =</span> <span class="st">"%Y"</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">vjust =</span> <span class="fl">1.24</span>,</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust =</span> <span class="fl">1.2</span>,</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">size  =</span> <span class="dv">11</span>),</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">11</span>)) <span class="sc">+</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-12" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-13" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-13"></h2>
+<section id="activity-3.2.2-does-the-avg.-rating-vary-within-each-branch-by-top-5-location-vs.-other" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-3.2.2-does-the-avg.-rating-vary-within-each-branch-by-top-5-location-vs.-other">Activity 3.2.2 Does the avg. rating vary within each branch by top 5 location? vs.&nbsp;other?</h3>
+</section>
+</section>
+<section id="section-14" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-14"></h2>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-10_e9542d013b4d03795898bb41eabe0036">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Display table with gt</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, location) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_rating =</span> <span class="fu">mean</span>(rating),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">N          =</span> <span class="fu">n</span>()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(branch, <span class="fu">desc</span>(N)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(branch, <span class="fu">desc</span>(avg_rating), <span class="fu">desc</span>(N)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at"># Reviews</span><span class="st">`</span>          <span class="ot">=</span> N,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span>     <span class="ot">=</span> avg_rating,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Location of Origin</span><span class="st">`</span> <span class="ot">=</span> location) <span class="sc">%&gt;%</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"Top 5 Reviewer Locations by Branch"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at"># Reviews</span><span class="st">`</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"red"</span>),</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">13000</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span>,</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">colors =</span> scales<span class="sc">::</span><span class="fu">col_numeric</span>(</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"white"</span>, <span class="st">"red"</span>),</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">domain  =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">4.6</span>)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Reviews extracted from Trip Advisor 2010-2019"</span>,</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'branch'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div id="ixdnhrthzr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#ixdnhrthzr) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#ixdnhrthzr) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#ixdnhrthzr) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#ixdnhrthzr) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#ixdnhrthzr) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#ixdnhrthzr) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#ixdnhrthzr) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#ixdnhrthzr) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#ixdnhrthzr) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#ixdnhrthzr) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#ixdnhrthzr) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#ixdnhrthzr) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#ixdnhrthzr) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ixdnhrthzr) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#ixdnhrthzr) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#ixdnhrthzr) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ixdnhrthzr) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#ixdnhrthzr) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ixdnhrthzr) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#ixdnhrthzr) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ixdnhrthzr) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ixdnhrthzr) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ixdnhrthzr) .gt_left {
+  text-align: left;
+}
+
+:where(#ixdnhrthzr) .gt_center {
+  text-align: center;
+}
+
+:where(#ixdnhrthzr) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#ixdnhrthzr) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#ixdnhrthzr) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#ixdnhrthzr) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#ixdnhrthzr) .gt_super {
+  font-size: 65%;
+}
+
+:where(#ixdnhrthzr) .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+:where(#ixdnhrthzr) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#ixdnhrthzr) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#ixdnhrthzr) .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+:where(#ixdnhrthzr) .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+:where(#ixdnhrthzr) .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Location of Origin</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Average Rating<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"># Reviews</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">California</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #FF391E; color: #FFFFFF;">4.539436</td>
+<td class="gt_row gt_right" style="background-color: #FFDBCE; color: #000000;">2447</td></tr>
+    <tr><td class="gt_row gt_left">New Zealand</td>
+<td class="gt_row gt_right" style="background-color: #FF5031; color: #000000;">4.487666</td>
+<td class="gt_row gt_right" style="background-color: #FFF7F4; color: #000000;">527</td></tr>
+    <tr><td class="gt_row gt_left">Canada</td>
+<td class="gt_row gt_right" style="background-color: #FF6C4B; color: #000000;">4.412052</td>
+<td class="gt_row gt_right" style="background-color: #FFE4DA; color: #000000;">1842</td></tr>
+    <tr><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #FF7251; color: #000000;">4.393839</td>
+<td class="gt_row gt_right" style="background-color: #FF2A13; color: #FFFFFF;">12335</td></tr>
+    <tr><td class="gt_row gt_left">United Kingdom</td>
+<td class="gt_row gt_right" style="background-color: #FF9273; color: #000000;">4.290481</td>
+<td class="gt_row gt_right" style="background-color: #FFF0EB; color: #000000;">1019</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">Paris</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Ireland</td>
+<td class="gt_row gt_right" style="background-color: #FF9B7E; color: #000000;">4.260465</td>
+<td class="gt_row gt_right" style="background-color: #FFF9F6; color: #000000;">430</td></tr>
+    <tr><td class="gt_row gt_left">India</td>
+<td class="gt_row gt_right" style="background-color: #FFA88D; color: #000000;">4.215017</td>
+<td class="gt_row gt_right" style="background-color: #FFFBF9; color: #000000;">293</td></tr>
+    <tr><td class="gt_row gt_left">United Kingdom</td>
+<td class="gt_row gt_right" style="background-color: #FFDFD4; color: #000000;">4.015641</td>
+<td class="gt_row gt_right" style="background-color: #FF8666; color: #000000;">7992</td></tr>
+    <tr><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #DEC8FF; color: #000000;">3.735338</td>
+<td class="gt_row gt_right" style="background-color: #FFECE4; color: #000000;">1330</td></tr>
+    <tr><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #CBABFF; color: #000000;">3.648739</td>
+<td class="gt_row gt_right" style="background-color: #FFF6F3; color: #000000;">595</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">Hong Kong</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">India</td>
+<td class="gt_row gt_right" style="background-color: #FF4628; color: #FFFFFF;">4.512015</td>
+<td class="gt_row gt_right" style="background-color: #FFEFE9; color: #000000;">1082</td></tr>
+    <tr><td class="gt_row gt_left">Philippines</td>
+<td class="gt_row gt_right" style="background-color: #FF6F4E; color: #000000;">4.402624</td>
+<td class="gt_row gt_right" style="background-color: #FFF0EB; color: #000000;">991</td></tr>
+    <tr><td class="gt_row gt_left">Australia</td>
+<td class="gt_row gt_right" style="background-color: #FFA98E; color: #000000;">4.212974</td>
+<td class="gt_row gt_right" style="background-color: #FFE7DE; color: #000000;">1634</td></tr>
+    <tr><td class="gt_row gt_left">United States</td>
+<td class="gt_row gt_right" style="background-color: #FFBBA5; color: #000000;">4.145952</td>
+<td class="gt_row gt_right" style="background-color: #FFF2ED; color: #000000;">877</td></tr>
+    <tr><td class="gt_row gt_left">Singapore</td>
+<td class="gt_row gt_right" style="background-color: #FFD7C9; color: #000000;">4.045936</td>
+<td class="gt_row gt_right" style="background-color: #FFF3EE; color: #000000;">849</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"><sup class="gt_footnote_marks">1</sup> Reviews extracted from Trip Advisor 2010-2019</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-15" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-16" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-16"></h2>
+<section id="activity-3.3-is-there-any-association-between-rating-and-text-analysis-variables" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-3.3-is-there-any-association-between-rating-and-text-analysis-variables">Activity 3.3 Is there any association between rating and text analysis variables?</h3>
+</section>
+</section>
+<section id="section-17" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-17"></h2>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-11_4c1190c4d02f257dd386583f1c8d4ccc">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> text_var)) <span class="sc">+</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  stat_smooth(alpha   = 0.2, </span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co">#              size    = 1.2, </span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co">#              method  = "loess",</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co">#              span    = 1,</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co">#              se      = FALSE) +</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha    =</span> <span class="fl">0.16</span>, </span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">w =</span> <span class="dv">2</span>, <span class="at">h =</span> <span class="fl">0.36</span>),</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">size     =</span> <span class="dv">2</span>, </span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape     =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Text-derived Variable"</span>) <span class="sc">+</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-12_5075d82fb7c7471164b347ba09914bac">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span>              <span class="co">#to handle outliers rigorously</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)), <span class="co">#Turning text analysis vars from wide to long</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>, <span class="co">#Recoding variable w meaningful names</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">colour =</span> <span class="fu">as.factor</span>(rating), <span class="at">fill =</span> <span class="fu">as.factor</span>(rating))) <span class="sc">+</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.44</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="ggridges" class="level4">
+<h4 class="anchored" data-anchor-id="ggridges"><code>ggridges</code></h4>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-13_3f8be39a53f1a054299bd0b960808c4e">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load the ggridges package for density plots</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggridges"</span>)) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"ggridges"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-14_fc85e1c1f6cfcd399b328c557f1f2779">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>(),</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">rating =</span> <span class="fu">as.factor</span>(rating) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>             <span class="fu">fct_rev</span>()</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> rating, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_histogram(aes(y = stat(density)),</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co">#                 binwidth = 10,  colour = "black",</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co">#                 alpha    = 0.24) +</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges2</span>(<span class="at">adjust =</span> <span class="dv">2</span>,</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>                       <span class="at">alpha  =</span> <span class="fl">0.44</span>,</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>                       <span class="at">scale  =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">shape =</span> <span class="st">"|"</span>) <span class="sc">+</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

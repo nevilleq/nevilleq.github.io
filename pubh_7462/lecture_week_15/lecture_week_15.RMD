@@ -1,0 +1,639 @@
+---
+title: "Week 15: Package Development & Misc. Topics"
+author: "Quinton Neville"
+date: "29 April 2022"
+output:
+  html_document: default
+---
+
+```{r setup, include = FALSE, echo = FALSE}
+#Load the good stuff
+library(tidyverse)
+library(gt)
+library(paletteer)
+library(gtExtras)
+library(ggthemes)
+
+#Working directory for .RMD
+knitr::opts_knit$set(echo = TRUE,
+                     root.dir = rprojroot::find_rstudio_root_file())
+
+#Controlling figure output in markdown
+knitr::opts_chunk$set(
+#  fig.height =   
+  fig.width = 6,
+#  fig.asp = .5,
+  out.width = "90%",
+#  out.height = 
+ fig.align  = "center",
+  cache = FALSE,
+  eval  = TRUE,
+  echo  = TRUE,
+  warning = FALSE
+)
+
+#My Colours (from viridis)
+my_purple <- "#440154FF"
+my_yellow <- "#FDE725FF"
+
+#Set Theme for ggplot2
+theme_set(theme_bw() + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom"))
+
+#Set Scientific notation output and decimal places for knitr
+options(scipen = 999)
+options(digits = 4)
+options(dplyr.summarise.inform = FALSE)
+```
+
+# I. Introduction {.jumbotron}  
+
+$~$
+$~$
+
+## Where we've been --
+
+The midterm assessment was designed to evaluate your 'fundamental' skills as a data scientist, corresponding to _Course Objectives_ (1)-(4,5) in the [syllabus](https://canvas.umn.edu/courses/293049/files?preview=26516582). Those skills break down into -- 
+
+1. **Workflow** 
+    - .Rprojects + Github, Rmarkdown, best `R` practices, reproducibility
+2. **Data Wrangling**
+    - `dplyr`, `tidyr`, `forcats`, `stringr`, `lubridate`
+    - plus iteration with `purrr::map` family
+3. **Data Visualization** 
+    - `ggplot2`,`gt`
+4. **Exploratory Data Analysis**
+    - Use the above to read, explore, clean/tidy, prepare for analysis and visualize _new_ data   
+
+$~$
+$~$
+
+## Where we're going --    
+
+As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these 'fundamental' skills to maximize `R` and Rstudio's potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these 'advanced' communication and analysis tools --
+
+5. **Enhanced Visualization** 
+    - Interactivity w/ `ggplotly`, `reactable`
+    - Enhance `gt` with `gtExtras` (and `flextable`, `ftExtra`)
+    - Intro to `flexdashboard`
+6. **Websites in R + Github**
+    - Basics, personal webpage 
+    - Websites as analytical display tools
+        - Embedding `flexdashboard`
+7. **Spatial Visualization**
+    - 'Tidy Maps' w/ `sf`or`sp` + `tidyverse` + `ggmaps` and `ggplot2`
+    - Introduction to interactive maps with `ggplotly` and/or `leaflet`
+8. **Github Collaboration & Shiny Apps**
+    - Working with others in the same Github repository
+        - Best practices
+        - Branching, merging, merge conflicts
+        - reseting to previous versions
+    - Developing a Shiny app for data communication
+    - Developing a Shiny `flexdashboard`
+9. **Miscellaneous** (**today**)
+    - *How to develop a package with Rstudio & Github
+    - *Brief intro to working with big data in R (`dt_plyr`, `collapse`)
+    - *Brief intro to interacting with SQL/databases in R (`db_plyr`)
+    - *Brief intro to text analysis in R (`tidytext`)
+
+$~$
+$~$
+
+## So what exactly are we going to do today?  
+
+### Developing an R package and hosting on Github  
+
+Today we're going to outline how to develop a package in R with Github, `devtools`, `usethis`, `roxygon2`, and `pkgdown`. I'll then give a brief demonstration and leave you with additional resources for more advanced topics regarding package development.  
+
+Detailed websites/vignettes for each package and a comprehensive cheatsheet can be found here -- 
+
+1. [devtools](https://devtools.r-lib.org/)
+2. [usethis](https://usethis.r-lib.org/)
+3. [roxygen](https://roxygen2.r-lib.org/)
+4. [pkgdown](https://pkgdown.r-lib.org/articles/pkgdown.html)
+5. Package development [cheatsheet](https://rklopotek.blog.uksw.edu.pl/files/2017/09/package-development.pdf)
+
+### Miscellaneous topics: brief intro and resources  
+
+We've covered **a lot** of `R` skills, packages, and applications this semester; however the world of `R` is quite nearly infinite, and growing. Here are some other useful packages for topics we didn't cover --
+
+1. Handling *big data* (`collapse`, `dtplyr`)
+2. Dealing with *databases* (`dbplyr`)
+3. *Machine learning* (`caret`, `keras`, `tidymodels`)
+3. *Text analysis* (`tidytext`)
+4. Combining `ggplot`'s (`patchwork`)  
+
+# II. Developing an R package with Github {.jumbotron}  
+
+This portion of the lecture is a summary of [Matti Vuorre's](https://github.com/mvuorre) wonderful introduction & tutorial (with references!) and is found on Github [here](https://github.com/mvuorre/exampleRPackage). It's a great reference for developing `R` packages and I would *highly recommend* reading it all the way through on your own time, especially the introduction. I'll then walk you through an example which likewise follows along with Vuorre's Github tutorial.  
+
+## i. Introduction  
+
+### The basic flow  
+
+1. **Skeleton**
+    - Create `R` package with .Rproject in Rstudio
+    - Set up basic infrastructure
+2. **Description**
+    - Edit the `DESCRIPTION` & `README`
+3. **Data**
+    - Every package should at least have a sample data set (ideally the one used in your vignette tutorial)
+    - Can also have 'real' data if it's publicly available
+    - Be very careful with other data and ensure it is shareable under IRB/HIPPA/Data use agreement guidelines
+4. **Source Code**
+    - Develop core functions, input/output structures, etc.
+    - *Document functions* (inputs/outputs, purpose)
+    - *Dependencies* (packages your functions require)
+    - Found in the `/R` folder by default
+5. **Documentation**
+    - Description of package, functions, data, etc.
+    - Machine & human-readable format so can be accessed via help `?`
+
+### Sharing the package with Github  
+
+The above steps will create a functional `R` package *on your local machine*, but you still need to share your great work with the world! That's where Github comes in - luckily we're already quite familiar with `R` $\longleftrightarrow$ Github connection, which makes these steps a lot easier.  
+
+1. **Sharing is Caring**
+    - Upload to Github to make your package & source code publicly available!
+    - Can then be installed directly from Rstudio with `devtools::install_github(</your_github/the_package_repo>)`
+2. **Website**
+    - Most all of the wonderful packages we've used in this course have an associated *vignette*, typically hosted in an `R` website.
+    - Luckily, we already know how to do this!
+    - Add example(s) for how to use your package in practice
+3. **Additional Documents**
+    - Add any narrative documents necessary to the website
+        - i.e. description of data, functions, manuscripts, supplementary materials
+        - links to publications or talks using the package
+        
+
+## ii. Setting up an R package from scratch  
+
+```{r eval = FALSE}
+#Install devtools if necessary
+if (!require("devtools")) install.packages("devtools")
+
+#Install usethis if necessary
+if (!require("usethis")) install.packages("usethis")
+
+#Install roxygen2 if necessary
+if (!require("roxygen2")) install.packages("roxygen2")
+```
+
+Here, .Rprojects will help us out a lot by initializing the our package's directory with example scripts and the default structure it needs to be!  
+
+Create a new `R` project with `File` $\longrightarrow$ `New Project…` $\longrightarrow$ `New Directory` $\longrightarrow$ `R Package`. **Make sure `Create a git repository` is checked** in order to enable Git.  
+
+Check out the file structure of the repository.  
+
+## iii. Description  
+
+There's a specific machine-readable file called `DESCRIPTION` (automatically created by R Studio), which is read by `R` when 'building' the package. You'll need to edit the file to correspond to your package specifically, *but don't change the formatting*.  
+
+### Example `DESCRIPTION`  
+
+```{r eval = FALSE}
+Package: <package name>
+Type: Package
+Title: <your title>
+Version: <your_version> # starts with 0.1.0
+Authors@R: person("<last name>", "<first name>", email = "<your email>",
+                  role = c("aut", "cre")) #author, credit
+Description: <brief description>.
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 4.1) #change this as appropriate
+Imports:
+    <packages>
+    #i.e. the usual stuff for example - 
+    #ggplot2
+    #dplyr
+    #stringr
+    #forcats
+    #etc.
+```
+
+### `DESCRIPTION` Notes  
+
+- <This> means it is not a "" character, just normal typing, but those with "" need character quotes around them
+- See `?person` for `Authors@R` syntax, include multiple w/ `c()` vector
+- More detailed info about `DESCRIPTION`'s package meta data check out [this link](https://r-pkgs.org/description.html)  
+
+### `README`  
+
+While the `README` doesn't get created by default in the packages repo, it's generally a good idea to make one yourself with the usual `.RMD`. A convenient way to do this is with `usethis` -- 
+
+```{r eval = FALSE}
+#Create a README.rmd
+#Adds it to .Rbuildignore file
+usethis::use_readme_rmd()
+```
+
+Most likely you'll want to knit this to a `github_document` .md (like the hw) since that's where the README will most likely be accessed/read by others. 
+
+### Question
+
+Why might we not want to simply load the entire `tidyverse` like usual? (Hint: dependencies)  
+
+## iv. Data  
+
+Here one should at least include an example data set upon which the functions in the package can be applied. Usually, this is the same data that is found in the vignette examples (see below). However, it's possible that it can be 'real' data, *but be very, very careful* if you intend to make any protected or patient data public - ensure that it does not violate any data use agreements.  
+
+[Here](https://r-pkgs.org/data.html) is a more detailed look at including external data in a package if you're interested.  
+
+### General  
+
+We can conveniently add any R data (`.RDS`) from out global environment (i.e. a `tibble` or `data.frame`) into a/the `/data` folder with `usethis` -- 
+
+```{r eval = FALSE}
+#Add example data to /data folder
+#Simultaneously creates folder if doesn't exist yet
+usethis::use_data(<data obj. name>)
+```
+
+### Preprocessing  
+
+If there is some pre-processing of data involved in your package, you can likewise employ `usethis` -- 
+
+```{r eval = FALSE}
+#Add example raw data to /data-raw folder
+#Simultaneously creates folder if doesn't exist yet
+usethis::use_data_raw()
+```
+
+then add a `preprocess.R` script in the same `/data-raw` folder which performs the preprocessing and then calls the above `use_data()` on the resulting processed data object to put it in the `/data` folder.  
+
+### Documenting Data with `roxygen2`  
+
+Once you're done with all that, it's a good idea to add a `data.R` file to the `/R` folder, documentating & describing the data `?`. You'll need to check out [roxygen2 documentation](https://roxygen2.r-lib.org/) for the full syntax, but here's a good example to get you started -- 
+
+```{r eval = FALSE}
+#' @title <Title for data>
+#'
+#' @description <brief description>
+#'
+#' @format <object type, rows, columns, etc.>
+#' \describe{
+#'   \item{variable(s) 1}{<describe variable(s) 1>}
+#'   \item{variable(s) 2}{<describe variable(s) 1>}
+#' }
+#' @source <url to data on your github>
+"<name of data>"
+```  
+
+- `#'` denotes `roxygen2` syntax versus a normal comment `#`
+- Can add multiple data to both the `/data` folder as well as the `data.R` documentation, just need to leave a blank line in between each `roxygen2` doc.
+- Will use the same `roxygen2` syntax for our functions below
+
+## v. Source Code  
+
+Here we find the most important aspect of our package, what the package actually does! As you've no doubt noticed by this point, every package in `R` is really just a collection of functions. Unlike previous work we've done, much of which could be accomplished without user defined functions, when building a package *everything needs to be wrapped into a funcion* with **well defined inputs and outputs**.  
+
+*Important Note* - **Do not include `library()` in your script**, this is a big no-no and will cause global availability of functions to change for the user. Instead, use the literal (C++ style) attachment of packages like `dplyr::select`, `stringr::str_to_title`, etc.
+
+### Example Package Functions  
+
+For the example package we're building today, these are the collection of functions which work together to accomplish a larger task (like most packages).  
+
+#### 1. Bivariate Normal LM Data Generator  
+
+```{r eval = FALSE}
+lm_data <- function(n = 10) {
+#Create lm data
+  tibble::tibble(
+    x   = runif(n),
+    x_1 = ifelse(x > 0.5,
+               rnorm(n, 0, 2), #unequal variance
+               rnorm(n, 2, 3)),#implies interaction
+    x_2 = ifelse(x > 0.5, "Control", "Treatment"),
+    y   = x_1 + rnorm(n, 0, 1)
+  ) |> #base R pipe (new), %>% depends on magrittr
+  dplyr::select(-x)
+}
+```
+
+
+#### 2. Fit LM with & without Interaction  
+
+```{r eval = FALSE}
+fit_lm <- function(lm_data) {
+  #Fit lm from lm_data generator
+  lm.mod <- lm(y ~ x_1 + x_2, data = lm_data)
+  #return lm model object
+  return(lm.mod)
+}
+
+fit_lm_int <- function(lm_data) {
+  #Fit lm from lm_data generator w/ interaction
+  lm.mod <- lm(y ~ x_1 * x_2, data = lm_data)
+  #return lm model object
+  return(lm.mod)
+}
+```
+
+#### 3. Plot the LM Fit  
+
+```{r eval = FALSE}
+plot_fit <- function(lm.mod, lm_data, new_data, interaction = FALSE) {
+  #Create string for title of plot
+  string <- ifelse(interaction, "w/ Interaction", "")
+  r2     <- summary(lm.mod)$adj.r.squared
+  preds  <- predict(lm.mod, new_data)
+  rmse   <- sqrt(mean((lm_data$y - preds)^2))
+
+  #Predict based on new data
+  lm_data |>
+    dplyr::mutate(
+      predicted_val = preds
+    ) |> #Plot it
+    ggplot2::ggplot(ggplot2::aes(x = x_1, y = y, colour = x_2)) +
+    ggplot2::geom_point(shape = 16, size = 2, alpha = 0.6) +
+    ggplot2::geom_smooth(ggplot2::aes(x = x_1, y = predicted_val),
+                         inherit.aes = FALSE,
+                         method = "lm",
+                         colour = "orange",
+                         fill   = "azure2") +
+    ggplot2::scale_colour_manual(values = c("#440154FF", "#FDE725FF")) +
+    ggplot2::labs(title = sprintf("2 Class Bivariate Normal LM%s (R^2 = %g, RMSE = %g)",
+                                  string, round(r2, 2), round(rmse, 2))) +
+    ggplot2::theme_minimal()
+}
+```
+
+### Documentation  
+
+Unlike .RMD's, these source functions need to be `.R` files and should generally be in their own `.R` file (unless there's a set of functions that are very similar or intimately related). Again, we'll use `roxygen2` to create documentation for each function which can be accessed with `?` like usual. More detailed info about documenting data & functions can be found [here](https://r-pkgs.org/man.html) 
+
+Have no fear, R studio has a convenient way to insert a default `roxygen2` skeleton for functions, accessed by `Code` -> `Insert Roxygen Skeleton` -- 
+
+```{r eval = FALSE}
+#' <What the function is>
+#'
+#' @description <describe function's purpose>
+#'
+#' @param input_1 <describe input 1, object type, etc.>
+#' @param input_2 <describe input 2, object type, etc.>
+#'
+#' @return <what object(s) the function returns>
+#' @export #Just tells R to load this function with library()
+#'
+#' @examples
+#' my_function(1, 2) #returns 3
+
+my_function <- function(input_1, input_2) {
+  addition  <- input_1 + input_2   
+  return(addition)
+}
+```
+
+## vi. Building package  
+
+Much like websites, we also have build tools which make putting our package together a whole lot easier!  
+
+### Step 1. Roxygen  
+
+First, make sure that Rstudio knows to generate your package with `roxygen2` documentation by going to `Tools` $\longrightarrow$ `Project Options...` $\longrightarrow$  `Build Tools`; and ensure that (1) "Generate documentation with roxygen" is checked and (2) within the `Build Tools > Configure` menu, that "Automatically run roxygen when running install & restart" is also checked.  
+
+### Step 2. Delete Default Files  
+
+If you initialized your package with an R project (as we did above), you'll need to delete the default `/man/hello.Rd` and `NAMESPACE` files (to make room for your new documentation!).
+
+### Step 3. Install and Restart  
+
+Finally, all you have to do to build and install your package is to go to R Studio's `Build` tab in the upper right pane with `Git` and `Environment`, and select "Install and Restart".  
+
+### Step 4. Use the package  
+
+Now that your package is installed *locally*, you can call it like usual with `library()`. Test out the example functions & data to make sure everything is good to go!  
+
+## vii. Sharing on Github  
+
+Now that we've built our package locally, we're going to need Github in order make it *publicly available*. However, recall that earlier we had initialized our project with Git, this means that all we need to do now is connect it to Github!
+
+*__Note__ that this flow is different than usual, here we are connecting to Github last as opposed to first.*
+
+There are two main ways to do this, following [Jenny Bryan's Happy Git and Github for the useR: 17 Existing Project, Github Last](https://happygitwithr.com/existing-github-last.html)'s example -- 
+
+### 'New' way via `usethis::use_github()`  
+
+#### Jenny's Example  
+
+```{r eval = FALSE}
+usethis::use_github()
+#> ✓ Creating GitHub repository 'jennybc/myrepo'
+#> ✓ Setting remote 'origin' to 'https://github.com/jennybc/myrepo.git'
+#> ✓ Pushing 'main' branch to GitHub and setting 'origin/main' as upstream branch
+#> ✓ Opening URL 'https://github.com/jennybc/myrepo'
+```
+
+This is the first method in Jenny's chapter. However, I'm not super familiar with `usethis` so it's possible for this not to work if there are discrepancies with HTTPS, login credentials, personal access tokens (PATs), or SSH. If so, refer to Jenny's book to fix this.  
+
+### 'Old' way via Github & R Studio  
+
+This way is very similar to the usual way we initialize repo's on github and then clone them to our local machine. Refer to earlier lectures for more specifics about connecting Github with .Rporjects.  
+
+The steps to do so are as follows -- 
+
+1. Make a new github repo with same name as the package
+    - **Note** package names cannot have `_`'s, must use `.` or `-` to seperate words
+    - **DO NOT** initialize your repo with anything in it (otherwise it will conflict with your local repo)
+2. Click "<> Code" and copy the HTTPS (or SSH) key
+3. Connect with local repo via
+    i. Rstudio 
+        - Click on "two purple boxes and white square" in the upper right Git pane 
+        - Click "Add remote"
+        - Choose remote name `origin`
+        - Paste your Github repo's url
+    ii. Shell / Command Line / Terminal
+        - `git remote add origin <github repo url>`
+        - `git push --set-upstream origin main`
+4. Go back to Github and check that everything worked properly
+
+## viii. Install via Github!  
+
+Once that's all done, check and make sure you can install your package directly from github with `devtools::install_github("<git_user_name/package_repo_name>")`. Pretty cool right?!   
+
+# III. Handling Big Data in R {.jumbotron}  
+
+While you may not have much experience with 'big data' or 'high dimensional' ($p >>> n$) data, if you continue to work in a data science role you will probably run into these in the future. 
+
+In the past, R was not a very efficient language in the sense that it was slow, specialized to statistics, and bulky. Over the years, however, thanks to the development of the `tidyverse` & `data.table`, newer `R` packages have transformed a 'stats program' into a highly functional, efficient, flexible language which can easily wrap other languages inside it on the backend (C++/Rcpp, python, SQL, HTML, markdown, etc.)
+
+Below are a collection of 'big data' tools that exist within the `R` universe, I don't have much experience with all of them but from what I've read they're pretty easy to implement (given the solid foundation we've developed in this course). I'll give a quick description of the package and link to any relavent materials for your (and my) future use.  
+
+## `collapse` Advanced and Fast Data Transformation  
+
+Maintained by Sebastian Krantz, `collapse` makes use of the speed & efficiency of C/C++ libraries for *extremely fast* data transformation that's well integrated with the `tidyverse` (i.e. `tibble`'s, `dplyr`, `group_by`, `summarise`), as well as statistical computing. It also handles the usual `base`, `data.table`, `array`, and `list` structures nicely.  
+
+- The primary documentation can be found [here](https://cran.r-project.org/web/packages/collapse/index.html)
+- The Sebastian's awesome vignette is found [here](https://sebkrantz.github.io/collapse/)
+- The source code is found on [Sebastian's Github](https://github.com/SebKrantz/collapse)
+- It's so new and useful, it even has it's own [Twitter](https://twitter.com/collapse_R)!  
+
+If you find yourself in a situation where the usual `dplyr` operations are taking forever becuase the data is too large or complex, `collapse` can make your life a lot easier!  
+
+# IV. Tidyverse Data Table & SQL/Databases {.jumbotron}  
+
+One of the nicest things about `R`'s community of open source developers, and specifically the `tidyverse`'s, is that most of the really useful/necessary things you'd normally need to learn separately have been wrapped into `tidyverse` syntax for us!  
+
+The `tidyverse` is so comprehensive, cohesive, and constantly growing that to me, it seems obvious that it will probably be the long-term dominating syntax/structure amongst `R` users. Many people would vehemently disagree with that statement, but even they would admit that at the very least, learning the `tidyverse` is a good investment for a future in any type of data science/analytics role.    
+
+## Tidyverse wrapper for `data.table`  
+
+Now I personally have never liked `data.table` syntax, but there are many people (seemingly more CS minded people), how prefer it for a variety of reasons; first and foremost of which is *size* and *speed*. `data.table` handles big data well and can perform the usual `dplyr`/`tidyr` operations in a fraction of the time.  
+
+Like the `tidyverse`, `data.table` is widely used amongst `R` users and has a ton of support, documentation, etc. If you're curious here's an [introduction to `data.table`](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html), a [comprehensive vignette/website](https://rdatatable.gitlab.io/data.table/), and a couple blogs comparing/contrasting `data.table` vs. `tidyverse` vs. `base` [here](https://wetlandscapes.com/blog/a-comparison-of-r-dialects/#:~:text=The%20tidyverse%2C%20for%20example%2C%20emphasizes,when%20datasets%20get%20fairly%20large) and [here](https://mgimond.github.io/rug_2019_12/Index.html).  
+
+However, given our expertise in the `tidyverse`, there's very little reason to learn `data.table` syntax due to the new-ish package `dtplyr` (`dt` = `data.table`), as well as `collapse` above.  
+
+### Using `dtplyr` to handle `data.table`'s  
+
+Sometimes it may be convenient to work with `data.table` objects for *size* and *speed* (`fread()` versus `readr`, much faster too); but who wants to learn a whole new syntax??  
+
+Thanks to `dtplyr` we don't have to! Here is the [wonderful vignette/website](https://dtplyr.tidyverse.org/) and [this article](https://dtplyr.tidyverse.org/articles/translation.html) explains exactly how `dtplyr` translates `dplyr` into `data.table` commands (via queries). 
+
+It should be noted that by design, `dtplyr` is a little slower than `data.table` because inherently, translation takes a little time. Honestly, `collapse` may be more worthwhile to check out than `data.table`, unless you end up in an environment where everyone is using `data.table`.  
+
+## Tidyverse wrapper for SQL/databases   
+
+Similar to above, the `tidyverse` also has an excellent wrapper for generating SQL queries via `dplyr` syntax. Given that we are now well versed in `dplyr` verbs (i.e. `select`, `filter`, etc.), you'll be delighted to know most of the `dplyr` verbs are borrowed/shared with SQL! While this makes SQL relatively easy to learn and implement, during your learning process one can utilize `dbplyr` to translate or generate SQL queries to relational databases.  
+
+The awesome vignette/website can be accessed [here](https://dbplyr.tidyverse.org/). It's a little more complicated than `dtplyr` so do peruse all the different articles, but in particular, [Writing SQL with `dbplyr`](https://dbplyr.tidyverse.org/articles/sql.html), [Function translation](https://dbplyr.tidyverse.org/articles/translation-function.html), and [Verb translation](https://dbplyr.tidyverse.org/articles/translation-verb.html).  
+
+# V. Miscellaneous {.jumbotron}  
+
+## Machine Learning with `caret`  
+
+Some of you may be familiar with some individual machine learning libraries for particular models (i.e. `glmnet` for penalized glm's or `randomForest` for bagged, random predictor sampled trees). Within the last 10 years though, the `caret` library has been developed which standardizes syntax and methodology for preprocessing, feature selection, tuning/training via resampling, and variable importance when deploying ML models. I personally use `caret` all the time, it has an incredibly dense and comprehensive library of different tools for regression and classification.  
+
+As a package, `caret` is so useful and widely supported that it actually has it's own online [textbook](https://topepo.github.io/caret/). If you're unfamiliar with ML in general, it's a decent introduction to deploying ML models in practice (but not the statistical/CS theory). StackExchange and StackOverflow are great resources for questions as general as "How do I train a model with caret r" to "what do the parameters in model x describe r".  
+
+It should be noted that `caret` is literally a library, each model you use is pulled off the shelf as it's own self contained package -  meaning that it necessarily depends on the package which contains the model (i.e. `glmnet`, `randomForest`, `XGBoost`, `nnet`, etc.). 
+
+It will prompt you to download the required packages if you don't have them, *but if you have a specific question* about a models parameters, additional arguments, etc. *you'll need to pass those through the function manually* and *you'll need to google for solutions __within that model's package__, not `caret` itself*.  
+
+You can [search through all available models](https://topepo.github.io/caret/available-models.html) in Chapter 6, with comprehensive documentation about [training models by tag](https://topepo.github.io/caret/train-models-by-tag.html) in Chapter 7 (giving the required package(s) and paramters in a given model). I'd highly recommend finding your desired model(s) with the first link, then using "Ctrl + f" to search through the second link and locate the training info for your model(s).  
+
+### What can `caret` not do? (Deep learning w/`keras`)    
+
+Unfortunately, `caret` was not designed with deep learning in mind (dense, multi-layered, complex neural networks of varying structure and function). Which isn't a problem because those tools have been widely developed in the Python universe with PyTorch and TensorFlow. Luckily there's another package called `keras` (a wrapper for Python deep learning which supports TensorFlow, GPUs, etc.) which allows us to build dense, complex neural networks all within the usual piped syntax from layer to layer.  
+
+Here is the [R interface to Keras](https://keras.rstudio.com/) comprehensive website with tutorials, articles, examples, and references.  
+
+## Alternate ML package `tidymodels`  
+
+Normally, something with a name like `tidymodels` would be right up my alley because I generally love all things `tidyverse` - however this may be an exception (or I may just be old and don't want to learn a new ML workflow). Overall, it looks like a very well maintained, functional, flexible framework for building ML workflows with `tidyverse` principles, structures, and syntax. If you are unfamiliar with `caret` and `tidymodels` then I would check out both and see which style you like better. The comprehensive website for `tidymodels` is found [here](https://www.tidymodels.org/) and [this 5 step tutorial](https://www.tidymodels.org/start/) is a great introduction to the package.  
+
+Having used `caret` for many years and after reading through `tidymodels` documentation thoroughly, there are definitely a mixture of pro's and con's. Here are my key takeaways -  
+
+### Caret  
+
+#### **Pros**  
+
+- Over 100+ model types/classes
+- Well documented and easy to search through (see book above)
+- Syntax for tuning/training with resampling (CV, LOOCV, OOB, etc.) never changes
+    - Little goofy at first but once you're familiar it makes sense
+    - Preprocessing is included
+- Wrapper around underlying package (i.e. `glmnet`, `nnet`, `XGboost`, etc.)
+    - Allows you to pass additional arguments to model (see package documentation)
+    - Allows you to manually define tuning grids for parameters (`base::expand.grid`)
+- Not tidy output, but easy to extract performance metrics over tuning, best tune, params, etc.
+
+#### **Cons**  
+
+- Doesn't have *every* ML model class or package but it has a ton of them
+- Not tidy, returns list of `data.frame`'s and other objects as opposed to a `tibble` w/list columns
+    - Requires a little work translating the base `R` output into a `tibble` > `ggplot`/`gt`
+    - However, only need to figure it out once, can wrap into function to process output
+- Can be a little finicky passing parameters through tuning (ex. in RF `.mtry` vs. `mtry` due to var masking)
+- Is marginally slower due to the `caret` wrapper than the packages themselves 
+
+### Tidymodels  
+
+#### **Pros**  
+
+- `tidyverse` principles and syntax
+- Build models sequentially with recipe, baking, engine, etc. (`%>%`)
+- Can choose the 'engine' for a given model
+    - i.e. can choose `glmnet` or `keras` to fit a penalized logistic glm (last step)
+- Allows for very flexible model building & output manipulation
+- Can pass results naturally to other `tidyverse` staples like `ggplot2` or `gt`
+- Has built in packages to select 'reasonable' tuning grids best on a 'depth' argument
+- Built with statistician's in mind, has much more natural inferential capability
+- Has `keras` built in so can incorporate deep learning
+
+#### **Cons**
+
+- Unlike `caret`, which is an umbrella for individual ML packages, `tidymodels` also contains a bunch of other non-ML tidy packages like `parsnip`, `recipes`, `tune`, `yardstick`, `rsample`, etc.
+- Each one, while 'tidy', does have it's own unique syntax unlike any models you've fit before in R
+- Makes it inherently more complex to learn 
+- Workflow is broken up into many steps each with unique functions/packages vs. self contained in 1 cohesive function/syntax in `caret`
+- While it has `keras` wrapped in (TensorFlow backend), I think using `keras` on it's ownfor deep learning is just as easy
+
+
+## Text Analysis with `tidytext`  
+
+You may find yourself engaging in some text analysis at some point, from something as simple as locating particular info or meta data from character strings to something as complicated as sentiment analysis, text classification (ML), or Natural Language Processing (NLP, deep learning). If you find yourself in this scenario, I'd highly recomend utilizing the `tidytext`, a `tidyverse` friendly interface for text mining and analysis.  
+
+Here is a nice [introduction](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) from Julia Silge and David Robinson, and here is the free online book called [Text Mining with R](https://www.tidytextmining.com/) (same authors as the intro).  
+
+## Combining `ggplot`'s with `patchwork`  
+
+Last but not least, there's one other super useful add on to `ggplot2` called `patchwork` (which I forgot to mention earlier in the semester) that allows us to combine `ggplot`'s in a convenient, easy-to-understand syntax. The official vignette/website can be accessed [here](https://patchwork.data-imaginist.com/), with tons of references and examples.  
+
+The package, developed and maintained by Thomas Lin Pedersen, can now be downloaded from CRAN like usual `install.pacakges("patchwork")` and the most recent dev version can be installed from Github with `devtools::install_github("thomasp85/patchwork")`. Funny enough, when I first started using this package it was still only a dev version on Github and now it's a full blown CRAN package! (similar to `gt`, `gtExtras`).  
+
+It's super functional and easy to use, here are the basics --
+
+### 1. Side-by-side  
+```{r eval = FALSE}
+#Two side by side
+ggplot_1 + ggplot2
+
+#Multiple side by side
+ggplot_1 + ggplot_2 + ... + ggplot_n
+```
+
+### 2. Vertical
+
+```{r eval = FALSE}
+#Two top and bottom
+ggplot_1 / ggplot2
+
+#Many top and bottom
+ggplot_1 / ggplot_2 / ... / ggplot_n
+```
+
+### 3. Any Combination of Side-by-side and Vertical  
+
+```{r eval = FALSE}
+#Two above one wide below
+(ggplot_1 + ggplot_2) / ggplot_3
+
+#Square layout
+(ggplot_1 + ggplot_2) / (ggplot_3 + ggplot_4)
+
+#One above two below
+ggplot_1 / (ggplot_2 + ggplot_3)
+
+#Etc.
+```
+
+It can also scale to 'arbitrarily complex layouts', meaning you are free to create whatever you want without many constraints!  
+
+# VI. Course Evaluation  
+
+# {.panel .panel-success}
+## {.panel-heading}
+### Activity. Student Rating of Teacher Course Evaluations {.panel-title}
+## {.panel-body}
+
+You all should have gotten an email a few weeks ago via University of Minnesota's Evaluations System <eval@umn.edu> regarding Student Rating of Teacher course evaluations. Please find the email, click on the link and I'll the last 10-15 minutes of class for you all to fill out the evaluation. These evaluations not only helps me be a better teacher but also helps us better meet the needs of future students, so I'd really appreciate any thoughtful feedback you have regarding the course. 
+
+# Thank you! {.jumbotron}  
+
+It's been a pleasure having you all in class, I'm looking forward to seeing the awesome work you've put into your final projects, and I wish you the best of luck in your future careers. If you need a letter of reference in the near future regarding your skills in data science, R, or programming for an internship or application, please feel free to reach out I'd be happy to oblige.  
+
+> *Parting is such sweet sorrow, That I shall say good night till it be morrow. My necessaries are embark'd: farewell. Adieu!*  
+- Juliet, *Romeo & Juliet*
+

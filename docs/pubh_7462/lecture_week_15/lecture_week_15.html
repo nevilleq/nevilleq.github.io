@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+<meta name="dcterms.date" content="2022-04-29">
+
+<title>Quinton Neville - Week 15: Package Development &amp; Misc. Topics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link active" data-scroll-target="#i.-introduction">I. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#where-weve-been" id="toc-where-weve-been" class="nav-link" data-scroll-target="#where-weve-been">Where we’ve been –</a></li>
+  <li><a href="#where-were-going" id="toc-where-were-going" class="nav-link" data-scroll-target="#where-were-going">Where we’re going –</a></li>
+  <li><a href="#so-what-exactly-are-we-going-to-do-today" id="toc-so-what-exactly-are-we-going-to-do-today" class="nav-link" data-scroll-target="#so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</a>
+  <ul class="collapse">
+  <li><a href="#developing-an-r-package-and-hosting-on-github" id="toc-developing-an-r-package-and-hosting-on-github" class="nav-link" data-scroll-target="#developing-an-r-package-and-hosting-on-github">Developing an R package and hosting on Github</a></li>
+  <li><a href="#miscellaneous-topics-brief-intro-and-resources" id="toc-miscellaneous-topics-brief-intro-and-resources" class="nav-link" data-scroll-target="#miscellaneous-topics-brief-intro-and-resources">Miscellaneous topics: brief intro and resources</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ii.-developing-an-r-package-with-github" id="toc-ii.-developing-an-r-package-with-github" class="nav-link" data-scroll-target="#ii.-developing-an-r-package-with-github">II. Developing an R package with Github</a>
+  <ul class="collapse">
+  <li><a href="#i.-introduction-1" id="toc-i.-introduction-1" class="nav-link" data-scroll-target="#i.-introduction-1">i. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#the-basic-flow" id="toc-the-basic-flow" class="nav-link" data-scroll-target="#the-basic-flow">The basic flow</a></li>
+  <li><a href="#sharing-the-package-with-github" id="toc-sharing-the-package-with-github" class="nav-link" data-scroll-target="#sharing-the-package-with-github">Sharing the package with Github</a></li>
+  </ul></li>
+  <li><a href="#ii.-setting-up-an-r-package-from-scratch" id="toc-ii.-setting-up-an-r-package-from-scratch" class="nav-link" data-scroll-target="#ii.-setting-up-an-r-package-from-scratch">ii. Setting up an R package from scratch</a></li>
+  <li><a href="#iii.-description" id="toc-iii.-description" class="nav-link" data-scroll-target="#iii.-description">iii. Description</a>
+  <ul class="collapse">
+  <li><a href="#example-description" id="toc-example-description" class="nav-link" data-scroll-target="#example-description">Example <code>DESCRIPTION</code></a></li>
+  <li><a href="#description-notes" id="toc-description-notes" class="nav-link" data-scroll-target="#description-notes"><code>DESCRIPTION</code> Notes</a></li>
+  <li><a href="#readme" id="toc-readme" class="nav-link" data-scroll-target="#readme"><code>README</code></a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question</a></li>
+  </ul></li>
+  <li><a href="#iv.-data" id="toc-iv.-data" class="nav-link" data-scroll-target="#iv.-data">iv. Data</a>
+  <ul class="collapse">
+  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">Preprocessing</a></li>
+  <li><a href="#documenting-data-with-roxygen2" id="toc-documenting-data-with-roxygen2" class="nav-link" data-scroll-target="#documenting-data-with-roxygen2">Documenting Data with <code>roxygen2</code></a></li>
+  </ul></li>
+  <li><a href="#v.-source-code" id="toc-v.-source-code" class="nav-link" data-scroll-target="#v.-source-code">v. Source Code</a>
+  <ul class="collapse">
+  <li><a href="#example-package-functions" id="toc-example-package-functions" class="nav-link" data-scroll-target="#example-package-functions">Example Package Functions</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  </ul></li>
+  <li><a href="#vi.-building-package" id="toc-vi.-building-package" class="nav-link" data-scroll-target="#vi.-building-package">vi. Building package</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-roxygen" id="toc-step-1.-roxygen" class="nav-link" data-scroll-target="#step-1.-roxygen">Step 1. Roxygen</a></li>
+  <li><a href="#step-2.-delete-default-files" id="toc-step-2.-delete-default-files" class="nav-link" data-scroll-target="#step-2.-delete-default-files">Step 2. Delete Default Files</a></li>
+  <li><a href="#step-3.-install-and-restart" id="toc-step-3.-install-and-restart" class="nav-link" data-scroll-target="#step-3.-install-and-restart">Step 3. Install and Restart</a></li>
+  <li><a href="#step-4.-use-the-package" id="toc-step-4.-use-the-package" class="nav-link" data-scroll-target="#step-4.-use-the-package">Step 4. Use the package</a></li>
+  </ul></li>
+  <li><a href="#vii.-sharing-on-github" id="toc-vii.-sharing-on-github" class="nav-link" data-scroll-target="#vii.-sharing-on-github">vii. Sharing on Github</a>
+  <ul class="collapse">
+  <li><a href="#new-way-via-usethisuse_github" id="toc-new-way-via-usethisuse_github" class="nav-link" data-scroll-target="#new-way-via-usethisuse_github">‘New’ way via <code>usethis::use_github()</code></a></li>
+  <li><a href="#old-way-via-github-r-studio" id="toc-old-way-via-github-r-studio" class="nav-link" data-scroll-target="#old-way-via-github-r-studio">‘Old’ way via Github &amp; R Studio</a></li>
+  </ul></li>
+  <li><a href="#viii.-install-via-github" id="toc-viii.-install-via-github" class="nav-link" data-scroll-target="#viii.-install-via-github">viii. Install via Github!</a></li>
+  </ul></li>
+  <li><a href="#iii.-handling-big-data-in-r" id="toc-iii.-handling-big-data-in-r" class="nav-link" data-scroll-target="#iii.-handling-big-data-in-r">III. Handling Big Data in R</a>
+  <ul class="collapse">
+  <li><a href="#collapse-advanced-and-fast-data-transformation" id="toc-collapse-advanced-and-fast-data-transformation" class="nav-link" data-scroll-target="#collapse-advanced-and-fast-data-transformation"><code>collapse</code> Advanced and Fast Data Transformation</a></li>
+  </ul></li>
+  <li><a href="#iv.-tidyverse-data-table-sqldatabases" id="toc-iv.-tidyverse-data-table-sqldatabases" class="nav-link" data-scroll-target="#iv.-tidyverse-data-table-sqldatabases">IV. Tidyverse Data Table &amp; SQL/Databases</a>
+  <ul class="collapse">
+  <li><a href="#tidyverse-wrapper-for-data.table" id="toc-tidyverse-wrapper-for-data.table" class="nav-link" data-scroll-target="#tidyverse-wrapper-for-data.table">Tidyverse wrapper for <code>data.table</code></a>
+  <ul class="collapse">
+  <li><a href="#using-dtplyr-to-handle-data.tables" id="toc-using-dtplyr-to-handle-data.tables" class="nav-link" data-scroll-target="#using-dtplyr-to-handle-data.tables">Using <code>dtplyr</code> to handle <code>data.table</code>’s</a></li>
+  </ul></li>
+  <li><a href="#tidyverse-wrapper-for-sqldatabases" id="toc-tidyverse-wrapper-for-sqldatabases" class="nav-link" data-scroll-target="#tidyverse-wrapper-for-sqldatabases">Tidyverse wrapper for SQL/databases</a></li>
+  </ul></li>
+  <li><a href="#v.-miscellaneous" id="toc-v.-miscellaneous" class="nav-link" data-scroll-target="#v.-miscellaneous">V. Miscellaneous</a>
+  <ul class="collapse">
+  <li><a href="#machine-learning-with-caret" id="toc-machine-learning-with-caret" class="nav-link" data-scroll-target="#machine-learning-with-caret">Machine Learning with <code>caret</code></a>
+  <ul class="collapse">
+  <li><a href="#what-can-caret-not-do-deep-learning-wkeras" id="toc-what-can-caret-not-do-deep-learning-wkeras" class="nav-link" data-scroll-target="#what-can-caret-not-do-deep-learning-wkeras">What can <code>caret</code> not do? (Deep learning w/<code>keras</code>)</a></li>
+  </ul></li>
+  <li><a href="#alternate-ml-package-tidymodels" id="toc-alternate-ml-package-tidymodels" class="nav-link" data-scroll-target="#alternate-ml-package-tidymodels">Alternate ML package <code>tidymodels</code></a>
+  <ul class="collapse">
+  <li><a href="#caret" id="toc-caret" class="nav-link" data-scroll-target="#caret">Caret</a></li>
+  <li><a href="#tidymodels" id="toc-tidymodels" class="nav-link" data-scroll-target="#tidymodels">Tidymodels</a></li>
+  </ul></li>
+  <li><a href="#text-analysis-with-tidytext" id="toc-text-analysis-with-tidytext" class="nav-link" data-scroll-target="#text-analysis-with-tidytext">Text Analysis with <code>tidytext</code></a></li>
+  <li><a href="#combining-ggplots-with-patchwork" id="toc-combining-ggplots-with-patchwork" class="nav-link" data-scroll-target="#combining-ggplots-with-patchwork">Combining <code>ggplot</code>’s with <code>patchwork</code></a>
+  <ul class="collapse">
+  <li><a href="#side-by-side" id="toc-side-by-side" class="nav-link" data-scroll-target="#side-by-side">1. Side-by-side</a></li>
+  <li><a href="#vertical" id="toc-vertical" class="nav-link" data-scroll-target="#vertical">2. Vertical</a></li>
+  <li><a href="#any-combination-of-side-by-side-and-vertical" id="toc-any-combination-of-side-by-side-and-vertical" class="nav-link" data-scroll-target="#any-combination-of-side-by-side-and-vertical">3. Any Combination of Side-by-side and Vertical</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#vi.-course-evaluation" id="toc-vi.-course-evaluation" class="nav-link" data-scroll-target="#vi.-course-evaluation">VI. Course Evaluation</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#activity.-student-rating-of-teacher-course-evaluations" id="toc-activity.-student-rating-of-teacher-course-evaluations" class="nav-link" data-scroll-target="#activity.-student-rating-of-teacher-course-evaluations">Activity. Student Rating of Teacher Course Evaluations</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  </ul></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 15: Package Development &amp; Misc. Topics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 29, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="i.-introduction" class="level1 jumbotron">
+<h1 class="jumbotron">I. Introduction</h1>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="where-weve-been" class="level2">
+<h2 class="anchored" data-anchor-id="where-weve-been">Where we’ve been –</h2>
+<p>The midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to <em>Course Objectives</em> (1)-(4,5) in the <a href="https://canvas.umn.edu/courses/293049/files?preview=26516582">syllabus</a>. Those skills break down into –</p>
+<ol type="1">
+<li><strong>Workflow</strong>
+<ul>
+<li>.Rprojects + Github, Rmarkdown, best <code>R</code> practices, reproducibility</li>
+</ul></li>
+<li><strong>Data Wrangling</strong>
+<ul>
+<li><code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>stringr</code>, <code>lubridate</code></li>
+<li>plus iteration with <code>purrr::map</code> family</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li><code>ggplot2</code>,<code>gt</code></li>
+</ul></li>
+<li><strong>Exploratory Data Analysis</strong>
+<ul>
+<li>Use the above to read, explore, clean/tidy, prepare for analysis and visualize <em>new</em> data</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="where-were-going" class="level2">
+<h2 class="anchored" data-anchor-id="where-were-going">Where we’re going –</h2>
+<p>As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize <code>R</code> and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –</p>
+<ol start="5" type="1">
+<li><strong>Enhanced Visualization</strong>
+<ul>
+<li>Interactivity w/ <code>ggplotly</code>, <code>reactable</code></li>
+<li>Enhance <code>gt</code> with <code>gtExtras</code> (and <code>flextable</code>, <code>ftExtra</code>)</li>
+<li>Intro to <code>flexdashboard</code></li>
+</ul></li>
+<li><strong>Websites in R + Github</strong>
+<ul>
+<li>Basics, personal webpage</li>
+<li>Websites as analytical display tools
+<ul>
+<li>Embedding <code>flexdashboard</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Spatial Visualization</strong>
+<ul>
+<li>‘Tidy Maps’ w/ <code>sf</code>or<code>sp</code> + <code>tidyverse</code> + <code>ggmaps</code> and <code>ggplot2</code></li>
+<li>Introduction to interactive maps with <code>ggplotly</code> and/or <code>leaflet</code></li>
+</ul></li>
+<li><strong>Github Collaboration &amp; Shiny Apps</strong>
+<ul>
+<li>Working with others in the same Github repository
+<ul>
+<li>Best practices</li>
+<li>Branching, merging, merge conflicts</li>
+<li>reseting to previous versions</li>
+</ul></li>
+<li>Developing a Shiny app for data communication</li>
+<li>Developing a Shiny <code>flexdashboard</code></li>
+</ul></li>
+<li><strong>Miscellaneous</strong> (<strong>today</strong>)
+<ul>
+<li>*How to develop a package with Rstudio &amp; Github</li>
+<li>*Brief intro to working with big data in R (<code>dt_plyr</code>, <code>collapse</code>)</li>
+<li>*Brief intro to interacting with SQL/databases in R (<code>db_plyr</code>)</li>
+<li>*Brief intro to text analysis in R (<code>tidytext</code>)</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="so-what-exactly-are-we-going-to-do-today" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</h2>
+<section id="developing-an-r-package-and-hosting-on-github" class="level3">
+<h3 class="anchored" data-anchor-id="developing-an-r-package-and-hosting-on-github">Developing an R package and hosting on Github</h3>
+<p>Today we’re going to outline how to develop a package in R with Github, <code>devtools</code>, <code>usethis</code>, <code>roxygon2</code>, and <code>pkgdown</code>. I’ll then give a brief demonstration and leave you with additional resources for more advanced topics regarding package development.</p>
+<p>Detailed websites/vignettes for each package and a comprehensive cheatsheet can be found here –</p>
+<ol type="1">
+<li><a href="https://devtools.r-lib.org/">devtools</a></li>
+<li><a href="https://usethis.r-lib.org/">usethis</a></li>
+<li><a href="https://roxygen2.r-lib.org/">roxygen</a></li>
+<li><a href="https://pkgdown.r-lib.org/articles/pkgdown.html">pkgdown</a></li>
+<li>Package development <a href="https://rklopotek.blog.uksw.edu.pl/files/2017/09/package-development.pdf">cheatsheet</a></li>
+</ol>
+</section>
+<section id="miscellaneous-topics-brief-intro-and-resources" class="level3">
+<h3 class="anchored" data-anchor-id="miscellaneous-topics-brief-intro-and-resources">Miscellaneous topics: brief intro and resources</h3>
+<p>We’ve covered <strong>a lot</strong> of <code>R</code> skills, packages, and applications this semester; however the world of <code>R</code> is quite nearly infinite, and growing. Here are some other useful packages for topics we didn’t cover –</p>
+<ol type="1">
+<li>Handling <em>big data</em> (<code>collapse</code>, <code>dtplyr</code>)</li>
+<li>Dealing with <em>databases</em> (<code>dbplyr</code>)</li>
+<li><em>Machine learning</em> (<code>caret</code>, <code>keras</code>, <code>tidymodels</code>)</li>
+<li><em>Text analysis</em> (<code>tidytext</code>)</li>
+<li>Combining <code>ggplot</code>’s (<code>patchwork</code>)</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="ii.-developing-an-r-package-with-github" class="level1 jumbotron">
+<h1 class="jumbotron">II. Developing an R package with Github</h1>
+<p>This portion of the lecture is a summary of <a href="https://github.com/mvuorre">Matti Vuorre’s</a> wonderful introduction &amp; tutorial (with references!) and is found on Github <a href="https://github.com/mvuorre/exampleRPackage">here</a>. It’s a great reference for developing <code>R</code> packages and I would <em>highly recommend</em> reading it all the way through on your own time, especially the introduction. I’ll then walk you through an example which likewise follows along with Vuorre’s Github tutorial.</p>
+<section id="i.-introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="i.-introduction-1">i. Introduction</h2>
+<section id="the-basic-flow" class="level3">
+<h3 class="anchored" data-anchor-id="the-basic-flow">The basic flow</h3>
+<ol type="1">
+<li><strong>Skeleton</strong>
+<ul>
+<li>Create <code>R</code> package with .Rproject in Rstudio</li>
+<li>Set up basic infrastructure</li>
+</ul></li>
+<li><strong>Description</strong>
+<ul>
+<li>Edit the <code>DESCRIPTION</code> &amp; <code>README</code></li>
+</ul></li>
+<li><strong>Data</strong>
+<ul>
+<li>Every package should at least have a sample data set (ideally the one used in your vignette tutorial)</li>
+<li>Can also have ‘real’ data if it’s publicly available</li>
+<li>Be very careful with other data and ensure it is shareable under IRB/HIPPA/Data use agreement guidelines</li>
+</ul></li>
+<li><strong>Source Code</strong>
+<ul>
+<li>Develop core functions, input/output structures, etc.</li>
+<li><em>Document functions</em> (inputs/outputs, purpose)</li>
+<li><em>Dependencies</em> (packages your functions require)</li>
+<li>Found in the <code>/R</code> folder by default</li>
+</ul></li>
+<li><strong>Documentation</strong>
+<ul>
+<li>Description of package, functions, data, etc.</li>
+<li>Machine &amp; human-readable format so can be accessed via help <code>?</code></li>
+</ul></li>
+</ol>
+</section>
+<section id="sharing-the-package-with-github" class="level3">
+<h3 class="anchored" data-anchor-id="sharing-the-package-with-github">Sharing the package with Github</h3>
+<p>The above steps will create a functional <code>R</code> package <em>on your local machine</em>, but you still need to share your great work with the world! That’s where Github comes in - luckily we’re already quite familiar with <code>R</code> <span class="math inline">\(\longleftrightarrow\)</span> Github connection, which makes these steps a lot easier.</p>
+<ol type="1">
+<li><strong>Sharing is Caring</strong>
+<ul>
+<li>Upload to Github to make your package &amp; source code publicly available!</li>
+<li>Can then be installed directly from Rstudio with <code>devtools::install_github(&lt;/your_github/the_package_repo&gt;)</code></li>
+</ul></li>
+<li><strong>Website</strong>
+<ul>
+<li>Most all of the wonderful packages we’ve used in this course have an associated <em>vignette</em>, typically hosted in an <code>R</code> website.</li>
+<li>Luckily, we already know how to do this!</li>
+<li>Add example(s) for how to use your package in practice</li>
+</ul></li>
+<li><strong>Additional Documents</strong>
+<ul>
+<li>Add any narrative documents necessary to the website
+<ul>
+<li>i.e.&nbsp;description of data, functions, manuscripts, supplementary materials</li>
+<li>links to publications or talks using the package</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="ii.-setting-up-an-r-package-from-scratch" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-setting-up-an-r-package-from-scratch">ii. Setting up an R package from scratch</h2>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-1_a6991f51cc50543211a1744d532dff8b">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Install devtools if necessary</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"devtools"</span>)) <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Install usethis if necessary</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"usethis"</span>)) <span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Install roxygen2 if necessary</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"roxygen2"</span>)) <span class="fu">install.packages</span>(<span class="st">"roxygen2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, .Rprojects will help us out a lot by initializing the our package’s directory with example scripts and the default structure it needs to be!</p>
+<p>Create a new <code>R</code> project with <code>File</code> <span class="math inline">\(\longrightarrow\)</span> <code>New Project…</code> <span class="math inline">\(\longrightarrow\)</span> <code>New Directory</code> <span class="math inline">\(\longrightarrow\)</span> <code>R Package</code>. <strong>Make sure <code>Create a git repository</code> is checked</strong> in order to enable Git.</p>
+<p>Check out the file structure of the repository.</p>
+</section>
+<section id="iii.-description" class="level2">
+<h2 class="anchored" data-anchor-id="iii.-description">iii. Description</h2>
+<p>There’s a specific machine-readable file called <code>DESCRIPTION</code> (automatically created by R Studio), which is read by <code>R</code> when ‘building’ the package. You’ll need to edit the file to correspond to your package specifically, <em>but don’t change the formatting</em>.</p>
+<section id="example-description" class="level3">
+<h3 class="anchored" data-anchor-id="example-description">Example <code>DESCRIPTION</code></h3>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-2_c0ba4bd33173e04e80ef8e416df21288">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> <span class="er">&lt;</span>package name<span class="sc">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Type<span class="sc">:</span> Package</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> <span class="er">&lt;</span>your title<span class="sc">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="er">&lt;</span>your_version<span class="sc">&gt;</span> <span class="co"># starts with 0.1.0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">"&lt;last name&gt;"</span>, <span class="st">"&lt;first name&gt;"</span>, <span class="at">email =</span> <span class="st">"&lt;your email&gt;"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>)) <span class="co">#author, credit</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> <span class="er">&lt;</span>brief description<span class="sc">&gt;</span>.</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>LazyData<span class="sc">:</span> true</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Depends<span class="sc">:</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">R</span> (<span class="sc">&gt;=</span> <span class="fl">4.1</span>) <span class="co">#change this as appropriate</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>packages<span class="sc">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#i.e. the usual stuff for example - </span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#ggplot2</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#dplyr</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#stringr</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#forcats</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="description-notes" class="level3">
+<h3 class="anchored" data-anchor-id="description-notes"><code>DESCRIPTION</code> Notes</h3>
+<ul>
+<li><this> means it is not a “” character, just normal typing, but those with “” need character quotes around them</this></li>
+<li>See <code>?person</code> for <code>Authors@R</code> syntax, include multiple w/ <code>c()</code> vector</li>
+<li>More detailed info about <code>DESCRIPTION</code>’s package meta data check out <a href="https://r-pkgs.org/description.html">this link</a></li>
+</ul>
+</section>
+<section id="readme" class="level3">
+<h3 class="anchored" data-anchor-id="readme"><code>README</code></h3>
+<p>While the <code>README</code> doesn’t get created by default in the packages repo, it’s generally a good idea to make one yourself with the usual <code>.RMD</code>. A convenient way to do this is with <code>usethis</code> –</p>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-3_9ba618abc5c9b52229741a827674f11f">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a README.rmd</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds it to .Rbuildignore file</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Most likely you’ll want to knit this to a <code>github_document</code> .md (like the hw) since that’s where the README will most likely be accessed/read by others.</p>
+</section>
+<section id="question" class="level3">
+<h3 class="anchored" data-anchor-id="question">Question</h3>
+<p>Why might we not want to simply load the entire <code>tidyverse</code> like usual? (Hint: dependencies)</p>
+</section>
+</section>
+<section id="iv.-data" class="level2">
+<h2 class="anchored" data-anchor-id="iv.-data">iv. Data</h2>
+<p>Here one should at least include an example data set upon which the functions in the package can be applied. Usually, this is the same data that is found in the vignette examples (see below). However, it’s possible that it can be ‘real’ data, <em>but be very, very careful</em> if you intend to make any protected or patient data public - ensure that it does not violate any data use agreements.</p>
+<p><a href="https://r-pkgs.org/data.html">Here</a> is a more detailed look at including external data in a package if you’re interested.</p>
+<section id="general" class="level3">
+<h3 class="anchored" data-anchor-id="general">General</h3>
+<p>We can conveniently add any R data (<code>.RDS</code>) from out global environment (i.e.&nbsp;a <code>tibble</code> or <code>data.frame</code>) into a/the <code>/data</code> folder with <code>usethis</code> –</p>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-4_ce40194542b8cbd03edf8cfd4a17561d">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add example data to /data folder</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Simultaneously creates folder if doesn't exist yet</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(<span class="sc">&lt;</span>data obj. name<span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="preprocessing">Preprocessing</h3>
+<p>If there is some pre-processing of data involved in your package, you can likewise employ <code>usethis</code> –</p>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-5_35d3e0c5f17ed8df2c7822e6b64d28be">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add example raw data to /data-raw folder</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Simultaneously creates folder if doesn't exist yet</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data_raw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>then add a <code>preprocess.R</code> script in the same <code>/data-raw</code> folder which performs the preprocessing and then calls the above <code>use_data()</code> on the resulting processed data object to put it in the <code>/data</code> folder.</p>
+</section>
+<section id="documenting-data-with-roxygen2" class="level3">
+<h3 class="anchored" data-anchor-id="documenting-data-with-roxygen2">Documenting Data with <code>roxygen2</code></h3>
+<p>Once you’re done with all that, it’s a good idea to add a <code>data.R</code> file to the <code>/R</code> folder, documentating &amp; describing the data <code>?</code>. You’ll need to check out <a href="https://roxygen2.r-lib.org/">roxygen2 documentation</a> for the full syntax, but here’s a good example to get you started –</p>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-6_42ef5a2aa8a7b367214d4e24a59642aa">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @title &lt;Title for data&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @description &lt;brief description&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @format &lt;object type, rows, columns, etc.&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' \describe{</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'   \item{variable(s) 1}{&lt;describe variable(s) 1&gt;}</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'   \item{variable(s) 2}{&lt;describe variable(s) 1&gt;}</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @source &lt;url to data on your github&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">"&lt;name of data&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>#'</code> denotes <code>roxygen2</code> syntax versus a normal comment <code>#</code></li>
+<li>Can add multiple data to both the <code>/data</code> folder as well as the <code>data.R</code> documentation, just need to leave a blank line in between each <code>roxygen2</code> doc.</li>
+<li>Will use the same <code>roxygen2</code> syntax for our functions below</li>
+</ul>
+</section>
+</section>
+<section id="v.-source-code" class="level2">
+<h2 class="anchored" data-anchor-id="v.-source-code">v. Source Code</h2>
+<p>Here we find the most important aspect of our package, what the package actually does! As you’ve no doubt noticed by this point, every package in <code>R</code> is really just a collection of functions. Unlike previous work we’ve done, much of which could be accomplished without user defined functions, when building a package <em>everything needs to be wrapped into a funcion</em> with <strong>well defined inputs and outputs</strong>.</p>
+<p><em>Important Note</em> - <strong>Do not include <code>library()</code> in your script</strong>, this is a big no-no and will cause global availability of functions to change for the user. Instead, use the literal (C++ style) attachment of packages like <code>dplyr::select</code>, <code>stringr::str_to_title</code>, etc.</p>
+<section id="example-package-functions" class="level3">
+<h3 class="anchored" data-anchor-id="example-package-functions">Example Package Functions</h3>
+<p>For the example package we’re building today, these are the collection of functions which work together to accomplish a larger task (like most packages).</p>
+<section id="bivariate-normal-lm-data-generator" class="level4">
+<h4 class="anchored" data-anchor-id="bivariate-normal-lm-data-generator">1. Bivariate Normal LM Data Generator</h4>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-7_18565ff47aa724f49d83a423e9288d7f">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Create lm data</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x   =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_1 =</span> <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">2</span>), <span class="co">#unequal variance</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rnorm</span>(n, <span class="dv">2</span>, <span class="dv">3</span>)),<span class="co">#implies interaction</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_2 =</span> <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"Control"</span>, <span class="st">"Treatment"</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y   =</span> x_1 <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="co">#base R pipe (new), %&gt;% depends on magrittr</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>x)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fit-lm-with-without-interaction" class="level4">
+<h4 class="anchored" data-anchor-id="fit-lm-with-without-interaction">2. Fit LM with &amp; without Interaction</h4>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-8_4220484a05581816cd735e0044cda68e">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit_lm <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_data) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fit lm from lm_data generator</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  lm.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x_1 <span class="sc">+</span> x_2, <span class="at">data =</span> lm_data)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#return lm model object</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(lm.mod)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>fit_lm_int <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_data) {</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fit lm from lm_data generator w/ interaction</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  lm.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x_1 <span class="sc">*</span> x_2, <span class="at">data =</span> lm_data)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#return lm model object</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(lm.mod)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-the-lm-fit" class="level4">
+<h4 class="anchored" data-anchor-id="plot-the-lm-fit">3. Plot the LM Fit</h4>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-9_6272f8830fe61beb420deb50a19da6e3">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_fit <span class="ot">&lt;-</span> <span class="cf">function</span>(lm.mod, lm_data, new_data, <span class="at">interaction =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Create string for title of plot</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  string <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(interaction, <span class="st">"w/ Interaction"</span>, <span class="st">""</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  r2     <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm.mod)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  preds  <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm.mod, new_data)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  rmse   <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((lm_data<span class="sc">$</span>y <span class="sc">-</span> preds)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Predict based on new data</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  lm_data <span class="sc">|&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">predicted_val =</span> preds</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> <span class="co">#Plot it</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> x_1, <span class="at">y =</span> y, <span class="at">colour =</span> x_2)) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> x_1, <span class="at">y =</span> predicted_val),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colour =</span> <span class="st">"orange"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">fill   =</span> <span class="st">"azure2"</span>) <span class="sc">+</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#440154FF"</span>, <span class="st">"#FDE725FF"</span>)) <span class="sc">+</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">sprintf</span>(<span class="st">"2 Class Bivariate Normal LM%s (R^2 = %g, RMSE = %g)"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                                  string, <span class="fu">round</span>(r2, <span class="dv">2</span>), <span class="fu">round</span>(rmse, <span class="dv">2</span>))) <span class="sc">+</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>()</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<p>Unlike .RMD’s, these source functions need to be <code>.R</code> files and should generally be in their own <code>.R</code> file (unless there’s a set of functions that are very similar or intimately related). Again, we’ll use <code>roxygen2</code> to create documentation for each function which can be accessed with <code>?</code> like usual. More detailed info about documenting data &amp; functions can be found <a href="https://r-pkgs.org/man.html">here</a></p>
+<p>Have no fear, R studio has a convenient way to insert a default <code>roxygen2</code> skeleton for functions, accessed by <code>Code</code> -&gt; <code>Insert Roxygen Skeleton</code> –</p>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-10_6896bae36e62aa2f06b1fc7b39b90d71">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' &lt;What the function is&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @description &lt;describe function's purpose&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param input_1 &lt;describe input 1, object type, etc.&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param input_2 &lt;describe input 2, object type, etc.&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return &lt;what object(s) the function returns&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export #Just tells R to load this function with library()</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' my_function(1, 2) #returns 3</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input_1, input_2) {</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  addition  <span class="ot">&lt;-</span> input_1 <span class="sc">+</span> input_2   </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(addition)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="vi.-building-package" class="level2">
+<h2 class="anchored" data-anchor-id="vi.-building-package">vi. Building package</h2>
+<p>Much like websites, we also have build tools which make putting our package together a whole lot easier!</p>
+<section id="step-1.-roxygen" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.-roxygen">Step 1. Roxygen</h3>
+<p>First, make sure that Rstudio knows to generate your package with <code>roxygen2</code> documentation by going to <code>Tools</code> <span class="math inline">\(\longrightarrow\)</span> <code>Project Options...</code> <span class="math inline">\(\longrightarrow\)</span> <code>Build Tools</code>; and ensure that (1) “Generate documentation with roxygen” is checked and (2) within the <code>Build Tools &gt; Configure</code> menu, that “Automatically run roxygen when running install &amp; restart” is also checked.</p>
+</section>
+<section id="step-2.-delete-default-files" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.-delete-default-files">Step 2. Delete Default Files</h3>
+<p>If you initialized your package with an R project (as we did above), you’ll need to delete the default <code>/man/hello.Rd</code> and <code>NAMESPACE</code> files (to make room for your new documentation!).</p>
+</section>
+<section id="step-3.-install-and-restart" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.-install-and-restart">Step 3. Install and Restart</h3>
+<p>Finally, all you have to do to build and install your package is to go to R Studio’s <code>Build</code> tab in the upper right pane with <code>Git</code> and <code>Environment</code>, and select “Install and Restart”.</p>
+</section>
+<section id="step-4.-use-the-package" class="level3">
+<h3 class="anchored" data-anchor-id="step-4.-use-the-package">Step 4. Use the package</h3>
+<p>Now that your package is installed <em>locally</em>, you can call it like usual with <code>library()</code>. Test out the example functions &amp; data to make sure everything is good to go!</p>
+</section>
+</section>
+<section id="vii.-sharing-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="vii.-sharing-on-github">vii. Sharing on Github</h2>
+<p>Now that we’ve built our package locally, we’re going to need Github in order make it <em>publicly available</em>. However, recall that earlier we had initialized our project with Git, this means that all we need to do now is connect it to Github!</p>
+<p><em><strong>Note</strong> that this flow is different than usual, here we are connecting to Github last as opposed to first.</em></p>
+<p>There are two main ways to do this, following <a href="https://happygitwithr.com/existing-github-last.html">Jenny Bryan’s Happy Git and Github for the useR: 17 Existing Project, Github Last</a>’s example –</p>
+<section id="new-way-via-usethisuse_github" class="level3">
+<h3 class="anchored" data-anchor-id="new-way-via-usethisuse_github">‘New’ way via <code>usethis::use_github()</code></h3>
+<section id="jennys-example" class="level4">
+<h4 class="anchored" data-anchor-id="jennys-example">Jenny’s Example</h4>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-11_5eedf22bea87ebb2865834ec0cbf54cf">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Creating GitHub repository 'jennybc/myrepo'</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Setting remote 'origin' to 'https://github.com/jennybc/myrepo.git'</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Pushing 'main' branch to GitHub and setting 'origin/main' as upstream branch</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Opening URL 'https://github.com/jennybc/myrepo'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is the first method in Jenny’s chapter. However, I’m not super familiar with <code>usethis</code> so it’s possible for this not to work if there are discrepancies with HTTPS, login credentials, personal access tokens (PATs), or SSH. If so, refer to Jenny’s book to fix this.</p>
+</section>
+</section>
+<section id="old-way-via-github-r-studio" class="level3">
+<h3 class="anchored" data-anchor-id="old-way-via-github-r-studio">‘Old’ way via Github &amp; R Studio</h3>
+<p>This way is very similar to the usual way we initialize repo’s on github and then clone them to our local machine. Refer to earlier lectures for more specifics about connecting Github with .Rporjects.</p>
+<p>The steps to do so are as follows –</p>
+<ol type="1">
+<li>Make a new github repo with same name as the package
+<ul>
+<li><strong>Note</strong> package names cannot have <code>_</code>’s, must use <code>.</code> or <code>-</code> to seperate words</li>
+<li><strong>DO NOT</strong> initialize your repo with anything in it (otherwise it will conflict with your local repo)</li>
+</ul></li>
+<li>Click “&lt;&gt; Code” and copy the HTTPS (or SSH) key</li>
+<li>Connect with local repo via
+<ol type="i">
+<li>Rstudio
+<ul>
+<li>Click on “two purple boxes and white square” in the upper right Git pane</li>
+<li>Click “Add remote”</li>
+<li>Choose remote name <code>origin</code></li>
+<li>Paste your Github repo’s url</li>
+</ul></li>
+<li>Shell / Command Line / Terminal
+<ul>
+<li><code>git remote add origin &lt;github repo url&gt;</code></li>
+<li><code>git push --set-upstream origin main</code></li>
+</ul></li>
+</ol></li>
+<li>Go back to Github and check that everything worked properly</li>
+</ol>
+</section>
+</section>
+<section id="viii.-install-via-github" class="level2">
+<h2 class="anchored" data-anchor-id="viii.-install-via-github">viii. Install via Github!</h2>
+<p>Once that’s all done, check and make sure you can install your package directly from github with <code>devtools::install_github("&lt;git_user_name/package_repo_name&gt;")</code>. Pretty cool right?!</p>
+</section>
+</section>
+<section id="iii.-handling-big-data-in-r" class="level1 jumbotron">
+<h1 class="jumbotron">III. Handling Big Data in R</h1>
+<p>While you may not have much experience with ‘big data’ or ‘high dimensional’ (<span class="math inline">\(p &gt;&gt;&gt; n\)</span>) data, if you continue to work in a data science role you will probably run into these in the future.</p>
+<p>In the past, R was not a very efficient language in the sense that it was slow, specialized to statistics, and bulky. Over the years, however, thanks to the development of the <code>tidyverse</code> &amp; <code>data.table</code>, newer <code>R</code> packages have transformed a ‘stats program’ into a highly functional, efficient, flexible language which can easily wrap other languages inside it on the backend (C++/Rcpp, python, SQL, HTML, markdown, etc.)</p>
+<p>Below are a collection of ‘big data’ tools that exist within the <code>R</code> universe, I don’t have much experience with all of them but from what I’ve read they’re pretty easy to implement (given the solid foundation we’ve developed in this course). I’ll give a quick description of the package and link to any relavent materials for your (and my) future use.</p>
+<section id="collapse-advanced-and-fast-data-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="collapse-advanced-and-fast-data-transformation"><code>collapse</code> Advanced and Fast Data Transformation</h2>
+<p>Maintained by Sebastian Krantz, <code>collapse</code> makes use of the speed &amp; efficiency of C/C++ libraries for <em>extremely fast</em> data transformation that’s well integrated with the <code>tidyverse</code> (i.e.&nbsp;<code>tibble</code>’s, <code>dplyr</code>, <code>group_by</code>, <code>summarise</code>), as well as statistical computing. It also handles the usual <code>base</code>, <code>data.table</code>, <code>array</code>, and <code>list</code> structures nicely.</p>
+<ul>
+<li>The primary documentation can be found <a href="https://cran.r-project.org/web/packages/collapse/index.html">here</a></li>
+<li>The Sebastian’s awesome vignette is found <a href="https://sebkrantz.github.io/collapse/">here</a></li>
+<li>The source code is found on <a href="https://github.com/SebKrantz/collapse">Sebastian’s Github</a></li>
+<li>It’s so new and useful, it even has it’s own <a href="https://twitter.com/collapse_R">Twitter</a>!</li>
+</ul>
+<p>If you find yourself in a situation where the usual <code>dplyr</code> operations are taking forever becuase the data is too large or complex, <code>collapse</code> can make your life a lot easier!</p>
+</section>
+</section>
+<section id="iv.-tidyverse-data-table-sqldatabases" class="level1 jumbotron">
+<h1 class="jumbotron">IV. Tidyverse Data Table &amp; SQL/Databases</h1>
+<p>One of the nicest things about <code>R</code>’s community of open source developers, and specifically the <code>tidyverse</code>’s, is that most of the really useful/necessary things you’d normally need to learn separately have been wrapped into <code>tidyverse</code> syntax for us!</p>
+<p>The <code>tidyverse</code> is so comprehensive, cohesive, and constantly growing that to me, it seems obvious that it will probably be the long-term dominating syntax/structure amongst <code>R</code> users. Many people would vehemently disagree with that statement, but even they would admit that at the very least, learning the <code>tidyverse</code> is a good investment for a future in any type of data science/analytics role.</p>
+<section id="tidyverse-wrapper-for-data.table" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-wrapper-for-data.table">Tidyverse wrapper for <code>data.table</code></h2>
+<p>Now I personally have never liked <code>data.table</code> syntax, but there are many people (seemingly more CS minded people), how prefer it for a variety of reasons; first and foremost of which is <em>size</em> and <em>speed</em>. <code>data.table</code> handles big data well and can perform the usual <code>dplyr</code>/<code>tidyr</code> operations in a fraction of the time.</p>
+<p>Like the <code>tidyverse</code>, <code>data.table</code> is widely used amongst <code>R</code> users and has a ton of support, documentation, etc. If you’re curious here’s an <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">introduction to <code>data.table</code></a>, a <a href="https://rdatatable.gitlab.io/data.table/">comprehensive vignette/website</a>, and a couple blogs comparing/contrasting <code>data.table</code> vs.&nbsp;<code>tidyverse</code> vs.&nbsp;<code>base</code> <a href="https://wetlandscapes.com/blog/a-comparison-of-r-dialects/#:~:text=The%20tidyverse%2C%20for%20example%2C%20emphasizes,when%20datasets%20get%20fairly%20large">here</a> and <a href="https://mgimond.github.io/rug_2019_12/Index.html">here</a>.</p>
+<p>However, given our expertise in the <code>tidyverse</code>, there’s very little reason to learn <code>data.table</code> syntax due to the new-ish package <code>dtplyr</code> (<code>dt</code> = <code>data.table</code>), as well as <code>collapse</code> above.</p>
+<section id="using-dtplyr-to-handle-data.tables" class="level3">
+<h3 class="anchored" data-anchor-id="using-dtplyr-to-handle-data.tables">Using <code>dtplyr</code> to handle <code>data.table</code>’s</h3>
+<p>Sometimes it may be convenient to work with <code>data.table</code> objects for <em>size</em> and <em>speed</em> (<code>fread()</code> versus <code>readr</code>, much faster too); but who wants to learn a whole new syntax??</p>
+<p>Thanks to <code>dtplyr</code> we don’t have to! Here is the <a href="https://dtplyr.tidyverse.org/">wonderful vignette/website</a> and <a href="https://dtplyr.tidyverse.org/articles/translation.html">this article</a> explains exactly how <code>dtplyr</code> translates <code>dplyr</code> into <code>data.table</code> commands (via queries).</p>
+<p>It should be noted that by design, <code>dtplyr</code> is a little slower than <code>data.table</code> because inherently, translation takes a little time. Honestly, <code>collapse</code> may be more worthwhile to check out than <code>data.table</code>, unless you end up in an environment where everyone is using <code>data.table</code>.</p>
+</section>
+</section>
+<section id="tidyverse-wrapper-for-sqldatabases" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-wrapper-for-sqldatabases">Tidyverse wrapper for SQL/databases</h2>
+<p>Similar to above, the <code>tidyverse</code> also has an excellent wrapper for generating SQL queries via <code>dplyr</code> syntax. Given that we are now well versed in <code>dplyr</code> verbs (i.e.&nbsp;<code>select</code>, <code>filter</code>, etc.), you’ll be delighted to know most of the <code>dplyr</code> verbs are borrowed/shared with SQL! While this makes SQL relatively easy to learn and implement, during your learning process one can utilize <code>dbplyr</code> to translate or generate SQL queries to relational databases.</p>
+<p>The awesome vignette/website can be accessed <a href="https://dbplyr.tidyverse.org/">here</a>. It’s a little more complicated than <code>dtplyr</code> so do peruse all the different articles, but in particular, <a href="https://dbplyr.tidyverse.org/articles/sql.html">Writing SQL with <code>dbplyr</code></a>, <a href="https://dbplyr.tidyverse.org/articles/translation-function.html">Function translation</a>, and <a href="https://dbplyr.tidyverse.org/articles/translation-verb.html">Verb translation</a>.</p>
+</section>
+</section>
+<section id="v.-miscellaneous" class="level1 jumbotron">
+<h1 class="jumbotron">V. Miscellaneous</h1>
+<section id="machine-learning-with-caret" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-with-caret">Machine Learning with <code>caret</code></h2>
+<p>Some of you may be familiar with some individual machine learning libraries for particular models (i.e.&nbsp;<code>glmnet</code> for penalized glm’s or <code>randomForest</code> for bagged, random predictor sampled trees). Within the last 10 years though, the <code>caret</code> library has been developed which standardizes syntax and methodology for preprocessing, feature selection, tuning/training via resampling, and variable importance when deploying ML models. I personally use <code>caret</code> all the time, it has an incredibly dense and comprehensive library of different tools for regression and classification.</p>
+<p>As a package, <code>caret</code> is so useful and widely supported that it actually has it’s own online <a href="https://topepo.github.io/caret/">textbook</a>. If you’re unfamiliar with ML in general, it’s a decent introduction to deploying ML models in practice (but not the statistical/CS theory). StackExchange and StackOverflow are great resources for questions as general as “How do I train a model with caret r” to “what do the parameters in model x describe r”.</p>
+<p>It should be noted that <code>caret</code> is literally a library, each model you use is pulled off the shelf as it’s own self contained package - meaning that it necessarily depends on the package which contains the model (i.e.&nbsp;<code>glmnet</code>, <code>randomForest</code>, <code>XGBoost</code>, <code>nnet</code>, etc.).</p>
+<p>It will prompt you to download the required packages if you don’t have them, <em>but if you have a specific question</em> about a models parameters, additional arguments, etc. <em>you’ll need to pass those through the function manually</em> and <em>you’ll need to google for solutions <strong>within that model’s package</strong>, not <code>caret</code> itself</em>.</p>
+<p>You can <a href="https://topepo.github.io/caret/available-models.html">search through all available models</a> in Chapter 6, with comprehensive documentation about <a href="https://topepo.github.io/caret/train-models-by-tag.html">training models by tag</a> in Chapter 7 (giving the required package(s) and paramters in a given model). I’d highly recommend finding your desired model(s) with the first link, then using “Ctrl + f” to search through the second link and locate the training info for your model(s).</p>
+<section id="what-can-caret-not-do-deep-learning-wkeras" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-caret-not-do-deep-learning-wkeras">What can <code>caret</code> not do? (Deep learning w/<code>keras</code>)</h3>
+<p>Unfortunately, <code>caret</code> was not designed with deep learning in mind (dense, multi-layered, complex neural networks of varying structure and function). Which isn’t a problem because those tools have been widely developed in the Python universe with PyTorch and TensorFlow. Luckily there’s another package called <code>keras</code> (a wrapper for Python deep learning which supports TensorFlow, GPUs, etc.) which allows us to build dense, complex neural networks all within the usual piped syntax from layer to layer.</p>
+<p>Here is the <a href="https://keras.rstudio.com/">R interface to Keras</a> comprehensive website with tutorials, articles, examples, and references.</p>
+</section>
+</section>
+<section id="alternate-ml-package-tidymodels" class="level2">
+<h2 class="anchored" data-anchor-id="alternate-ml-package-tidymodels">Alternate ML package <code>tidymodels</code></h2>
+<p>Normally, something with a name like <code>tidymodels</code> would be right up my alley because I generally love all things <code>tidyverse</code> - however this may be an exception (or I may just be old and don’t want to learn a new ML workflow). Overall, it looks like a very well maintained, functional, flexible framework for building ML workflows with <code>tidyverse</code> principles, structures, and syntax. If you are unfamiliar with <code>caret</code> and <code>tidymodels</code> then I would check out both and see which style you like better. The comprehensive website for <code>tidymodels</code> is found <a href="https://www.tidymodels.org/">here</a> and <a href="https://www.tidymodels.org/start/">this 5 step tutorial</a> is a great introduction to the package.</p>
+<p>Having used <code>caret</code> for many years and after reading through <code>tidymodels</code> documentation thoroughly, there are definitely a mixture of pro’s and con’s. Here are my key takeaways -</p>
+<section id="caret" class="level3">
+<h3 class="anchored" data-anchor-id="caret">Caret</h3>
+<section id="pros" class="level4">
+<h4 class="anchored" data-anchor-id="pros"><strong>Pros</strong></h4>
+<ul>
+<li>Over 100+ model types/classes</li>
+<li>Well documented and easy to search through (see book above)</li>
+<li>Syntax for tuning/training with resampling (CV, LOOCV, OOB, etc.) never changes
+<ul>
+<li>Little goofy at first but once you’re familiar it makes sense</li>
+<li>Preprocessing is included</li>
+</ul></li>
+<li>Wrapper around underlying package (i.e.&nbsp;<code>glmnet</code>, <code>nnet</code>, <code>XGboost</code>, etc.)
+<ul>
+<li>Allows you to pass additional arguments to model (see package documentation)</li>
+<li>Allows you to manually define tuning grids for parameters (<code>base::expand.grid</code>)</li>
+</ul></li>
+<li>Not tidy output, but easy to extract performance metrics over tuning, best tune, params, etc.</li>
+</ul>
+</section>
+<section id="cons" class="level4">
+<h4 class="anchored" data-anchor-id="cons"><strong>Cons</strong></h4>
+<ul>
+<li>Doesn’t have <em>every</em> ML model class or package but it has a ton of them</li>
+<li>Not tidy, returns list of <code>data.frame</code>’s and other objects as opposed to a <code>tibble</code> w/list columns
+<ul>
+<li>Requires a little work translating the base <code>R</code> output into a <code>tibble</code> &gt; <code>ggplot</code>/<code>gt</code></li>
+<li>However, only need to figure it out once, can wrap into function to process output</li>
+</ul></li>
+<li>Can be a little finicky passing parameters through tuning (ex. in RF <code>.mtry</code> vs.&nbsp;<code>mtry</code> due to var masking)</li>
+<li>Is marginally slower due to the <code>caret</code> wrapper than the packages themselves</li>
+</ul>
+</section>
+</section>
+<section id="tidymodels" class="level3">
+<h3 class="anchored" data-anchor-id="tidymodels">Tidymodels</h3>
+<section id="pros-1" class="level4">
+<h4 class="anchored" data-anchor-id="pros-1"><strong>Pros</strong></h4>
+<ul>
+<li><code>tidyverse</code> principles and syntax</li>
+<li>Build models sequentially with recipe, baking, engine, etc. (<code>%&gt;%</code>)</li>
+<li>Can choose the ‘engine’ for a given model
+<ul>
+<li>i.e.&nbsp;can choose <code>glmnet</code> or <code>keras</code> to fit a penalized logistic glm (last step)</li>
+</ul></li>
+<li>Allows for very flexible model building &amp; output manipulation</li>
+<li>Can pass results naturally to other <code>tidyverse</code> staples like <code>ggplot2</code> or <code>gt</code></li>
+<li>Has built in packages to select ‘reasonable’ tuning grids best on a ‘depth’ argument</li>
+<li>Built with statistician’s in mind, has much more natural inferential capability</li>
+<li>Has <code>keras</code> built in so can incorporate deep learning</li>
+</ul>
+</section>
+<section id="cons-1" class="level4">
+<h4 class="anchored" data-anchor-id="cons-1"><strong>Cons</strong></h4>
+<ul>
+<li>Unlike <code>caret</code>, which is an umbrella for individual ML packages, <code>tidymodels</code> also contains a bunch of other non-ML tidy packages like <code>parsnip</code>, <code>recipes</code>, <code>tune</code>, <code>yardstick</code>, <code>rsample</code>, etc.</li>
+<li>Each one, while ‘tidy’, does have it’s own unique syntax unlike any models you’ve fit before in R</li>
+<li>Makes it inherently more complex to learn</li>
+<li>Workflow is broken up into many steps each with unique functions/packages vs.&nbsp;self contained in 1 cohesive function/syntax in <code>caret</code></li>
+<li>While it has <code>keras</code> wrapped in (TensorFlow backend), I think using <code>keras</code> on it’s ownfor deep learning is just as easy</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="text-analysis-with-tidytext" class="level2">
+<h2 class="anchored" data-anchor-id="text-analysis-with-tidytext">Text Analysis with <code>tidytext</code></h2>
+<p>You may find yourself engaging in some text analysis at some point, from something as simple as locating particular info or meta data from character strings to something as complicated as sentiment analysis, text classification (ML), or Natural Language Processing (NLP, deep learning). If you find yourself in this scenario, I’d highly recomend utilizing the <code>tidytext</code>, a <code>tidyverse</code> friendly interface for text mining and analysis.</p>
+<p>Here is a nice <a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html">introduction</a> from Julia Silge and David Robinson, and here is the free online book called <a href="https://www.tidytextmining.com/">Text Mining with R</a> (same authors as the intro).</p>
+</section>
+<section id="combining-ggplots-with-patchwork" class="level2">
+<h2 class="anchored" data-anchor-id="combining-ggplots-with-patchwork">Combining <code>ggplot</code>’s with <code>patchwork</code></h2>
+<p>Last but not least, there’s one other super useful add on to <code>ggplot2</code> called <code>patchwork</code> (which I forgot to mention earlier in the semester) that allows us to combine <code>ggplot</code>’s in a convenient, easy-to-understand syntax. The official vignette/website can be accessed <a href="https://patchwork.data-imaginist.com/">here</a>, with tons of references and examples.</p>
+<p>The package, developed and maintained by Thomas Lin Pedersen, can now be downloaded from CRAN like usual <code>install.pacakges("patchwork")</code> and the most recent dev version can be installed from Github with <code>devtools::install_github("thomasp85/patchwork")</code>. Funny enough, when I first started using this package it was still only a dev version on Github and now it’s a full blown CRAN package! (similar to <code>gt</code>, <code>gtExtras</code>).</p>
+<p>It’s super functional and easy to use, here are the basics –</p>
+<section id="side-by-side" class="level3">
+<h3 class="anchored" data-anchor-id="side-by-side">1. Side-by-side</h3>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-12_1d0648da7a13e5ea77407e2a8cf9a250">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two side by side</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">+</span> ggplot2</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Multiple side by side</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">+</span> ggplot_2 <span class="sc">+</span> ... <span class="sc">+</span> ggplot_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vertical" class="level3">
+<h3 class="anchored" data-anchor-id="vertical">2. Vertical</h3>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-13_f5af08ef813234d9ba0d2803b3bc3022">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two top and bottom</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">/</span> ggplot2</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Many top and bottom</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">/</span> ggplot_2 <span class="sc">/</span> ... <span class="sc">/</span> ggplot_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="any-combination-of-side-by-side-and-vertical" class="level3">
+<h3 class="anchored" data-anchor-id="any-combination-of-side-by-side-and-vertical">3. Any Combination of Side-by-side and Vertical</h3>
+<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-14_969a2c2dfb7f98b7519ec162b937523e">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two above one wide below</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(ggplot_1 <span class="sc">+</span> ggplot_2) <span class="sc">/</span> ggplot_3</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Square layout</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>(ggplot_1 <span class="sc">+</span> ggplot_2) <span class="sc">/</span> (ggplot_3 <span class="sc">+</span> ggplot_4)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#One above two below</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">/</span> (ggplot_2 <span class="sc">+</span> ggplot_3)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It can also scale to ‘arbitrarily complex layouts’, meaning you are free to create whatever you want without many constraints!</p>
+</section>
+</section>
+</section>
+<section id="vi.-course-evaluation" class="level1">
+<h1>VI. Course Evaluation</h1>
+</section>
+<section id="section" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="activity.-student-rating-of-teacher-course-evaluations" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity.-student-rating-of-teacher-course-evaluations">Activity. Student Rating of Teacher Course Evaluations</h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+<p>You all should have gotten an email a few weeks ago via University of Minnesota’s Evaluations System <a href="mailto:eval@umn.edu" class="email">eval@umn.edu</a> regarding Student Rating of Teacher course evaluations. Please find the email, click on the link and I’ll the last 10-15 minutes of class for you all to fill out the evaluation. These evaluations not only helps me be a better teacher but also helps us better meet the needs of future students, so I’d really appreciate any thoughtful feedback you have regarding the course.</p>
+</section>
+</section>
+<section id="thank-you" class="level1 jumbotron">
+<h1 class="jumbotron">Thank you!</h1>
+<p>It’s been a pleasure having you all in class, I’m looking forward to seeing the awesome work you’ve put into your final projects, and I wish you the best of luck in your future careers. If you need a letter of reference in the near future regarding your skills in data science, R, or programming for an internship or application, please feel free to reach out I’d be happy to oblige.</p>
+<blockquote class="blockquote">
+<p><em>Parting is such sweet sorrow, That I shall say good night till it be morrow. My necessaries are embark’d: farewell. Adieu!</em><br>
+- Juliet, <em>Romeo &amp; Juliet</em></p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

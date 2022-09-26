@@ -11,7 +11,1015 @@
     "href": "index.html",
     "title": "Quinton Neville",
     "section": "",
-    "text": "Hey y’all – I’m Q, nice to meet ya!\n I dabble in Biostatistics, Data Science, and Maths, and am currently a 4\\(^{\\text{th}}\\) year PhD candidate in Biostatistics at the University of Minnesota. Prior, I received a BA from St. Olaf College with Distinction in Mathematics in 2018 and an MS in Biostatistics from Columbia University in 2020. My dissertation work revolves around fMRI brain imaging, hierarchical graphical models for multivariate time-series, and deep learning methods for ‘multiview’ data (brain imaging + “-omics”) with applications in mental health research – while my current day-to-day biostatistics work concerns interim analyses and conditional power in COVID-related clinical trials.\nWith the navbar above you can check out my resume and some current work, presentations, & publications. I’m an avid R user, passionate about data science, and would love to share my technical skills and biostatistics domain knowledge with an industry leader in the healthcare/data science field for an internship Summer ’23 | full-time position ’24.\n\n\n\n\nAbout me\n In my spare time you’re likely to catch me reading whatever new book by my favourite non-fiction author, Leonard Mlodinow, has recently published – or an older novel from the lesser known Stephen King, a relatively obscure author of mild fiction. I’m also a huge Lord of the Rings fan and have traveled all the way to New Zealand just to have a pint at the Green Dragon in Hobbiton. I love music and still slap some jazz bass & rock’n’roll guitar when the mood strikes. Though I’m getting older, I do still try to stay active and lift a weight or go for a jog when I can. Lastly, and probably most importantly, I am a firm, steadfast, unequivocal believer that hotdogs are sandwiches (sorry if that’s a problem). \n\n“If it was easy, everyone would do it.” - Dan Neville\n\n\n“…and so do all who live to see such times. But that is not for them to decide. All we have to decide is what to do with the time that is given us.” - Gandalf"
+    "text": "Hey y’all – I’m Q, nice to meet ya!\n I dabble in Biostatistics, Data Science, and Maths, and am currently a 4\\(^{\\text{th}}\\) year PhD candidate in Biostatistics at the University of Minnesota. Prior, I received a BA from St. Olaf College with Distinction in Mathematics in 2018 and an MS in Biostatistics from Columbia University in 2020. My dissertation work revolves around fMRI brain imaging, hierarchical graphical models for multivariate time-series, and deep learning methods for ‘multiview’ data (brain imaging + “-omics”) with applications in mental health research – while my current day-to-day biostatistics work concerns interim analyses and conditional power in COVID-related clinical trials.\nWith the navbar above you can check out my resume and some current work, presentations, & publications. I’m an avid R user, passionate about data science, and would love to share my technical skills and biostatistics domain knowledge with an industry leader in the healthcare/data science field for an internship Summer ’23 | full-time position ’24.\n\n\n\n\nAbout me\n In my spare time you’re likely to catch me reading whatever new book my favourite non-fiction author, Leonard Mlodinow, has recently published or a classic from Stephen King. I’m also a huge Lord of the Rings fan and have traveled all the way to New Zealand just to have a pint at the Green Dragon in Hobbiton, among other things like skydiving and scuba or whatever. I love music and still slap some jazz bass & rock’n’roll guitar when the mood strikes. Lastly, and probably most importantly, I am a firm, steadfast, unequivocal believer that hotdogs are sandwiches. \n\n“If it was easy, everyone would do it.” - Dan Neville\n\n\n“…and so do all who live to see such times. But that is not for them to decide. All we have to decide is what to do with the time that is given us.” - Gandalf"
+  },
+  {
+    "objectID": "old_work/publications.html",
+    "href": "old_work/publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Flynn, P., Neville, Q., & Scheel, A. (2019). Self-organized clusters in diffusive run-and-tumble processes. Discrete & Continuous Dynamical Systems-S, 23-152."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nWebsites in R + Github\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nSpatial Visualization (today)\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nShiny Apps\n\nBasics\nPublish in an R hosted website\n\nEmbedding interactive flexdashboards\nEmbedding shiny apps\n\n\nMiscellaneous\n\n*Working with big data in R dt_plyr, collapse, h2o, sparklyr\n*Working with databases in R db_plyr\n*How to develop a package with Rstudio & Github\n*Webscraping with R\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-1",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-1",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "So what exactly are we going to do today?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-2",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-2",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "First, we’re going to briefly cover joining multiple data sources with dplyr with spatial examples. Then we’re going to build onto last week’s lecture and expand our spatial data toolbox in R with more advanced use of sf, ggmaps, tidycensus, as well as an introduction to fully interactive leaflet. Finally, we will apply these tools in an activity where we create and edit more advanced spatial visualizations.\n\n#Install the packages for today if you don't already have them\ninstall.packages(c(\"sf\", \"ggmap\", \"tmap\", \"tidycensus\", \"leaflet\", \"osmdata\", \"tigris\"))"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-4",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-4",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 1. (MN) More advanced sf + ggplotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-5",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-5",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "First, let’s download the ggthemes package for a few more thematic choices in our ggplot’s.\n\n#Install ggrepel if necessary \nif (!require(ggthemes)) {\n  install.packages(\"ggthemes\", quiet = TRUE)\n}\n\n#Call the library\nlibrary(ggthemes, quietly = TRUE)\n\nNext, let’s read in our MN .shp file (from last week’s lecture).\n\n#Read in the shape file (don't make a tibble)\nmn.df <- st_read(\"./data/USA_Counties/USA_Counties.shp\", quiet = TRUE) %>%\n  janitor::clean_names() %>%\n  filter(state_name %in% \"Minnesota\")\n\nNext, let’s build our ggplot but add a little more information with our usual data wrangling skills and employ a better ggthemes.\n\nmn_pop.gg <- mn.df %>%\n  dplyr::select(name, white:other, renter_occ, owner_occ, geometry) %>%\n  rename(county = name) %>%\n  pivot_longer(\n    cols      = white:other, #tidy long data by category\n    names_to  = \"race_category\",\n    values_to = \"race_pop\"\n  ) %>%\n  mutate(\n    race_category = str_replace_all(race_category, \"_\", \" \") %>%\n                    str_to_title() %>%\n                    as_factor()\n  ) %>%\n  group_by(county) %>% #County level population\n  mutate(county_pop = sum(race_pop)) %>%\n  group_by(county, race_category) %>%\n  summarise(\n    perc_race = race_pop / county_pop,\n    perc_rent = renter_occ / (renter_occ + owner_occ),\n    geometry   = geometry\n  ) %>%\n  ungroup() %>%\n  nest(data = c(\"race_category\", \"perc_race\", \"geometry\")) %>%\n  mutate(\n    text_label = map_chr(.x = data, \n                     ~str_c(\n                       \"\\n\",\n                       .x$race_category,\n                       \": \", \n                       scales::percent(.x$perc_race, accuracy = 0.0001),\n                       collapse = \"\"\n                      )\n                 ),\n    text_label = str_c(county, \"\\nDemographics\", text_label, \"\\nAvg. Rental Percentage: \", scales::percent(perc_rent, accuracy = 0.01))\n  ) %>%\n  unnest(data) %>%\n  st_as_sf() %>%\n  ggplot() +\n  geom_sf(aes(fill = perc_rent, text = text_label),\n          colour = \"black\", size = 0.8, alpha = 0.6) +\n  labs(\n    title = \"2017 MN ACS Rent vs. Own % by County\" \n  ) +\n  scale_fill_viridis_c(\"Percent Rental\", labels = scales::percent) +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 24,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 20),\n    legend.title = element_text(size = 20),\n    legend.position = \"right\"\n  )\n\n\n#Plotly\nggplotly(mn_pop.gg, \n         tooltip = \"text\",\n         height  = 600,\n         width   = 800) %>%\n  style(hoveron = \"fills\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#working-with-plotly",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#working-with-plotly",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Working with plotly",
+    "text": "Working with plotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-7",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-7",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 2. (MN) More advanced tidycensus + ggplotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-8",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-8",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Request the ACS estimates for median income in Hennepin County, MN, at the census tract level from the US census.gov via tidycensus.\n\n#Save the cache so you don't need to call the same API request over and over\noptions(tigris_use_cache = TRUE)\n\n#Call the ACS API, returns a sf object\nmn_income.df <- get_acs(\n  geography = \"tract\",\n  variables = \"B19013_001\", #Code for median income\n  state     = \"MN\",\n  county    = \"Hennepin\",\n  year      = 2020,\n  geometry  = TRUE\n)\n\nNow let’s plot it with a nice theme and turn it into a plotly\n\n#Add a text label to mn_income.df\nmn_income_plotly.df <- mn_income.df %>%\n  mutate(\n    tract      = str_split(NAME, \",\") %>%\n                 map_chr(1) %>%\n                 str_remove(\"Census Tract \"),\n    text_label = str_c(\n                  \"Tract: \",\n                  tract,\n                  \"\\nMedian Income: \",\n                  scales::dollar(estimate)\n                 )\n  )\n\n#Generate the ggplot\nincome.gg <- ggplot() + \n  geom_sf(data = mn_income_plotly.df, \n          aes(fill = estimate, text = text_label),\n          colour = \"black\", size = 0.1) + \n  labs(title = \"Hennepin County, MN 2020 ACS Median Income\") + \n  scale_fill_viridis_c(\"Median Income\", labels = scales::dollar) +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n\n\n#Display\nggplotly(income.gg,\n         tooltip = \"text\",\n         height  = 600,\n         width   = 800) %>%\n    style(hoveron = \"fills\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#combining-with-ggmap",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#combining-with-ggmap",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Combining with ggmap",
+    "text": "Combining with ggmap"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-10",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-10",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 3. (MN) More advanced ggmap + tidycensus + ggplotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-11",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-11",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Now, let’s take the same plot as above but overlay it onto a ‘nice’ map of MN with ggmap.\nFor reference, here is the complete documentation for the options and types of maps available with ggmap. Alternatively, a nice cheat sheet for ggmap can be found here\n\n1. Create the base map\n\n#Get the bounding box and county outline\nmn.box           <- osmdata::getbb(\"minnesota\")\nhennepin.box     <- osmdata::getbb(\"hennepin\")\nhennepin.outline <- osmdata::getbb(\"hennepin\", format_out = \"polygon\")[[1]] %>%\n  as_tibble() %>%\n  rename(longitude = V1, latitude = V2)\n\n\n#Get map from ggmap\n#Get the base map (foundational layer)\nmn_base.map <- get_map(\n                location = hennepin.box,\n                source   = \"google\",\n                maptype  = \"roadmap\",\n                crop = TRUE\n               )\n\n#Create the base map\nhennepin_base.gg <- ggmap(mn_base.map) +\n  geom_polygon(data = hennepin.outline, aes(x = longitude, y = latitude), colour = \"black\", size = 1.6, alpha = 0.1) +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n    \n#Display base map\nhennepin_base.gg\n\n\n\n\n\n\n\n\n\n\n2. Add the income layer(s) from before and transform into ggplotly\n\n#First, need to make sure the coordinate systems between the ggmap and geom_sf match\ncoord_ggmap <- st_crs(hennepin_base.gg) #NA\ncoord_sf    <- st_crs(mn_income_plotly.df) #NAD83\n\n#Overlay thge sf info from tidycensus ACS income estimates\nmn_income.ggmap <- hennepin_base.gg +  \n  geom_sf(data = mn_income_plotly.df, \n          aes(fill = estimate, text = text_label),\n          colour = \"black\", size = 0.1,\n          inherit.aes = FALSE) + \n  labs(title = \"Hennepin County, MN 2020 ACS Median Income\") + \n  scale_fill_viridis_c(\"Median Income\", labels = scales::dollar) +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n\n\n#Display plotly\nggplotly(mn_income.ggmap,\n         tooltip = \"text\",\n         height  = 600,\n         width   = 800) %>%\n    style(hoveron = \"fills\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-13",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-13",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 2. (MN) Joining tidycensus zipcode data with city names"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-14",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-14",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "First, read in the MN zipcode/city data (just pairs each zip code with it’s city and county) and then request the ACS estimates for median income across the entire U.S. by zipcode (only way to read in zipcode-level data via tidycensus). We must then join these two data sources by zipcode and then filter to retain only observations within Hennepin County, MN.\n\n#Read in zipcode data\nmn_zipcode.df <- read_csv(\"./data/mn_zipcodes.csv\",\n                          show_col_types = FALSE) %>%\n                 mutate(\n                   zip_code = as.character(zip_code),\n                   county   = as_factor(county)\n                 ) %>%\n                 bind_rows(\n                   .,\n                   tibble(\n                     zip_code = as.character(c(55344, 55346, 55347)),\n                     city     = rep(\"Eden Prairie\", 3),\n                     county   = rep(\"Hennepin\", 3) \n                   )\n                 )\n\n#Save the cache so you don't need to call the same API request over and over\noptions(tigris_use_cache = TRUE)\n\n#Call the ACS API, returns a sf object\nzipcode_income.df <- get_acs(\n  geography = \"zip code tabulation area\",\n  variables = \"B19013_001\", #Code for median income\n  geometry  = TRUE\n  ) %>%\n  janitor::clean_names() %>%\n  mutate(\n    zipcode = str_remove(name, \"ZCTA5 \")\n  )"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#data-join-with-dplyr",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#data-join-with-dplyr",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Data join with dplyr",
+    "text": "Data join with dplyr\nNow that we have both data sources in our global environment, we have (2) possible ways of performing the aforementioned data join: (1) left_join() + filter() or (2) inner_join(). Are these the same thing??\n\n#Left join the sf ACS data frame with city/zip df \n#There's a mismatch in variable names (zipcode vs. zip_code)....\n#No problem!\nmn_zip_city.df <- left_join(\n                    zipcode_income.df, \n                    mn_zipcode.df, \n                    by = c(\"zipcode\" = \"zip_code\") #zipcode in first, zip_code second\n                  ) %>%\n                  filter(county %in% \"Hennepin\")\n\n#gt_preview\nmn_zip_city.df %>%\n  as_tibble() %>% #making a tibble for display\n  dplyr::select(-geometry) %>% #removing for display purposes\n  head() %>%\n  gt()\n\nNow, can we do the same thing with just one function instead of two?\n\n#Inner join will perform both operations at once\nmn_zip_city.df <- inner_join(\n                    zipcode_income.df,\n                    mn_zipcode.df,\n                    by = c(\"zipcode\" = \"zip_code\") #zipcode in first, zip_code second\n                  )\n\n#gt_preview\nmn_zip_city.df %>%\n  as_tibble() %>% #making a tibble for display\n  dplyr::select(-geometry) %>% #removing for display purposes\n  head() %>%\n  gt()\n\nAlmost! We still need to filter by Hennepin county – however if and when we are performing a similar data join on ‘big data’, inner_join + filter will be much more efficient in terms of memory than left_join + filter. Why?\n\n#Filter\n#mn_zip_city.df <- mn_zip_city.df %>% filter(county %in% \"Hennepin\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-16",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-16",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 3. (MN) Joining tidycensus zipcode data with city names and turning into a ggplotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#zipcode-visualization",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#zipcode-visualization",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Zipcode visualization",
+    "text": "Zipcode visualization\nPrep data for visualization…\n\n#Add a text label to mn_income.df\nmn_income_plotly.df <- mn_zip_city.df %>%\n  mutate(\n    text_label = str_c(\n                  \"City: \",\n                  city,\n                 \"\\nZipcode: \",\n                  zipcode,\n                  \"\\nMedian Income: \",\n                  scales::dollar(estimate)\n                 )\n  )\n\nInital and add aesthetics…\n\n#Overlay thge sf info from tidycensus ACS income estimates\nmn_income.ggmap <- hennepin_base.gg +  \n  geom_sf(data = mn_income_plotly.df, \n          aes(fill = estimate, text = text_label),\n          colour = \"black\", size = 0.1,\n          inherit.aes = FALSE) + \n  geom_path(data = hennepin.outline,\n            aes(x = longitude, y = latitude),\n            colour = \"black\", size = 1.2, alpha = 0.6,\n            inherit.aes = FALSE) + \n  labs(title = \"Hennepin County, MN 2020 ACS Median Income\") + \n  scale_fill_viridis_c(\"Median Income\", labels = scales::dollar) +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n\nNow, I figured out how to mess with the hoverinfo at the index/layer level via StackExchange. Originally, adding the geom_path outline of Hennepin county masked all the text labels ‘behind’ that layer and just said “Trace 702” on the side. The Trace numbers correspond to the it’s “order” in the layers of the plot. For example, 1 is the base map (set to “none”). Thus, in order to control the hoverinfo of a particular layer in the plot, you simply need to change that indices hoverinfo to be “none” or “skip”. Weirdly enough, I also believe if you want to change the \\(i^{\\text{th}}\\) Trace then you need to change the \\((i + 1)^{\\text{th}}\\) layer. Normally I wouldn’t do this in for loop but it’s a lot easier here and there aren’t many iterations.\n\n#Create plotly\nmn_income.ggplotly <- \n  ggplotly(mn_income.ggmap,\n         tooltip = \"text\",\n         height  = 600,\n         width   = 800) %>%\n    style(hoveron = \"fills\")\n\n#Remove a layer's particular hover info (from stack exchange)\n#Trace is 702 based on running the above mn_income.ggplotly\nmn_income.ggplotly$x$data %>% map_chr(\"hoverinfo\") -> hover_chr_vec #To check \n\n#Set replacement indices and values (same length, 702 + 1 = 703)\nindex <- c(3, 703)\nreplacement <- c(\"skip\", \"skip\")\n\n#For loop to replace index and info\nfor (i in 1:length(index)) {\n  mn_income.ggplotly$x$data[[ index[i] ]]$hoverinfo <- replacement[i]\n}\n\n#Display\nmn_income.ggplotly\n\nAnd here is a map of the cities (from Google) for reference –"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-19",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-19",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 4. (MN) More advanced ggmap + tidycensus + osmdata"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-20",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-20",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Here we’re going to add a layer of points which describe a few different ‘shop’ types in Hennepin county. The lines below will also tell you what the available values are for a given key –\n\navailable_tags(\"shop\")\n\n\n#Let's grab the liquor stores and hunting stores\nosm_shop_sf.df <- opq(bbox = \"hennepin\") %>%\n             add_osm_feature(key = \"shop\", value = c(\"alcohol\", \"supermarket\", \"books\", \"tattoo\")) %>%\n  osmdata_sf()\n\nLet’s check out the sf data frame of osm_points quickly –\n\n#Extract the relevent sf data frame\nshop_points.df <- osm_shop_sf.df$osm_points %>% \n  janitor::clean_names() %>%\n  filter(!is.na(shop)) %>% #only retain 'valid' tags\n  dplyr::select(osm_id, name, shop, opening_hours, phone, website, geometry) %>%\n  mutate(shop = str_to_title(shop) %>% as_factor())\n\n#Check it out (minus geometry for display)\nshop_points.df %>%\n  as_tibble() %>%\n  dplyr::select(-geometry) %>%\n  gt_preview()\n\n\n\n\n\n  \n  \n    \n      \n      osm_id\n      name\n      shop\n      opening_hours\n      phone\n      website\n    \n  \n  \n    1\n489170740\nLunds & Byerlys\nSupermarket\n06:00-22:00\n+1 651 698 5845\nhttps://lundsandbyerlys.com/our-stores/locations/highland-park/\n    2\n544270122\nTrader Joe's\nSupermarket\nMo-Su 09:00-21:00; PH closed\nNA\nNA\n    3\n544277961\nBarnes & Noble\nBooks\nMo-Sa 09:00-21:00; Sa-Su 10:00-20:00; PH closed\nNA\nNA\n    4\n546277193\nCub Foods\nSupermarket\n24/7\n+1 952 929 9330\nhttps://www.cub.com/\n    5\n571153113\nKowalski's Uptown Market\nSupermarket\n06:00-24:00; PH closed\n+1 612 377 3448\nhttps://www.kowalskis.com/location/kowalskis-uptown-market\n    6..173\n\n\n\n\n\n\n    174\n9694435904\nSt Louis Park Liquor\nAlcohol\nNA\n+19524263650\nNA"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#lets-plot-these-store-locations-by-type",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#lets-plot-these-store-locations-by-type",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Let’s plot these store locations by type",
+    "text": "Let’s plot these store locations by type\n\n#Let's add it to a hennepin_base.gg\nhennepin_base.gg +\n  geom_sf(data = shop_points.df,\n          aes(colour = shop),\n          inherit.aes = FALSE,\n          alpha = 0.8, shape = 16) +\n  labs(title = \"Hennepin County, MN OSM Features\") + \n  scale_colour_viridis_d(\"Store\") +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n\nCoordinate system already present. Adding new coordinate system, which will replace the existing one."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-22",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-22",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Example 5. Transforming Example 4. (above) into a leaflet"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-23",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-23",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Let’s add a leaflet with roughly the same aesthetics as above. Note that you can choose any pallete or manually pick colors as long as there are the same number of colors as discrete color choices.\n\n#Call viridis library  \nlibrary(viridis, quietly = TRUE)\n\n#Extract the levels/order of shop type factor\nshop_types <- levels(shop_points.df$shop)\nn_types    <- length(shop_types)\n\n#Initialize our colour pallete (discrete in this case)\nmy_pallete <- colorFactor(viridis_pal(option = \"D\")(n_types), domain = shop_types)\n\n#Call our leaflet\nleaflet(data = shop_points.df) %>%\n  addProviderTiles('CartoDB.Positron') %>% \n  addCircleMarkers(\n    color   = ~my_pallete(shop_types),\n    opacity = 0.4,\n    weight  = 2, #outline strength\n    radius  = 4 #size of circle\n  ) %>%\n  addLegend(\n    title    = \"Store Type\",\n    position = \"bottomright\",\n    colors   = viridis_pal(option = \"D\")(n_types),\n    labels   = shop_types \n  )\n\n\n\n\n\nThat looks pretty good, now let’s add some labels!\n\n#Need html tools to get our labels to render appropriately\nlibrary(htmltools, quietly = TRUE)\n\n#Add a text label like normal\nshop_label.df <- shop_points.df %>%\n  mutate(\n    text_label = str_c(\n                   name,\n                   \"<br/>Store Type: \",\n                   shop,\n                   \"<br/>Open Hours: \",\n                   opening_hours,\n                   \"<br/>Phone: \",\n                   phone,\n                   \"<br/>Website: \",\n                   website\n                 )\n  )\n\n#Redisplay the leaflet\nleaflet(data = shop_label.df) %>%\n  addProviderTiles('CartoDB.Positron') %>% \n  addCircleMarkers(\n    color   = ~my_pallete(shop_types),\n    label   = ~map(text_label, HTML), #map over labels, make html\n    opacity = 0.4, #alpha\n    weight  = 2, #outline strength\n    radius  = 4 #size of circle\n  ) %>%\n  addLegend(\n    title    = \"Store Type\",\n    position = \"bottomright\",\n    colors   = viridis_pal(option = \"D\")(n_types),\n    labels   = shop_types \n  )"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-25",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-25",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Activity 1. Transform Example 4. into a ggplotly like in Example 3."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#the-original-ggplot-in-example-4.",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#the-original-ggplot-in-example-4.",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "The original ggplot in Example 4.",
+    "text": "The original ggplot in Example 4.\n\n#The ggplot\nhennepin_base.gg +\n  geom_sf(data = shop_points.df,\n          aes(colour = shop),\n          inherit.aes = FALSE,\n          alpha = 0.8, shape = 16) +\n  labs(title = \"Hennepin County, MN OSM Features\") + \n  scale_colour_viridis_d(\"Store\") +\n  theme_map() +\n  theme(\n    plot.title   = element_text(size  = 16,\n                                hjust = 0.5),\n    legend.text  = element_text(size = 16),\n    legend.title = element_text(size = 16),\n    legend.position = \"right\"\n  )\n\nCoordinate system already present. Adding new coordinate system, which will replace the existing one."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#your-ggplotly",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#your-ggplotly",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "Your ggplotly",
+    "text": "Your ggplotly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#section-28",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#section-28",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "",
+    "text": "Activity 2. Edit the leaflet in Example 5."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#please-replace-addcirclemarkers-with-addmarkers",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#please-replace-addcirclemarkers-with-addmarkers",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "1. Please replace addCircleMarkers with addMarkers",
+    "text": "1. Please replace addCircleMarkers with addMarkers\nHint You’ll have to remove the color scale (why?)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#please-replace-the-colour-with-your-own-color-of-choice-and-addawesomemarkers...-icon-icons",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#please-replace-the-colour-with-your-own-color-of-choice-and-addawesomemarkers...-icon-icons",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "2. Please replace the colour with your own color of choice and addAwesomeMarkers(..., icon = icons)",
+    "text": "2. Please replace the colour with your own color of choice and addAwesomeMarkers(..., icon = icons)\nFollow the instructions from the Markers vignette. This Github Page also has a great documentation and links for the different libraries and types of icons out there.\nCreate the icon like so\n\n#Make the icon\nicon.ion <- makeAwesomeIcon(icon = \"home\",\n                            markerColor = 'darkpurple',\n                            iconColor = \"white\",\n                            library = \"ion\")\n\nThen replace addMarkers with addAwesomeMarkers (font awesome) and add your own icon with icon = .... You’ll need to drop all the other options from addCircleMarkers as well as they don’t apply anymore."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_11/lecture_week_11.html#mess-around-with-icons-colors-etc.",
+    "href": "pubh_7462/lecture_week_11/lecture_week_11.html#mess-around-with-icons-colors-etc.",
+    "title": "Week 11: Spatial Mapping II",
+    "section": "3. Mess around with icons, colors, etc.",
+    "text": "3. Mess around with icons, colors, etc.\nHave fun messing around with leaflet!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nWebsites in R + Github\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nSpatial Visualization\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nGithub Collaboration & Shiny Apps (today)\n\nWorking with others in the same Github repository\n\nBest practices\nBranching, merging, merge conflicts\nreseting to previous versions\n\nDeveloping a basic Shiny app\nEmbed Shiny in an R hosted website\nEmbed Shiny in a flexdashboard\nResources for more advanced Shiny\n\nMiscellaneous\n\n*Working with big data in R dt_plyr, collapse, h2o, sparklyr\n*Working with databases in R db_plyr\n*How to develop a package with Rstudio & Github\n*Webscraping with R\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-1",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-1",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "So what exactly are we going to do today?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#github-collaboration",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#github-collaboration",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Github Collaboration",
+    "text": "Github Collaboration\nWe’re going to explore utilizing Github as a collaborator to ensure you and your team have a successful final project, as well as the skills to transfer directly into a professional, collaborative, team-oriented ‘data-sciency’ role. We’ll cover a wider range of git tools and commands (yes, you’re going to need to start using the terminal/command-line unfortunately) and explore/visualize how these tools allow us to work in ‘tree-like’ shared directories w/ version control. Finally, we will cover an example which I will also do live."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#shiny",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#shiny",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Shiny",
+    "text": "Shiny\nToday we’re just going to discuss some basic, fundamental components of Shiny applications. These include, but are not limited to –\n\n‘The User Experience’\n‘Reactive’ programming\n\nUI & Server\nAcquiring and storing user inputs\nProducing outputs for the user\n\nHosting a Shiny App on your Website (indirectly)\nExamples\n\nNext week, we’ll cover how to embed an app in a flexdashboard with a live demonstration, tutorial, and activity."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#looking-ahead",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#looking-ahead",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Looking ahead",
+    "text": "Looking ahead\nSo in theory, if you’re thinking about developing a Shiny app within your final project, you should have everything you need to get started next Friday 4/14 – which is still a little over three weeks from the due date. Not every project will need one, nor is it required, and remember that the approach, data science skills, and final product are much more important than how ‘fancy’ your website or applications are. Remember –\n\nGood applications supplement good data science.\n\n\nBad data science creates bad applications, regardless of how fancy.\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#important-notes",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#important-notes",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Important notes",
+    "text": "Important notes\n\n1. pull and push are both generalized as merge requests\n\npull is from some branch\npush is to some branch\ncan be done to, from, or within any branch\n\n\n\n2. git fetch origin <branch> (grab changes from ) vs. git pull origin <branch> (grab changes from  and merge with your local repository)\n\n\n3. You should fetch often (everytime you open the project locally) and pull when appropriate (i.e. when changes are made that don’t conflict with you’re work)\n\n\n4. git pull origin <branch> is usually how you want to engage a pull/merge request\n\nDo not use git pull --rebase until you’ve read this Stack Overflow thread\nIt’s a little tricky, but useful if you find yourself in a situation like the one described in the article\n\n\n\n5. Commit early and often!\nThink of committing changes like saving files. We save files frequently to protect ourselves from the event that the program or your computer crashes and all your hard work is lost.\nSimilarly, we commit early and often so that if and when something goes wrong on our branch or elsewhere, we have a recent version to revert to (see below on how to undo a commit).\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#branches",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#branches",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Branches",
+    "text": "Branches\nStarting from the main branch (blue), we grow seperate development branches (purple, green) to work on specific aspects of a project, separately from the main or master (synonymous) branch.\n\nYou can think of the master like the trunk of a tree, from the roots all the way to the top, and it hosts every version of our final product and everything is developed on branches from the master. Eventually, when our branch‘s product, feature, or development is complete, we will merge that branch back to master (inducing a new ’version’ of our final product)."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-4",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-4",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Example 1. Websites with R and Github"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-5",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-5",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Recall that all of our websites on Github Pages are being sourced from the master or main branch. The green below then represents the master branch of a website via R & Github (the final product), and each circle denotes a version. The leftmost and rightmost points in green must necessarily then represent the initialization (empty) and most current version, respectively."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#green",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#green",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Green",
+    "text": "Green\nNow, let’s say someone else on your team is currently developing ‘final product’, i.e. the website’s structure and aesthetics (i.e. the _site.yml and index/home page) on the green master branch."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#blue",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#blue",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Blue",
+    "text": "Blue\nYou (in blue), on the other hand, are tasked with developing a tab or section on the website like an EDA with visualizations, flexdashboard, or Shiny app. Since this only requires editing a distinct set of file(s) (.RMD) which are unrelated to what is being done on the master branch, you should probably create a new development branch for your ‘feature’ on the website.\nLet’s first note that once we initialized a branch (leftmost blue circle), we are working on a copy of the main branch at the moment we decided to branch off. Once you’re on this branch only edit your distinct set of files or files that you’ve created on the branch. This will ensure when you’ve completed your work and are ready to merge back to the master website (rightmost blue circle), there shouldn’t be any conflicts with what those on the master have been doing. (Assuming they haven’t changed any files you’ve been working on, but we’ll get to that later as a conflict between versions)."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#orange",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#orange",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Orange",
+    "text": "Orange\nSame as above, but your teammate’s orange branch is developing another feature for the website – which is why it is likewise separate of both the master and your development branch.\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-7",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-7",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Question 1. What files in the repository should the person in orange (not you) be working on?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-8",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-8",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Any file they want\nAny file besides the _site.yml or index.RMD\nAny file besides what you are working\nB. & C., and any file they create\n\nOnly files they create\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-10",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-10",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Question 2. What happens if either you or your teammate’s branch is merged back to master and a file has been edited that shouldn’t have or a new different version exists on the master?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-11",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-11",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Oh NoOoOoOooOo!! A Merge Conflict :/\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-13",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-13",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Question 3. Well, how do we fix a merge conflict?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#section-14",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#section-14",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "",
+    "text": "Boromir from Lord of the Rings, played by the wonderful Sean Bean, is right! But in all seriousness, the best way to fix a merge conflict is not to make one.\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#protect-your-branches",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#protect-your-branches",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "Protect your Branches!",
+    "text": "Protect your Branches!\n\nFollow this Managing a branch protection rule link for step by step instructions on how to protect a branch (master or main) from merge conflicts.\n\nThese are the 2 most important protections to select - but what do they really do?\n\nWhen you git push origin master to the protected branch (master), it won’t occur immediately. Instead a ‘pull request’ (i.e. merge request) will be created.\nThe request must be reviewed and approved by at least 1 person prior to being allowed to go through.\n\nYou may need to mess with the email notification settings to ensure everyone in the repository get’s an email when there’s a request to the master branch (i.e. final product, website, etc.)."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "How to undo your last git commit or revert to an earlier version (if something goes wrong)",
+    "text": "How to undo your last git commit or revert to an earlier version (if something goes wrong)\nThis devconnected blog post regarding how to undo your last commit is a great step by step guide (with explanation) about how to –\n\nUndo commit with git reset\nSelecting the previous version\n\nHEAD~1 (last one),\nHEAD~2 (one before that)\netc.\n\ngit reset --soft\n\n‘small’ problem fixer\nUndoes your commit, reverts to specified version, but keeps the local changes you made since the last commit\n\ngit reset -- hard\n\n‘big’ problem fix\nuse with caution and read the article above first\nUndoes your commit, reverts to specified version, and removes all local changes and their versions"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "What if neither of the above seem to be able to fix the specific merge or version conflict in our repository?",
+    "text": "What if neither of the above seem to be able to fix the specific merge or version conflict in our repository?\n\nMake sure you read through the above materials fully, those tools can prevent and fix most problems\nGoogle is your best friend w.r.t. git, it’s a universal tool\nSend the teaching team an email with screenshots of the problem, error message, and/or terminal output from git status & git log\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_12/lecture_week_12.html#ui-server",
+    "href": "pubh_7462/lecture_week_12/lecture_week_12.html#ui-server",
+    "title": "Week 12: Github Collaboration & Intro to Shiny",
+    "section": "UI & Server",
+    "text": "UI & Server\nHere, the ui and server are in the same script but that’s because it’s a minimal example for teaching purposes. In practice, these functions are stored in seperate .R files or {r chunks}.\nNote - In practice, to keep more complex workflows tidy and easy to follow we usually write separate .R scripts for different functions or collections of functions (i.e. a package) and load them into our global environment (like a package) with source(my_functions.R)\n\nUser interface (ui.R)\nThis component defines (1) type of interface (fluidPage), (2) structure (panels, layout, etc.), (3) acquires user inputs (sliderInput), (4) displays user outputs (plotOutput). Each is a function with inputs/options like usual.\n\n\nServer (server.R)\nThis component is the source of reactivity – it is a function of input & output, taking inputs from the ui.R and rendering outputs (renderPlot).\nNotes –\nUI\n\nInput object names are given in the inputId = \"bins\" option\n\nMeaning that the object called input stores the input\nWithin that object, a new object bins will exist\nbins is going to store and update the value the user selects from the slider\n\nThus, when selecting bins for the histogram output in the server.R below, it’s called with input$bins\nNo different than a usual list$object\n\nSERVER\n\nIt is a function of input (acquired by ui.R) and a self-referential output (simultaneously created by server.R for ui.R)\n\nInputs are called like above input$bins\n\nNote that output$distPlot <- is base R for mutate\n\nMeans “create or change” the object called distPlot within the list output\nThat change utilizes the input object (reactivity)\n\nIn the ui.R, the function plotOutput renders the plot with the option outputId = \"distPlot\"\n\nMeans use the output$distPlot from the server to render the plot in the user interface.\n\n\nAPP\nThe relationship between the UI and the Server is what induces ‘reactivity’ between the user and the application. It does so by reacting every time a user interacts with the UI by altering the input to ui.R, which induces a call and response from server.R to send new output back to the UI.\nIn plain English, this means it reacts to the user input (ui.R) by re-rendering (server.R) continuously while the app is running.\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nWebsites in R + Github\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nSpatial Visualization\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nGithub Collaboration & Shiny Apps (today)\n\nWorking with others in the same Github repository\n\nBest practices\nBranching, merging, merge conflicts\nreseting to previous versions\n\nDeveloping a Shiny app for data communication\nDeveloping a Shiny flexdashboard\nResources for more advanced Shiny\n\nMiscellaneous\n\npackage development\n*Working with big data in R dt_plyr, collapse, h2o, sparklyr\n*Working with databases in R db_plyr\n*How to develop a package with Rstudio & Github\n*Webscraping with R\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#first-dashboards",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#first-dashboards",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "First, Dashboards!",
+    "text": "First, Dashboards!\nToday we’re going to walk through a demonstration of creating a Shiny flexdashboard with the same NYC Airbnb data we’ve used previously for interactive visualization (plotly), as well as wrapping multiple plots into a single dashboard (flexdashboard). The syntax/layout of the dashboard is exactly the same as before, except now we’ll add runtime: shiny to the yaml to indicate it’s a reactive shiny application and then utilize the same ui.R input and server.R render...({}) output functions to do so (without explicitly defining a ui or server, it’s implied).\nIn many ways, given our familiarity with plotly and flexdashboards, this avenue for interactive communication of data is ‘easier’ than building a full blown app because it respects the same .RMD flexdashboard structure."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#shiny-apps",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#shiny-apps",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "Shiny Apps",
+    "text": "Shiny Apps\nLast week I attempted to develop a spatial shiny app with ggplot + ggplotly + tidycensus + ggmap and it turned out to be an inadvisable pursuit for a couple of reasons - (1) Renders way to slowly, (2) plotly syntax is preferable (renders faster) over ggplotly, (3) those specific types of maps have to be built with ggplotly(). This may happen to you as well while you are developing the final product(s) for your final projects. My reccomendations to avoid the slow rendering and unnecessary complications with ggplotly is to simply use leaflet if you’re going to make that type of map – they render almost instantaneously, are very user friendly, and play well with Shiny/dashboards.\nIn that spirit, today we’ll wrap the dashboard above into a regular shiny application (although I think the dashboard is a better tool for this specific communication tool). In addition, I’ll also show how to embed a leaflet in both.\n\nGood applications supplement good data science.\n\n\nBad data science creates bad applications, regardless of how fancy.\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#some-important-notes",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#some-important-notes",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "Some Important Notes",
+    "text": "Some Important Notes\n\nLayout, structure, syntax, etc. remains the same as a normal flexdashboard/.RMD\nStatic operations and object storage should occur first.\n\nThese are things that don’t/won’t change with user input/interaction\n\nUser Inputs ought to be acquired next\n\nPutting these in a Column {.sidebar data-width=300} seems like a good stylistic choice (as in the example)\n\nReactive Operations occur after input but before output\n\nFor example, if you want to access an object in multiple places based on the user input, rather than performing that operation within each of the subsequent reactive functions, you can simply pass that object throughout the document with a user defined reactive function\nex. myFunction <- reactive({<your_operations>})\n\nReactive Output will occur last (or at least after it’s input has been acquired)\n\nreactive({<function of input>}) will allow you to access input variables anywhere in the document\n\nSee my inline examples for titles, etc. taken from user input\n\nrender... (i.e. renderPlot, renderPlotly, etc.) is a reactive function\n\nMeaning that you can access any user input within the scope of the function\nCan also access the output of any reactive function as well\n\ni.e. can call renderPlotly({ myFunction() }) from above\n\n\n\nIt’s difficult to trouble shoot reactive documents and functions\n\nCan store “inputs” as static variables in the global environment while building dashboard\nBuild it one layer at a time (minimize the number of new things that can go wrong)\nWill take some time to become familiar with these new reactive error messages (though a quick google usually helps)\nStart simple, get a minimal working example up and running, and then add to it\n\nThemes - when using themes from the bootswatch library (css library for your website themes) some formatting may not be respected\n\nCan download the newest /bslib with this code install.packages(\"remotes\"), remotes::install_github(\"rstudio/bslib\")\nCan add to the yaml just like a website (see below)\n\n\n\n#YAML\n---\ntitle: \"Shiny Dashboard\"\noutput: \n  flexdashboard::flex_dashboard:\n    orientation: columns\n    vertical_layout: fill\n    theme:\n      version: 4 #version of bslib (3 is older, 4 new)\n      bootswatch: <theme name> #flatly, darkly, etc.\nruntime: shiny\n---"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#nyc-airbnb-shiny-dashboard-example-1",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#nyc-airbnb-shiny-dashboard-example-1",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "NYC Airbnb Shiny Dashboard Example",
+    "text": "NYC Airbnb Shiny Dashboard Example\nWhile the dashboard above is pretty good, it’d be awesome to have a leaflet instead of a plotly spatial scatterplot (w/no map features due to ggplotly/geom_sf/ggmap bugs with shiny). Luckily, shiny can handle leaflets just fine with renderLeaflet and leafletOutput (the second is for Shiny apps only). This dashboard/example can also be found on Canvas under Week 14 Lecture materials (nyc_airbnb_shiny_dashboard_leaflet.RMD)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#reminder",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#reminder",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "Reminder",
+    "text": "Reminder\n\nui.R\nHere we define the layout, structure, user inputs, and output display.\n\n\nserver.R\nAs a reactive function of input and output, this is where are the computation, visualization, and heavy lifting take place. In this example, we take in the user inputs from the ui.R and use them to generate the desired visualizations and outputs – sending them back to the ui.R for display/interaction.\nAll that really means is within the ui.R, you need to include the same inputs while also explicitly displaying the output from the server. And a small technical detail is that different input functions or display functions need to be seperated by comma. Likewise, within the server all reactive and render functions operate the same, however you have to explicitly store output objects you’d like to be passed back to the ui.R."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#section-1",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#section-1",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "",
+    "text": "Activity 1. Edit the Shiny Dashboard"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#section-2",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#section-2",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "",
+    "text": "Similarly to Week 7 Lecture’s Activity,\nFor today’s activity, please\n\nStart an .Rproject in the folder of your choice\nDownload the NYC shiny dashboard .zip from Canvas\nUnzip and put the .RMD and /data folde in that project\nClick Run Document at the top (where Knit usually is) to run the app and check it out on your own\nThen, alter the (3) visualization below (as directed)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#spatial-scatterplotleaflet-by-rating",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#spatial-scatterplotleaflet-by-rating",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "(1) Spatial Scatterplot/Leaflet by Rating",
+    "text": "(1) Spatial Scatterplot/Leaflet by Rating\nInstead of looking at price, alter the scatter plot/leaflet to be coloured by rating."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#distribution-of-rating-by-neighbourhood",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#distribution-of-rating-by-neighbourhood",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "(2) Distribution of Rating by Neighbourhood",
+    "text": "(2) Distribution of Rating by Neighbourhood\nInstead of looking at the distribution of prices, let’s investigate the distribution of ratings by neighbourhood instead. Fix the title(s) accordingly."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_14/lecture_week_14.html#number-of-avg.-listings-per-month-by-neighborhood",
+    "href": "pubh_7462/lecture_week_14/lecture_week_14.html#number-of-avg.-listings-per-month-by-neighborhood",
+    "title": "Week 14: Shiny Apps & Dashboards II",
+    "section": "(3) Number of Avg. Listings per Month by Neighborhood",
+    "text": "(3) Number of Avg. Listings per Month by Neighborhood\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nWebsites in R + Github\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nSpatial Visualization\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nGithub Collaboration & Shiny Apps\n\nWorking with others in the same Github repository\n\nBest practices\nBranching, merging, merge conflicts\nreseting to previous versions\n\nDeveloping a Shiny app for data communication\nDeveloping a Shiny flexdashboard\n\nMiscellaneous (today)\n\n*How to develop a package with Rstudio & Github\n*Brief intro to working with big data in R (dt_plyr, collapse)\n*Brief intro to interacting with SQL/databases in R (db_plyr)\n*Brief intro to text analysis in R (tidytext)\n\n\n\\(~\\) \\(~\\)\n\n\n\n\n\nToday we’re going to outline how to develop a package in R with Github, devtools, usethis, roxygon2, and pkgdown. I’ll then give a brief demonstration and leave you with additional resources for more advanced topics regarding package development.\nDetailed websites/vignettes for each package and a comprehensive cheatsheet can be found here –\n\ndevtools\nusethis\nroxygen\npkgdown\nPackage development cheatsheet\n\n\n\n\nWe’ve covered a lot of R skills, packages, and applications this semester; however the world of R is quite nearly infinite, and growing. Here are some other useful packages for topics we didn’t cover –\n\nHandling big data (collapse, dtplyr)\nDealing with databases (dbplyr)\nMachine learning (caret, keras, tidymodels)\nText analysis (tidytext)\nCombining ggplot’s (patchwork)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#i.-introduction-1",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#i.-introduction-1",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "i. Introduction",
+    "text": "i. Introduction\n\nThe basic flow\n\nSkeleton\n\nCreate R package with .Rproject in Rstudio\nSet up basic infrastructure\n\nDescription\n\nEdit the DESCRIPTION & README\n\nData\n\nEvery package should at least have a sample data set (ideally the one used in your vignette tutorial)\nCan also have ‘real’ data if it’s publicly available\nBe very careful with other data and ensure it is shareable under IRB/HIPPA/Data use agreement guidelines\n\nSource Code\n\nDevelop core functions, input/output structures, etc.\nDocument functions (inputs/outputs, purpose)\nDependencies (packages your functions require)\nFound in the /R folder by default\n\nDocumentation\n\nDescription of package, functions, data, etc.\nMachine & human-readable format so can be accessed via help ?\n\n\n\n\nSharing the package with Github\nThe above steps will create a functional R package on your local machine, but you still need to share your great work with the world! That’s where Github comes in - luckily we’re already quite familiar with R \\(\\longleftrightarrow\\) Github connection, which makes these steps a lot easier.\n\nSharing is Caring\n\nUpload to Github to make your package & source code publicly available!\nCan then be installed directly from Rstudio with devtools::install_github(</your_github/the_package_repo>)\n\nWebsite\n\nMost all of the wonderful packages we’ve used in this course have an associated vignette, typically hosted in an R website.\nLuckily, we already know how to do this!\nAdd example(s) for how to use your package in practice\n\nAdditional Documents\n\nAdd any narrative documents necessary to the website\n\ni.e. description of data, functions, manuscripts, supplementary materials\nlinks to publications or talks using the package"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#ii.-setting-up-an-r-package-from-scratch",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#ii.-setting-up-an-r-package-from-scratch",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "ii. Setting up an R package from scratch",
+    "text": "ii. Setting up an R package from scratch\n\n#Install devtools if necessary\nif (!require(\"devtools\")) install.packages(\"devtools\")\n\n#Install usethis if necessary\nif (!require(\"usethis\")) install.packages(\"usethis\")\n\n#Install roxygen2 if necessary\nif (!require(\"roxygen2\")) install.packages(\"roxygen2\")\n\nHere, .Rprojects will help us out a lot by initializing the our package’s directory with example scripts and the default structure it needs to be!\nCreate a new R project with File \\(\\longrightarrow\\) New Project… \\(\\longrightarrow\\) New Directory \\(\\longrightarrow\\) R Package. Make sure Create a git repository is checked in order to enable Git.\nCheck out the file structure of the repository."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#iii.-description",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#iii.-description",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "iii. Description",
+    "text": "iii. Description\nThere’s a specific machine-readable file called DESCRIPTION (automatically created by R Studio), which is read by R when ‘building’ the package. You’ll need to edit the file to correspond to your package specifically, but don’t change the formatting.\n\nExample DESCRIPTION\n\nPackage: <package name>\nType: Package\nTitle: <your title>\nVersion: <your_version> # starts with 0.1.0\nAuthors@R: person(\"<last name>\", \"<first name>\", email = \"<your email>\",\n                  role = c(\"aut\", \"cre\")) #author, credit\nDescription: <brief description>.\nEncoding: UTF-8\nLazyData: true\nDepends: \n    R (>= 4.1) #change this as appropriate\nImports:\n    <packages>\n    #i.e. the usual stuff for example - \n    #ggplot2\n    #dplyr\n    #stringr\n    #forcats\n    #etc.\n\n\n\nDESCRIPTION Notes\n\n means it is not a “” character, just normal typing, but those with “” need character quotes around them\nSee ?person for Authors@R syntax, include multiple w/ c() vector\nMore detailed info about DESCRIPTION’s package meta data check out this link\n\n\n\nREADME\nWhile the README doesn’t get created by default in the packages repo, it’s generally a good idea to make one yourself with the usual .RMD. A convenient way to do this is with usethis –\n\n#Create a README.rmd\n#Adds it to .Rbuildignore file\nusethis::use_readme_rmd()\n\nMost likely you’ll want to knit this to a github_document .md (like the hw) since that’s where the README will most likely be accessed/read by others.\n\n\nQuestion\nWhy might we not want to simply load the entire tidyverse like usual? (Hint: dependencies)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#iv.-data",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#iv.-data",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "iv. Data",
+    "text": "iv. Data\nHere one should at least include an example data set upon which the functions in the package can be applied. Usually, this is the same data that is found in the vignette examples (see below). However, it’s possible that it can be ‘real’ data, but be very, very careful if you intend to make any protected or patient data public - ensure that it does not violate any data use agreements.\nHere is a more detailed look at including external data in a package if you’re interested.\n\nGeneral\nWe can conveniently add any R data (.RDS) from out global environment (i.e. a tibble or data.frame) into a/the /data folder with usethis –\n\n#Add example data to /data folder\n#Simultaneously creates folder if doesn't exist yet\nusethis::use_data(<data obj. name>)\n\n\n\nPreprocessing\nIf there is some pre-processing of data involved in your package, you can likewise employ usethis –\n\n#Add example raw data to /data-raw folder\n#Simultaneously creates folder if doesn't exist yet\nusethis::use_data_raw()\n\nthen add a preprocess.R script in the same /data-raw folder which performs the preprocessing and then calls the above use_data() on the resulting processed data object to put it in the /data folder.\n\n\nDocumenting Data with roxygen2\nOnce you’re done with all that, it’s a good idea to add a data.R file to the /R folder, documentating & describing the data ?. You’ll need to check out roxygen2 documentation for the full syntax, but here’s a good example to get you started –\n\n#' @title <Title for data>\n#'\n#' @description <brief description>\n#'\n#' @format <object type, rows, columns, etc.>\n#' \\describe{\n#'   \\item{variable(s) 1}{<describe variable(s) 1>}\n#'   \\item{variable(s) 2}{<describe variable(s) 1>}\n#' }\n#' @source <url to data on your github>\n\"<name of data>\"\n\n\n#' denotes roxygen2 syntax versus a normal comment #\nCan add multiple data to both the /data folder as well as the data.R documentation, just need to leave a blank line in between each roxygen2 doc.\nWill use the same roxygen2 syntax for our functions below"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#v.-source-code",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#v.-source-code",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "v. Source Code",
+    "text": "v. Source Code\nHere we find the most important aspect of our package, what the package actually does! As you’ve no doubt noticed by this point, every package in R is really just a collection of functions. Unlike previous work we’ve done, much of which could be accomplished without user defined functions, when building a package everything needs to be wrapped into a funcion with well defined inputs and outputs.\nImportant Note - Do not include library() in your script, this is a big no-no and will cause global availability of functions to change for the user. Instead, use the literal (C++ style) attachment of packages like dplyr::select, stringr::str_to_title, etc.\n\nExample Package Functions\nFor the example package we’re building today, these are the collection of functions which work together to accomplish a larger task (like most packages).\n\n1. Bivariate Normal LM Data Generator\n\nlm_data <- function(n = 10) {\n#Create lm data\n  tibble::tibble(\n    x   = runif(n),\n    x_1 = ifelse(x > 0.5,\n               rnorm(n, 0, 2), #unequal variance\n               rnorm(n, 2, 3)),#implies interaction\n    x_2 = ifelse(x > 0.5, \"Control\", \"Treatment\"),\n    y   = x_1 + rnorm(n, 0, 1)\n  ) |> #base R pipe (new), %>% depends on magrittr\n  dplyr::select(-x)\n}\n\n\n\n2. Fit LM with & without Interaction\n\nfit_lm <- function(lm_data) {\n  #Fit lm from lm_data generator\n  lm.mod <- lm(y ~ x_1 + x_2, data = lm_data)\n  #return lm model object\n  return(lm.mod)\n}\n\nfit_lm_int <- function(lm_data) {\n  #Fit lm from lm_data generator w/ interaction\n  lm.mod <- lm(y ~ x_1 * x_2, data = lm_data)\n  #return lm model object\n  return(lm.mod)\n}\n\n\n\n3. Plot the LM Fit\n\nplot_fit <- function(lm.mod, lm_data, new_data, interaction = FALSE) {\n  #Create string for title of plot\n  string <- ifelse(interaction, \"w/ Interaction\", \"\")\n  r2     <- summary(lm.mod)$adj.r.squared\n  preds  <- predict(lm.mod, new_data)\n  rmse   <- sqrt(mean((lm_data$y - preds)^2))\n\n  #Predict based on new data\n  lm_data |>\n    dplyr::mutate(\n      predicted_val = preds\n    ) |> #Plot it\n    ggplot2::ggplot(ggplot2::aes(x = x_1, y = y, colour = x_2)) +\n    ggplot2::geom_point(shape = 16, size = 2, alpha = 0.6) +\n    ggplot2::geom_smooth(ggplot2::aes(x = x_1, y = predicted_val),\n                         inherit.aes = FALSE,\n                         method = \"lm\",\n                         colour = \"orange\",\n                         fill   = \"azure2\") +\n    ggplot2::scale_colour_manual(values = c(\"#440154FF\", \"#FDE725FF\")) +\n    ggplot2::labs(title = sprintf(\"2 Class Bivariate Normal LM%s (R^2 = %g, RMSE = %g)\",\n                                  string, round(r2, 2), round(rmse, 2))) +\n    ggplot2::theme_minimal()\n}\n\n\n\n\nDocumentation\nUnlike .RMD’s, these source functions need to be .R files and should generally be in their own .R file (unless there’s a set of functions that are very similar or intimately related). Again, we’ll use roxygen2 to create documentation for each function which can be accessed with ? like usual. More detailed info about documenting data & functions can be found here\nHave no fear, R studio has a convenient way to insert a default roxygen2 skeleton for functions, accessed by Code -> Insert Roxygen Skeleton –\n\n#' <What the function is>\n#'\n#' @description <describe function's purpose>\n#'\n#' @param input_1 <describe input 1, object type, etc.>\n#' @param input_2 <describe input 2, object type, etc.>\n#'\n#' @return <what object(s) the function returns>\n#' @export #Just tells R to load this function with library()\n#'\n#' @examples\n#' my_function(1, 2) #returns 3\n\nmy_function <- function(input_1, input_2) {\n  addition  <- input_1 + input_2   \n  return(addition)\n}"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#vi.-building-package",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#vi.-building-package",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "vi. Building package",
+    "text": "vi. Building package\nMuch like websites, we also have build tools which make putting our package together a whole lot easier!\n\nStep 1. Roxygen\nFirst, make sure that Rstudio knows to generate your package with roxygen2 documentation by going to Tools \\(\\longrightarrow\\) Project Options... \\(\\longrightarrow\\) Build Tools; and ensure that (1) “Generate documentation with roxygen” is checked and (2) within the Build Tools > Configure menu, that “Automatically run roxygen when running install & restart” is also checked.\n\n\nStep 2. Delete Default Files\nIf you initialized your package with an R project (as we did above), you’ll need to delete the default /man/hello.Rd and NAMESPACE files (to make room for your new documentation!).\n\n\nStep 3. Install and Restart\nFinally, all you have to do to build and install your package is to go to R Studio’s Build tab in the upper right pane with Git and Environment, and select “Install and Restart”.\n\n\nStep 4. Use the package\nNow that your package is installed locally, you can call it like usual with library(). Test out the example functions & data to make sure everything is good to go!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#vii.-sharing-on-github",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#vii.-sharing-on-github",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "vii. Sharing on Github",
+    "text": "vii. Sharing on Github\nNow that we’ve built our package locally, we’re going to need Github in order make it publicly available. However, recall that earlier we had initialized our project with Git, this means that all we need to do now is connect it to Github!\nNote that this flow is different than usual, here we are connecting to Github last as opposed to first.\nThere are two main ways to do this, following Jenny Bryan’s Happy Git and Github for the useR: 17 Existing Project, Github Last’s example –\n\n‘New’ way via usethis::use_github()\n\nJenny’s Example\n\nusethis::use_github()\n#> ✓ Creating GitHub repository 'jennybc/myrepo'\n#> ✓ Setting remote 'origin' to 'https://github.com/jennybc/myrepo.git'\n#> ✓ Pushing 'main' branch to GitHub and setting 'origin/main' as upstream branch\n#> ✓ Opening URL 'https://github.com/jennybc/myrepo'\n\nThis is the first method in Jenny’s chapter. However, I’m not super familiar with usethis so it’s possible for this not to work if there are discrepancies with HTTPS, login credentials, personal access tokens (PATs), or SSH. If so, refer to Jenny’s book to fix this.\n\n\n\n‘Old’ way via Github & R Studio\nThis way is very similar to the usual way we initialize repo’s on github and then clone them to our local machine. Refer to earlier lectures for more specifics about connecting Github with .Rporjects.\nThe steps to do so are as follows –\n\nMake a new github repo with same name as the package\n\nNote package names cannot have _’s, must use . or - to seperate words\nDO NOT initialize your repo with anything in it (otherwise it will conflict with your local repo)\n\nClick “<> Code” and copy the HTTPS (or SSH) key\nConnect with local repo via\n\nRstudio\n\nClick on “two purple boxes and white square” in the upper right Git pane\nClick “Add remote”\nChoose remote name origin\nPaste your Github repo’s url\n\nShell / Command Line / Terminal\n\ngit remote add origin <github repo url>\ngit push --set-upstream origin main\n\n\nGo back to Github and check that everything worked properly"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#viii.-install-via-github",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#viii.-install-via-github",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "viii. Install via Github!",
+    "text": "viii. Install via Github!\nOnce that’s all done, check and make sure you can install your package directly from github with devtools::install_github(\"<git_user_name/package_repo_name>\"). Pretty cool right?!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#collapse-advanced-and-fast-data-transformation",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#collapse-advanced-and-fast-data-transformation",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "collapse Advanced and Fast Data Transformation",
+    "text": "collapse Advanced and Fast Data Transformation\nMaintained by Sebastian Krantz, collapse makes use of the speed & efficiency of C/C++ libraries for extremely fast data transformation that’s well integrated with the tidyverse (i.e. tibble’s, dplyr, group_by, summarise), as well as statistical computing. It also handles the usual base, data.table, array, and list structures nicely.\n\nThe primary documentation can be found here\nThe Sebastian’s awesome vignette is found here\nThe source code is found on Sebastian’s Github\nIt’s so new and useful, it even has it’s own Twitter!\n\nIf you find yourself in a situation where the usual dplyr operations are taking forever becuase the data is too large or complex, collapse can make your life a lot easier!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#tidyverse-wrapper-for-data.table",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#tidyverse-wrapper-for-data.table",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Tidyverse wrapper for data.table",
+    "text": "Tidyverse wrapper for data.table\nNow I personally have never liked data.table syntax, but there are many people (seemingly more CS minded people), how prefer it for a variety of reasons; first and foremost of which is size and speed. data.table handles big data well and can perform the usual dplyr/tidyr operations in a fraction of the time.\nLike the tidyverse, data.table is widely used amongst R users and has a ton of support, documentation, etc. If you’re curious here’s an introduction to data.table, a comprehensive vignette/website, and a couple blogs comparing/contrasting data.table vs. tidyverse vs. base here and here.\nHowever, given our expertise in the tidyverse, there’s very little reason to learn data.table syntax due to the new-ish package dtplyr (dt = data.table), as well as collapse above.\n\nUsing dtplyr to handle data.table’s\nSometimes it may be convenient to work with data.table objects for size and speed (fread() versus readr, much faster too); but who wants to learn a whole new syntax??\nThanks to dtplyr we don’t have to! Here is the wonderful vignette/website and this article explains exactly how dtplyr translates dplyr into data.table commands (via queries).\nIt should be noted that by design, dtplyr is a little slower than data.table because inherently, translation takes a little time. Honestly, collapse may be more worthwhile to check out than data.table, unless you end up in an environment where everyone is using data.table."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#tidyverse-wrapper-for-sqldatabases",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#tidyverse-wrapper-for-sqldatabases",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Tidyverse wrapper for SQL/databases",
+    "text": "Tidyverse wrapper for SQL/databases\nSimilar to above, the tidyverse also has an excellent wrapper for generating SQL queries via dplyr syntax. Given that we are now well versed in dplyr verbs (i.e. select, filter, etc.), you’ll be delighted to know most of the dplyr verbs are borrowed/shared with SQL! While this makes SQL relatively easy to learn and implement, during your learning process one can utilize dbplyr to translate or generate SQL queries to relational databases.\nThe awesome vignette/website can be accessed here. It’s a little more complicated than dtplyr so do peruse all the different articles, but in particular, Writing SQL with dbplyr, Function translation, and Verb translation."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#machine-learning-with-caret",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#machine-learning-with-caret",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Machine Learning with caret",
+    "text": "Machine Learning with caret\nSome of you may be familiar with some individual machine learning libraries for particular models (i.e. glmnet for penalized glm’s or randomForest for bagged, random predictor sampled trees). Within the last 10 years though, the caret library has been developed which standardizes syntax and methodology for preprocessing, feature selection, tuning/training via resampling, and variable importance when deploying ML models. I personally use caret all the time, it has an incredibly dense and comprehensive library of different tools for regression and classification.\nAs a package, caret is so useful and widely supported that it actually has it’s own online textbook. If you’re unfamiliar with ML in general, it’s a decent introduction to deploying ML models in practice (but not the statistical/CS theory). StackExchange and StackOverflow are great resources for questions as general as “How do I train a model with caret r” to “what do the parameters in model x describe r”.\nIt should be noted that caret is literally a library, each model you use is pulled off the shelf as it’s own self contained package - meaning that it necessarily depends on the package which contains the model (i.e. glmnet, randomForest, XGBoost, nnet, etc.).\nIt will prompt you to download the required packages if you don’t have them, but if you have a specific question about a models parameters, additional arguments, etc. you’ll need to pass those through the function manually and you’ll need to google for solutions within that model’s package, not caret itself.\nYou can search through all available models in Chapter 6, with comprehensive documentation about training models by tag in Chapter 7 (giving the required package(s) and paramters in a given model). I’d highly recommend finding your desired model(s) with the first link, then using “Ctrl + f” to search through the second link and locate the training info for your model(s).\n\nWhat can caret not do? (Deep learning w/keras)\nUnfortunately, caret was not designed with deep learning in mind (dense, multi-layered, complex neural networks of varying structure and function). Which isn’t a problem because those tools have been widely developed in the Python universe with PyTorch and TensorFlow. Luckily there’s another package called keras (a wrapper for Python deep learning which supports TensorFlow, GPUs, etc.) which allows us to build dense, complex neural networks all within the usual piped syntax from layer to layer.\nHere is the R interface to Keras comprehensive website with tutorials, articles, examples, and references."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#alternate-ml-package-tidymodels",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#alternate-ml-package-tidymodels",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Alternate ML package tidymodels",
+    "text": "Alternate ML package tidymodels\nNormally, something with a name like tidymodels would be right up my alley because I generally love all things tidyverse - however this may be an exception (or I may just be old and don’t want to learn a new ML workflow). Overall, it looks like a very well maintained, functional, flexible framework for building ML workflows with tidyverse principles, structures, and syntax. If you are unfamiliar with caret and tidymodels then I would check out both and see which style you like better. The comprehensive website for tidymodels is found here and this 5 step tutorial is a great introduction to the package.\nHaving used caret for many years and after reading through tidymodels documentation thoroughly, there are definitely a mixture of pro’s and con’s. Here are my key takeaways -\n\nCaret\n\nPros\n\nOver 100+ model types/classes\nWell documented and easy to search through (see book above)\nSyntax for tuning/training with resampling (CV, LOOCV, OOB, etc.) never changes\n\nLittle goofy at first but once you’re familiar it makes sense\nPreprocessing is included\n\nWrapper around underlying package (i.e. glmnet, nnet, XGboost, etc.)\n\nAllows you to pass additional arguments to model (see package documentation)\nAllows you to manually define tuning grids for parameters (base::expand.grid)\n\nNot tidy output, but easy to extract performance metrics over tuning, best tune, params, etc.\n\n\n\nCons\n\nDoesn’t have every ML model class or package but it has a ton of them\nNot tidy, returns list of data.frame’s and other objects as opposed to a tibble w/list columns\n\nRequires a little work translating the base R output into a tibble > ggplot/gt\nHowever, only need to figure it out once, can wrap into function to process output\n\nCan be a little finicky passing parameters through tuning (ex. in RF .mtry vs. mtry due to var masking)\nIs marginally slower due to the caret wrapper than the packages themselves\n\n\n\n\nTidymodels\n\nPros\n\ntidyverse principles and syntax\nBuild models sequentially with recipe, baking, engine, etc. (%>%)\nCan choose the ‘engine’ for a given model\n\ni.e. can choose glmnet or keras to fit a penalized logistic glm (last step)\n\nAllows for very flexible model building & output manipulation\nCan pass results naturally to other tidyverse staples like ggplot2 or gt\nHas built in packages to select ‘reasonable’ tuning grids best on a ‘depth’ argument\nBuilt with statistician’s in mind, has much more natural inferential capability\nHas keras built in so can incorporate deep learning\n\n\n\nCons\n\nUnlike caret, which is an umbrella for individual ML packages, tidymodels also contains a bunch of other non-ML tidy packages like parsnip, recipes, tune, yardstick, rsample, etc.\nEach one, while ‘tidy’, does have it’s own unique syntax unlike any models you’ve fit before in R\nMakes it inherently more complex to learn\nWorkflow is broken up into many steps each with unique functions/packages vs. self contained in 1 cohesive function/syntax in caret\nWhile it has keras wrapped in (TensorFlow backend), I think using keras on it’s ownfor deep learning is just as easy"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#text-analysis-with-tidytext",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#text-analysis-with-tidytext",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Text Analysis with tidytext",
+    "text": "Text Analysis with tidytext\nYou may find yourself engaging in some text analysis at some point, from something as simple as locating particular info or meta data from character strings to something as complicated as sentiment analysis, text classification (ML), or Natural Language Processing (NLP, deep learning). If you find yourself in this scenario, I’d highly recomend utilizing the tidytext, a tidyverse friendly interface for text mining and analysis.\nHere is a nice introduction from Julia Silge and David Robinson, and here is the free online book called Text Mining with R (same authors as the intro)."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#combining-ggplots-with-patchwork",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#combining-ggplots-with-patchwork",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "Combining ggplot’s with patchwork",
+    "text": "Combining ggplot’s with patchwork\nLast but not least, there’s one other super useful add on to ggplot2 called patchwork (which I forgot to mention earlier in the semester) that allows us to combine ggplot’s in a convenient, easy-to-understand syntax. The official vignette/website can be accessed here, with tons of references and examples.\nThe package, developed and maintained by Thomas Lin Pedersen, can now be downloaded from CRAN like usual install.pacakges(\"patchwork\") and the most recent dev version can be installed from Github with devtools::install_github(\"thomasp85/patchwork\"). Funny enough, when I first started using this package it was still only a dev version on Github and now it’s a full blown CRAN package! (similar to gt, gtExtras).\nIt’s super functional and easy to use, here are the basics –\n\n1. Side-by-side\n\n#Two side by side\nggplot_1 + ggplot2\n\n#Multiple side by side\nggplot_1 + ggplot_2 + ... + ggplot_n\n\n\n\n2. Vertical\n\n#Two top and bottom\nggplot_1 / ggplot2\n\n#Many top and bottom\nggplot_1 / ggplot_2 / ... / ggplot_n\n\n\n\n3. Any Combination of Side-by-side and Vertical\n\n#Two above one wide below\n(ggplot_1 + ggplot_2) / ggplot_3\n\n#Square layout\n(ggplot_1 + ggplot_2) / (ggplot_3 + ggplot_4)\n\n#One above two below\nggplot_1 / (ggplot_2 + ggplot_3)\n\n#Etc.\n\nIt can also scale to ‘arbitrarily complex layouts’, meaning you are free to create whatever you want without many constraints!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#section-1",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#section-1",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "",
+    "text": "Activity. Student Rating of Teacher Course Evaluations"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_15/lecture_week_15.html#section-2",
+    "href": "pubh_7462/lecture_week_15/lecture_week_15.html#section-2",
+    "title": "Week 15: Package Development & Misc. Topics",
+    "section": "",
+    "text": "You all should have gotten an email a few weeks ago via University of Minnesota’s Evaluations System eval@umn.edu regarding Student Rating of Teacher course evaluations. Please find the email, click on the link and I’ll the last 10-15 minutes of class for you all to fill out the evaluation. These evaluations not only helps me be a better teacher but also helps us better meet the needs of future students, so I’d really appreciate any thoughtful feedback you have regarding the course."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Today we are going to –\n\nLearn how to wrangle and visualize data to answer real world questions\n\nLearn what separates a good plot/table from a bad plot/table\n\nLearn how to make the good kind\n\n\n\nA data visualization is nothing more or less than a communication tool, and a good visualization tells a compelling story. One which –\n\nExplains a phenomenon\nSupports a hypothesis\nPersuades us of an argument\nAnswers or investigates a real world question of interest by\n\nDrawing inference from the past\nPredicting the future\n\n\n\n\n\nIf we wrangle, clean, and reshape our data appropriately, pretty easily!\n\nThe four keys to good data visualizations are\n1. Clean, wrangled, tidy data\n2. Appropriate choice of communication tool or figure type\n3. Clear, organized, self-explanatory structure\n4. Attention to detail \n\n\\(~\\)\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#visualization-with-ggplot",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#visualization-with-ggplot",
+    "title": "Week 4: Visualization I",
+    "section": "Visualization with ggplot()",
+    "text": "Visualization with ggplot()\nggplot’s, much like onions, have layers –\n\nUnlike an onion, however, the layers in ggplot are more analogous to the layers of a hearty sandwich –\n\nThe ggplot sandwich\n\nMeat – mapping & geom(s)\n\nDataExplorer \\(\\longrightarrow\\) Data Wrangling I \\(\\longrightarrow\\) tidy data %>%\nggplot(aes(x = , y =, colour = , fill = , group = , size = , ...)) +\ngeom_point, geom_line, geom_histogram, geom_density, geom_smooth, ...\n\nFixings – aesthetics & facets\n\nalpha, size, shape, linetype, span, jitter etc.\nfacet_wrap(~ v1 + v2, ncol = , nrow = , scales = \"free?\")\n\nSauce – theme & colour palette\n\nggthemes\nscale_colour_viridis colourblind friendly\nRColorBrewer\npaleteer\ntheme(axis.text.x = element_text(angle =, vjust =, hjust =, size = ...))\n\nBread – scale/axes, titles, names\n\nscale_x_continuous, scale_x_date_time, ..,_discrete, scale_y_...\nlabs(x = , y = , title = , subtitle = , caption = )\n\n\n\\(~\\)\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#tables-with-gt",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#tables-with-gt",
+    "title": "Week 4: Visualization I",
+    "section": "Tables with gt()",
+    "text": "Tables with gt()\ngt is like the ggplot of tables, but functions differently with different syntax (due to being developed much later than ggplot). gt’s also have layers, except unlike ggplot, the order of aesthetics doesn’t matter – which implies that gt is exactly like an onion! Note- ggplot is piped with + and gt with %>% (like everything else).\nWhile the full functionality of gt is expansive, and greater detail / function description can be found here and here, today we’re going to cover the 4-5 main features you’ll need to generate a beautifully layered gt onion.\n\\(~\\)\n\nThe gt onion\n\nLayer I – gt(data, rowname_col = \"rowname\", groupname_col = dplyr::group_vars(data))\nLayer II – Titles & headers\n\ntab_header(title, subtitle) (main title, subtitle)\ntab_spanner(data, label, columns) (spans columns)\n\nLayer III – Colours, footnotes, source notes\n\ndata_color(columns = , colors = scales::col_numeric(palette = , domain  =))\ntab_footnote(footnote = \"\", locations = cells_column_labels(columns = )))\ntab_source_note(source_note = \"\")\n\nLayer IV – Style & Options\n\ntab_style()\ntab_options()\n\n\n\\(~\\)\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-1",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-1",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Warning: Note about gt & github_documents"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-2",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-2",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Not everything that normally works in .html will work in github_documents; and one of those things is gt()’s displaying properly. To get around that, we’ll have to gtsave our gt's as a .png and call it directly from Rmarkdown like so –\n\n#Save gt\n#Create a figures directory and save the gt as a .png in there\ndir.create(\"./figures/\")  #create directory\ngtsave(table.gt, \"./figures/gt_table.png\") #save it\n\n#Display the .png inline with ![](./figures/gt_table.png)\n\n\\(~\\)\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#step-1.-read-clean-and-get-comfortable",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#step-1.-read-clean-and-get-comfortable",
+    "title": "Week 4: Visualization I",
+    "section": "Step 1. Read, clean and get comfortable",
+    "text": "Step 1. Read, clean and get comfortable\nFirst, we utilize DataExplorer to\n\nConduct an initial exploration to inform our cleaning and tidying\n\nGenerate potential Data Science questions\n\nRe-write our pipe to read, clean, and tidy appropriately\n\n\n#Read data and do some initial cleaning\ndisney.df <- read_csv(\"./data/disneyland_reviews.csv\",\n                      show_col_types = FALSE,\n                      na = \"missing\") %>%\n             janitor::clean_names()\n\n#Explore a little with DataExplorer\n#Table of general info\nDataExplorer::introduce(disney.df)\n\n# A tibble: 1 x 9\n   rows columns discrete_columns conti~1 all_m~2 total~3 compl~4 total~5 memor~6\n  <int>   <int>            <int>   <int>   <int>   <int>   <int>   <int>   <dbl>\n1 42656       6                4       2       0    2613   40043  255936  3.40e7\n# ... with abbreviated variable names 1: continuous_columns,\n#   2: all_missing_columns, 3: total_missing_values, 4: complete_rows,\n#   5: total_observations, 6: memory_usage\n\n#A random few observations\nset.seed(36)\nsample <- sample(1:nrow(disney.df), 10)\n\n#Display\ndisney.df %>%\n  slice(sample)\n\n# A tibble: 10 x 6\n   review_id rating year_month reviewer_location review_text              branch\n       <dbl>  <dbl> <chr>      <chr>             <chr>                    <chr> \n 1 326116517      4 2015-10    United States     My family had a good ti~ Disne~\n 2 561114590      4 2018-2     Indonesia         I'll start by reminding~ Disne~\n 3  65297363      5 <NA>       Canada            I just got back from a ~ Disne~\n 4 174308145      3 2013-8     United Kingdom    The two parks are withi~ Disne~\n 5 155788938      5 <NA>       Belgium           The only ride that REAL~ Disne~\n 6 421639027      5 2016-3     Philippines       I enjoyed our whole day~ Disne~\n 7 126485364      5 2012-3     United States     After visiting Disney W~ Disne~\n 8 202672130      4 2014-4     Australia         Having not been to a Di~ Disne~\n 9 574949379      5 2018-4     United States     Great fun for first or ~ Disne~\n10 250866714      5 2015-1     United States     I actually went Tuesday~ Disne~\n\n#Plot str() (names and types)\nDataExplorer::plot_str(disney.df)\n\nWe note here that there are NAs in year_month, they just aren’t labeled appropriately. The year_month and branch variables need to be mutated with stringr (or lubridate). Some variable names still require more tidying and variable types need to be fixed appropriately.\n\n#Plot missing\nDataExplorer::plot_missing(disney.df)\n\n\n\n#Plot categorical\nDataExplorer::plot_bar(disney.df)\n\n\n\n#Plot conintuous distributions\nDataExplorer::plot_histogram(disney.df)\n\n\n\n\nWe also note that the number of California reviews is nearly double that of Hong Kong, and ~35% larger than that of Paris. In addition, the distribution of reviews is heavily left-skewed, with mostly 4 and 5 star reviews and very few 1’s, 2’s, and 3’s.\n\\(~\\)\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#step-2.-wrangle-the-data",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#step-2.-wrangle-the-data",
+    "title": "Week 4: Visualization I",
+    "section": "Step 2. Wrangle the data",
+    "text": "Step 2. Wrangle the data\nNext, we re-write our data wrangling pipeline to include the necessary steps to clean, transform, rename, and tidy thse data to answer any potential questions of interest. This includes\n\nDeclaring NA = r“missing”`\nRenaming redundant review_ from features\n\nExtracting/creating time variables (numeric & factor)\n\nCreating text analysis variables like word count, avg. length, etc.\n\nRetaining only the features relevant to our analysis\n\nChecking for unique observations / multiple reviews per ID\n\nRetaining only unique/valid observations\n\n\n#Read data and do some initial cleaning\ndisney.df <- read_csv(\"./data/disneyland_reviews.csv\",\n                      na = c(\"missing\"),\n                      show_col_types = FALSE) %>%\n             janitor::clean_names() %>%\n             rename(\n               id       = review_id,\n               text     = review_text, #trimming unnecessary review_\n               location = reviewer_location\n             ) %>% \n             mutate( #Time\n               id    = as.factor(id),\n               date  = lubridate::ym(year_month), #Cleaning up time as date, y/m factors\n               year  = lubridate::year(date) %>% #See the lubridate package\n                       as.factor(),\n               month = month.name[lubridate::month(date)] %>%\n                       as.factor()\n             ) %>%\n             mutate( #Text analysis\n               n_words    = str_split(text, \" \") %>% #proxy for number of words\n                            map_dbl(length),\n               avg_length = str_split(text, \" \") %>% #proxy for average length\n                            map(str_length) %>% \n                            map_dbl(mean),\n               n_unique   = str_split(text, \" \") %>% #proxy for no. unique words\n                            map(unique) %>%\n                            map_dbl(length),\n               branch     = str_split(branch, \"_\") %>% #extracting branch w stringr\n                            map_chr(2) %>%\n                            as.factor() %>%\n                            fct_recode(\"Hong Kong\" = \"HongKong\") %>%\n                            fct_relevel(\"California\", \"Paris\")\n             ) %>%\n             dplyr::select(id, rating, location, branch, everything(), -c(year_month, text))\n\n#Let's check it out now\ndisney.df %>%\n  slice(sample)\n\n# A tibble: 10 x 10\n   id       rating locat~1 branch date       year  month n_words avg_l~2 n_uni~3\n   <fct>     <dbl> <chr>   <fct>  <date>     <fct> <fct>   <dbl>   <dbl>   <dbl>\n 1 3261165~      4 United~ Calif~ 2015-10-01 2015  Octo~     120    4.25      91\n 2 5611145~      4 Indone~ Hong ~ 2018-02-01 2018  Febr~     126    4.71      93\n 3 65297363      5 Canada  Calif~ NA         <NA>  <NA>      160    4.25     112\n 4 1743081~      3 United~ Calif~ 2013-08-01 2013  Augu~     120    4.18      85\n 5 1557889~      5 Belgium Paris  NA         <NA>  <NA>       34    4.76      30\n 6 4216390~      5 Philip~ Hong ~ 2016-03-01 2016  March      38    4.82      31\n 7 1264853~      5 United~ Calif~ 2012-03-01 2012  March     117    4.32      85\n 8 2026721~      4 Austra~ Hong ~ 2014-04-01 2014  April     140    4.34     103\n 9 5749493~      5 United~ Calif~ 2018-04-01 2018  April      85    4.35      69\n10 2508667~      5 United~ Calif~ 2015-01-01 2015  Janu~      84    4.26      76\n# ... with abbreviated variable names 1: location, 2: avg_length, 3: n_unique\n\n\nNote that not every observation is independent, as 20 ID’s submitted 2 reviews –\n\n#Repeated id data frame\ndisney.df %>%\n  pull(id) %>%\n  fct_count() %>%\n  arrange(desc(n)) %>%\n  filter(n > 1)\n\n# A tibble: 20 x 2\n   f             n\n   <fct>     <int>\n 1 121568004     2\n 2 121570980     2\n 3 121578357     2\n 4 121580686     2\n 5 121586148     2\n 6 121615136     2\n 7 121615246     2\n 8 129207323     2\n 9 129214104     2\n10 129231609     2\n11 164830205     2\n12 164862064     2\n13 166730734     2\n14 166753649     2\n15 166754595     2\n16 166784597     2\n17 166787525     2\n18 166787635     2\n19 168489234     2\n20 226905150     2\n\n#Extract only the first occurance of these id's\nkeep_index <- disney.df %>% pull(id) %>% match(unique(.), .)\n\n#Retain only the first occurance (final df 20 less obs)\ndisney.df <- disney.df %>% slice(keep_index)\n\nI went back and cross-referenced these repeated ID’s with their reviews and they are indeed ‘true’ duplicates even though the computer hasn’t recognized that due to small changes in punctuation/spacing/text parsing. Above is a small bit of code to keep only the first occurence of each review ID by index.\n\\(~\\)\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#step-3.-ask-some-real-world-questions-of-interest",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#step-3.-ask-some-real-world-questions-of-interest",
+    "title": "Week 4: Visualization I",
+    "section": "Step 3. Ask some real world questions of interest",
+    "text": "Step 3. Ask some real world questions of interest\nSome natural questions we may ask of these data, given our cleaning and transformation, are –\n3.1 What are the top 5 reviewer location(s) of origin by branch?\n3.2 What is the average rating by branch?\n- Has the average rating changed over time?\n- Does the avg. rating vary within each branch by top 5 location? vs. other?\n3.3 Is there any association between rating and text analysis variables?\n\\(~\\)\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#step-4.-do-data-science-to-answer-these-questions",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#step-4.-do-data-science-to-answer-these-questions",
+    "title": "Week 4: Visualization I",
+    "section": "Step 4. Do data science to answer these questions",
+    "text": "Step 4. Do data science to answer these questions"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-4",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-4",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Activity 3.1 What are the top 5 reviewer location(s) of origin by branch?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-5",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-5",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "#gt, need the paletteer package for colours\nif (!require(\"paleteer\")) {\n  install.packages(\"paleteer\")\n}\n\n\n#Make a table of top 5 w/ dplyr\ntop_5.df <- disney.df %>%\n  group_by(branch, location) %>%\n  summarise(\n    N = n()\n  ) %>%\n  arrange(branch, desc(N)) %>%\n  group_by(branch) %>%\n  slice(1:5)\n\n#Display table with gt\ntop_5.df %>%\n  rename(\n    `# Reviews` = N,\n    `Location of Origin` = location) %>%\n  gt() %>%\n  tab_header(\"Top 5 Reviewer Locations by Branch\") %>%\n  data_color(\n    columns = `# Reviews`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(0, 13000)\n    )\n  ) %>%\n  tab_footnote(\n    footnote = \"Reviews extracted from Trip Advisor 2010-2019\",\n    locations = cells_column_labels(\n      columns = `# Reviews`\n    )\n  )\n\n\n\n\n\n  \n    \n      Top 5 Reviewer Locations by Branch\n    \n    \n  \n  \n    \n      Location of Origin\n      # Reviews1\n    \n  \n  \n    \n      California\n    \n    United States\n12335\n    Australia\n2447\n    Canada\n1842\n    United Kingdom\n1019\n    New Zealand\n527\n    \n      Paris\n    \n    United Kingdom\n7992\n    United States\n1330\n    Australia\n595\n    Ireland\n430\n    India\n293\n    \n      Hong Kong\n    \n    Australia\n1634\n    India\n1082\n    Philippines\n991\n    United States\n877\n    Singapore\n849\n  \n  \n  \n    \n      1 Reviews extracted from Trip Advisor 2010-2019\n    \n  \n\n\n\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-7",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-7",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Activity 3.2 What is the average rating by branch?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-8",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-8",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "disney.df %>%\n  group_by(branch) %>%\n  summarise(\n    avg_rating = mean(rating)\n  ) %>%\n  arrange(desc(avg_rating)) %>%\n  rename(\n    Branch = branch,\n    `Average Rating` = avg_rating\n  ) %>%\n  gt() %>%\n  tab_header(\"Average Rating by Branch\") %>%\n  tab_footnote(\n    footnote = \"Reviews extracted from Trip Advisor 2010-2019\",\n    locations = cells_column_labels(\n      columns = `Average Rating`\n    )\n  )\n\n\n\n\n\n  \n    \n      Average Rating by Branch\n    \n    \n  \n  \n    \n      Branch\n      Average Rating1\n    \n  \n  \n    California\n4.405361\n    Hong Kong\n4.204226\n    Paris\n3.960012\n  \n  \n  \n    \n      1 Reviews extracted from Trip Advisor 2010-2019\n    \n  \n\n\n\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-10",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-10",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Activity 3.2.1 Has this average rating changed over time?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-11",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-11",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "disney.df %>%\n  group_by(branch, date) %>%\n  summarise(\n    avg_rating = mean(rating)\n  ) %>%\n  drop_na() %>%\n  ungroup() %>%\n  mutate(branch = fct_reorder(branch, avg_rating, .desc = TRUE)) %>%\n  ggplot(aes(x = ymd(date), y = avg_rating, colour = branch, fill = branch)) +\n  stat_smooth(alpha   = 0.2, \n              size    = 1.2, \n              method  = \"loess\",\n              formula = \"y ~ x\",\n              span    = 0.2,\n              se      = FALSE) +\n  geom_point(alpha    = 0.24, \n             position = \"jitter\",\n             size     = 2, \n             shape    = 16) +\n  labs(\n    x = \"Year\",\n    y = \"Average Rating\",\n    title = \"Average Rating by Branch from 2010-2019\"\n  ) + \n  annotate(geom = \"text\",\n           x = ymd(\"2013-07-1\"), \n           y = 4.66,\n           label  = \"Mean Trend\",\n           #family = \"AvantGarde\",\n           colour = my_purple) +\n  scale_colour_viridis_d(\"Disneyland Branch\") +\n  scale_fill_viridis_d(\"Disneyland Branch\") +\n  scale_x_date(\n    date_breaks = \"1 year\",\n    date_minor_breaks = \"1 year\",\n    date_labels = \"%Y\"\n  ) +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1.24,\n                                   hjust = 1.2,\n                                   size  = 11),\n        axis.text.y = element_text(size  = 11)) +\n  ylim(c(3, 5))\n\n\n\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-13",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-13",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Activity 3.2.2 Does the avg. rating vary within each branch by top 5 location? vs. other?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-14",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-14",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "#Display table with gt\ndisney.df %>%\n  group_by(branch, location) %>%\n  summarise(\n    avg_rating = mean(rating),\n    N          = n()\n  ) %>%\n  arrange(branch, desc(N)) %>%\n  group_by(branch) %>%\n  slice(1:5) %>%\n  arrange(branch, desc(avg_rating), desc(N)) %>%\n  rename(\n    `# Reviews`          = N,\n    `Average Rating`     = avg_rating,\n    `Location of Origin` = location) %>%\n  gt() %>%\n  tab_header(\"Top 5 Reviewer Locations by Branch\") %>%\n  data_color(\n    columns = `# Reviews`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", \"red\"),\n      domain  = c(0, 13000)\n    )\n  ) %>%\n  data_color(\n    columns = `Average Rating`,\n    colors = scales::col_numeric(\n      palette = c(\"blue\", \"white\", \"red\"),\n      domain  = c(3.2, 4.6)\n    )\n  ) %>%\n  tab_footnote(\n    footnote = \"Reviews extracted from Trip Advisor 2010-2019\",\n    locations = cells_column_labels(\n      columns = `Average Rating`\n    )\n  )\n\n`summarise()` has grouped output by 'branch'. You can override using the\n`.groups` argument.\n\n\n\n\n\n\n  \n    \n      Top 5 Reviewer Locations by Branch\n    \n    \n  \n  \n    \n      Location of Origin\n      Average Rating1\n      # Reviews\n    \n  \n  \n    \n      California\n    \n    Australia\n4.539436\n2447\n    New Zealand\n4.487666\n527\n    Canada\n4.412052\n1842\n    United States\n4.393839\n12335\n    United Kingdom\n4.290481\n1019\n    \n      Paris\n    \n    Ireland\n4.260465\n430\n    India\n4.215017\n293\n    United Kingdom\n4.015641\n7992\n    United States\n3.735338\n1330\n    Australia\n3.648739\n595\n    \n      Hong Kong\n    \n    India\n4.512015\n1082\n    Philippines\n4.402624\n991\n    Australia\n4.212974\n1634\n    United States\n4.145952\n877\n    Singapore\n4.045936\n849\n  \n  \n  \n    \n      1 Reviews extracted from Trip Advisor 2010-2019"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-16",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-16",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "Activity 3.3 Is there any association between rating and text analysis variables?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_4/lecture_week_4.html#section-17",
+    "href": "pubh_7462/lecture_week_4/lecture_week_4.html#section-17",
+    "title": "Week 4: Visualization I",
+    "section": "",
+    "text": "disney.df %>%\n  pivot_longer(\n    cols      = contains(c(\"n_\", \"avg\")),\n    names_to  = \"text_var\",\n    values_to = \"measurement\"\n  ) %>%\n  mutate(\n    text_var = case_when(\n                text_var %in% \"n_words\"  ~ \"Word Count\",\n                text_var %in% \"n_unique\" ~ \"Unique Word Count\",\n                TRUE                     ~ \"Avg. Word Length\"\n                ) %>%\n                as_factor()\n  ) %>%\n  ggplot(aes(x = measurement, y = rating, colour = text_var)) +\n#  stat_smooth(alpha   = 0.2, \n#              size    = 1.2, \n#              method  = \"loess\",\n#              span    = 1,\n#              se      = FALSE) +\n  geom_point(alpha    = 0.16, \n             position = position_jitter(w = 2, h = 0.36),\n             size     = 2, \n             shape     = 16) +\n  labs(\n    x = \"Observed Measurement\",\n    y = \"Rating\",\n    title = \"Text-derived Associations with Rating\"\n  ) +\n  scale_colour_viridis_d(\"Text-derived Variable\") +\n  facet_wrap(~ text_var, scales = \"free_x\")\n\n\n\n\n\ndisney.df %>%\n  filter(\n    n_words <= 1000,\n    n_unique <= 750,\n    avg_length <= 6,\n    avg_length >= 3\n  ) %>%              #to handle outliers rigorously\n  pivot_longer(\n    cols      = contains(c(\"n_\", \"avg\")), #Turning text analysis vars from wide to long\n    names_to  = \"text_var\",\n    values_to = \"measurement\"\n  ) %>%\n  mutate(\n    text_var = case_when(\n                text_var %in% \"n_words\"  ~ \"Word Count\",\n                text_var %in% \"n_unique\" ~ \"Unique Word Count\", #Recoding variable w meaningful names\n                TRUE                     ~ \"Avg. Word Length\"\n                ) %>%\n                as_factor()\n  ) %>%\n  ggplot(aes(x = measurement, colour = as.factor(rating), fill = as.factor(rating))) +\n  geom_density(adjust = 2, alpha = 0.44, position = \"stack\") +\n  labs(\n    x = \"Observed Measurement\",\n    y = \"Rating 1-5\",\n    title = \"Text-derived Associations with Rating\"\n  ) +\n  scale_colour_viridis_d(\"Rating\") +\n  scale_fill_viridis_d(\"Rating\") +\n  facet_wrap(~ text_var, scales = \"free\")\n\n\n\n\n\nggridges\n\n#Load the ggridges package for density plots\nif (!require(\"ggridges\")) {\n  install.packages(\"ggridges\")\n}\n#Load data\nlibrary(ggridges)\n\n\ndisney.df %>%\n  filter(\n    n_words <= 1000,\n    n_unique <= 750,\n    avg_length <= 6,\n    avg_length >= 3\n  ) %>%\n  pivot_longer(\n    cols      = contains(c(\"n_\", \"avg\")),\n    names_to  = \"text_var\",\n    values_to = \"measurement\"\n  ) %>%\n  mutate(\n    text_var = case_when(\n                text_var %in% \"n_words\"  ~ \"Word Count\",\n                text_var %in% \"n_unique\" ~ \"Unique Word Count\",\n                TRUE                     ~ \"Avg. Word Length\"\n                ) %>%\n                as_factor(),\n    rating = as.factor(rating) %>% \n             fct_rev()\n  ) %>%\n  ggplot(aes(x = measurement, y = rating, colour = rating, fill = rating)) +\n#  geom_histogram(aes(y = stat(density)),\n#                 binwidth = 10,  colour = \"black\",\n#                 alpha    = 0.24) +\n  geom_density_ridges2(adjust = 2,\n                       alpha  = 0.44,\n                       scale  = 2) +\n  stat_summary(fun = mean, geom = \"point\", size = 6, shape = \"|\") +\n  labs(\n    x = \"Observed Measurement\",\n    y = \"Rating 1-5\",\n    title = \"Text-derived Associations with Rating\"\n  ) +\n  scale_colour_viridis_d(\"Rating (Mean |)\") +\n  scale_fill_viridis_d(\"Rating (Mean |)\") +\n  facet_wrap(~ text_var, scales = \"free\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization (today)\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nSpatial Visualization\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nWebsites in R + Github\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nShiny Apps\n\nBasics\nPublish in an R hosted website\n\nEmbedding interactive flexdashboards\nEmbedding shiny apps\n\n\nMiscellaneous\n\n*Working with big data in R dt_plyr, collapse, h2o, sparklyr\n*Working with databases in R db_plyr\n*How to develop a package with Rstudio & Github\n*Webscraping with R\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-1",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-1",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "So what exactly are we going to do today?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-2",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-2",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Today we’re going to explore a couple of new packages, how they can be used to enhance our visualizations, and see some examples/tutorials for how to use these tools effectively.\n\nLearn how to enhance gt tables with gtExtras\n\nWith a brief intro to flextable, an alternative to gt\n\nIntroduce ‘interactive’ tables with reactable\nLearn how to enhance ggplot with interactivity through ggplotly\nIntroduce dashboards with flexdashboard\nDo an activity which –\n\nTurns (3) ggplot’s into ggplotly’s\nCreates a simple flexdashboard of those (3) ggploty’s\n\n\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-4",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-4",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Warning: If you’re having issues installing gtExtras due to dependencies not updating"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-5",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-5",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "When it prompts you to update any outdated dependencies, you select yes and then installation fails – if you see something like “Warning: cannot remove prior installation of package ‘rlang’” (which I did), it’s an easy fix. First, restart R and close all projects, instances, etc. Then, locate where your /R folder exists which contains all the packages (~/R/win-library/4.1 for me on Windows), manually delete the folder then go back to a new R session, restart R just to make sure, and then install.packages(\"rlang\") and that should do the trick.\n\\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-7",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-7",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 1. (Lakers 08-09, Week 6 Lecture) Enhancing an old gt with gtExtras"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#the-original-monthly-shooting-summary-gt",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#the-original-monthly-shooting-summary-gt",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "The original monthly shooting summary gt",
+    "text": "The original monthly shooting summary gt\n\n#Original gt\nsht_pct.gt %>%\n  data_color(\n    columns = `Avg. Shooting Pct.`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(0, 1)\n    )\n  )\n\n\n\n\n\n  \n    \n      Monthly Summaries of Shooting Percentage by Type\n    \n    \n  \n  \n    \n      \n      Month\n      Shot Type\n      Avg. Shooting Pct.\n      Median Shooting Pct.\n      SD Shooting Pct.\n    \n  \n  \n    1\nJan\nDunk\n96.2%\n100.0%\n5.5%\n    2\nJan\nLayup\n53.7%\n51.7%\n8.2%\n    3\nJan\nOther\n53.0%\n58.3%\n18.0%\n    4\nJan\nJumpshot\n42.5%\n43.6%\n6.9%\n    5\nJan\n3 Pointer\n36.7%\n37.0%\n7.8%\n    6..30\n\n\n\n\n\n    31\nDec\nDunk\n95.2%\n100.0%\n5.9%\n    32\nDec\nLayup\n53.0%\n53.5%\n6.2%\n    33\nDec\nOther\n46.3%\n50.0%\n20.1%\n    34\nDec\nJumpshot\n39.8%\n40.7%\n6.3%\n    35\nDec\n3 Pointer\n36.7%\n36.1%\n4.3%\n    Season Avg. Weighted by Type\n—\n—\n55.3%\n—\n—\n  \n  \n    \n      Data from Laker's 2008-2009 Season courtesy of lubridate"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#an-enhanced-version",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#an-enhanced-version",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "An enhanced version",
+    "text": "An enhanced version\n\n#Enhanced gt with gtExtras\nsht_pct.gt %>%\n  gt_color_rows( #Colour multiple columns at once\n    columns = contains(\"Shooting\"),\n    palette = \"ggsci::red_material\", #paleteer\n  #  palette = c(\"white\", my_purple),\n    use_paletteer = TRUE #Turn this false to use manual colors\n  )  %>%\n  gt_theme_nytimes() %>% #NY Times theme\n  gt_highlight_rows(\n    rows = c(5, 11), #3 pointers, lowest percentage\n    fill = \"blue4\", #blue as in\n    alpha = 0.24,\n    bold_target_only = TRUE,\n    target_col = c(`Shot Type`, `Avg. Shooting Pct.`)\n    )\n\nWarning: Domain not specified, defaulting to observed range within each\nspecified column.\n\n\n\n\n\n\n  \n    \n      Monthly Summaries of Shooting Percentage by Type\n    \n    \n  \n  \n    \n      \n      Month\n      Shot Type\n      Avg. Shooting Pct.\n      Median Shooting Pct.\n      SD Shooting Pct.\n    \n  \n  \n    1\nJan\nDunk\n96.2%\n100.0%\n5.5%\n    2\nJan\nLayup\n53.7%\n51.7%\n8.2%\n    3\nJan\nOther\n53.0%\n58.3%\n18.0%\n    4\nJan\nJumpshot\n42.5%\n43.6%\n6.9%\n    5\nJan\n3 Pointer\n36.7%\n37.0%\n7.8%\n    6..30\n\n\n\n\n\n    31\nDec\nDunk\n95.2%\n100.0%\n5.9%\n    32\nDec\nLayup\n53.0%\n53.5%\n6.2%\n    33\nDec\nOther\n46.3%\n50.0%\n20.1%\n    34\nDec\nJumpshot\n39.8%\n40.7%\n6.3%\n    35\nDec\n3 Pointer\n36.7%\n36.1%\n4.3%\n    Season Avg. Weighted by Type\n—\n—\n55.3%\n—\n—\n  \n  \n    \n      Data from Laker's 2008-2009 Season courtesy of lubridate"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-10",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-10",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 2. (Disney Land Reviews) Enhancing an old gt with gtExtras::gt_sparklines"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#original-gt",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#original-gt",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "Original gt",
+    "text": "Original gt\n\n#Original gt\nreview.gt <- disney.df %>%\n  group_by(branch, location) %>%\n  summarise(\n    avg_rating = mean(rating),\n    N          = n()\n  ) %>%\n  arrange(branch, desc(N)) %>%\n  group_by(branch) %>%\n  slice(1:5) %>%\n  arrange(branch, desc(avg_rating), desc(N)) %>%\n  rename(\n    `# Reviews`          = N,\n    `Average Rating`     = avg_rating,\n    `Location of Origin` = location) %>%\n  gt() %>%\n  tab_header(\"Top 5 Reviewer Locations by Branch\") %>%\n  tab_footnote(\n    footnote = \"Reviews extracted from Trip Advisor 2010-2019\",\n    locations = cells_column_labels(\n      columns = `Average Rating`\n    )\n  ) %>%\n    data_color(\n    columns = `# Reviews`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", \"red\"),\n      domain  = c(0, max(`# Reviews`) + 100)\n    )\n  ) %>%\n  data_color(\n    columns = `Average Rating`,\n    colors = scales::col_numeric(\n      palette = c(\"blue\", \"white\", \"red\"),\n      domain  = c(min(`Average Rating`) - 0.4, \n                  max(`Average Rating`))\n    )\n  )\n\n`summarise()` has grouped output by 'branch'. You can override using the\n`.groups` argument.\n\n#Original gt\nreview.gt\n\n\n\n\n\n  \n    \n      Top 5 Reviewer Locations by Branch\n    \n    \n  \n  \n    \n      Location of Origin\n      Average Rating1\n      # Reviews\n    \n  \n  \n    \n      California\n    \n    Australia\n4.538807\n2448\n    New Zealand\n4.487666\n527\n    Canada\n4.412052\n1842\n    United States\n4.393954\n12339\n    United Kingdom\n4.290481\n1019\n    \n      Paris\n    \n    Ireland\n4.260465\n430\n    India\n4.215017\n293\n    United Kingdom\n4.015641\n7992\n    United States\n3.736289\n1331\n    Australia\n3.648739\n595\n    \n      Hong Kong\n    \n    India\n4.511542\n1083\n    Philippines\n4.402624\n991\n    Australia\n4.213325\n1636\n    United States\n4.144154\n881\n    Singapore\n4.049296\n852\n  \n  \n  \n    \n      1 Reviews extracted from Trip Advisor 2010-2019"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#enhanced-gt",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#enhanced-gt",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "Enhanced gt",
+    "text": "Enhanced gt\nIn order to add sparklines to our table, we’ll need to create a list column for all of the values of interest in our summarise statement (remember tibble’s like list columns).\n\nEnhance data wrangling with list column\n\n#New and improved gt\nsparkline.gt <- disney.df %>%\n  group_by(branch, location) %>%\n  summarise(\n    avg_rating = mean(rating),\n    N          = n(),\n    `Rating Distribution` = list(rating) #Create a list col of values, make sure it's named well here\n  ) %>%                       #So we can plot each list\n  arrange(branch, desc(N)) %>%\n  group_by(branch) %>%\n  slice(1:5) %>%\n  arrange(branch, desc(avg_rating), desc(N)) %>%\n  rename(\n    `# Reviews`          = N,\n    `Average Rating`     = avg_rating,\n    `Location of Origin` = location) %>%\n  gt() %>%\n  tab_header(\"Top 5 Reviewer Locations by Branch\") %>%\n  tab_footnote(\n    footnote = \"Reviews extracted from Trip Advisor 2010-2019\",\n    locations = cells_column_labels(\n      columns = `Average Rating`\n    )\n  ) %>%\n    data_color(\n    columns = `# Reviews`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", \"red\"),\n      domain  = c(0, max(`# Reviews`) + 100)\n    )\n  ) %>%\n  data_color(\n    columns = `Average Rating`,\n    colors = scales::col_numeric(\n      palette = c(\"blue\", \"white\", \"red\"),\n      domain  = c(min(`Average Rating`) - 0.4, \n                  max(`Average Rating`))\n    )\n  )\n\n`summarise()` has grouped output by 'branch'. You can override using the\n`.groups` argument.\n\n\n\n\nNow let’s enhance our gt with sparklines & a gtExtra theme\nAs of now, there are only lineplot (sparkline), density, histogram, or barplot; I’m sure more will be developed soon.\n\n#New and improved gt\nsparkline.gt %>%\n  gt_sparkline(`Rating Distribution`, \n               type       = \"histogram\", \n               line_color = \"white\", \n               fill_color = \"coral1\", \n               bw         = 1) %>%\n  gt_theme_nytimes() #NY Times theme\n\n\n\n\n\n  \n    \n      Top 5 Reviewer Locations by Branch\n    \n    \n  \n  \n    \n      Location of Origin\n      Average Rating1\n      # Reviews\n      Rating Distribution\n    \n  \n  \n    \n      California\n    \n    Australia\n4.538807\n2448\n          \n    New Zealand\n4.487666\n527\n          \n    Canada\n4.412052\n1842\n          \n    United States\n4.393954\n12339\n          \n    United Kingdom\n4.290481\n1019\n          \n    \n      Paris\n    \n    Ireland\n4.260465\n430\n          \n    India\n4.215017\n293\n          \n    United Kingdom\n4.015641\n7992\n          \n    United States\n3.736289\n1331\n          \n    Australia\n3.648739\n595\n          \n    \n      Hong Kong\n    \n    India\n4.511542\n1083\n          \n    Philippines\n4.402624\n991\n          \n    Australia\n4.213325\n1636\n          \n    United States\n4.144154\n881\n          \n    Singapore\n4.049296\n852\n          \n  \n  \n  \n    \n      1 Reviews extracted from Trip Advisor 2010-2019"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#reactable",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#reactable",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "reactable",
+    "text": "reactable\nThe vignette for reactable may be found here, a whole host of examples here, demos here, and reference for package functions here. We’re going to explore these briefly as a class, so please take the time to do so on your own if you couldn’t make it to class.\n\nKey Takeaways from reactable\n\nPros\n\nHighly functional, includes ability to use HTML and Javascript\nAbility for user to interactively sort by column\nAbility to search a table\nPagination\nAbility to Group/Aggregate interactively\nCustom Rendering\nIt basically produces a self-contained Shiny app/widget\n\n\n\nCons\n\nHighly functional but at the cost of being highly complex with unique syntax\nDoesn’t necessarily play well with the tidyverse\nNeed to have a basic knowledge of HTML or Javascript to maximize the packages potential\nWhile you can make ‘interactive’ tables with reactable, there’s rarely a need to do so\n\nUnless you’re developing webpages specifically designed to explore data\n\nLot’s of the minor functionality can be performed with gt + gtExtras\n\nAll functionality can also be done directly in Rshiny"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#flextable",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#flextable",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "flextable",
+    "text": "flextable\nAn entire online book written by David Gohel on using the flextable package can be found here. We’re going to explore these briefly as a class, so please take the time to do so on your own if you couldn’t make it to class.\n\nKey Takeaways from flextable\nI am a little biased towards gt as it’s newer, similar to ggplot, is tidyverse friendly, and is being rapidly developed to increase it’s functionality. However, flextable has some notable advantages to gt at present and can be more functional in a variety of ways. You’ll never be required to make one in this course, but it may be useful for your final project or in developing Rshiny apps later in the course.\n\nPros\n\nCan knit to .html, .docx, .ppt, and .pdf\nConsistent, relatively easy to follow syntax\nSlightly more customizable than gt\nAppears to work well with Rshiny\nComprehensive, well maintained, established\n\n\n\nCons\n\nNot tidyverse friendly in the same way as gt\nDoesn’t operate like ggplot (while gt does)\nThough gt is much newer (less developed) than flextable, it’s already nearly as functional and I expect that gap to close soon\n\nMinus the ability to create .docx, .pdf, or .ppt\n\nHowever, the ability to create the above documents isn’t that necessary as you can write out any gt as a .jpg or .png and embed it any of those file types easily and reproducibly\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-13",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-13",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 3. (NYC Airbnb Scatterplot) Introduction to ggplotly syntax"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-14",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-14",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "First, let’s read in these NYC Airbnb data (acquired in 2017), tidy it up, and filter by “Entire homes or apartments” which have ratings, are price under $1000/night, and are on the island of Manhattan.\n\n#plotly\nlibrary(plotly)\n\n#Read in the nyc airbnb data set\nnyc_airbnb.df <- read_csv(\"./data/nyc_airbnb.csv\", show_col_types = FALSE) %>%\n  mutate(rating = review_scores_location / 2) %>%\n  filter(\n    neighbourhood_group %in% \"Manhattan\",\n    room_type %in% \"Entire home/apt\",\n    (!is.na(rating)),\n    price <= 1000\n  ) %>%\n  dplyr::select(neighbourhood, rating, price,\n                room_type, lat, long, contains(\"review\"))\n\n\nSpatial Scatterplot (we will improve this when we do mapping!)\nLet’s make a spatial scatterplot, with a point for each listing and a label which describes the neighborhood, price, rating, and number of reviews of that particular listing.\n\nnyc_airbnb.df %>%\n  mutate(\n    text_label = str_c(neighbourhood, \n                       \"\\nPrice - $\"  ,  price, \n                       \"\\nRating - \",    rating,\n                       \"\\n# Reviews - \", number_of_reviews)\n  ) %>%\n  plot_ly(\n    x     = ~lat,\n    y     = ~long,\n    type  = \"scatter\", \n    mode  = \"markers\", #This is geom_point, 'lines' = geom_line\n    color = ~price,\n    text  = ~text_label,\n    alpha = 0.4\n  ) %>%\n  layout(\n    title  = \"Spatial Scatterplot of Manhattan Airbnb's by Price\",\n    xaxis  = list(title = \"Latitude\"),\n    yaxis  = list(title = \"Longitude\"),\n    legend = list(title = \"Price\") #Not working?\n  )"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-16",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-16",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 4. (NYC Airbnb Boxplot) Introduction to ggplotly syntax"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-17",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-17",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "For reference, here is an artistic map of the neighborhoods in nyc –\n\n\n\nMap of Manhattan Neighborhoods\n\n\n\nPricing Boxplots\nNext, let’s look at the distribution of pricing by neighborhood. Note that you can double click on an item in the legend to isolate it, or single click to remove or add items to the plot.\n\nnyc_airbnb.df %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, price, median, .desc = FALSE)\n  ) %>%\n  plot_ly(\n    x      = ~price,\n    color  = ~neighbourhood,\n    type   = \"box\",\n    colors = \"viridis\" \n  ) %>%\n  layout(\n    title  = \"Distribution of Manhattan's Airbnb Price by Neighbourhood\",\n    xaxis  = list(title = \"Price\")\n  )"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-19",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-19",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 5. (NYC Airbnb Barplot) Introduction to ggplotly syntax"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-20",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-20",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Barchart of Number of Listings per Neighborhood Coloured by avg. rating\nHere I wanted to colour the bars by their average rating but order them by number of listings, however plot_ly didn’t like that so I stuck with colouring by neighbourhood.\n\nnyc_airbnb.df %>%\n  group_by(neighbourhood) %>%\n  summarise(\n    N             = n(),\n    `Avg. Rating` = mean(rating) # Wanted to colour by avg. rating but it didn't like that\n  ) %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE)\n  ) %>%\n  plot_ly(\n    x = ~neighbourhood,\n    y = ~N,\n    color  = ~neighbourhood,\n    type   = \"bar\",\n    colors = \"viridis\"\n  ) %>%\n  layout(\n    title  = \"Number of Listings by Neighbourhood\",\n    xaxis  = list(title = \"Neighbourhood\"),\n    yaxis  = list(title = \"Number of Listings\")\n  )\n\n\n\n\n\nMore details are given on their website above and Google can solve most any issues you may run into with plotly - it’s a widely and professionally used piece of software."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-22",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-22",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 6. (NYC Airbnb Scatterplot) ggplot %>% ggplotly()"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-23",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-23",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Spatial Scatterplot (we will improve this when we do mapping!)\n\n#Our usual ggplot\nscatter.gg <- \n  nyc_airbnb.df %>%\n  mutate(\n    text_label = str_c(neighbourhood, #add as text aesthetic\n                       \"\\nPrice - $\"  ,  price, \n                       \"\\nRating - \",    rating,\n                       \"\\n# Reviews - \", number_of_reviews)\n  ) %>%\n  ggplot(aes(x = lat, y = long, colour = price, text = text_label)) +\n  geom_point(alpha = 0.25) +\n  coord_cartesian() +\n  scale_colour_viridis_c(\"Price\") +\n  labs(\n    title = \"Spatial Scatterplot of Manhattan's Airbnb Prices\",\n    x     = \"Latitude\",\n    y     = \"Longitude\"\n  ) + \n  theme(legend.position = \"right\")\n  \n#ggplotly() + tooltip to control label\nggplotly(scatter.gg, tooltip = \"text\") #tooltip controls text hover/label"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-25",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-25",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 7. (NYC Airbnb Boxplot) ggplot %>% ggplotly()"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-26",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-26",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Distribution of Airbnb Pricing by Neighbourhood\n\n#Make our usual ggplot\nprice_dist.gg <- nyc_airbnb.df %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, price, median, .desc = FALSE)\n  ) %>%\n  ggplot(aes(x = neighbourhood, y = price, fill = neighbourhood)) +\n#  geom_violin(alhpa = 0.4, scale = \"width\", trim = FALSE) +\n  geom_boxplot(alpha = 0.8, colour = \"black\", width = 2) +\n  labs(\n    title = \"Distribution of Manhattan's Airbnb Price by Neighbourhood\",\n    x     = \"Price\"\n  ) +\n  scale_fill_viridis_d(\"Neighbourhood\") +\n  theme(legend.position = \"right\") +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1))\n\n#Pass it to ggplotly\nggplotly(price_dist.gg)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-28",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-28",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Example 8. (NYC Airbnb Barplot) ggplot %>% ggplotly()"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-29",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-29",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Barchart of Number of Listings per Neighborhood Coloured by Avg. Rating\n\n#Make our usual barplot\nbar.gg <- nyc_airbnb.df %>%\n  group_by(neighbourhood) %>%\n  summarise(\n    N          = n(),\n    avg_rating = mean(rating) \n  ) %>%\n  ungroup() %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE),\n    text_label    = str_c(neighbourhood, #add as text aesthetic\n                          \"\\nAvg. Rating - \", round(avg_rating, 2), \n                          \"\\n# Reviews - \",   N)\n  ) %>%\n  ggplot(aes(x = neighbourhood, y = N, fill = avg_rating, text = text_label)) +\n  geom_bar(stat = \"identity\") +\n  coord_flip() +\n  labs(\n    title = \"Manhattan Listings by Neighbourhood and Avg. Rating\",\n    y     = \"Neighbourhood\",\n    x     = \"Number of Listings\"\n  ) +\n  scale_fill_viridis_c(\"Avg. Rating\", \n                       option = \"magma\", \n                       alpha = 0.8, \n                       limits = c(4, 5)) +\n  theme(legend.position = \"right\")\n\n#And let's turn it into a plotly object!\nggplotly(bar.gg, tooltip = \"text\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-31",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-31",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "Activity 1. ggplotly plus flexdashboard"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#section-32",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#section-32",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "",
+    "text": "For today’s activity, please\n\nStart an .Rproject in the folder of your choice\nDownload the flexdashboard .RMD template from Canvas\nDownload the NYC Airbnb data from Canvas and put it in the /data folder\nThen, alter the (3) ggplot’s or ggplotly’s below (as directed)\nTransform each into a plotly with ggplotly() if it’s not already\nInsert the (3) ggplotly’s into the R chunks\n\nMess around with the order/structure, fig.height, fig.width etc."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#data-read",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#data-read",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "Data Read",
+    "text": "Data Read\n\n#Read in the nyc airbnb data set\nnyc_airbnb.df <- read_csv(\"./data/nyc_airbnb.csv\", show_col_types = FALSE) %>%\n  mutate(rating = review_scores_location / 2) %>%\n  filter(\n    neighbourhood_group %in% \"Manhattan\",\n    room_type %in% \"Entire home/apt\",\n    (!is.na(rating)),\n    price <= 1000\n  ) %>%\n  dplyr::select(neighbourhood, rating, price,\n                room_type, lat, long, contains(\"review\"))"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#spatial-scatterplot-by-rating",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#spatial-scatterplot-by-rating",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "(1) Spatial Scatterplot by Rating",
+    "text": "(1) Spatial Scatterplot by Rating\nInstead of looking at price, alter the scatter plot to be coloured by rating. Fix the title(s) and text_label accordingly.\n\n#Our usual ggplot\nscatter.gg <- \n  nyc_airbnb.df %>%\n  mutate(\n    text_label = str_c(neighbourhood, #add as text aesthetic\n                       \"\\nPrice - $\"  ,  price, \n                       \"\\nRating - \",    rating,\n                       \"\\n# Reviews - \", number_of_reviews)\n  ) %>%\n  ggplot(aes(x = lat, y = long, colour = price, text = text_label)) +\n  geom_point(alpha = 0.25) +\n  coord_cartesian() +\n  scale_colour_viridis_c(\"Price\") +\n  labs(\n    title = \"Spatial Scatterplot of Manhattan's Airbnb Prices\",\n    x     = \"Latitude\",\n    y     = \"Longitude\"\n  ) + \n  theme(legend.position = \"right\")\n  \n#ggplotly() + tooltip to control label\nscatter.plotly <- ggplotly(scatter.gg, tooltip = \"text\") #tooltip controls text hover/label"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#distribution-of-review-per-month-by-neighbourhood",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#distribution-of-review-per-month-by-neighbourhood",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "(2) Distribution of Review per Month by Neighbourhood",
+    "text": "(2) Distribution of Review per Month by Neighbourhood\nInstead of looking at the distribution of prices, let’s investigate the distribution of ratings by neighbourhood instead. Fix the title(s) accordingly.\n\nbox.plotly <- nyc_airbnb.df %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, price, median, .desc = FALSE)\n  ) %>%\n  plot_ly(\n    x      = ~price,\n    color  = ~neighbourhood,\n    type   = \"box\",\n    colors = \"viridis\" \n  ) %>%\n  layout(\n    title  = \"Distribution of Manhattan's Airbnb Price by Neighbourhood\",\n    xaxis  = list(title = \"Price\")\n  )"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_7/lecture_week_7.html#number-of-listings-by-neighbourhood-coloured-by-average-price",
+    "href": "pubh_7462/lecture_week_7/lecture_week_7.html#number-of-listings-by-neighbourhood-coloured-by-average-price",
+    "title": "Week 7: Interactive Plots, Tables, and Dashboards",
+    "section": "(3) Number of Listings by Neighbourhood, Coloured by Average Price",
+    "text": "(3) Number of Listings by Neighbourhood, Coloured by Average Price\nLet’s instead colour the plot by Average Price. Fix the title(s), label(s) accordingly.\n\n#Make our usual barplot\nbar.gg <- nyc_airbnb.df %>%\n  group_by(neighbourhood) %>%\n  summarise(\n    N          = n(),\n    avg_rating = mean(rating) \n  ) %>%\n  ungroup() %>%\n  mutate(\n    neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE),\n    text_label    = str_c(neighbourhood, #add as text aesthetic\n                          \"\\nAvg. Rating - \", round(avg_rating, 2), \n                          \"\\n# Reviews - \",   N)\n  ) %>%\n  ggplot(aes(x = neighbourhood, y = N, fill = avg_rating, text = text_label)) +\n  geom_bar(stat = \"identity\") +\n  coord_flip() +\n  labs(\n    title = \"Manhattan Listings by Neighbourhood and Avg. Rating\",\n    y     = \"Neighbourhood\",\n    x     = \"Number of Listings\"\n  ) +\n  scale_fill_viridis_c(\"Avg. Rating\", \n                       option = \"magma\", \n                       alpha = 0.8, \n                       limits = c(4, 5)) +\n  theme(legend.position = \"right\")\n\n#And let's turn it into a plotly object!\nbar.ggplotly <- ggplotly(bar.gg, tooltip = \"text\")"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\n\n\nThe midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to Course Objectives (1)-(4,5) in the syllabus. Those skills break down into –\n\nWorkflow\n\n.Rprojects + Github, Rmarkdown, best R practices, reproducibility\n\nData Wrangling\n\ndplyr, tidyr, forcats, stringr, lubridate\nplus iteration with purrr::map family\n\nData Visualization\n\nggplot2,gt\n\nExploratory Data Analysis\n\nUse the above to read, explore, clean/tidy, prepare for analysis and visualize new data\n\n\n\\(~\\) \\(~\\)\n\n\n\nAs we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize R and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –\n\nEnhanced Visualization\n\nInteractivity w/ ggplotly, reactable\nEnhance gt with gtExtras (and flextable, ftExtra)\nIntro to flexdashboard\n\nWebsites in R + Github (today)\n\nBasics, personal webpage\nWebsites as analytical display tools\n\nEmbedding flexdashboard\n\n\nSpatial Visualization\n\n‘Tidy Maps’ w/ sforsp + tidyverse + ggmaps and ggplot2\nIntroduction to interactive maps with ggplotly and/or leaflet\n\nShiny Apps\n\nBasics\nPublish in an R hosted website\n\nEmbedding interactive flexdashboards\nEmbedding shiny apps\n\n\nMiscellaneous\n\n*Working with big data in R dt_plyr, collapse, h2o, sparklyr\n*Working with databases in R db_plyr\n*How to develop a package with Rstudio & Github\n*Webscraping with R\n\n\n\\(~\\) \\(~\\)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-1",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-1",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "So what exactly are we going to do today?"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-2",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-2",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "Today we’re going to learn how to create and host a website with R and Github Pages, as well as how to embed a flexdashboard inside of a webpage. We will focus on setting y’all up to create your own personal website (homework) but with aim at extension to websites as analytical/data communication tools."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-4",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-4",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "Important Things to Remember"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-5",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-5",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "1. yaml Scoping Matters\n‘Scoping’ here refers to the horizontal alignment of each line in the yaml. You’ll notice that everything in the yaml has a “nested” structure, in that every sub-option, sub-button, sub-directory, etc. is 1 tab to the right. When introducing more nested drop down buttons (which we will do later, and you will do on the hw).\n\n\n2. You must have a _site.yaml and index.RMD/index.html\n\n\n3. You can href any knitted .html of any kind (including dashboards!)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "First, go to the top navbar in Rstudio to the ‘Build’ tab and make sure the website knits all files together for each ‘Build’",
+    "text": "First, go to the top navbar in Rstudio to the ‘Build’ tab and make sure the website knits all files together for each ‘Build’\nLocated in between ‘Session’ and ‘Debug’, click on it and select ‘Configure Build Tools…’. It should automatically detect that you’re working on a website, but if not, click the drop down ‘Project Build Tools’ and select ‘Website’. Check the box entitled: ‘Re-knit current preview when supporting files change’. This will ensure that when you change one .RMD/.html or the .yaml, it will re-knit all ‘supporting’ files such that links between pages will still function properly."
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#next-there-are-2-options-to-build-the-website",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#next-there-are-2-options-to-build-the-website",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "Next, there are 2 options to ‘Build’ the website",
+    "text": "Next, there are 2 options to ‘Build’ the website\n\nType this into the console to ‘Build’ your website\n\n\nrmarkdown::render_site(encoding = \"UTF-8\")\n\n\nClose and re-open the project, go to tab (top right by default) which normally has ‘Environment’, ‘Git’, etc. and you should now see a ‘Build’ tab. Click on it, you should see a button that says ‘Build’ with a hammer next to it in the upper left of that window/pane. Click on it and that’s it! (it will run the line of code above in the console)"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#add-commit-pull-push",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#add-commit-pull-push",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "Add, commit, pull, push",
+    "text": "Add, commit, pull, push"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#finally-go-back-to-your-repository-on-github",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#finally-go-back-to-your-repository-on-github",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "Finally go back to your repository on Github",
+    "text": "Finally go back to your repository on Github\n\nRefresh and navigate to the repository ‘Settings’ (right hand side)\nScroll down to ‘GitHub Pages’ and click on the link\nSet the GitHub pages source to the main branch\n\n\n\n\nGitHub Pages source\n\n\n\nRefresh the webpage and you should see a green check mark above indicating ‘Your site is published at ’\nClick on that link, that’s your website!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-7",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-7",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "Activity 1. Embed your dashboard from last lecture’s activity into your example website"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-8",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-8",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "In order to embed a flexdashboard into a website, the website’s _site.yaml and the dashboard’s yaml conflict; and the site’s instructions supersede the dashboards. In order to get around this, you can simply render with this command\n\nrmarkdown::render(\"dashboard_template.RMD\", output_format = \"flexdashboard::flex_dashboard\")\n\nAfter rendering, rebuild the website and you should be good to go!"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-10",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-10",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "Final Project. To-do’s for next week"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#section-11",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#section-11",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "",
+    "text": "1. Please find a group of people with similar interests or who you’ve gotten to know during class to work on the final project (2-3 people).\n\n\n2. Start thinking about what type of analysis you’re interested in and where to find data to conduct such a data-driven inquiry\n\n\n3. If you need help finding a group to work with please email me directly and I will place you in a group with similar interests"
+  },
+  {
+    "objectID": "pubh_7462/lecture_week_9/lecture_week_9.html#by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas",
+    "href": "pubh_7462/lecture_week_9/lecture_week_9.html#by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas",
+    "title": "Week 9: Websites w/R & Github",
+    "section": "By next week, one person from each group please email me with the group members and ‘general project interests/ideas’",
+    "text": "By next week, one person from each group please email me with the group members and ‘general project interests/ideas’\n\nYour initial project proposal & meeting will be held in the first week of April so now’s the time to get thinking about data sources, questions of interest, etc."
   },
   {
     "objectID": "old_work/dog_bites.html",
@@ -28,10 +1036,31 @@
     "text": "The University of Virginia’s Biocomplexity Institute and Initiative encompasses labs conducting research in all things biological, from genetics to public health policy. The Social and Decision Analytics (SDAD) lab, strategically located in the D.C. metro area, works “in partnership with communities, academia, government and industry” towards data driven innovations in public policy with “statistical rigor and the creative application of social and decision analytics”.\nWithin the SDAD Lab, The Data Science for the Public Good (DSPG) program run by Drs. Aaron Schroeder and Gizem Korkmaz offers a unique entrance into the complex world of policy and decision making for human beneficence. My role as a Graduate Fellow in the program has afforded me the opportunity to work in incredibly diverse teams, comprised of everything from Psychologists, Sociologists, and Economists to Healthcare Professionals, Computer Scientists and Statisticians, towards solutions to real world problems faced at the local and federal level. \n\n\n\n\nData Science for the Public Good Symposium\n\n\n\n As a part of my pursuit towards a career in Public Health, a project that I’ve been working on and will continue to work on for my practicum comes from Fairfax County, VA, just across the Potomac from The National Mall. With the county’s sponsorship, we are creating CommunityScapes which “lay a foundation for a quantitative understanding of human health, habitat and well-being”. More specifically, we have been developing an Obesogenic Environment composite index utilizing data from the American Community Survey (Census), Fairfax County, and alternative open sources to quantify and understand the geospatial Social Determinants of Health which contribute to environments conducive to the development of obesity. The ultimate purpose of this index is to generate a robust scale with which the county can assess the temporal effectiveness of their policy initiatives and interventions from a variety of geographic perspectives.\nThe experience has opened my eyes to a unique dimension of public health, in an environment budding with diverse fields of study, people, and ideas, which will influence my contributions to the fields of public health and biostatistics for the rest of my life. I would highly recommend this opportunity to anyone interested in new quantitative methods and applications for improving public health, living in the heart of public policy, Washington D.C."
   },
   {
-    "objectID": "old_work/publications.html",
-    "href": "old_work/publications.html",
-    "title": "Publications",
+    "objectID": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html",
+    "href": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html",
+    "title": "PUBH 7462 Midterm",
     "section": "",
-    "text": "Flynn, P., Neville, Q., & Scheel, A. (2019). Self-organized clusters in diffusive run-and-tumble processes. Discrete & Continuous Dynamical Systems-S, 23-152."
+    "text": "Please initialize a private Github repository entitled pubh7462_midterm_your email handle AND add me (@nevilleq) as a collaborator on Github so I can access the repository for grading. Connect it with an .Rproject as usual and add /data to the gitignore.txt file.\n\n\n\nThese COVID-19 Global data were extracted on February 25th, 2022, from Our World in Data (OWID). These data may be downloaded from OWID’s Github page, and are actually what Google uses in the data visualizations on their search page. These data are aggregated from multiple sources, but are primarily drawn from Johns Hopkins University’s COVID-19 global data base. The full data and variable descriptions are found on OWID’s Github page, so please do familiarize yourself with the original data and it’s source(s).\nThe data you will be using has been lightly cleaned, relevant variables extracted, and seperated by continent; and the files can be downloaded fro Canvas here. Please download all files and put them in a /data folder (don’t forget to add the /data to gitignore!).\n\n\n\nWhile this assessment is ‘comprehensive’ in the sense that it utilizes all the skills we’ve learned thus far in the course, materials that will be most helpful/similar to these questions are found in the Disney Land Reviews activity, Homework 3, and Week 6 Lecture/Activities.\nI promise that you can solve all of these problems with tools and techniques we have covered in class up to this point. However, this assessment concerns real world data and real world questions, which means it will inherently be challenging. Don’t worry if you can’t get something to work properly – just do the best you can, document and comment your code so I can give maximum partial credit accordingly.\nMake sure the repository is private\nThis assessment is “open-world” in the sense that you are allowed to use any resource available to you, online or in a text book. However, the work must be your own. This means you must rewrite the code in your own style (like paraphrasing or rewording in a regular paper to avoid plagiarism) and you may not discuss or share materials with anyone else in class. I will be personally grading and reviewing all code and I will be able to tell if code has been copy and pasted from another student or source.\nOther than that, this data is quite interesting, current, and relevant to the state of Global Public Health, so please don’t forget to have a little fun exploring and learning from these data."
+  },
+  {
+    "objectID": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts",
+    "href": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#i.-please-summarise-the-total-number-of-cases-and-deaths-by-continent-and-include-each-continents-daily-average-and-standard-deviation-of-new-cases-and-deaths-in-a-single-gt.-comment-on-the-trends-you-observe.-25pts",
+    "title": "PUBH 7462 Midterm",
+    "section": "i. Please summarise the total number of cases and deaths by continent, and include each continents’ daily average and standard deviation of new cases and deaths, in a single gt(). Comment on the trends you observe. (25pts)",
+    "text": "i. Please summarise the total number of cases and deaths by continent, and include each continents’ daily average and standard deviation of new cases and deaths, in a single gt(). Comment on the trends you observe. (25pts)\nPlease include the following aesthetics in your gt() –\n\nOrder continents by total cases and deaths (in that order)\nColour the total cases and deaths column meaningfully\nAdd column tab_spanners to distinguish case vs. death summaries\nFormat numbers appropriately with abbreviations for thousand, million, etc. (fmt_number)\nAdd a summary row at the bottom which describes the “Global Total” for cases and deaths\n\nAdd a source note describing the data and its source\n\nHint You can check your Global Totals against Google’s current estimate (will be approximately the same, slightly less due to time as your data was pulled on the morning of 2/25).\n\n\ncontinent_sum.df <- covid.df %>%\n  nest(-c(country)) %>%\n  mutate(\n    total_cases  = map_dbl(.x = data, ~.x %>% pull(cum_cases) %>% max()),\n    total_deaths = map_dbl(.x = data, ~.x %>% pull(cum_deaths) %>% max()), \n  ) %>%\n  unnest() %>%\n  group_by(continent) %>%\n  summarise(\n    `Total Cases`      = sum(unique(total_cases), na.rm = TRUE),\n    `Avg. Cases/Day`   = mean(new_cases, na.rm = TRUE),\n    `SD Cases/Day`     = sd(new_cases, na.rm = TRUE),\n    `Total Deaths`     = sum(unique(total_deaths), na.rm = TRUE),\n    `Avg. Deaths/Day`  = mean(new_deaths, na.rm = TRUE),\n    `SD Deaths/Day`    = sd(new_deaths, na.rm = TRUE),\n  ) %>%\n  ungroup() %>%\n  mutate(\n    Continent = fct_reorder2(continent, `Total Deaths`, `Total Cases`)\n  ) %>%\n  dplyr::select(Continent, everything(), -continent)\n\nWarning: All elements of `...` must be named.\nDid you want `data = -c(country)`?\n\n\nWarning: `cols` is now required when using unnest().\nPlease use `cols = c(data)`\n\n\n\n#Dispaly table\ncontinent_sum.df %>%\n  arrange(Continent) %>%\n  gt() %>%\n  tab_header(\"COVID-19 Case & Death Summary by Continent\") %>%\n  data_color(\n    columns = `Total Cases`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(0, max(continent_sum.df$`Total Cases`))\n    )\n  ) %>%\n  data_color(\n    columns = `Total Deaths`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(0, max(continent_sum.df$`Total Deaths`))\n    )\n  ) %>%\n  tab_spanner(\n    label   = \"Cases\",\n    columns = contains(\"Cases\")\n  ) %>%\n  tab_spanner(\n    label   = \"Deaths\",\n    columns = contains(\"Deaths\")\n  ) %>%\n  fmt_number(\n    columns   = where(is.numeric),\n    decimals  = 2,\n    suffixing = TRUE\n  ) %>%\n  summary_rows(\n    groups  = NULL,\n    columns = contains(\"Total\"),\n    fns = list(\n        `Global Total` = ~sum(.)\n      ),\n    formatter = fmt_number,\n    decimals  = 2,\n    suffixing = TRUE\n  ) %>%\n  tab_source_note(\"Data from Jan. 2020 - Feb. 2022, extracted from Our World In Data's Github\")\n\n\n\n\n\n  \n    \n      COVID-19 Case & Death Summary by Continent\n    \n    \n  \n  \n    \n      \n      Continent\n      \n        Cases\n      \n      \n        Deaths\n      \n    \n    \n      Total Cases\n      Avg. Cases/Day\n      SD Cases/Day\n      Total Deaths\n      Avg. Deaths/Day\n      SD Deaths/Day\n    \n  \n  \n    \nEurope\n154.92M\n4.33K\n17.64K\n1.70M\n50.68\n140.97\n    \nAsia\n114.05M\n3.24K\n16.01K\n1.34M\n42.65\n188.84\n    \nNorth America\n92.72M\n3.83K\n31.99K\n1.37M\n68.29\n323.04\n    \nSouth America\n53.70M\n5.75K\n16.11K\n1.24M\n146.33\n352.61\n    \nAfrica\n11.19M\n288.21\n1.21K\n247.16K\n6.79\n31.12\n    \nOceania\n3.44M\n429.99\n5.07K\n7.03K\n1.92\n7.76\n    Global Total\n—\n430.02M\n—\n—\n5.90M\n—\n—\n  \n  \n    \n      Data from Jan. 2020 - Feb. 2022, extracted from Our World In Data's Github"
+  },
+  {
+    "objectID": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts",
+    "href": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#ii.-extend-the-table-above-to-also-display-the-top-5-countries-per-continent-by-total-cases-including-all-the-same-summary-information-aesthetics-and-ordering.-10pts",
+    "title": "PUBH 7462 Midterm",
+    "section": "ii. Extend the table above to also display the top 5 countries per continent by total cases; including all the same summary information, aesthetics, and ordering. (10pts)",
+    "text": "ii. Extend the table above to also display the top 5 countries per continent by total cases; including all the same summary information, aesthetics, and ordering. (10pts)\nNote: The row summary will no longer be a “Global Total” but a “Top 5 Country Total”.\n\ncontinent_sum.df <- covid.df %>%\n  nest(-c(country)) %>%\n  mutate(\n    total_cases  = map_dbl(.x = data, ~.x %>% pull(cum_cases) %>% max()),\n    total_deaths = map_dbl(.x = data, ~.x %>% pull(cum_deaths) %>% max()), \n  ) %>%\n  unnest() %>%\n  group_by(continent, country) %>%\n  summarise(\n    `Total Cases`      = sum(unique(total_cases), na.rm = TRUE),\n    `Avg. Cases/Day`   = mean(new_cases, na.rm = TRUE),\n    `SD Cases/Day`     = sd(new_cases, na.rm = TRUE),\n    `Total Deaths`     = sum(unique(total_deaths), na.rm = TRUE),\n    `Avg. Deaths/Day`  = mean(new_deaths, na.rm = TRUE),\n    `SD Deaths/Day`    = sd(new_deaths, na.rm = TRUE),\n  ) %>%\n  group_by(continent) %>%\n  mutate(country   = fct_lump_n(country, n = 5, w = `Total Cases`)) %>%\n  ungroup() %>%\n  mutate(continent = fct_reorder2(continent, `Total Deaths`, `Total Cases`, .fun = max) %>%\n                     str_c(as.numeric(.), ., sep = \". \"))  %>%\n  filter(!(country %in% \"Other\"))\n\nWarning: All elements of `...` must be named.\nDid you want `data = -c(country)`?\n\n\nWarning: `cols` is now required when using unnest().\nPlease use `cols = c(data)`\n\n\n`summarise()` has grouped output by 'continent'. You can override using the\n`.groups` argument.\n\n\n\n#Dispaly table\ncontinent_sum.df %>%\n  rename(Country = country) %>%\n  group_by(continent) %>%\n  arrange(desc(`Total Cases`)) %>%\n  gt() %>%\n  tab_header(\n    title    = \"COVID19 Case & Death Summary by Continent\",\n    subtitle = \"Top 5 Countries by Total Cases\"\n    ) %>%\n  data_color(\n    columns = `Total Cases`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(20000, max(continent_sum.df$`Total Cases`))\n    )\n  ) %>%\n  data_color(\n    columns = `Total Deaths`,\n    colors = scales::col_numeric(\n      palette = c(\"white\", my_purple),\n      domain  = c(200, max(continent_sum.df$`Total Deaths`))\n    )\n  ) %>%\n  tab_spanner(\n    label   = \"Cases\",\n    columns = contains(\"Cases\")\n  ) %>%\n  tab_spanner(\n    label   = \"Deaths\",\n    columns = contains(\"Deaths\")\n  ) %>%\n  fmt_number(\n    columns   = where(is.numeric),\n    decimals  = 2,\n    suffixing = TRUE\n  ) %>%\n  summary_rows(\n    groups  = NULL,\n    columns = contains(\"Total\"),\n    fns = list(\n        `Global Top 5 Total(s)` = ~sum(.)\n      ),\n    formatter = fmt_number,\n    decimals  = 2,\n    suffixing = TRUE\n  ) %>%\n  tab_source_note(\"Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github\")\n\nWarning: Some values were outside the color scale and will be treated as NA\n\n\n\n\n\n\n  \n    \n      COVID19 Case & Death Summary by Continent\n    \n    \n      Top 5 Countries by Total Cases\n    \n  \n  \n    \n      \n      Country\n      \n        Cases\n      \n      \n        Deaths\n      \n    \n    \n      Total Cases\n      Avg. Cases/Day\n      SD Cases/Day\n      Total Deaths\n      Avg. Deaths/Day\n      SD Deaths/Day\n    \n  \n  \n    \n      1. North America\n    \n    \nUnited States\n78.80M\n103.14K\n148.53K\n944.83K\n1.30K\n988.10\n    \nMexico\n5.47M\n7.52K\n10.83K\n313.03K\n442.76\n374.07\n    \nCanada\n3.27M\n4.29K\n6.89K\n36.33K\n50.60\n50.45\n    \nCuba\n1.07M\n1.49K\n2.51K\n8.49K\n11.98\n23.45\n    \nCosta Rica\n799.83K\n1.11K\n1.74K\n7.98K\n11.28\n15.50\n    \n      2. Asia\n    \n    \nIndia\n42.89M\n56.66K\n82.57K\n505.85K\n707.49\n901.64\n    \nTurkey\n13.02M\n18.21K\n22.36K\n93.54K\n131.75\n90.20\n    \nIran\n7.01M\n9.51K\n9.45K\n135.95K\n184.47\n143.53\n    \nIndonesia\n5.41M\n7.46K\n11.66K\n147.34K\n205.78\n347.28\n    \nJapan\n4.75M\n6.22K\n16.93K\n22.79K\n30.67\n40.03\n    \n      3. South America\n    \n    \nBrazil\n28.46M\n39.05K\n37.24K\n647.70K\n912.26\n765.47\n    \nArgentina\n8.88M\n12.26K\n19.59K\n125.87K\n175.07\n205.38\n    \nColombia\n6.06M\n8.40K\n7.93K\n138.42K\n196.34\n167.32\n    \nPeru\n3.51M\n4.86K\n8.52K\n210.12K\n291.42\n278.87\n    \nChile\n2.95M\n4.03K\n6.38K\n41.80K\n59.28\n68.24\n    \n      4. Europe\n    \n    \nFrance\n23.00M\n30.31K\n70.45K\n137.84K\n186.02\n319.20\n    \nUnited Kingdom\n17.98M\n23.81K\n32.07K\n160.12K\n222.40\n304.72\n    \nRussia\n15.70M\n20.76K\n30.02K\n341.62K\n482.52\n330.52\n    \nGermany\n14.46M\n19.02K\n41.62K\n122.38K\n170.45\n232.63\n    \nItaly\n12.65M\n16.73K\n34.86K\n154.01K\n209.54\n218.66\n    \n      5. Africa\n    \n    \nSouth Africa\n3.65M\n5.06K\n5.68K\n98.47K\n140.87\n147.28\n    \nMorocco\n1.16M\n1.60K\n2.22K\n15.95K\n22.25\n26.13\n    \nTunisia\n992.57K\n1.37K\n2.15K\n27.64K\n39.04\n50.09\n    \nLibya\n491.22K\n698.74\n825.65\n6.23K\n8.98\n9.13\n    \nEgypt\n477.17K\n643.09\n530.86\n23.93K\n33.28\n21.84\n    \n      6. Oceania\n    \n    \nAustralia\n3.15M\n4.14K\n15.96K\n5.09K\n7.02\n15.97\n    \nFrench Polynesia\n65.58K\n91.85\n358.13\n638.00\n1.20\n4.36\n    \nFiji\n63.69K\n89.95\n242.31\n826.00\n1.44\n3.72\n    \nNew Zealand\n57.50K\n78.98\n554.41\n56.00\n0.08\n0.36\n    \nNew Caledonia\n52.32K\n73.90\n360.62\n299.00\n1.79\n3.50\n    Global Top 5 Total(s)\n—\n306.30M\n—\n—\n4.48M\n—\n—\n  \n  \n    \n      Data from Jan. 2020 - Feb. 25th, 2022, extracted from Our World In Data's Github"
+  },
+  {
+    "objectID": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts",
+    "href": "pubh_7462/pubh_7462_midterm/pubh_7462_midterm.html#ii.-using-ggplot-please-recreate-the-global-rolling-average-plots-see-below-for-new-cases-and-deaths-using-your-own-theme-colours-25pts",
+    "title": "PUBH 7462 Midterm",
+    "section": "ii. Using ggplot, please recreate the global “rolling-average” plots (see below) for new cases and deaths, using your own theme, colours (25pts)",
+    "text": "ii. Using ggplot, please recreate the global “rolling-average” plots (see below) for new cases and deaths, using your own theme, colours (25pts)\nThe “rolling-average” plots are a combination barplot + lineplot, where the bars are the raw counts and the lines represent the ‘smoothed’ 7-day rolling average (included as a variable in these data, you do not need to compute this). An example of each, taken directly from Google, is given below. Do not try to copy the theme or colours of the examples below, please make the the plots your own; and ignore the interactive panel with the date, cases/deaths, and rolling averages as well (we will learn how to make these interactive plots after the break with ggplotly though!). Please just include the usual title, informative axes and legends, and proper names/titles. You may facet if you wish but it is not required.\n\n\n\nNew cases over time with 7-day rolling average overlaid.\n\n\n\n\n\nNew deaths over time with 7-day rolling average overlaid.\n\n\n\n#Pivot longer twice by count and average\nrolling_avg.df <- covid.df %>%\n  group_by(date) %>%\n  summarise(\n    across(\n      .cols = contains(c(\"new_\", \"smooth\")),\n      .fns  = list(sum = sum),\n      na.rm = TRUE,\n      .names = \"{.col}\"\n    )\n  ) %>%\n  pivot_longer(\n    cols = c(\"new_cases\", \"new_deaths\"),\n    values_to = \"count\",\n    names_to  = \"n_type\"\n  ) %>%\n  pivot_longer(\n    cols = contains(\"smoothed\"),\n    values_to = \"avg\",\n    names_to  = \"avg_type\"\n  ) %>%\n  mutate(\n    type = case_when(\n      (str_detect(n_type, \"case\") & str_detect(avg_type, \"case\"))   ~ \"Case\",\n      (str_detect(n_type, \"death\") & str_detect(avg_type, \"death\")) ~ \"Death\",\n      TRUE                                                          ~ \"Mismatch\"\n    )\n  ) %>%\n  filter(!(type %in% \"Mismatch\")) %>%\n  dplyr::select(date, count, avg, type)         \n\n\nrolling_avg.df %>%\n  ggplot(aes(x = date)) +\n  geom_bar(aes(y = count, fill = type), stat = \"identity\", position = \"fill\", alpha = 0.1, size = 0.01) +\n  geom_smooth(aes(y = avg), colour = \"black\", span = 0.01) +\n  facet_wrap(~type, scales = \"free_y\") +\n  labs(\n    x = \"Date\",\n    y = \"Number of Observations\",\n    title = \"COVID-19\"\n  ) +\n  scale_colour_viridis_d(\"Outcome\") +\n  scale_fill_viridis_d(\"Outcome\") +\n  scale_x_date(\n    date_breaks = \"1 year\",\n    date_minor_breaks = \"1 month\",\n    date_labels = \"%Y%M\"\n  ) +\n  scale_y_continuous(labels = scales::label_number(suffix = \" K\", scale = 1e-3, accuracy = 1)) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1.24,\n                                   hjust = 1.2,\n                                   size  = 11),\n        axis.text.y = element_text(size  = 11))\n\n`geom_smooth()` using method = 'loess' and formula 'y ~ x'\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric =\nparametric, : k-d tree limited by memory. ncmax= 786\n\n\nWarning in predLoess(object$y, object$x, newx = if\n(is.null(newdata)) object$x else if (is.data.frame(newdata))\nas.matrix(model.frame(delete.response(terms(object)), : k-d tree limited by\nmemory. ncmax= 786\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric =\nparametric, : k-d tree limited by memory. ncmax= 786\n\n\nWarning in predLoess(object$y, object$x, newx = if\n(is.null(newdata)) object$x else if (is.data.frame(newdata))\nas.matrix(model.frame(delete.response(terms(object)), : k-d tree limited by\nmemory. ncmax= 786\n\n\nWarning: Removed 44 rows containing missing values (geom_bar)."
   }
 ]

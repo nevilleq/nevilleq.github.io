@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+
+<title>Quinton Neville - Week 12: Github Collaboration &amp; Intro to Shiny</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link active" data-scroll-target="#i.-introduction">I. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#where-weve-been" id="toc-where-weve-been" class="nav-link" data-scroll-target="#where-weve-been">Where we’ve been –</a></li>
+  <li><a href="#where-were-going" id="toc-where-were-going" class="nav-link" data-scroll-target="#where-were-going">Where we’re going –</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#so-what-exactly-are-we-going-to-do-today" id="toc-so-what-exactly-are-we-going-to-do-today" class="nav-link" data-scroll-target="#so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#github-collaboration" id="toc-github-collaboration" class="nav-link" data-scroll-target="#github-collaboration">Github Collaboration</a></li>
+  <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny">Shiny</a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
+  </ul></li>
+  <li><a href="#ii.-github-collaboration" id="toc-ii.-github-collaboration" class="nav-link" data-scroll-target="#ii.-github-collaboration">II. Github Collaboration</a></li>
+  <li><a href="#i.-the-basics" id="toc-i.-the-basics" class="nav-link" data-scroll-target="#i.-the-basics">i. The ‘Basics’</a></li>
+  <li><a href="#ii.-now-lets-complicate-things" id="toc-ii.-now-lets-complicate-things" class="nav-link" data-scroll-target="#ii.-now-lets-complicate-things">ii. Now Let’s Complicate Things</a>
+  <ul class="collapse">
+  <li><a href="#important-notes" id="toc-important-notes" class="nav-link" data-scroll-target="#important-notes">Important notes</a>
+  <ul class="collapse">
+  <li><a href="#pull-and-push-are-both-generalized-as-merge-requests" id="toc-pull-and-push-are-both-generalized-as-merge-requests" class="nav-link" data-scroll-target="#pull-and-push-are-both-generalized-as-merge-requests">1. <code>pull</code> and <code>push</code> are both generalized as <strong>merge requests</strong></a></li>
+  <li><a href="#git-fetch-origin-branch-grab-changes-from-vs.-git-pull-origin-branch-grab-changes-from-and-merge-with-your-local-repository" id="toc-git-fetch-origin-branch-grab-changes-from-vs.-git-pull-origin-branch-grab-changes-from-and-merge-with-your-local-repository" class="nav-link" data-scroll-target="#git-fetch-origin-branch-grab-changes-from-vs.-git-pull-origin-branch-grab-changes-from-and-merge-with-your-local-repository">2. <code>git fetch origin &lt;branch&gt;</code> (grab changes from <branch>) vs.&nbsp;<code>git pull origin &lt;branch&gt;</code> (grab changes from <branch> <strong>and</strong> merge with your local repository)</branch></branch></a></li>
+  <li><a href="#you-should-fetch-often-everytime-you-open-the-project-locally-and-pull-when-appropriate-i.e.-when-changes-are-made-that-dont-conflict-with-youre-work" id="toc-you-should-fetch-often-everytime-you-open-the-project-locally-and-pull-when-appropriate-i.e.-when-changes-are-made-that-dont-conflict-with-youre-work" class="nav-link" data-scroll-target="#you-should-fetch-often-everytime-you-open-the-project-locally-and-pull-when-appropriate-i.e.-when-changes-are-made-that-dont-conflict-with-youre-work">3. You should <code>fetch</code> often (everytime you open the project locally) and <code>pull</code> when appropriate (i.e.&nbsp;when changes are made that don’t conflict with you’re work)</a></li>
+  <li><a href="#git-pull-origin-branch-is-usually-how-you-want-to-engage-a-pullmerge-request" id="toc-git-pull-origin-branch-is-usually-how-you-want-to-engage-a-pullmerge-request" class="nav-link" data-scroll-target="#git-pull-origin-branch-is-usually-how-you-want-to-engage-a-pullmerge-request">4. <code>git pull origin &lt;branch&gt;</code> is <em>usually</em> how you want to engage a pull/merge request</a></li>
+  <li><a href="#commit-early-and-often" id="toc-commit-early-and-often" class="nav-link" data-scroll-target="#commit-early-and-often">5. Commit <strong>early</strong> and <strong>often</strong>!</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#iii.-resources" id="toc-iii.-resources" class="nav-link" data-scroll-target="#iii.-resources">iii. Resources</a></li>
+  <li><a href="#iv.-the-full-scope-of-a-git-repo" id="toc-iv.-the-full-scope-of-a-git-repo" class="nav-link" data-scroll-target="#iv.-the-full-scope-of-a-git-repo">iv. The FULL Scope of a Git repo</a>
+  <ul class="collapse">
+  <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches">Branches</a></li>
+  </ul></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a>
+  <ul class="collapse">
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a>
+  <ul class="collapse">
+  <li><a href="#example-1.-websites-with-r-and-github" id="toc-example-1.-websites-with-r-and-github" class="nav-link" data-scroll-target="#example-1.-websites-with-r-and-github">Example 1. Websites with R and Github</a></li>
+  </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#green" id="toc-green" class="nav-link" data-scroll-target="#green"><span style="color: green;">Green</span></a></li>
+  <li><a href="#blue" id="toc-blue" class="nav-link" data-scroll-target="#blue"><span style="color: blue;">Blue</span></a></li>
+  <li><a href="#orange" id="toc-orange" class="nav-link" data-scroll-target="#orange"><span style="color: orange;">Orange</span></a></li>
+  </ul></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a>
+  <ul class="collapse">
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a>
+  <ul class="collapse">
+  <li><a href="#question-1.-what-files-in-the-repository-should-the-person-in-orange-not-you-be-working-on" id="toc-question-1.-what-files-in-the-repository-should-the-person-in-orange-not-you-be-working-on" class="nav-link" data-scroll-target="#question-1.-what-files-in-the-repository-should-the-person-in-orange-not-you-be-working-on">Question 1. What files in the repository should the person in orange (not you) be working on?</a></li>
+  </ul></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  </ul></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a>
+  <ul class="collapse">
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a>
+  <ul class="collapse">
+  <li><a href="#question-2.-what-happens-if-either-you-or-your-teammates-branch-is-merged-back-to-master-and-a-file-has-been-edited-that-shouldnt-have-or-a-new-different-version-exists-on-the-master" id="toc-question-2.-what-happens-if-either-you-or-your-teammates-branch-is-merged-back-to-master-and-a-file-has-been-edited-that-shouldnt-have-or-a-new-different-version-exists-on-the-master" class="nav-link" data-scroll-target="#question-2.-what-happens-if-either-you-or-your-teammates-branch-is-merged-back-to-master-and-a-file-has-been-edited-that-shouldnt-have-or-a-new-different-version-exists-on-the-master">Question 2. What happens if either <span style="color: blue;">you</span> or <span style="color: orange;">your teammate’s</span> branch is merged back to <code>master</code> and <em>a file has been edited that shouldn’t have</em> or <em>a new <strong>different</strong> version exists on the master</em>?</a></li>
+  </ul></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  </ul></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a>
+  <ul class="collapse">
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a>
+  <ul class="collapse">
+  <li><a href="#question-3.-well-how-do-we-fix-a-merge-conflict" id="toc-question-3.-well-how-do-we-fix-a-merge-conflict" class="nav-link" data-scroll-target="#question-3.-well-how-do-we-fix-a-merge-conflict">Question 3. Well, how do we fix a merge conflict?</a></li>
+  </ul></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  </ul></li>
+  <li><a href="#v.-i-did-bad-and-made-a-merge-conflict-are-we-doomed" id="toc-v.-i-did-bad-and-made-a-merge-conflict-are-we-doomed" class="nav-link" data-scroll-target="#v.-i-did-bad-and-made-a-merge-conflict-are-we-doomed">v. “I did bad and made a merge conflict, are we doomed??”</a>
+  <ul class="collapse">
+  <li><a href="#protect-your-branches" id="toc-protect-your-branches" class="nav-link" data-scroll-target="#protect-your-branches">Protect your Branches!</a></li>
+  <li><a href="#how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong" id="toc-how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong" class="nav-link" data-scroll-target="#how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong">How to undo your last git commit or revert to an earlier version (if something goes wrong)</a></li>
+  <li><a href="#what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository" id="toc-what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository" class="nav-link" data-scroll-target="#what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository">What if neither of the above seem to be able to fix the specific merge or version conflict in our repository?</a></li>
+  </ul></li>
+  <li><a href="#iii.-introduction-to-shiny" id="toc-iii.-introduction-to-shiny" class="nav-link" data-scroll-target="#iii.-introduction-to-shiny">III. Introduction to Shiny</a></li>
+  <li><a href="#i.-the-user-experience" id="toc-i.-the-user-experience" class="nav-link" data-scroll-target="#i.-the-user-experience">i. ‘The User Experience’</a></li>
+  <li><a href="#ii.-reactive-programming" id="toc-ii.-reactive-programming" class="nav-link" data-scroll-target="#ii.-reactive-programming">ii. ‘Reactive’ programming</a>
+  <ul class="collapse">
+  <li><a href="#ui-server" id="toc-ui-server" class="nav-link" data-scroll-target="#ui-server">UI &amp; Server</a>
+  <ul class="collapse">
+  <li><a href="#user-interface-ui.r" id="toc-user-interface-ui.r" class="nav-link" data-scroll-target="#user-interface-ui.r">User interface (ui.R)</a></li>
+  <li><a href="#server-server.r" id="toc-server-server.r" class="nav-link" data-scroll-target="#server-server.r">Server (server.R)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#iii.-hosting-a-shiny-app-on-your-website-indirectly" id="toc-iii.-hosting-a-shiny-app-on-your-website-indirectly" class="nav-link" data-scroll-target="#iii.-hosting-a-shiny-app-on-your-website-indirectly">iii. Hosting a Shiny App on your Website (indirectly)</a></li>
+  <li><a href="#iv.-examples-resources" id="toc-iv.-examples-resources" class="nav-link" data-scroll-target="#iv.-examples-resources">iv. Examples &amp; Resources</a></li>
+  <li><a href="#iv.-next-week" id="toc-iv.-next-week" class="nav-link" data-scroll-target="#iv.-next-week">IV. Next Week</a></li>
+  <li><a href="#to-dos" id="toc-to-dos" class="nav-link" data-scroll-target="#to-dos">To-do’s</a></li>
+  <li><a href="#looking-ahead-1" id="toc-looking-ahead-1" class="nav-link" data-scroll-target="#looking-ahead-1">Looking Ahead</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 12: Github Collaboration &amp; Intro to Shiny</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="i.-introduction" class="level1 jumbotron">
+<h1 class="jumbotron">I. Introduction</h1>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="where-weve-been" class="level2">
+<h2 class="anchored" data-anchor-id="where-weve-been">Where we’ve been –</h2>
+<p>The midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to <em>Course Objectives</em> (1)-(4,5) in the <a href="https://canvas.umn.edu/courses/293049/files?preview=26516582">syllabus</a>. Those skills break down into –</p>
+<ol type="1">
+<li><strong>Workflow</strong>
+<ul>
+<li>.Rprojects + Github, Rmarkdown, best <code>R</code> practices, reproducibility</li>
+</ul></li>
+<li><strong>Data Wrangling</strong>
+<ul>
+<li><code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>stringr</code>, <code>lubridate</code></li>
+<li>plus iteration with <code>purrr::map</code> family</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li><code>ggplot2</code>,<code>gt</code></li>
+</ul></li>
+<li><strong>Exploratory Data Analysis</strong>
+<ul>
+<li>Use the above to read, explore, clean/tidy, prepare for analysis and visualize <em>new</em> data</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="where-were-going" class="level2">
+<h2 class="anchored" data-anchor-id="where-were-going">Where we’re going –</h2>
+<p>As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize <code>R</code> and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –</p>
+<ol start="5" type="1">
+<li><strong>Enhanced Visualization</strong>
+<ul>
+<li>Interactivity w/ <code>ggplotly</code>, <code>reactable</code></li>
+<li>Enhance <code>gt</code> with <code>gtExtras</code> (and <code>flextable</code>, <code>ftExtra</code>)</li>
+<li>Intro to <code>flexdashboard</code></li>
+</ul></li>
+<li><strong>Websites in R + Github</strong>
+<ul>
+<li>Basics, personal webpage</li>
+<li>Websites as analytical display tools
+<ul>
+<li>Embedding <code>flexdashboard</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Spatial Visualization</strong>
+<ul>
+<li>‘Tidy Maps’ w/ <code>sf</code>or<code>sp</code> + <code>tidyverse</code> + <code>ggmaps</code> and <code>ggplot2</code></li>
+<li>Introduction to interactive maps with <code>ggplotly</code> and/or <code>leaflet</code></li>
+</ul></li>
+<li><strong>Github Collaboration &amp; Shiny Apps</strong> (<strong>today</strong>)
+<ul>
+<li>Working with others in the same Github repository
+<ul>
+<li>Best practices</li>
+<li>Branching, merging, merge conflicts</li>
+<li>reseting to previous versions</li>
+</ul></li>
+<li>Developing a basic Shiny app</li>
+<li>Embed Shiny in an <code>R</code> hosted website</li>
+<li>Embed Shiny in a <code>flexdashboard</code></li>
+<li>Resources for more advanced Shiny</li>
+</ul></li>
+<li><strong>Miscellaneous</strong>
+<ul>
+<li>*Working with big data in R <code>dt_plyr</code>, <code>collapse</code>, <code>h2o</code>, <code>sparklyr</code></li>
+<li>*Working with databases in R <code>db_plyr</code></li>
+<li>*How to develop a package with Rstudio &amp; Github</li>
+<li>*Webscraping with R</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section" class="level1 panel panel-primary">
+<h1 class="panel panel-primary"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="so-what-exactly-are-we-going-to-do-today" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+</section>
+<section id="github-collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="github-collaboration">Github Collaboration</h2>
+<p>We’re going to explore utilizing Github <em>as a collaborator</em> to ensure you and your team have a successful final project, as well as the skills to transfer directly into a professional, collaborative, team-oriented ‘data-sciency’ role. We’ll cover a wider range of <strong>git tools</strong> and <strong>commands</strong> (yes, you’re going to need to start using the terminal/command-line unfortunately) and explore/visualize how these tools allow us to work in ‘tree-like’ shared directories w/ version control. Finally, we will cover an example which I will also do live.</p>
+</section>
+<section id="shiny" class="level2">
+<h2 class="anchored" data-anchor-id="shiny">Shiny</h2>
+<p><strong>Today</strong> we’re just going to discuss some basic, fundamental components of Shiny applications. These include, but are not limited to –</p>
+<ul>
+<li>‘The User Experience’</li>
+<li>‘Reactive’ programming
+<ul>
+<li>UI &amp; Server</li>
+<li>Acquiring and storing user <em>inputs</em></li>
+<li>Producing <em>outputs</em> for the user</li>
+</ul></li>
+<li>Hosting a Shiny App on your Website (indirectly)</li>
+<li>Examples</li>
+</ul>
+<p><strong>Next week</strong>, we’ll cover how to embed an app in a <code>flexdashboard</code> with a live demonstration, tutorial, and activity.</p>
+</section>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">Looking ahead</h2>
+<p>So in theory, if you’re thinking about developing a Shiny app within your final project, you should have everything you need to get started next Friday 4/14 – which is still a little over three weeks from the due date. Not every project will need one, nor is it required, and remember that the approach, data science skills, and final product are much more important than how ‘fancy’ your website or applications are. Remember –</p>
+<blockquote class="blockquote">
+<p><em><strong>Good applications</strong> supplement <strong>good data science.</strong></em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em><strong>Bad data science</strong> creates <strong>bad applications</strong>, regardless of how <strong>fancy.</strong></em></p>
+</blockquote>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="ii.-github-collaboration" class="level1 jumbotron">
+<h1 class="jumbotron">II. Github Collaboration</h1>
+</section>
+<section id="i.-the-basics" class="level1">
+<h1>i. The ‘Basics’</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./git_resources/github_viz_basics.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The general individual workflow that you’ve been using all semester thus far.</figcaption><p></p>
+</figure>
+</div>
+<p>Recall the basic, individual workflow from earlier this semester –</p>
+<ul>
+<li><code>git add</code> stages your changes (packages them up for a <code>push</code>, but still needs an <em>address</em> and <em>tape</em>)</li>
+<li><code>git commit -m " "</code> commits your changes (<em>tapes it up</em>) with an informative message (<em>greeting card</em>)</li>
+<li>Now you’re ready to send it off to it’s final address (<em>remote repository</em>)</li>
+<li><strong>But first</strong>, we need to <code>pull</code> (or <code>rebase</code>) to ensure no changes that could induce a <em>merge conflict</em> have been made to the repository (by you or someone else), prior to mailing package</li>
+<li>Once we’re satisfied we can send the package with no issues, we <code>git push</code> to send our commit to the remote repository</li>
+<li><code>git status</code> will also let you know what’s going on in your local repo right now (i.e.&nbsp;what’s staged, commited, conflicts, etc.)</li>
+</ul>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+<section id="ii.-now-lets-complicate-things" class="level1">
+<h1>ii. Now Let’s Complicate Things</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./git_resources/git_cheatshet_viz.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A very useful cheat sheet &amp; visualization</figcaption><p></p>
+</figure>
+</div>
+<section id="important-notes" class="level2">
+<h2 class="anchored" data-anchor-id="important-notes">Important notes</h2>
+<section id="pull-and-push-are-both-generalized-as-merge-requests" class="level3">
+<h3 class="anchored" data-anchor-id="pull-and-push-are-both-generalized-as-merge-requests">1. <code>pull</code> and <code>push</code> are both generalized as <strong>merge requests</strong></h3>
+<ul>
+<li><code>pull</code> is from some branch</li>
+<li><code>push</code> is to some branch</li>
+<li><em>can be done to, from, or within any branch</em></li>
+</ul>
+</section>
+<section id="git-fetch-origin-branch-grab-changes-from-vs.-git-pull-origin-branch-grab-changes-from-and-merge-with-your-local-repository" class="level3">
+<h3 class="anchored" data-anchor-id="git-fetch-origin-branch-grab-changes-from-vs.-git-pull-origin-branch-grab-changes-from-and-merge-with-your-local-repository">2. <code>git fetch origin &lt;branch&gt;</code> (grab changes from <branch>) vs.&nbsp;<code>git pull origin &lt;branch&gt;</code> (grab changes from <branch> <strong>and</strong> merge with your local repository)</branch></branch></h3>
+</section>
+<section id="you-should-fetch-often-everytime-you-open-the-project-locally-and-pull-when-appropriate-i.e.-when-changes-are-made-that-dont-conflict-with-youre-work" class="level3">
+<h3 class="anchored" data-anchor-id="you-should-fetch-often-everytime-you-open-the-project-locally-and-pull-when-appropriate-i.e.-when-changes-are-made-that-dont-conflict-with-youre-work">3. You should <code>fetch</code> often (everytime you open the project locally) and <code>pull</code> when appropriate (i.e.&nbsp;when changes are made that don’t conflict with you’re work)</h3>
+</section>
+<section id="git-pull-origin-branch-is-usually-how-you-want-to-engage-a-pullmerge-request" class="level3">
+<h3 class="anchored" data-anchor-id="git-pull-origin-branch-is-usually-how-you-want-to-engage-a-pullmerge-request">4. <code>git pull origin &lt;branch&gt;</code> is <em>usually</em> how you want to engage a pull/merge request</h3>
+<ul>
+<li><strong>Do not use</strong> <code>git pull --rebase</code> <em>until</em> you’ve read <a href="https://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase">this Stack Overflow thread</a></li>
+<li>It’s a little tricky, but useful if you find yourself in a situation like the one described in the article</li>
+</ul>
+</section>
+<section id="commit-early-and-often" class="level3">
+<h3 class="anchored" data-anchor-id="commit-early-and-often">5. Commit <strong>early</strong> and <strong>often</strong>!</h3>
+<p>Think of committing changes like saving files. We save files frequently to protect ourselves from the event that the program or your computer crashes and all your hard work is lost.</p>
+<p>Similarly, we commit early and often so that if and when something goes wrong on our branch or elsewhere, we have a recent version to revert to (see below on how to undo a commit).</p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+</section>
+<section id="iii.-resources" class="level1">
+<h1>iii. Resources</h1>
+<p>Here are a couple resources for reference if and when you run into an issue with Git collaboration. However, if you spend a little time on the frontend familiarizing yourself with these materials now, I guarantee you will inevitably save yourself significantly more time if and when something goes wrong. I will cover the main points from these materials, with some nice graphics (thanks Reddit), but for a full picture I’d read these <em>few brief</em> resources for yourself –</p>
+<ol type="1">
+<li><a href="https://happygitwithr.com/git-intro.html">Jenny Bryan’s Git Basics (20-22)</a></li>
+<li><a href="https://happygitwithr.com/workflows-intro.html">Jenny Bryan’s Useful Git Patterns for Real Life (26-29)</a></li>
+<li><a href="https://r-pkgs.org/git.html">Hadley Wickham’s R Packages: Git &amp; Github (18)</a></li>
+<li><a href="https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github">Stack Overflow Forking vs.&nbsp;Branching</a></li>
+</ol>
+<p>For quick reference, you can also always check the <a href="https://education.github.com/git-cheat-sheet-education.pdf">Github Cheat Sheet</a></p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+<section id="iv.-the-full-scope-of-a-git-repo" class="level1">
+<h1>iv. The FULL Scope of a Git repo</h1>
+<section id="branches" class="level2">
+<h2 class="anchored" data-anchor-id="branches">Branches</h2>
+<p>Starting from the main branch (blue), we grow seperate development branches (purple, green) to work on specific aspects of a project, separately from the <code>main</code> or <code>master</code> (synonymous) branch.</p>
+<p><img src="./git_resources/branches.png" class="img-fluid"></p>
+<p>You can think of the <code>master</code> like the trunk of a tree, from the roots all the way to the top, and it hosts every version of our final product and everything is developed on <code>branches</code> from the <code>master</code>. Eventually, when our <code>branch</code>‘s product, feature, or development is complete, we will merge that <code>branch</code> back to master (inducing a new ’version’ of our final product).</p>
+</section>
+</section>
+<section id="section-3" class="level1 panel panel-primary">
+<h1 class="panel panel-primary"></h1>
+<section id="section-4" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-4"></h2>
+<section id="example-1.-websites-with-r-and-github" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="example-1.-websites-with-r-and-github">Example 1. Websites with R and Github</h3>
+</section>
+</section>
+<section id="section-5" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-5"></h2>
+<p>Recall that all of our websites on Github Pages are being sourced from the <code>master</code> or <code>main</code> branch. The <span style="color: green;">green</span> below then represents the <code>master</code> branch of a website via R &amp; Github (<em>the final product</em>), and each circle denotes a <em>version</em>. The leftmost and rightmost points in <span style="color: green;">green</span> must necessarily then represent the initialization (empty) and most current version, respectively.</p>
+<p><img src="./git_resources/git-branches-merge.png" class="img-fluid"></p>
+</section>
+<section id="green" class="level2">
+<h2 class="anchored" data-anchor-id="green"><span style="color: green;">Green</span></h2>
+<p>Now, let’s say <strong>someone else on your team</strong> is currently developing ‘final product’, i.e.&nbsp;the website’s structure and aesthetics (i.e.&nbsp;the <code>_site.yml</code> and index/home page) on the <span style="color: green;">green</span> <code>master</code> branch.</p>
+</section>
+<section id="blue" class="level2">
+<h2 class="anchored" data-anchor-id="blue"><span style="color: blue;">Blue</span></h2>
+<p><strong>You</strong> (in <span style="color: blue;">blue</span>), on the other hand, are tasked with developing a tab or section on the website like an EDA with visualizations, <code>flexdashboard</code>, or Shiny app. Since this only requires editing a <em>distinct set</em> of file(s) (.RMD) which are <em>unrelated</em> to what is being done on the <code>master</code> branch, you should probably <strong>create a new development branch for your ‘feature’ on the website</strong>.</p>
+<p>Let’s first note that once we initialized a branch (leftmost <span style="color: blue;">blue</span> circle), we are working on a <em>copy</em> of the <code>main</code> branch at the moment we decided to branch off. Once you’re on this branch <strong>only edit your distinct set of files</strong> or files that you’ve created on the branch. This will ensure when you’ve completed your work and are ready to merge back to the <code>master</code> website (rightmost <span style="color: blue;">blue</span> circle), there shouldn’t be any conflicts with what those on the <code>master</code> have been doing. (Assuming they haven’t changed any files you’ve been working on, but we’ll get to that later as a <em>conflict between versions</em>).</p>
+</section>
+<section id="orange" class="level2">
+<h2 class="anchored" data-anchor-id="orange"><span style="color: orange;">Orange</span></h2>
+<p>Same as above, but <strong>your teammate’s</strong> <span style="color: orange;">orange</span> branch is developing another feature for the website – which is why it is likewise separate of both the <code>master</code> and your development <code>branch</code>.</p>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-6" class="level1 panel panel-warning">
+<h1 class="panel panel-warning"></h1>
+<section id="section-7" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-7"></h2>
+<section id="question-1.-what-files-in-the-repository-should-the-person-in-orange-not-you-be-working-on" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="question-1.-what-files-in-the-repository-should-the-person-in-orange-not-you-be-working-on">Question 1. What files in the repository should the person in orange (not you) be working on?</h3>
+</section>
+</section>
+<section id="section-8" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-8"></h2>
+<ol type="A">
+<li>Any file they want</li>
+<li>Any file besides the <code>_site.yml</code> or <code>index.RMD</code></li>
+<li>Any file besides what you are working</li>
+<li>B. &amp; C., and any file they create<br>
+</li>
+<li>Only files they create</li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-9" class="level1 panel panel-warning">
+<h1 class="panel panel-warning"></h1>
+<section id="section-10" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-10"></h2>
+<section id="question-2.-what-happens-if-either-you-or-your-teammates-branch-is-merged-back-to-master-and-a-file-has-been-edited-that-shouldnt-have-or-a-new-different-version-exists-on-the-master" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="question-2.-what-happens-if-either-you-or-your-teammates-branch-is-merged-back-to-master-and-a-file-has-been-edited-that-shouldnt-have-or-a-new-different-version-exists-on-the-master">Question 2. What happens if either <span style="color: blue;">you</span> or <span style="color: orange;">your teammate’s</span> branch is merged back to <code>master</code> and <em>a file has been edited that shouldn’t have</em> or <em>a new <strong>different</strong> version exists on the master</em>?</h3>
+</section>
+</section>
+<section id="section-11" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-11"></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./git_resources/conflict_bike.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Oh NoOoOoOooOo!! A Merge Conflict :/</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section-12" class="level1 panel panel-warning">
+<h1 class="panel panel-warning"></h1>
+<section id="section-13" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-13"></h2>
+<section id="question-3.-well-how-do-we-fix-a-merge-conflict" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="question-3.-well-how-do-we-fix-a-merge-conflict">Question 3. Well, how do we fix a merge conflict?</h3>
+</section>
+</section>
+<section id="section-14" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-14"></h2>
+<p><img src="./git_resources/one-does-not-simply.jpg" class="img-fluid"></p>
+<p>Boromir from Lord of the Rings, played by the wonderful Sean Bean, is right! But in all seriousness, the best way to fix a merge conflict is <strong>not to make one</strong>.</p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="v.-i-did-bad-and-made-a-merge-conflict-are-we-doomed" class="level1">
+<h1>v. “I did bad and made a merge conflict, are we doomed??”</h1>
+<p>Not by any means! It’s not that conflicts are unresolveable, we’ll learn some tools and give some resources to do so below, it’s just that <em>they are almost always a big headache</em>. However, we are not defenseless! There are ways to protect your repository and branches from merge conflicts.</p>
+<section id="protect-your-branches" class="level2">
+<h2 class="anchored" data-anchor-id="protect-your-branches">Protect your Branches!</h2>
+<p><img src="./git_resources/branch_protection.png" class="img-fluid"></p>
+<p>Follow this <a href="https://docs.github.com/en/enterprise-server@3.1/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#creating-a-branch-protection-rule">Managing a branch protection rule</a> link for step by step instructions on how to protect a branch (<code>master</code> or <code>main</code>) from merge conflicts.</p>
+<p><img src="./git_resources/branch_protection_2.png" class="img-fluid"></p>
+<p>These are the 2 most important protections to select - but what do they really do?</p>
+<ol type="1">
+<li><p>When you <code>git push origin master</code> to the protected branch (<code>master</code>), it won’t occur immediately. Instead a ‘pull request’ (i.e.&nbsp;merge request) will be created.</p></li>
+<li><p>The request must be <em>reviewed</em> and approved by at least 1 person prior to being allowed to go through.</p></li>
+</ol>
+<p>You may need to mess with the email notification settings to ensure everyone in the repository get’s an email when there’s a request to the <code>master</code> branch (i.e.&nbsp;final product, website, etc.).</p>
+</section>
+<section id="how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-undo-your-last-git-commit-or-revert-to-an-earlier-version-if-something-goes-wrong">How to undo your last git commit or revert to an earlier version (if something goes wrong)</h2>
+<p>This <a href="https://devconnected.com/how-to-undo-last-git-commit/#:~:text=Commit%20with%20revert-,Undo%20Last%20Git%20Commit%20with%20reset,removed%20from%20your%20Git%20history.">devconnected blog post</a> regarding how to undo your last commit is a great step by step guide (with explanation) about how to –</p>
+<ol type="1">
+<li>Undo commit with <code>git reset</code></li>
+<li>Selecting the previous version
+<ul>
+<li><code>HEAD~1</code> (last one),</li>
+<li><code>HEAD~2</code> (one before that)</li>
+<li>etc.</li>
+</ul></li>
+<li><code>git reset --soft</code>
+<ul>
+<li>‘small’ problem fixer</li>
+<li>Undoes your commit, reverts to specified version, <strong>but</strong> keeps the local changes you made since the last commit</li>
+</ul></li>
+<li><code>git reset -- hard</code>
+<ul>
+<li>‘big’ problem fix</li>
+<li><em>use with caution</em> and read the article above first</li>
+<li>Undoes your commit, reverts to specified version, <strong>and</strong> removes all local changes and their versions</li>
+</ul></li>
+</ol>
+</section>
+<section id="what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository" class="level2">
+<h2 class="anchored" data-anchor-id="what-if-neither-of-the-above-seem-to-be-able-to-fix-the-specific-merge-or-version-conflict-in-our-repository">What if neither of the above seem to be able to fix the specific merge or version conflict in our repository?</h2>
+<ol type="1">
+<li>Make sure you read through the above materials fully, those tools can prevent and fix most problems</li>
+<li>Google is your best friend w.r.t. git, it’s a universal tool</li>
+<li>Send the teaching team an email with screenshots of the problem, error message, and/or terminal output from <code>git status</code> &amp; <code>git log</code></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="iii.-introduction-to-shiny" class="level1 jumbotron">
+<h1 class="jumbotron">III. Introduction to Shiny</h1>
+<p>Thus far, we’ve covered how to make stellar static and interactive visualizations <strong>to communicate data sceince</strong> with <code>ggplot</code>, <code>plotly</code>, and <code>leaflet</code>; and also embed them in <code>flexdashboards</code> on an R/Github website. These skills and tools will take you almost anywhere you need to go as a functional data scientist or analyst.</p>
+<p>The last remaining communication/learning tool we need isn’t really more interactivity or a fancier app – <strong>it’s a user experience</strong>.</p>
+<blockquote class="blockquote">
+<p><em><strong>Good applications</strong> supplement <strong>good data science.</strong></em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em><strong>Bad data science</strong> creates <strong>bad applications</strong>, regardless of how <strong>fancy.</strong></em></p>
+</blockquote>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="i.-the-user-experience" class="level1">
+<h1>i. ‘The User Experience’</h1>
+<p>Most simply put, Shiny is Rstudio’s framework for building interactive visualizations, tools, and web-like applications. However, it’s purpose is to allow <em>users</em> (the public, your peers, your company) to <em>interact</em> with, <em>experience</em>, and <em>learn</em> from your work.</p>
+<p>How does Shiny accomplish this? Like most applications, including the wonderful Rstudio you and I are currently using, with a <em>Graphical User Interface (GUI)</em>.</p>
+<p>On the backend, just like <code>leaflet</code> and <code>rmarkdown</code>/<code>knitr</code> Shiny allows us to *translate R code into HTML, CSS, and JavaScript (look at the coding language composition in your website’s repository and you’ll see almost none of it is actually <code>R</code>).</p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+<section id="ii.-reactive-programming" class="level1">
+<h1>ii. ‘Reactive’ programming</h1>
+<p>I think of reactive programming as a particular type of software which allows users not just to <em>interact</em> with our code, but to <em>experience</em> it in a <em>reactive environment</em> – meaning that the changes are <em>fluid &amp; persistent</em> based on the users interaction.</p>
+<p>The syntax for doing so is unlike most things we’ve learned thus far, but just like <code>plotly</code> and <code>leaflet</code>, if you have strong fundamentals in <code>R</code> and put in a little work, you can readily extend your knowledge to another syntax with some practice (though some amount of banging your head against a wall is to be expected).</p>
+<p>Here is a nice built-in example, with code…</p>
+<div class="cell" data-hash="lecture_week_12_cache/html/unnamed-chunk-1_36e073e1b2f4d553fb031f9fb6e2e5d1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runExample</span>(<span class="st">"01_hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>… but what exactly is going on?!</p>
+<section id="ui-server" class="level2">
+<h2 class="anchored" data-anchor-id="ui-server">UI &amp; Server</h2>
+<p>Here, the <code>ui</code> and <code>server</code> are in the same script but that’s because it’s a minimal example for teaching purposes. In practice, these <em>functions</em> are stored in seperate <code>.R</code> files or <code>{r chunks}</code>.</p>
+<p><em>Note</em> - In practice, to keep more complex workflows tidy and easy to follow we usually write separate <code>.R</code> scripts for different functions or collections of functions (i.e.&nbsp;a package) and load them into our global environment (like a package) with <code>source(my_functions.R)</code></p>
+<section id="user-interface-ui.r" class="level3">
+<h3 class="anchored" data-anchor-id="user-interface-ui.r">User interface (ui.R)</h3>
+<p>This component defines (1) type of interface (fluidPage), (2) structure (panels, layout, etc.), (3) <em>acquires user inputs</em> (sliderInput), (4) <em>displays user outputs</em> (plotOutput). Each is a function with inputs/options like usual.</p>
+</section>
+<section id="server-server.r" class="level3">
+<h3 class="anchored" data-anchor-id="server-server.r">Server (server.R)</h3>
+<p>This component is the source of <em>reactivity</em> – it is a function of <em>input &amp; output</em>, taking inputs from the <code>ui.R</code> and rendering outputs (renderPlot).</p>
+<p>Notes –</p>
+<p><strong>UI</strong></p>
+<ol type="1">
+<li>Input object names are given in the <code>inputId = "bins"</code> option
+<ul>
+<li>Meaning that the object called <code>input</code> stores the input</li>
+<li>Within that object, a new object <code>bins</code> will exist</li>
+<li><code>bins</code> is going to store and update the value the user selects from the slider</li>
+</ul></li>
+<li>Thus, when selecting bins for the histogram output in the <code>server.R</code> below, it’s called with <code>input$bins</code></li>
+<li>No different than a usual <code>list$object</code></li>
+</ol>
+<p><strong>SERVER</strong></p>
+<ol type="1">
+<li>It is a function of <code>input</code> (acquired by <code>ui.R</code>) and a self-referential <code>output</code> (simultaneously created by <code>server.R</code> for <code>ui.R</code>)
+<ul>
+<li>Inputs are called like above <code>input$bins</code></li>
+</ul></li>
+<li>Note that <code>output$distPlot &lt;-</code> is base R for <code>mutate</code>
+<ul>
+<li>Means “create or change” the object called <code>distPlot</code> within the list <code>output</code></li>
+<li>That change utilizes the <code>input</code> object (reactivity)</li>
+</ul></li>
+<li>In the <code>ui.R</code>, the function <code>plotOutput</code> renders the plot with the option <code>outputId = "distPlot"</code>
+<ul>
+<li>Means use the <code>output$distPlot</code> from the server to render the plot in the user interface.</li>
+</ul></li>
+</ol>
+<p><strong>APP</strong></p>
+<p>The relationship between the UI and the Server is what induces ‘reactivity’ between the user and the application. It does so by <em>reacting</em> every time a user interacts with the UI by <em>altering the input</em> to <code>ui.R</code>, which <em>induces a call and response</em> from <code>server.R</code> to send new output back to the UI.</p>
+<p>In plain English, this means it reacts to the user input (<code>ui.R</code>) by re-rendering (<code>server.R</code>) <em>continuously</em> while the app is running.</p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+</section>
+</section>
+<section id="iii.-hosting-a-shiny-app-on-your-website-indirectly" class="level1">
+<h1>iii. Hosting a Shiny App on your Website (indirectly)</h1>
+<p>This last point, “when the app is running”, is very important – in order for something to be reactive in the <code>R</code> language it has to be hosted on a server (not the script, an actual server) which supports <code>R</code> (i.e.&nbsp;can run it in the background to host your app).</p>
+<p>Unfortunately Github and consequently Github Pages does no support <code>R</code> this way, <em>so you can’t simply embed it in your website like a dashboard or leaflet</em> (why?)</p>
+<p>But that’s okay! You can still display your Shiny apps on your website or elsewhere, you just need to host it elsewhere.</p>
+<p>Here is a <a href="https://shiny.rstudio.com/articles/shinyapps.html">shinyapps.io</a> tutorial to do just that! Following the directions will allow you to deploy a Shiny app on your group’s or personal website.</p>
+<p>Alternatively, <a href="https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/">here</a> is an another step-by-step screenshot guide for setting up and hosting with <code>shinyapps.io</code>.</p>
+<p><span class="math inline">\(~\)</span></p>
+</section>
+<section id="iv.-examples-resources" class="level1">
+<h1>iv. Examples &amp; Resources</h1>
+<ul>
+<li>Here is an <a href="https://shiny.rstudio.com/gallery/">awesome gallery</a> of Shiny apps for motivation, inspiration, or just awe.<br>
+</li>
+<li>Here is <a href="https://shiny.rstudio.com/tutorial/">Rstudio’s official tutorial</a> before next week’s class</li>
+<li>Here is a slightly shorter, <a href="https://deanattali.com/blog/building-shiny-apps-tutorial/">interactive tutorial</a> from Dean Attali</li>
+</ul>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="iv.-next-week" class="level1 jumbotron">
+<h1 class="jumbotron">IV. Next Week</h1>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="to-dos" class="level1">
+<h1>To-do’s</h1>
+<ol type="1">
+<li>Finish up project proposals</li>
+<li>Finish up Homework 6</li>
+<li>Before class next, please skim <a href="https://shiny.rstudio.com/tutorial/">Rstudio’s (Part 1)</a> or <a href="https://deanattali.com/blog/building-shiny-apps-tutorial/">Dean Attali’s</a> tutorial</li>
+</ol>
+</section>
+<section id="looking-ahead-1" class="level1">
+<h1>Looking Ahead</h1>
+<p>Next week we’ll dive deeper into Shiny, develop our own example app, transform an old dashboard into a Shiny dashboard, and <em>you</em> will edit the app(s) in an activity.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

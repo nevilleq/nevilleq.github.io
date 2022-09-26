@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+<meta name="dcterms.date" content="2022-03-18">
+
+<title>Quinton Neville - Week 9: Websites w/R &amp; Github</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA-KIRC Methylation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">Boosting SNP’s</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Adv. R Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Intro to Data Viz (<code>gt</code>, <code>ggplot2</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_9/lecture_week_9.html">
+ <span class="dropdown-text">Websites with R &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Git Collaboration &amp; Intro to Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Shiny Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link active" data-scroll-target="#i.-introduction">I. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#where-weve-been" id="toc-where-weve-been" class="nav-link" data-scroll-target="#where-weve-been">Where we’ve been –</a></li>
+  <li><a href="#where-were-going" id="toc-where-were-going" class="nav-link" data-scroll-target="#where-were-going">Where we’re going –</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#so-what-exactly-are-we-going-to-do-today" id="toc-so-what-exactly-are-we-going-to-do-today" class="nav-link" data-scroll-target="#so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  </ul></li>
+  <li><a href="#ii.-website-tutorial" id="toc-ii.-website-tutorial" class="nav-link" data-scroll-target="#ii.-website-tutorial">II. Website Tutorial</a></li>
+  <li><a href="#step-1.-initialize-github-repository" id="toc-step-1.-initialize-github-repository" class="nav-link" data-scroll-target="#step-1.-initialize-github-repository">Step 1. Initialize Github Repository</a></li>
+  <li><a href="#step-2.-basics" id="toc-step-2.-basics" class="nav-link" data-scroll-target="#step-2.-basics">Step 2. Basics</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a>
+  <ul class="collapse">
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a>
+  <ul class="collapse">
+  <li><a href="#important-things-to-remember" id="toc-important-things-to-remember" class="nav-link" data-scroll-target="#important-things-to-remember">Important Things to Remember</a></li>
+  </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  </ul></li>
+  <li><a href="#step-3.-initialize-your-websiterepo" id="toc-step-3.-initialize-your-websiterepo" class="nav-link" data-scroll-target="#step-3.-initialize-your-websiterepo">Step 3. Initialize your website/repo</a>
+  <ul class="collapse">
+  <li><a href="#first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build" id="toc-first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build" class="nav-link" data-scroll-target="#first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build">First, go to the top navbar in Rstudio to the ‘Build’ tab and make sure the website knits all files together for each ‘Build’</a></li>
+  <li><a href="#next-there-are-2-options-to-build-the-website" id="toc-next-there-are-2-options-to-build-the-website" class="nav-link" data-scroll-target="#next-there-are-2-options-to-build-the-website">Next, there are 2 options to ‘Build’ the website</a></li>
+  <li><a href="#add-commit-pull-push" id="toc-add-commit-pull-push" class="nav-link" data-scroll-target="#add-commit-pull-push">Add, commit, pull, push</a></li>
+  <li><a href="#finally-go-back-to-your-repository-on-github" id="toc-finally-go-back-to-your-repository-on-github" class="nav-link" data-scroll-target="#finally-go-back-to-your-repository-on-github">Finally go back to your repository on Github</a></li>
+  </ul></li>
+  <li><a href="#useful-tips-and-tricks" id="toc-useful-tips-and-tricks" class="nav-link" data-scroll-target="#useful-tips-and-tricks">Useful tips and tricks</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#iii.-activity" id="toc-iii.-activity" class="nav-link" data-scroll-target="#iii.-activity">III. Activity</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a>
+  <ul class="collapse">
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a>
+  <ul class="collapse">
+  <li><a href="#activity-1.-embed-your-dashboard-from-last-lectures-activity-into-your-example-website" id="toc-activity-1.-embed-your-dashboard-from-last-lectures-activity-into-your-example-website" class="nav-link" data-scroll-target="#activity-1.-embed-your-dashboard-from-last-lectures-activity-into-your-example-website">Activity 1. Embed your dashboard from last lecture’s activity into your example website</a></li>
+  </ul></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  </ul></li>
+  <li><a href="#iv.-final-project" id="toc-iv.-final-project" class="nav-link" data-scroll-target="#iv.-final-project">IV. Final Project</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a>
+  <ul class="collapse">
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a>
+  <ul class="collapse">
+  <li><a href="#final-project.-to-dos-for-next-week" id="toc-final-project.-to-dos-for-next-week" class="nav-link" data-scroll-target="#final-project.-to-dos-for-next-week">Final Project. To-do’s for next week</a></li>
+  </ul></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  <li><a href="#by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas" id="toc-by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas" class="nav-link" data-scroll-target="#by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas"><strong>By next week, one person from each group please email me with the group members and ‘general project interests/ideas’</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 9: Websites w/R &amp; Github</h1>
+<p class="subtitle lead">Basics, Flexdashboard, and Intro to Final Project</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 18, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="i.-introduction" class="level1 jumbotron">
+<h1 class="jumbotron">I. Introduction</h1>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="where-weve-been" class="level2">
+<h2 class="anchored" data-anchor-id="where-weve-been">Where we’ve been –</h2>
+<p>The midterm assessment was designed to evaluate your ‘fundamental’ skills as a data scientist, corresponding to <em>Course Objectives</em> (1)-(4,5) in the <a href="https://canvas.umn.edu/courses/293049/files?preview=26516582">syllabus</a>. Those skills break down into –</p>
+<ol type="1">
+<li><strong>Workflow</strong>
+<ul>
+<li>.Rprojects + Github, Rmarkdown, best <code>R</code> practices, reproducibility</li>
+</ul></li>
+<li><strong>Data Wrangling</strong>
+<ul>
+<li><code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>stringr</code>, <code>lubridate</code></li>
+<li>plus iteration with <code>purrr::map</code> family</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li><code>ggplot2</code>,<code>gt</code></li>
+</ul></li>
+<li><strong>Exploratory Data Analysis</strong>
+<ul>
+<li>Use the above to read, explore, clean/tidy, prepare for analysis and visualize <em>new</em> data</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="where-were-going" class="level2">
+<h2 class="anchored" data-anchor-id="where-were-going">Where we’re going –</h2>
+<p>As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these ‘fundamental’ skills to maximize <code>R</code> and Rstudio’s potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these ‘advanced’ communication and analysis tools –</p>
+<ol start="5" type="1">
+<li><strong>Enhanced Visualization</strong>
+<ul>
+<li>Interactivity w/ <code>ggplotly</code>, <code>reactable</code></li>
+<li>Enhance <code>gt</code> with <code>gtExtras</code> (and <code>flextable</code>, <code>ftExtra</code>)</li>
+<li>Intro to <code>flexdashboard</code></li>
+</ul></li>
+<li><strong>Websites in R + Github</strong> (<em>today</em>)
+<ul>
+<li>Basics, personal webpage</li>
+<li>Websites as analytical display tools
+<ul>
+<li>Embedding <code>flexdashboard</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Spatial Visualization</strong>
+<ul>
+<li>‘Tidy Maps’ w/ <code>sf</code>or<code>sp</code> + <code>tidyverse</code> + <code>ggmaps</code> and <code>ggplot2</code></li>
+<li>Introduction to interactive maps with <code>ggplotly</code> and/or <code>leaflet</code></li>
+</ul></li>
+<li><strong>Shiny Apps</strong>
+<ul>
+<li>Basics</li>
+<li>Publish in an <code>R</code> hosted website
+<ul>
+<li>Embedding interactive <code>flexdashboards</code></li>
+<li>Embedding <code>shiny</code> apps</li>
+</ul></li>
+</ul></li>
+<li><strong>Miscellaneous</strong>
+<ul>
+<li>*Working with big data in R <code>dt_plyr</code>, <code>collapse</code>, <code>h2o</code>, <code>sparklyr</code></li>
+<li>*Working with databases in R <code>db_plyr</code></li>
+<li>*How to develop a package with Rstudio &amp; Github</li>
+<li>*Webscraping with R</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+</section>
+<section id="section" class="level1 panel panel-primary">
+<h1 class="panel panel-primary"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="so-what-exactly-are-we-going-to-do-today" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+<p>Today we’re going to learn how to create and host a website with R and Github Pages, as well as how to embed a <code>flexdashboard</code> inside of a webpage. We will focus on setting y’all up to create your own personal website (homework) but with aim at extension to websites as analytical/data communication tools.</p>
+</section>
+</section>
+<section id="ii.-website-tutorial" class="level1 jumbotron">
+<h1 class="jumbotron">II. Website Tutorial</h1>
+<p>At it’s core, hosting a website in <code>R</code> with Github boils down to 3 main components –</p>
+<ol type="1">
+<li>.Rproject <span class="math inline">\(\longleftrightarrow\)</span> Github connection (Github Pages)</li>
+<li><em>.yaml</em> which controls the knitting/rendering/building of the website (just like normal)</li>
+<li><em>.RMD</em> files knitted to <em>.html</em> pages (like any other website)</li>
+</ol>
+</section>
+<section id="step-1.-initialize-github-repository" class="level1">
+<h1>Step 1. Initialize Github Repository</h1>
+<ul>
+<li>For today, we’re going to initialize an example website repo entitled <code>example.github.io</code></li>
+<li>The ending <code>.github.io</code> let’s Github know automatically that it’s a website</li>
+<li>Not necessary, but makes life easier</li>
+<li>Website names are case sensitive so <em>keep everything lower case</em></li>
+<li>Connect a local .Rproject/directory to this repo like normal</li>
+</ul>
+</section>
+<section id="step-2.-basics" class="level1">
+<h1>Step 2. Basics</h1>
+<p>The two most important and necessary features of a website, at least in <code>R</code>, are the <strong><em>.yaml</em></strong> (directions) and <strong><em>index.RMD</em></strong> (home page). Again, case sensitive so make sure everything is lower case and that the yaml file is called <code>_site.yaml</code> (the <code>_</code> prevents name masking).</p>
+<p>Now, download the <a href="https://canvas.umn.edu/courses/293049/pages/week-9-lecture">website_template.zip</a> from the Week 9 Lecture materials on Canvas. In the <code>_site.yaml</code> file, you’ll see the following instructions which control the website –</p>
+<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-1_0a8a265c641991302be1e08b7f03fec0">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> <span class="st">"Yay internet!"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>header<span class="sc">-</span>includes<span class="sc">:</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  \usepackage{graphicx}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  \usepackage{float}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>output_dir<span class="sc">:</span> <span class="st">"."</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>navbar<span class="sc">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"Home"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  right<span class="sc">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"About"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> about.html</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> fa<span class="sc">-</span>envelope fa<span class="sc">-</span>lg</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> mailto<span class="sc">:</span><span class="er">&lt;</span>nevil066<span class="sc">@</span>umn.edu<span class="sc">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> fa<span class="sc">-</span>github fa<span class="sc">-</span>lg</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>nevilleq<span class="sc">/</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span>  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   html_document<span class="sc">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> flatly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>name:</code> is somewhat irrelevant, and the <code>header-includes:</code> statement is just calling some LaTex packages which allow pictures to “float” if you’re familiar (not super important).</p>
+<p>However, what IS important is the</p>
+<ul>
+<li><code>output_dir = "."</code> (.Rproject root directory)</li>
+<li><code>navbar:</code> starts the navigation bar at the top of the website<br>
+</li>
+<li><code>title:</code> defines the name of the “Home Button”</li>
+<li><code>right:</code> simply means put what follows on the right of the navbar</li>
+<li><code>text:</code> again is the name of the button</li>
+<li><code>href:</code> is the “web reference”, i.e.&nbsp;an .html file or link</li>
+<li><code>icon:</code> defines a button with a picture (mail for email, etc.)
+<ul>
+<li>A full list of these icons from ‘Font Awesome’ can be found <a href="https://fontawesome.com/icons">here</a> (<em>hint: LinkedIn</em>)</li>
+</ul></li>
+<li><code>output:</code> like normal, want <code>.html</code><br>
+</li>
+<li><code>theme:</code> comes from these Bootswatch .CSS files
+<ul>
+<li>These themes are all found in the <code>/site_libs</code> folder</li>
+<li>These and more can be downloaded from Bootswatch <a href="https://bootswatch.com/3/">here</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-3" class="level1 panel panel-warning">
+<h1 class="panel panel-warning"></h1>
+<section id="section-4" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-4"></h2>
+<section id="important-things-to-remember" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="important-things-to-remember">Important Things to Remember</h3>
+</section>
+</section>
+<section id="section-5" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-5"></h2>
+<section id="yaml-scoping-matters" class="level4">
+<h4 class="anchored" data-anchor-id="yaml-scoping-matters">1. <em>yaml</em> Scoping Matters</h4>
+<p>‘Scoping’ here refers to the horizontal alignment of each line in the <em>yaml</em>. You’ll notice that everything in the <em>yaml</em> has a “nested” structure, in that every sub-option, sub-button, sub-directory, etc. is <strong>1 tab</strong> to the right. When introducing more nested drop down buttons (which we will do later, and you will do on the hw).</p>
+</section>
+<section id="you-must-have-a-_site.yaml-and-index.rmdindex.html" class="level4">
+<h4 class="anchored" data-anchor-id="you-must-have-a-_site.yaml-and-index.rmdindex.html">2. You must have a <code>_site.yaml</code> and <code>index.RMD</code>/<code>index.html</code></h4>
+</section>
+<section id="you-can-href-any-knitted-.html-of-any-kind-including-dashboards" class="level4">
+<h4 class="anchored" data-anchor-id="you-can-href-any-knitted-.html-of-any-kind-including-dashboards">3. You can <code>href</code> any knitted .html of any kind (including dashboards!)</h4>
+</section>
+</section>
+</section>
+<section id="step-3.-initialize-your-websiterepo" class="level1">
+<h1>Step 3. Initialize your website/repo</h1>
+<section id="first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build" class="level2">
+<h2 class="anchored" data-anchor-id="first-go-to-the-top-navbar-in-rstudio-to-the-build-tab-and-make-sure-the-website-knits-all-files-together-for-each-build">First, go to the top navbar in Rstudio to the ‘Build’ tab and make sure the website knits all files together for each ‘Build’</h2>
+<p>Located in between ‘Session’ and ‘Debug’, click on it and select ‘Configure Build Tools…’. It should automatically detect that you’re working on a website, but if not, click the drop down ‘Project Build Tools’ and select ‘Website’. <em>Check the box entitled: ‘Re-knit current preview when supporting files change’</em>. This will ensure that when you change one .RMD/.html or the .yaml, it will re-knit all ‘supporting’ files such that links between pages will still function properly.</p>
+</section>
+<section id="next-there-are-2-options-to-build-the-website" class="level2">
+<h2 class="anchored" data-anchor-id="next-there-are-2-options-to-build-the-website">Next, there are 2 options to ‘Build’ the website</h2>
+<ol type="1">
+<li>Type this into the console to ‘Build’ your website</li>
+</ol>
+<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-2_878ca3e47ebde44cad96e80f08e01138">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Close and re-open the project, go to tab (top right by default) which normally has ‘Environment’, ‘Git’, etc. and you should now see a ‘Build’ tab. Click on it, you should see a button that says ‘Build’ with a hammer next to it in the upper left of that window/pane. Click on it and that’s it! (it will run the line of code above in the console)</li>
+</ol>
+</section>
+<section id="add-commit-pull-push" class="level2">
+<h2 class="anchored" data-anchor-id="add-commit-pull-push">Add, commit, pull, push</h2>
+</section>
+<section id="finally-go-back-to-your-repository-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="finally-go-back-to-your-repository-on-github">Finally go back to your repository on Github</h2>
+<ol type="1">
+<li>Refresh and navigate to the repository ‘Settings’ (right hand side)</li>
+<li>Scroll down to ‘GitHub Pages’ and click on the link</li>
+<li>Set the GitHub pages source to the <em>main branch</em></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./photos/github_pages.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GitHub Pages source</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Refresh the webpage and you should see a green check mark above indicating ‘Your site is published at <your-web-address>’</your-web-address></li>
+<li>Click on that link, that’s your website!</li>
+</ol>
+</section>
+</section>
+<section id="useful-tips-and-tricks" class="level1">
+<h1>Useful tips and tricks</h1>
+<p>Including links is as easy as <code>[link name](url)</code> and pictures can be included with <code>![caption](file_path)</code> (though it can be easier to use .html, there are two examples in the template).</p>
+<p>Remember to change the ‘Build’ settings to ‘Re-knit’ when file dependencies change to ensure your websites links, buttons, menus, etc. all ‘knit’ and ‘work’ together. <em>You will need to do this everytime you change any files</em>.</p>
+<p>If you want to add a drop down menu, all you have to add to the yaml is this</p>
+<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-3_36b69cc36aec15b4203afbc16193ca75">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> <span class="st">"Yay internet!"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>header<span class="sc">-</span>includes<span class="sc">:</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  \usepackage{graphicx}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  \usepackage{float}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>output_dir<span class="sc">:</span> <span class="st">"."</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>navbar<span class="sc">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"Home"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  right<span class="sc">:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"New Button"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      menu<span class="sc">:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"New Drop Down Button"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            href<span class="sc">:</span> whatever.html</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"About"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> about.html</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> fa<span class="sc">-</span>envelope fa<span class="sc">-</span>lg</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> mailto<span class="sc">:</span><span class="er">&lt;</span>nevil066<span class="sc">@</span>umn.edu<span class="sc">&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> fa<span class="sc">-</span>github fa<span class="sc">-</span>lg</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>nevilleq<span class="sc">/</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span>  </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>   html_document<span class="sc">:</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> flatly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You need to push your changes to Github before you will see them change on the web.</p>
+<p>You may need to refresh the cache/cookies or delete all browsing history from the last hour in order to see changes immediately on the web.</p>
+</section>
+<section id="additional-resources" class="level1">
+<h1>Additional Resources</h1>
+<p>If you’d like to mess around with other Bootswatch themes <a href="https://community.rstudio.com/t/in-rstudio-rmarkdown-how-to-add-new-html-themes-from-bootswatch/15791">here</a>’s an RCommunity Thread for adding different Bootswatch themes.</p>
+<p>If you’d like to know more about websites with R, <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">here</a>’s a great chapter from <em>Rmarkdown: The Definitive Guide</em>.</p>
+<p>If you need a little extra help or if you’d like to peruse a different tutorial, <a href="http://nickstrayer.me/RMarkdown_Sites_tutorial/">here</a> is another great one.</p>
+</section>
+<section id="iii.-activity" class="level1 jumbotron">
+<h1 class="jumbotron">III. Activity</h1>
+</section>
+<section id="section-6" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-7" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-7"></h2>
+<section id="activity-1.-embed-your-dashboard-from-last-lectures-activity-into-your-example-website" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="activity-1.-embed-your-dashboard-from-last-lectures-activity-into-your-example-website">Activity 1. Embed your dashboard from last lecture’s activity into your example website</h3>
+</section>
+</section>
+<section id="section-8" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-8"></h2>
+<p>In order to embed a <code>flexdashboard</code> into a website, the website’s <code>_site.yaml</code> and the dashboard’s <code>yaml</code> conflict; and the site’s instructions supersede the dashboards. In order to get around this, you can simply render with this command</p>
+<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-4_5d39eee55d1e7394d72bf8333e5988db">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"dashboard_template.RMD"</span>, <span class="at">output_format =</span> <span class="st">"flexdashboard::flex_dashboard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After rendering, rebuild the website and you should be good to go!</p>
+</section>
+</section>
+<section id="iv.-final-project" class="level1 jumbotron">
+<h1 class="jumbotron">IV. Final Project</h1>
+<p>Refer to the <a href="https://canvas.umn.edu/courses/293049">syllabus</a> for more specific details about the entire project.</p>
+<p>Today, we have covered the underlying fundamentals of building a website with dashboards to communicate analytical results – meaning we are ready to get started on our final projects.</p>
+</section>
+<section id="section-9" class="level1 panel panel-success">
+<h1 class="panel panel-success"></h1>
+<section id="section-10" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-10"></h2>
+<section id="final-project.-to-dos-for-next-week" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="final-project.-to-dos-for-next-week">Final Project. To-do’s for next week</h3>
+</section>
+</section>
+<section id="section-11" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-11"></h2>
+<section id="please-find-a-group-of-people-with-similar-interests-or-who-youve-gotten-to-know-during-class-to-work-on-the-final-project-2-3-people." class="level4">
+<h4 class="anchored" data-anchor-id="please-find-a-group-of-people-with-similar-interests-or-who-youve-gotten-to-know-during-class-to-work-on-the-final-project-2-3-people.">1. Please find a group of people with similar interests or who you’ve gotten to know during class to work on the final project (2-3 people).</h4>
+</section>
+<section id="start-thinking-about-what-type-of-analysis-youre-interested-in-and-where-to-find-data-to-conduct-such-a-data-driven-inquiry" class="level4">
+<h4 class="anchored" data-anchor-id="start-thinking-about-what-type-of-analysis-youre-interested-in-and-where-to-find-data-to-conduct-such-a-data-driven-inquiry">2. Start thinking about what type of analysis you’re interested in and where to find data to conduct such a data-driven inquiry</h4>
+</section>
+<section id="if-you-need-help-finding-a-group-to-work-with-please-email-me-directly-and-i-will-place-you-in-a-group-with-similar-interests" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-need-help-finding-a-group-to-work-with-please-email-me-directly-and-i-will-place-you-in-a-group-with-similar-interests">3. If you need help finding a group to work with please email me directly and I will place you in a group with similar interests</h4>
+</section>
+</section>
+<section id="by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas" class="level2">
+<h2 class="anchored" data-anchor-id="by-next-week-one-person-from-each-group-please-email-me-with-the-group-members-and-general-project-interestsideas"><strong>By next week, one person from each group please email me with the group members and ‘general project interests/ideas’</strong></h2>
+<section id="your-initial-project-proposal-meeting-will-be-held-in-the-first-week-of-april-so-nows-the-time-to-get-thinking-about-data-sources-questions-of-interest-etc." class="level4">
+<h4 class="anchored" data-anchor-id="your-initial-project-proposal-meeting-will-be-held-in-the-first-week-of-april-so-nows-the-time-to-get-thinking-about-data-sources-questions-of-interest-etc.">Your initial project proposal &amp; meeting will be held in the first week of April so now’s the time to get thinking about data sources, questions of interest, etc.</h4>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
