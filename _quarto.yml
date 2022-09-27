@@ -9,8 +9,9 @@ project:
     - "*.RMD"
     - "*.Rmd"
     - "!flexdashboard*"
-    - "!pubh_7462/lecture*"
-
+    - "!nyc_airbnb_shiny_dashboard_leaflet.RMD"
+    - "!pubh_7462/lecture_week_14_shiny_app"
+    
 #Defines the main part(s) of the website: navbar, buttons, icons, links, etc.
 website:
   title: "Quinton Neville"
@@ -39,6 +40,8 @@ website:
             href: pubh_7462/lecture_week_12/lecture_week_12.Rmd
           - text: "Shiny Apps & Dashboards"
             href: pubh_7462/lecture_week_14/lecture_week_14.Rmd
+          - text: "NYC Airbnb `shiny` `flexdashboard` example"
+            href: https://nevilleq.shinyapps.io/nyc_airbnb_shiny_dashboard_leaflet/
       - text: "Biostatistics"
         menu:
           - text: "Bayesian Robust RCM"
@@ -59,10 +62,6 @@ website:
             href: old_work/business_innovation.Rmd
           - text: "Dog Bites in NYC"
             href: old_work/dog_bites.Rmd
-          # - text: "NYC Airbnb Shiny Dashboard"
-          #   href:
-          # - text: "NYC Airbnb Shiny App"
-          #   href:
     right:
       - icon: github
         href: http://github.com/nevilleq/
