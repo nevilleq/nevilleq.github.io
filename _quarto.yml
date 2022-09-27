@@ -48,10 +48,10 @@ website:
             href: https://nevilleq.github.io/bayesRCM/
           - text: "RCM for Task-based fMRI"
             href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
+          - text: "ML-Boosting SNP's"
+            href: old_work/ml_theory.Rmd
           - text: "TCGA-KIRC Methylation"
             href: old_work/stat_gen.Rmd
-          - text: "Boosting SNP's"
-            href: old_work/ml_theory.Rmd
       - text: "Data Science for the Public Good"
         menu:
           - text: "DSPG Overview"

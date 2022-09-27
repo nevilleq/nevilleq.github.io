@@ -2,7 +2,7 @@
 title: ""
 ---
 
-<div style= "float : left; position : relative; top: 0px; width : 280px; height : 280px; padding-right: 24px; padding-bottom: 0px; margin-bottom : 80px">
+<div style= "float : left; position : relative; top: 0px; width : 280px; height : 300px; padding-right: 24px; padding-bottom: 0px; margin-bottom : 80px">
 ![](./photos/linkedin_headshot.png)
 
 </div>
@@ -12,7 +12,9 @@ title: ""
 <font size = "4"> 
 I dabble in Biostatistics, Data Science, and Maths, and am currently a 4$^{\text{th}}$ year PhD candidate in Biostatistics at the University of Minnesota. Prior, I received a BA from St. Olaf College with Distinction in Mathematics in 2018 and an MS in Biostatistics from Columbia University in 2020. My dissertation work revolves around fMRI brain imaging, hierarchical graphical models for multivariate time-series, and deep learning methods for 'multiview' data (brain imaging + "-omics") with applications in mental health research -- while my current day-to-day biostatistics work concerns interim analyses and conditional power in COVID-related clinical trials.  
 
-With the navbar above you can check out my resume and some current work, presentations, & publications. *I'm an avid `R` user, passionate about data science, and would love to share my technical skills and biostatistics domain knowledge with an industry leader in the healthcare/data science field for an internship Summer '23 | full-time position '24*.     
+#### Professional connections  
+
+*I'm an avid `R` user, passionate about data science for the public good, and would love to share my technical skills and biostatistics domain knowledge with an industry leader in the healthcare/data science field for an internship Summer '23 | full-time position '24*.     
 </font>  
 
 
@@ -21,7 +23,7 @@ With the navbar above you can check out my resume and some current work, present
 #### About me   
 
 <font size = "4">
-In my spare time you're likely to catch me reading whatever new book my favourite non-fiction author, Leonard Mlodinow, has recently published or a classic from Stephen King. I'm also a huge Lord of the Rings fan and have traveled all the way to New Zealand just to have a pint at the Green Dragon in Hobbiton, among other things like skydiving and scuba or whatever. I love music and still slap some jazz bass & rock'n'roll guitar when the mood strikes. Lastly, and probably most importantly, I am a firm, steadfast, unequivocal believer that hotdogs are sandwiches.
+In my spare time you're likely to catch me reading whatever new book my favourite non-fiction author, Leonard Mlodinow, has recently published or a classic from Stephen King. I'm also a huge Lord of the Rings fan and have traveled all the way to New Zealand just to have a pint at the Green Dragon in Hobbiton, among other less exciting things like skydiving (falling?) and scuba diving. I love music and still slap some jazz bass & rock'n'roll guitar when the mood strikes. Lastly, and probably most importantly, I am a firm, steadfast, unequivocal believer that hotdogs are sandwiches.
 </font>  
 
 >"If it was easy, everyone would do it." - Dan Neville
