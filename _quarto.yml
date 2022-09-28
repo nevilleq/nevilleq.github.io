@@ -44,16 +44,6 @@ website:
             href: pubh_7462/lecture_week_12/lecture_week_12.Rmd
           - text: "Lecture: `shiny` Apps & Dashboards"
             href: pubh_7462/lecture_week_14/lecture_week_14.Rmd
-      - text: "Biostatistics"
-        menu:
-          - text: "Bayesian Robust RCM"
-            href: https://nevilleq.github.io/bayesRCM/
-          - text: "RCM for Task-based fMRI"
-            href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
-          - text: "ML-Boosting SNP Classification"
-            href: old_work/ml_theory.Rmd
-          - text: "TCGA Bumphunting for Differential Methylation"
-            href: old_work/stat_gen.Rmd
       - text: "Data Science for the Public Good"
         menu:
           - text: "DSPG Overview"
@@ -64,6 +54,16 @@ website:
             href: old_work/business_innovation.Rmd
           - text: "Dog Bites in NYC"
             href: old_work/dog_bites.Rmd
+      - text: "Biostatistics"
+        menu:
+          - text: "Bayesian Robust RCM"
+            href: https://nevilleq.github.io/bayesRCM/
+          - text: "RCM for Task-based fMRI"
+            href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
+          - text: "ML-Boosting SNP Classification"
+            href: old_work/ml_theory.Rmd
+          - text: "TCGA Bumphunting for Differential Methylation"
+            href: old_work/stat_gen.Rmd
     right:
       - icon: github
         href: http://github.com/nevilleq/
