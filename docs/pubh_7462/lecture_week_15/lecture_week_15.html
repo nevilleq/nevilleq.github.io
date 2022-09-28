@@ -559,7 +559,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="ii.-setting-up-an-r-package-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="ii.-setting-up-an-r-package-from-scratch">ii. Setting up an R package from scratch</h2>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-1_a6991f51cc50543211a1744d532dff8b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Install devtools if necessary</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"devtools"</span>)) <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -578,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There’s a specific machine-readable file called <code>DESCRIPTION</code> (automatically created by R Studio), which is read by <code>R</code> when ‘building’ the package. You’ll need to edit the file to correspond to your package specifically, <em>but don’t change the formatting</em>.</p>
 <section id="example-description" class="level3">
 <h3 class="anchored" data-anchor-id="example-description">Example <code>DESCRIPTION</code></h3>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-2_c0ba4bd33173e04e80ef8e416df21288">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> <span class="er">&lt;</span>package name<span class="sc">&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Type<span class="sc">:</span> Package</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> <span class="er">&lt;</span>your title<span class="sc">&gt;</span></span>
@@ -611,7 +611,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="readme" class="level3">
 <h3 class="anchored" data-anchor-id="readme"><code>README</code></h3>
 <p>While the <code>README</code> doesn’t get created by default in the packages repo, it’s generally a good idea to make one yourself with the usual <code>.RMD</code>. A convenient way to do this is with <code>usethis</code> –</p>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-3_9ba618abc5c9b52229741a827674f11f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a README.rmd</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds it to .Rbuildignore file</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -630,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="general" class="level3">
 <h3 class="anchored" data-anchor-id="general">General</h3>
 <p>We can conveniently add any R data (<code>.RDS</code>) from out global environment (i.e.&nbsp;a <code>tibble</code> or <code>data.frame</code>) into a/the <code>/data</code> folder with <code>usethis</code> –</p>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-4_ce40194542b8cbd03edf8cfd4a17561d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add example data to /data folder</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Simultaneously creates folder if doesn't exist yet</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(<span class="sc">&lt;</span>data obj. name<span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -639,7 +639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="preprocessing" class="level3">
 <h3 class="anchored" data-anchor-id="preprocessing">Preprocessing</h3>
 <p>If there is some pre-processing of data involved in your package, you can likewise employ <code>usethis</code> –</p>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-5_35d3e0c5f17ed8df2c7822e6b64d28be">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add example raw data to /data-raw folder</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Simultaneously creates folder if doesn't exist yet</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data_raw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -649,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="documenting-data-with-roxygen2" class="level3">
 <h3 class="anchored" data-anchor-id="documenting-data-with-roxygen2">Documenting Data with <code>roxygen2</code></h3>
 <p>Once you’re done with all that, it’s a good idea to add a <code>data.R</code> file to the <code>/R</code> folder, documentating &amp; describing the data <code>?</code>. You’ll need to check out <a href="https://roxygen2.r-lib.org/">roxygen2 documentation</a> for the full syntax, but here’s a good example to get you started –</p>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-6_42ef5a2aa8a7b367214d4e24a59642aa">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @title &lt;Title for data&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @description &lt;brief description&gt;</span></span>
@@ -678,7 +678,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the example package we’re building today, these are the collection of functions which work together to accomplish a larger task (like most packages).</p>
 <section id="bivariate-normal-lm-data-generator" class="level4">
 <h4 class="anchored" data-anchor-id="bivariate-normal-lm-data-generator">1. Bivariate Normal LM Data Generator</h4>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-7_18565ff47aa724f49d83a423e9288d7f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Create lm data</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
@@ -695,7 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="fit-lm-with-without-interaction" class="level4">
 <h4 class="anchored" data-anchor-id="fit-lm-with-without-interaction">2. Fit LM with &amp; without Interaction</h4>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-8_4220484a05581816cd735e0044cda68e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit_lm <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_data) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fit lm from lm_data generator</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  lm.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x_1 <span class="sc">+</span> x_2, <span class="at">data =</span> lm_data)</span>
@@ -713,7 +713,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="plot-the-lm-fit" class="level4">
 <h4 class="anchored" data-anchor-id="plot-the-lm-fit">3. Plot the LM Fit</h4>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-9_6272f8830fe61beb420deb50a19da6e3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_fit <span class="ot">&lt;-</span> <span class="cf">function</span>(lm.mod, lm_data, new_data, <span class="at">interaction =</span> <span class="cn">FALSE</span>) {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Create string for title of plot</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  string <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(interaction, <span class="st">"w/ Interaction"</span>, <span class="st">""</span>)</span>
@@ -745,7 +745,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
 <p>Unlike .RMD’s, these source functions need to be <code>.R</code> files and should generally be in their own <code>.R</code> file (unless there’s a set of functions that are very similar or intimately related). Again, we’ll use <code>roxygen2</code> to create documentation for each function which can be accessed with <code>?</code> like usual. More detailed info about documenting data &amp; functions can be found <a href="https://r-pkgs.org/man.html">here</a></p>
 <p>Have no fear, R studio has a convenient way to insert a default <code>roxygen2</code> skeleton for functions, accessed by <code>Code</code> -&gt; <code>Insert Roxygen Skeleton</code> –</p>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-10_6896bae36e62aa2f06b1fc7b39b90d71">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' &lt;What the function is&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @description &lt;describe function's purpose&gt;</span></span>
@@ -795,7 +795,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="new-way-via-usethisuse_github">‘New’ way via <code>usethis::use_github()</code></h3>
 <section id="jennys-example" class="level4">
 <h4 class="anchored" data-anchor-id="jennys-example">Jenny’s Example</h4>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-11_5eedf22bea87ebb2865834ec0cbf54cf">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Creating GitHub repository 'jennybc/myrepo'</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ Setting remote 'origin' to 'https://github.com/jennybc/myrepo.git'</span></span>
@@ -974,7 +974,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It’s super functional and easy to use, here are the basics –</p>
 <section id="side-by-side" class="level3">
 <h3 class="anchored" data-anchor-id="side-by-side">1. Side-by-side</h3>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-12_1d0648da7a13e5ea77407e2a8cf9a250">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two side by side</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">+</span> ggplot2</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -984,7 +984,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="vertical" class="level3">
 <h3 class="anchored" data-anchor-id="vertical">2. Vertical</h3>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-13_f5af08ef813234d9ba0d2803b3bc3022">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two top and bottom</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ggplot_1 <span class="sc">/</span> ggplot2</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -994,7 +994,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="any-combination-of-side-by-side-and-vertical" class="level3">
 <h3 class="anchored" data-anchor-id="any-combination-of-side-by-side-and-vertical">3. Any Combination of Side-by-side and Vertical</h3>
-<div class="cell" data-hash="lecture_week_15_cache/html/unnamed-chunk-14_969a2c2dfb7f98b7519ec162b937523e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Two above one wide below</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(ggplot_1 <span class="sc">+</span> ggplot_2) <span class="sc">/</span> ggplot_3</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>

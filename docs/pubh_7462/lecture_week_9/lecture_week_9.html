@@ -464,7 +464,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Step 2. Basics</h1>
 <p>The two most important and necessary features of a website, at least in <code>R</code>, are the <strong><em>.yaml</em></strong> (directions) and <strong><em>index.RMD</em></strong> (home page). Again, case sensitive so make sure everything is lower case and that the yaml file is called <code>_site.yaml</code> (the <code>_</code> prevents name masking).</p>
 <p>Now, download the <a href="https://canvas.umn.edu/courses/293049/pages/week-9-lecture">website_template.zip</a> from the Week 9 Lecture materials on Canvas. In the <code>_site.yaml</code> file, you’ll see the following instructions which control the website –</p>
-<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-1_0a8a265c641991302be1e08b7f03fec0">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_9_cache/html/unnamed-chunk-1_e7011847f70caf189f45de3a6029d685">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> <span class="st">"Yay internet!"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>header<span class="sc">-</span>includes<span class="sc">:</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  \usepackage{graphicx}</span>
@@ -539,7 +539,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol type="1">
 <li>Type this into the console to ‘Build’ your website</li>
 </ol>
-<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-2_878ca3e47ebde44cad96e80f08e01138">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_9_cache/html/unnamed-chunk-2_f4b0c2d03754efa8b26cde1691341c47">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
@@ -573,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Including links is as easy as <code>[link name](url)</code> and pictures can be included with <code>![caption](file_path)</code> (though it can be easier to use .html, there are two examples in the template).</p>
 <p>Remember to change the ‘Build’ settings to ‘Re-knit’ when file dependencies change to ensure your websites links, buttons, menus, etc. all ‘knit’ and ‘work’ together. <em>You will need to do this everytime you change any files</em>.</p>
 <p>If you want to add a drop down menu, all you have to add to the yaml is this</p>
-<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-3_36b69cc36aec15b4203afbc16193ca75">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_9_cache/html/unnamed-chunk-3_702fd74d7a8bbc2f40cd3594ee297591">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>name<span class="sc">:</span> <span class="st">"Yay internet!"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>header<span class="sc">-</span>includes<span class="sc">:</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  \usepackage{graphicx}</span>
@@ -619,7 +619,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-8" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-8"></h2>
 <p>In order to embed a <code>flexdashboard</code> into a website, the website’s <code>_site.yaml</code> and the dashboard’s <code>yaml</code> conflict; and the site’s instructions supersede the dashboards. In order to get around this, you can simply render with this command</p>
-<div class="cell" data-hash="lecture_week_9_cache/html/unnamed-chunk-4_5d39eee55d1e7394d72bf8333e5988db">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_9_cache/html/unnamed-chunk-4_780db402bd32e54c6061f4dc93886053">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"dashboard_template.RMD"</span>, <span class="at">output_format =</span> <span class="st">"flexdashboard::flex_dashboard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After rendering, rebuild the website and you should be good to go!</p>

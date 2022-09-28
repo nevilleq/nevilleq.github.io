@@ -497,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-2" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
 <p>Not everything that normally works in .html will work in <code>github_documents</code>; and one of those things is <code>gt()</code>’s displaying properly. To get around that, we’ll have to <code>gtsave</code> our <code>gt's</code> as a .png and call it directly from Rmarkdown like so –</p>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-1_eeaf225c4cfd3519f0ec9cefdc4c4e1c">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-1_435405dc04baf944f949829bad806719">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Save gt</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a figures directory and save the gt as a .png in there</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"./figures/"</span>)  <span class="co">#create directory</span></span>
@@ -523,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Re-write our pipe to read, clean, and tidy appropriately</li>
 </ul>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-2_9011769ea140ebb3d978dd606d13d622">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-2_ccd7e4f51255ee222be7593be031b3c2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read data and do some initial cleaning</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./data/disneyland_reviews.csv"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
@@ -568,21 +568,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We note here that there are NAs in <code>year_month</code>, they just aren’t labeled appropriately. The <code>year_month</code> and <code>branch</code> variables need to be mutated with <code>stringr</code> (or <code>lubridate</code>). Some variable names still require more tidying and variable types need to be fixed appropriately.</p>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-3_2425ab99c141a0822d40b681f6546d29">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-3_e20309fe65570bf41436bd82915955c9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot missing</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot categorical</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot conintuous distributions</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_histogram</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We also note that the number of California reviews is nearly double that of Hong Kong, and ~35% larger than that of Paris. In addition, the distribution of reviews is heavily <em>left-skewed</em>, with mostly 4 and 5 star reviews and very few 1’s, 2’s, and 3’s.</p>
@@ -606,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Retaining only unique/valid observations</li>
 </ol>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-4_090a4a7ceeb0a3e110c46f0bb46bdecc">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-4_671d29845ca1ad74835c70517a1cb695">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read data and do some initial cleaning</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./data/disneyland_reviews.csv"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"missing"</span>),</span>
@@ -663,7 +675,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Note that not every observation is independent, as 20 ID’s submitted 2 reviews –</p>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-5_9a3c63ac25942ff09bda256d1b2e030c">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-5_daa9d04e3bf4fb03cbecdf0ce2c246b5">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Repeated id data frame</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id) <span class="sc">%&gt;%</span></span>
@@ -730,13 +742,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-5" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-5"></h2>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-6_118c0d08051c8cec488e71aaf81b7e4e">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-6_867f8a9f8091e4d06a55715852720b9f">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gt, need the paletteer package for colours</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"paleteer"</span>)) {</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"paleteer"</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-7_94a03b4265e34ae7d697bbba37daab02">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-7_5cd5f264eb325b7fb69ea39b20191b73">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a table of top 5 w/ dplyr</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>top_5.df <span class="ot">&lt;-</span> disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, location) <span class="sc">%&gt;%</span></span>
@@ -1258,7 +1270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-8" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-8"></h2>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-8_de8ffb5fc14c9f20e5b092bfcb74dc4c">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-8_1a9df90ed43761ec7bef4e72c202cfdc">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1706,11 +1718,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_center">California</td>
-<td class="gt_row gt_right">4.405361</td></tr>
+<td class="gt_row gt_right">4.405</td></tr>
     <tr><td class="gt_row gt_center">Hong Kong</td>
-<td class="gt_row gt_right">4.204226</td></tr>
+<td class="gt_row gt_right">4.204</td></tr>
     <tr><td class="gt_row gt_center">Paris</td>
-<td class="gt_row gt_right">3.960012</td></tr>
+<td class="gt_row gt_right">3.960</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
@@ -1735,7 +1747,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-11" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-11"></h2>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-9_5da56e847f165525fc1b04b6e99de7d3">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-9_7614b407c4744c6e8918cd665be7430c">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, date) <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1780,7 +1792,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">11</span>)) <span class="sc">+</span></span>
 <span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><span class="math inline">\(~\)</span></p>
@@ -1796,7 +1812,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-14" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-14"></h2>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-10_e9542d013b4d03795898bb41eabe0036">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-10_dd55bc27d62fd7e880a97214c451c0b7">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Display table with gt</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(branch, location) <span class="sc">%&gt;%</span></span>
@@ -1834,10 +1850,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Rating</span><span class="st">`</span></span>
 <span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'branch'. You can override using the
-`.groups` argument.</code></pre>
-</div>
 <div class="cell-output-display">
 
 <div id="ixdnhrthzr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2271,55 +2283,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <td colspan="3" class="gt_group_heading">California</td>
     </tr>
     <tr class="gt_row_group_first"><td class="gt_row gt_left">Australia</td>
-<td class="gt_row gt_right" style="background-color: #FF391E; color: #FFFFFF;">4.539436</td>
+<td class="gt_row gt_right" style="background-color: #FF391E; color: #FFFFFF;">4.539</td>
 <td class="gt_row gt_right" style="background-color: #FFDBCE; color: #000000;">2447</td></tr>
     <tr><td class="gt_row gt_left">New Zealand</td>
-<td class="gt_row gt_right" style="background-color: #FF5031; color: #000000;">4.487666</td>
+<td class="gt_row gt_right" style="background-color: #FF5031; color: #000000;">4.488</td>
 <td class="gt_row gt_right" style="background-color: #FFF7F4; color: #000000;">527</td></tr>
     <tr><td class="gt_row gt_left">Canada</td>
-<td class="gt_row gt_right" style="background-color: #FF6C4B; color: #000000;">4.412052</td>
+<td class="gt_row gt_right" style="background-color: #FF6C4B; color: #000000;">4.412</td>
 <td class="gt_row gt_right" style="background-color: #FFE4DA; color: #000000;">1842</td></tr>
     <tr><td class="gt_row gt_left">United States</td>
-<td class="gt_row gt_right" style="background-color: #FF7251; color: #000000;">4.393839</td>
+<td class="gt_row gt_right" style="background-color: #FF7251; color: #000000;">4.394</td>
 <td class="gt_row gt_right" style="background-color: #FF2A13; color: #FFFFFF;">12335</td></tr>
     <tr><td class="gt_row gt_left">United Kingdom</td>
-<td class="gt_row gt_right" style="background-color: #FF9273; color: #000000;">4.290481</td>
+<td class="gt_row gt_right" style="background-color: #FF9273; color: #000000;">4.290</td>
 <td class="gt_row gt_right" style="background-color: #FFF0EB; color: #000000;">1019</td></tr>
     <tr class="gt_group_heading_row">
       <td colspan="3" class="gt_group_heading">Paris</td>
     </tr>
     <tr class="gt_row_group_first"><td class="gt_row gt_left">Ireland</td>
-<td class="gt_row gt_right" style="background-color: #FF9B7E; color: #000000;">4.260465</td>
+<td class="gt_row gt_right" style="background-color: #FF9B7E; color: #000000;">4.260</td>
 <td class="gt_row gt_right" style="background-color: #FFF9F6; color: #000000;">430</td></tr>
     <tr><td class="gt_row gt_left">India</td>
-<td class="gt_row gt_right" style="background-color: #FFA88D; color: #000000;">4.215017</td>
+<td class="gt_row gt_right" style="background-color: #FFA88D; color: #000000;">4.215</td>
 <td class="gt_row gt_right" style="background-color: #FFFBF9; color: #000000;">293</td></tr>
     <tr><td class="gt_row gt_left">United Kingdom</td>
-<td class="gt_row gt_right" style="background-color: #FFDFD4; color: #000000;">4.015641</td>
+<td class="gt_row gt_right" style="background-color: #FFDFD4; color: #000000;">4.016</td>
 <td class="gt_row gt_right" style="background-color: #FF8666; color: #000000;">7992</td></tr>
     <tr><td class="gt_row gt_left">United States</td>
-<td class="gt_row gt_right" style="background-color: #DEC8FF; color: #000000;">3.735338</td>
+<td class="gt_row gt_right" style="background-color: #DEC8FF; color: #000000;">3.735</td>
 <td class="gt_row gt_right" style="background-color: #FFECE4; color: #000000;">1330</td></tr>
     <tr><td class="gt_row gt_left">Australia</td>
-<td class="gt_row gt_right" style="background-color: #CBABFF; color: #000000;">3.648739</td>
+<td class="gt_row gt_right" style="background-color: #CBABFF; color: #000000;">3.649</td>
 <td class="gt_row gt_right" style="background-color: #FFF6F3; color: #000000;">595</td></tr>
     <tr class="gt_group_heading_row">
       <td colspan="3" class="gt_group_heading">Hong Kong</td>
     </tr>
     <tr class="gt_row_group_first"><td class="gt_row gt_left">India</td>
-<td class="gt_row gt_right" style="background-color: #FF4628; color: #FFFFFF;">4.512015</td>
+<td class="gt_row gt_right" style="background-color: #FF4628; color: #FFFFFF;">4.512</td>
 <td class="gt_row gt_right" style="background-color: #FFEFE9; color: #000000;">1082</td></tr>
     <tr><td class="gt_row gt_left">Philippines</td>
-<td class="gt_row gt_right" style="background-color: #FF6F4E; color: #000000;">4.402624</td>
+<td class="gt_row gt_right" style="background-color: #FF6F4E; color: #000000;">4.403</td>
 <td class="gt_row gt_right" style="background-color: #FFF0EB; color: #000000;">991</td></tr>
     <tr><td class="gt_row gt_left">Australia</td>
-<td class="gt_row gt_right" style="background-color: #FFA98E; color: #000000;">4.212974</td>
+<td class="gt_row gt_right" style="background-color: #FFA98E; color: #000000;">4.213</td>
 <td class="gt_row gt_right" style="background-color: #FFE7DE; color: #000000;">1634</td></tr>
     <tr><td class="gt_row gt_left">United States</td>
-<td class="gt_row gt_right" style="background-color: #FFBBA5; color: #000000;">4.145952</td>
+<td class="gt_row gt_right" style="background-color: #FFBBA5; color: #000000;">4.146</td>
 <td class="gt_row gt_right" style="background-color: #FFF2ED; color: #000000;">877</td></tr>
     <tr><td class="gt_row gt_left">Singapore</td>
-<td class="gt_row gt_right" style="background-color: #FFD7C9; color: #000000;">4.045936</td>
+<td class="gt_row gt_right" style="background-color: #FFD7C9; color: #000000;">4.046</td>
 <td class="gt_row gt_right" style="background-color: #FFF3EE; color: #000000;">849</td></tr>
   </tbody>
   
@@ -2344,128 +2356,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-17" class="level2 panel-body">
 <h2 class="panel-body anchored" data-anchor-id="section-17"></h2>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-11_4c1190c4d02f257dd386583f1c8d4ccc">
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-11_e3f442d4f070a7883caba1fc8c8f719d">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> text_var)) <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  stat_smooth(alpha   = 0.2, </span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co">#              size    = 1.2, </span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">#              method  = "loess",</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">#              span    = 1,</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co">#              se      = FALSE) +</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha    =</span> <span class="fl">0.16</span>, </span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">w =</span> <span class="dv">2</span>, <span class="at">h =</span> <span class="fl">0.36</span>),</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">size     =</span> <span class="dv">2</span>, </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape     =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Text-derived Variable"</span>) <span class="sc">+</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-12_92900f36f725f7fa7b0ae1ff912efac3">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> text_var)) <span class="sc">+</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  stat_smooth(alpha   = 0.2, </span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co">#              size    = 1.2, </span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co">#              method  = "loess",</span></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co">#              span    = 1,</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co">#              se      = FALSE) +</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha    =</span> <span class="fl">0.16</span>, </span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">w =</span> <span class="dv">2</span>, <span class="at">h =</span> <span class="fl">0.36</span>),</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">size     =</span> <span class="dv">2</span>, </span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape     =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Text-derived Variable"</span>) <span class="sc">+</span></span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span>              <span class="co">#to handle outliers rigorously</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)), <span class="co">#Turning text analysis vars from wide to long</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>, <span class="co">#Recoding variable w meaningful names</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">colour =</span> <span class="fu">as.factor</span>(rating), <span class="at">fill =</span> <span class="fu">as.factor</span>(rating))) <span class="sc">+</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.44</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
 </div>
-</div>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-12_5075d82fb7c7471164b347ba09914bac">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span>              <span class="co">#to handle outliers rigorously</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)), <span class="co">#Turning text analysis vars from wide to long</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>, <span class="co">#Recoding variable w meaningful names</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>()</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">colour =</span> <span class="fu">as.factor</span>(rating), <span class="at">fill =</span> <span class="fu">as.factor</span>(rating))) <span class="sc">+</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.44</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating"</span>) <span class="sc">+</span></span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <section id="ggridges" class="level4">
 <h4 class="anchored" data-anchor-id="ggridges"><code>ggridges</code></h4>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-13_3f8be39a53f1a054299bd0b960808c4e">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load the ggridges package for density plots</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggridges"</span>)) {</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"ggridges"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-13_0226a369806ac4cfe5c563d220c4a76c">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load the ggridges package for density plots</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggridges"</span>)) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"ggridges"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="lecture_week_4_cache/html/unnamed-chunk-14_fc85e1c1f6cfcd399b328c557f1f2779">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>(),</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">rating =</span> <span class="fu">as.factor</span>(rating) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>             <span class="fu">fct_rev</span>()</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> rating, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_histogram(aes(y = stat(density)),</span></span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co">#                 binwidth = 10,  colour = "black",</span></span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co">#                 alpha    = 0.24) +</span></span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges2</span>(<span class="at">adjust =</span> <span class="dv">2</span>,</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>                       <span class="at">alpha  =</span> <span class="fl">0.44</span>,</span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>                       <span class="at">scale  =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">shape =</span> <span class="st">"|"</span>) <span class="sc">+</span></span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
-<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="lecture_week_4_cache/html/unnamed-chunk-14_bc1be0a4d671a2cbb5e325fd951b0b7f">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    n_words <span class="sc">&lt;=</span> <span class="dv">1000</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    n_unique <span class="sc">&lt;=</span> <span class="dv">750</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&lt;=</span> <span class="dv">6</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    avg_length <span class="sc">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"n_"</span>, <span class="st">"avg"</span>)),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"text_var"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"measurement"</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_words"</span>  <span class="sc">~</span> <span class="st">"Word Count"</span>,</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>                text_var <span class="sc">%in%</span> <span class="st">"n_unique"</span> <span class="sc">~</span> <span class="st">"Unique Word Count"</span>,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"Avg. Word Length"</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as_factor</span>(),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">rating =</span> <span class="fu">as.factor</span>(rating) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>             <span class="fu">fct_rev</span>()</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> measurement, <span class="at">y =</span> rating, <span class="at">colour =</span> rating, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_histogram(aes(y = stat(density)),</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="co">#                 binwidth = 10,  colour = "black",</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co">#                 alpha    = 0.24) +</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges2</span>(<span class="at">adjust =</span> <span class="dv">2</span>,</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>                       <span class="at">alpha  =</span> <span class="fl">0.44</span>,</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>                       <span class="at">scale  =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">shape =</span> <span class="st">"|"</span>) <span class="sc">+</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed Measurement"</span>,</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rating 1-5"</span>,</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Text-derived Associations with Rating"</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Rating (Mean |)"</span>) <span class="sc">+</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> text_var, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_week_4_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 
