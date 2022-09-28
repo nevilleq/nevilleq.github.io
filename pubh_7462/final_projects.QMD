@@ -1,0 +1,27 @@
+---
+title: "PUBH 7462 Final Projects --"
+---
+
+## Interactive Data Science Websites  
+
+Students in PUBH 7462 Advanced Data Science in `R` came from many different departments within the U of M's School of Public Health -- with diverse interests, backgrounds, and prior `R` knowledge levels.  
+
+Below are a selection of final projects, collaborative websites via Github, which cover a wide variety of topics and showcase students new advanced `R` skills. ([syllabus objectives 1-8](https://nevilleq.github.io/pubh_7462/syllabus.html)). Highlights include combining data from multiple sources, `flexdashboard` displays, interactive visualization with `plotly` and mapping with `leaflet`, and of course, some reactivity with `shiny`!
+
+## Selected Projects   
+
+- [Baseball through the Ages: Evolution of Major League Baseball from the Dead Ball Era to Post Steroid Era, 1871-2021](https://btta.netlify.app/)
+
+- [On Thin Ice: Trends in Minnesota Lake and Global Sea Ice](https://round060.github.io/ice.trends.github.io/)
+
+- [Top 5 European Soccer Leagues: A Global Player Analysis](https://maykondasilva.github.io/soccerstats.github.io/index.html)
+
+- [COVID-19 Pandemic Economic Impact](https://tfwongw.github.io/pubh7462_gp4_final_project.github.io/)   
+
+- [Exploring Spatiotemporal Trends in Mosquito Communities across the United States](https://sethbergstedt.github.io/pubh7462_final.io/index.html)
+
+---------------------------------------------------
+
+
+
+

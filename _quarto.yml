@@ -24,33 +24,35 @@ website:
         href: qn_resume.html
       - text: "Advanced Data Science in R"
         menu:
-          - text: "PUBH 7462 Adv. R Syllabus"
+          - text: "PUBH 7462 Advanced `R` Syllabus"
             href: pubh_7462/syllabus.QMD
-          - text: "Intro to Data Viz (`gt`, `ggplot2`)"
-            href: pubh_7462/lecture_week_4/lecture_week_4.Rmd
-          - text: "Interactive Plots, Tables & Dashboards"
-            href: pubh_7462/lecture_week_7/lecture_week_7.Rmd
+          - text: "`Students' Final Project Website Showcase!`"
+            href: pubh_7462/final_projects.QMD
+          - text: "NYC Airbnb `shiny` `flexdashboard` Example"
+            href: https://nevilleq.shinyapps.io/nyc_airbnb_shiny_dashboard_leaflet/
           - text: "NYC Airbnb `flexdashboard` Example"
             href: pubh_7462/lecture_week_7/flexdashboard_activity_solution.html
-          - text: "Websites with R & Github"
+          - text: "Lecture: Data Visualization (`ggplot2`, `gt`)"
+            href: pubh_7462/lecture_week_4/lecture_week_4.Rmd
+          - text: "Lecture: Interactive Plots, Tables & Dashboards"
+            href: pubh_7462/lecture_week_7/lecture_week_7.Rmd
+          - text: "Lecture: Websites with `R` & Github"
             href: pubh_7462/lecture_week_9/lecture_week_9.Rmd
-          - text: "Advanced Spatial Mapping"
+          - text: "Lecture: Advanced Spatial Mapping"
             href: pubh_7462/lecture_week_11/lecture_week_11.Rmd
-          - text: "Git Collaboration & Intro to Shiny"
+          - text: "Lecture: Git Collaboration & Intro to `shiny`"
             href: pubh_7462/lecture_week_12/lecture_week_12.Rmd
-          - text: "Shiny Apps & Dashboards"
+          - text: "Lecture: `shiny` Apps & Dashboards"
             href: pubh_7462/lecture_week_14/lecture_week_14.Rmd
-          - text: "NYC Airbnb `shiny` `flexdashboard` example"
-            href: https://nevilleq.shinyapps.io/nyc_airbnb_shiny_dashboard_leaflet/
       - text: "Biostatistics"
         menu:
           - text: "Bayesian Robust RCM"
             href: https://nevilleq.github.io/bayesRCM/
           - text: "RCM for Task-based fMRI"
             href: https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing
-          - text: "ML-Boosting SNP's"
+          - text: "ML-Boosting SNP Classification"
             href: old_work/ml_theory.Rmd
-          - text: "TCGA-KIRC Methylation"
+          - text: "TCGA Bumphunting for Differential Methylation"
             href: old_work/stat_gen.Rmd
       - text: "Data Science for the Public Good"
         menu:
