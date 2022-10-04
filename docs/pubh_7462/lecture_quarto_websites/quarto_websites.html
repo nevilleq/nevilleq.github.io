@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quinton Neville">
+<meta name="dcterms.date" content="2022-10-03">
+
+<title>Quinton Neville - UMN Student Seminar: R Websites with Quarto &amp; Github</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Quinton Neville</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qn_resume.html">Resume</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-data-science-in-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">Advanced Data Science in R</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-data-science-in-r">    
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/syllabus.html">
+ <span class="dropdown-text">PUBH 7462 Advanced <code>R</code> Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/final_projects.html">
+ <span class="dropdown-text"><code>Students' Final Project Website Showcase!</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.shinyapps.io/nyc_airbnb_shiny_dashboard_leaflet/">
+ <span class="dropdown-text">NYC Airbnb <code>shiny</code> <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/flexdashboard_activity_solution.html">
+ <span class="dropdown-text">NYC Airbnb <code>flexdashboard</code> Example</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_4/lecture_week_4.html">
+ <span class="dropdown-text">Lecture: Data Visualization (<code>ggplot2</code>, <code>gt</code>)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_7/lecture_week_7.html">
+ <span class="dropdown-text">Lecture: Interactive Plots, Tables &amp; Dashboards</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_quarto_websites/quarto_websites.html">
+ <span class="dropdown-text">Lecture: R Websites with Quarto &amp; Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
+ <span class="dropdown-text">Lecture: Advanced Spatial Mapping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_12/lecture_week_12.html">
+ <span class="dropdown-text">Lecture: Git Collaboration &amp; Intro to <code>shiny</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
+ <span class="dropdown-text">Lecture: <code>shiny</code> Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-for-the-public-good" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Science for the Public Good</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-for-the-public-good">    
+        <li>
+    <a class="dropdown-item" href="../../old_work/dspg_overview.html">
+ <span class="dropdown-text">DSPG Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/fairfax.html">
+ <span class="dropdown-text">Geospatial Composite Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/business_innovation.html">
+ <span class="dropdown-text">Innovation &amp; ML Text Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/dog_bites.html">
+ <span class="dropdown-text">Dog Bites in NYC</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust RCM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM for Task-based fMRI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">ML-Boosting SNP Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA Bumphunting for Differential Methylation</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link active" data-scroll-target="#i.-introduction">I. Introduction</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#so-what-exactly-are-we-going-to-do-today" id="toc-so-what-exactly-are-we-going-to-do-today" class="nav-link" data-scroll-target="#so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  </ul></li>
+  <li><a href="#ii.-git-github" id="toc-ii.-git-github" class="nav-link" data-scroll-target="#ii.-git-github">II. Git &amp; Github</a>
+  <ul class="collapse">
+  <li><a href="#installing-.git" id="toc-installing-.git" class="nav-link" data-scroll-target="#installing-.git">Installing <code>.git</code></a></li>
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account">Create a Github account</a></li>
+  <li><a href="#git-basics" id="toc-git-basics" class="nav-link" data-scroll-target="#git-basics">Git Basics</a></li>
+  <li><a href="#basic-git-commands-and-workflow" id="toc-basic-git-commands-and-workflow" class="nav-link" data-scroll-target="#basic-git-commands-and-workflow">Basic Git Commands and Workflow</a></li>
+  </ul></li>
+  <li><a href="#iii.-quarto" id="toc-iii.-quarto" class="nav-link" data-scroll-target="#iii.-quarto">III. Quarto</a>
+  <ul class="collapse">
+  <li><a href="#installation-instructions" id="toc-installation-instructions" class="nav-link" data-scroll-target="#installation-instructions">Installation Instructions</a></li>
+  <li><a href="#resources-to-get-you-started" id="toc-resources-to-get-you-started" class="nav-link" data-scroll-target="#resources-to-get-you-started">Resources to Get you Started</a>
+  <ul class="collapse">
+  <li><a href="#the-hitchhikers-guide-to-the-quarto" id="toc-the-hitchhikers-guide-to-the-quarto" class="nav-link" data-scroll-target="#the-hitchhikers-guide-to-the-quarto">The Hitchhiker’s Guide to the Quarto</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#iv.-website-tutorial" id="toc-iv.-website-tutorial" class="nav-link" data-scroll-target="#iv.-website-tutorial">IV. Website Tutorial</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-initialize-github-repository" id="toc-step-1.-initialize-github-repository" class="nav-link" data-scroll-target="#step-1.-initialize-github-repository">Step 1. Initialize Github Repository</a></li>
+  <li><a href="#step-2.-set-up-a-quarto-website-.rproject-in-the-local-directory-example.github.io" id="toc-step-2.-set-up-a-quarto-website-.rproject-in-the-local-directory-example.github.io" class="nav-link" data-scroll-target="#step-2.-set-up-a-quarto-website-.rproject-in-the-local-directory-example.github.io">Step 2. Set up a Quarto Website .Rproject in the local directory <code>example.github.io</code></a></li>
+  <li><a href="#step-3.-connect-a-local-.rproject-to-a-repository-on-github" id="toc-step-3.-connect-a-local-.rproject-to-a-repository-on-github" class="nav-link" data-scroll-target="#step-3.-connect-a-local-.rproject-to-a-repository-on-github">Step 3. Connect a local .Rproject to a repository on Github</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-gui-git-flow-after-connecting-to-remote" id="toc-rstudio-gui-git-flow-after-connecting-to-remote" class="nav-link" data-scroll-target="#rstudio-gui-git-flow-after-connecting-to-remote">Rstudio GUI Git flow after connecting to remote</a></li>
+  </ul></li>
+  <li><a href="#step-4.-one-yaml-to-rule-them-all" id="toc-step-4.-one-yaml-to-rule-them-all" class="nav-link" data-scroll-target="#step-4.-one-yaml-to-rule-them-all">Step 4. One YAML to Rule Them All</a>
+  <ul class="collapse">
+  <li><a href="#lets-first-inspect-_quarto.yml" id="toc-lets-first-inspect-_quarto.yml" class="nav-link" data-scroll-target="#lets-first-inspect-_quarto.yml">Let’s first inspect <code>_quarto.yml</code></a></li>
+  <li><a href="#now-lets-add-to-_quarto.yml" id="toc-now-lets-add-to-_quarto.yml" class="nav-link" data-scroll-target="#now-lets-add-to-_quarto.yml">Now let’s add to <code>_quarto.yml</code></a></li>
+  </ul></li>
+  <li><a href="#step-5.-add-the-.qmd-files-we-referenced" id="toc-step-5.-add-the-.qmd-files-we-referenced" class="nav-link" data-scroll-target="#step-5.-add-the-.qmd-files-we-referenced">Step 5. Add the .qmd file(s) we referenced</a></li>
+  <li><a href="#step-6.-render-your-website" id="toc-step-6.-render-your-website" class="nav-link" data-scroll-target="#step-6.-render-your-website">Step 6. Render your website</a></li>
+  <li><a href="#step-7.-deploy-to-github-pages" id="toc-step-7.-deploy-to-github-pages" class="nav-link" data-scroll-target="#step-7.-deploy-to-github-pages">Step 7. Deploy to Github Pages</a></li>
+  </ul></li>
+  <li><a href="#v.-quarto-website-example" id="toc-v.-quarto-website-example" class="nav-link" data-scroll-target="#v.-quarto-website-example">V. Quarto Website Example</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">UMN Student Seminar: R Websites with Quarto &amp; Github</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quinton Neville </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 3, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="i.-introduction" class="level1 jumbotron">
+<h1 class="jumbotron">I. Introduction</h1>
+<p>In the past, Rmarkdown (<code>knitr</code>, <code>.rmd</code>) has been the premiere tool for reproducible data analysis and communication with the <code>R</code> and Rstudio universe. Personally, I’ve been using it for years and have grown quite fond of it – which is why fear and grief struck me when I heard that Quarto, the R team’s new multi-language scientific communication tool, was going to be replacing Rmarkdown. Though I was excited for all the new possibilities I was also upset. In my old age, I’d grown quite fond of Rmarkdown and I stubbornly resented having to learn something new.</p>
+<p>Good news! It turns out I was being a wee bit dramatic given that Quarto is still fundamentally an R/Rstudio product, and as such, is very very similar in style and workflow to Rmarkdown – so luckily if you’re familiar with <code>.rmd</code> then transitioning to <code>.qmd</code> will be rather painless. If you’re new to both, have no fear! Rstudio (the IDE interface) makes it easy to use and with the use of .Rprojects (see below), most project come with example .qmd files to get you started.</p>
+<p>One feature of <code>knitr</code> Rmarkdown that I’d always personally found to be really cool was the ability to render and host websites built with R &amp; Rmarkdown on Github <em><strong>for free</strong></em>. I host(ed) my own website with Rmarkdown &amp; Github so I was naturally curious how difficult or different it would be to switch it over to a Quarto website, and it turns out, not too hard at all. I thought it would useful to share some of that experience so that we all have a brief intro to some really important tools like <code>.git</code>, Github, and Quarto, but mostly, so that we can all share the wonderful work we do here for free with the world! (And help us get jobs when we graduate).</p>
+<p>&nbsp; &nbsp;</p>
+</section>
+<section id="section" class="level1 panel panel-primary">
+<h1 class="panel panel-primary"></h1>
+<section id="section-1" class="level2 panel-heading">
+<h2 class="panel-heading anchored" data-anchor-id="section-1"></h2>
+<section id="so-what-exactly-are-we-going-to-do-today" class="level3 panel-title">
+<h3 class="panel-title anchored" data-anchor-id="so-what-exactly-are-we-going-to-do-today">So what exactly are we going to do today?</h3>
+</section>
+</section>
+<section id="section-2" class="level2 panel-body">
+<h2 class="panel-body anchored" data-anchor-id="section-2"></h2>
+<p>Today we’re going to learn how to create and host a website with R, Rstudio, Quarto and Github Pages. We will focus on setting y’all up with the tools to create your own personal/professional website – with a brief example at the end illustrating how this workflow can be extended to fancier displays and more advanced scientific communication tools.</p>
+<p>The roadmap for today looks like –</p>
+<ol type="1">
+<li>Intro to <code>git</code>, <a href="https://github.com/">Github</a>, &amp; <a href="https://quarto.org/">Quarto</a>
+<ul>
+<li>Installation instructions &amp; resources</li>
+</ul></li>
+<li>Intro to .Rproject Workflow <span class="math inline">\(\pmb{\longrightarrow}\)</span> Quarto Website
+<ul>
+<li>Good practice for all types of projects</li>
+</ul></li>
+<li>One <strong>YAML</strong> to Rule Them All (<code>.yml</code>)
+<ul>
+<li>Controls the rendering or building of the site</li>
+<li>Defines <em>aesthetics</em> (<code>.css</code>) as well as <em>structure</em></li>
+<li>Instructions that <code>.qmd</code> <span class="math inline">\(\stackrel{\text{knitr}}{\pmb{\longrightarrow}}\)</span> <code>.MD</code> <span class="math inline">\(\stackrel{\text{pandoc}}{\pmb{\longrightarrow}}\)</span> <code>&lt;HTML&gt;</code></li>
+</ul></li>
+<li>How to add pages and content to your site
+<ul>
+<li>Add <code>.rmd</code> or <code>.qmd</code> files which also render to <code>&lt;HTML&gt;</code> pages</li>
+<li>Include text, pictures, and links</li>
+<li>Modify themes and colours for free with Bootswatch <code>bslib</code></li>
+<li>Inline<code>&lt;HTML&gt;</code> or adding custom <code>.css</code> (extra fancy)</li>
+</ul></li>
+<li>How to publish your site with <code>.git</code> &amp; Github Pages
+<ul>
+<li>Connecting the local project with the remote Github directory</li>
+<li>Dealing with a few small but important details</li>
+<li>Stage, commit, pull, push your changes (Terminal or GUI)</li>
+<li>Deploying the website with Github Pages</li>
+</ul></li>
+<li>What else can you do with R, Quarto, and Github?
+<ul>
+<li>Example of a Quarto/Github website with some more ‘advanced’ features</li>
+<li>Resources for your own Quarto/Github projects!</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="ii.-git-github" class="level1 jumbotron">
+<h1 class="jumbotron">II. Git &amp; Github</h1>
+<section id="installing-.git" class="level2">
+<h2 class="anchored" data-anchor-id="installing-.git">Installing <code>.git</code></h2>
+<p>Here I’d highly recommend following the steps for Mac, Windows, &amp; Linux outlined by the wonderful Jenny Bryan in <a href="https://happygitwithr.com/install-git.html">Chapter 6 Install Git</a> of her comprehensive book on the subject – <a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a>. Follow the instructions and then check below to ensure it’s installed.</p>
+<p><em>Note</em> - If you have the most recent version of Rstudio, you have a built in terminal – it’s the page next to the R Console which is in the bottom right pane of the Rstudio IDE by default.</p>
+<p>Typing <code>which git</code> into the <em>terminal</em> (not console) should return the file path to the <code>.git</code> executable –</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-1_77281b16b51e38d696cac82c086197ef">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>which git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## /usr/bin/git     #Example Path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-2_d9daa6da49a713f3657124e1d193dc02">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>to see the version.</p>
+</section>
+<section id="create-a-github-account" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-github-account">Create a Github account</h2>
+<ol type="1">
+<li>Open your preferred web browser and navigate to <a href="https://github.com/">https://github.com/</a><br>
+</li>
+<li>Create an account
+<ul>
+<li>I’d recommend selecting and verifying the ‘Student Account’ option</li>
+</ul></li>
+<li>Select the ‘create a new repository’ and name it <code>example.github.io</code>
+<ul>
+<li>This will be the new website we build today</li>
+<li><strong>Do not</strong> initialize it with any files
+<ul>
+<li>i.e.&nbsp;no README, no .gitignore, just don’t check any boxes</li>
+</ul></li>
+<li>We want a completely empty repository / directory / folder</li>
+</ul></li>
+</ol>
+</section>
+<section id="git-basics" class="level2">
+<h2 class="anchored" data-anchor-id="git-basics">Git Basics</h2>
+<p>Git connects to a remote folder, just like those on your local computer, but one that exists outside your computer (on Github). Any changes to this folder are made with <em>version control</em>. All that means is every single change made to any files in the folder are <em>tracked</em> or recorded and in order to “save” your changes you have to first <em>add</em> them and <em>commit</em> them with a message. In order to access others’ changes you have to <em>pull</em> them from the remote folder to your local folder, but in order to truly “save” your work make it available to other</p>
+</section>
+<section id="basic-git-commands-and-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="basic-git-commands-and-workflow">Basic Git Commands and Workflow</h2>
+<p>Git is generally organized like a file ‘tree’. The main branch is the root folder or directory (here <em>example.github.io</em>).</p>
+<ul>
+<li><p>Basic Github flow (in terminal)</p>
+<ol type="1">
+<li><code>git status</code> Check the status of the repository/folder</li>
+<li><code>git add *</code> Stage your changes for “saving”</li>
+<li><code>git commit -m "your message"</code> Add a message to your changes</li>
+<li><code>git pull origin main</code> Pull changes from remote <code>main</code> branch to local</li>
+<li><code>git push origin main</code> Request to push your changes from local <code>main</code> to remote</li>
+</ol></li>
+<li><p>Rstudio has a GUI to do this as well!</p></li>
+<li><p><strong>Always, always, always pull before you push</strong></p></li>
+<li><p>Helpful hints</p>
+<ul>
+<li>Pull early and often<br>
+</li>
+<li>Informative commit messages<br>
+</li>
+<li><em>Be very, very careful when pushing</em></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="iii.-quarto" class="level1 jumbotron">
+<h1 class="jumbotron">III. Quarto</h1>
+<section id="installation-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="installation-instructions">Installation Instructions</h2>
+<ol type="1">
+<li>If you haven’t already, download the newest <code>R</code> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a></li>
+<li>Type <code>install.packages("quarto")</code> into the R Console or navigate to <a href="https://quarto.org/">https://quarto.org/</a>, click ‘Get Started’, and download the Quarto software for your specific device</li>
+</ol>
+</section>
+<section id="resources-to-get-you-started" class="level2">
+<h2 class="anchored" data-anchor-id="resources-to-get-you-started">Resources to Get you Started</h2>
+<p>The initial Quarto landing page gives <a href="https://quarto.org/docs/get-started/hello/rstudio.html">this</a> brief demo on – - Rendering - Visual editor (don’t recommend) versus classic editor - Brief intro to the <code>.yml</code> - Including code chunks - Instead of <code>{r label, echo = FALSE}</code>, options are written in chunk like so</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-3_af4760a3fd55e3c074265df765125419">
+
+</div>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-4_64e755629d3d6278efc425bc9abd98b4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#| label: label</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="co">#| include: false</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> <span class="co">#| fig.height: 6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> <span class="co">#| etc.....</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Markdown text syntax
+<ul>
+<li><a href="https://www.markdownguide.org/cheat-sheet/">Here</a> is a great cheat sheet for Markdown syntax in general</li>
+</ul></li>
+</ul>
+<section id="the-hitchhikers-guide-to-the-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="the-hitchhikers-guide-to-the-quarto">The Hitchhiker’s Guide to the Quarto</h3>
+<p><a href="https://quarto.org/docs/guide/">The Quarto Guide</a> is the definitive, comprehensive instruction manual for all things quarto. It really has it all and is the best resource for transitioning from <code>.rmd</code> to <code>.qmd</code>.</p>
+<p>There are guides on everything from <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown</a>, <a href="https://quarto.org/docs/authoring/figures.html">Figures</a>, and <a href="https://quarto.org/docs/authoring/tables.html">Tables</a>, to <a href="https://quarto.org/docs/output-formats/html-basics.html">Documents</a>, <a href="https://quarto.org/docs/presentations/">Presentations</a>, <a href="https://quarto.org/docs/websites/">Websites</a> – and much, much more!</p>
+<p>The <a href="https://quarto.org/docs/websites/">Quarto: Creating a Website</a> guide is the main resource for Quarto websites and if you’re interested in developing one, I’d highly recommend having it handy when you do so.</p>
+</section>
+</section>
+</section>
+<section id="iv.-website-tutorial" class="level1 jumbotron">
+<h1 class="jumbotron">IV. Website Tutorial</h1>
+<p>At it’s core, hosting a Quarto website in <code>R</code> with Github boils down to 3 main components –</p>
+<ol type="1">
+<li>.Rproject <span class="math inline">\(\longleftrightarrow\)</span> Github connection (Github Pages)</li>
+<li><em>.yml</em> which controls the knitting/rendering/building of the website (just like normal)</li>
+<li><em>.qmd</em> files rendered to <em>.html</em> pages (like any other website)</li>
+</ol>
+<p><em>Note</em> - If you’ve just recently installed <code>.git</code>, Quarto, Rstudio, or anything else, it’s a good idea to restart R, close the session, and restart Rstudio before continuing.</p>
+<section id="step-1.-initialize-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-initialize-github-repository">Step 1. Initialize Github Repository</h2>
+<ol type="1">
+<li><p>Go to <a href="https://github.com/">Github</a></p></li>
+<li><p>Click the green ‘New’ button on the left to start a new repository</p>
+<ul>
+<li>Name it <code>example.github.io</code></li>
+<li>Make sure that it’s
+<ol type="1">
+<li><em>Public</em></li>
+<li><em>Not initialized with a README</em></li>
+<li><em>Not initialized with a .gitignore</em></li>
+</ol></li>
+<li>Why? (Hint: There would be a discrepancy between our local folder and the remote folder on Github)</li>
+</ul></li>
+</ol>
+<p><em>Notes</em> – - The ending <code>.github.io</code> let’s Github know automatically that it’s a website - Not necessary, but makes life easier – can always change url later - Website names are case sensitive so it’s a good idea to <em>keep everything lower case</em><br>
+- Make sure there’s nothing in the repository</p>
+</section>
+<section id="step-2.-set-up-a-quarto-website-.rproject-in-the-local-directory-example.github.io" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-set-up-a-quarto-website-.rproject-in-the-local-directory-example.github.io">Step 2. Set up a Quarto Website .Rproject in the local directory <code>example.github.io</code></h2>
+<ol type="1">
+<li><p>Click on the ‘<em>blue R cube</em> Project: (None)’ drop down in the top right corner</p></li>
+<li><p>Click on ‘New Project…’</p>
+<ul>
+<li>There are many types of projects, today we’ll be utilizing the Quarto Website project</li>
+<li>Make sure that you check the box marked ‘Initialize with .git’ to enable version control</li>
+</ul></li>
+<li><p>Click on ‘New Directory’</p>
+<ul>
+<li>Click on ‘New Project’ (top)<br>
+</li>
+<li>Directory: name of folder &amp; project (<em>example.github.io</em>)<br>
+</li>
+<li>Subdirectory of: folder where you’d like to store the project (ex. <em>quarto_website_example</em>)</li>
+</ul></li>
+<li><p>To access .Rprojects</p>
+<ul>
+<li>Access via drop down in top right corner<br>
+</li>
+<li>Access by clicking on .Rproject file in a folder</li>
+</ul></li>
+<li><p>Open .gitgnore text file (created automatically when project initialized with .git)</p>
+<ul>
+<li>Add a line <code>/data</code> and save the file<br>
+</li>
+<li>This ensures nothing in any <code>/data</code> folder will ever accidently hosted publically to Github</li>
+<li>Can now illustrate the new connection between your machine and Github because –
+<ul>
+<li>We made a change to a file in our local repository and can now push that up to the remote repository on Github</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="step-3.-connect-a-local-.rproject-to-a-repository-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-connect-a-local-.rproject-to-a-repository-on-github">Step 3. Connect a local .Rproject to a repository on Github</h2>
+<p>Now that you’ve set up a repository on Github <em>made a change to the repository by updating the .gitignore file</em>, it’s time to connect our local folder with the remote one on a Github and <em>push</em> our changes up there. While it’s possible to do this via the Git GUI (accessed in the upper right pane next to Environment, History, Build, etc.), I’d highly recommend following these instructions in the built-in terminal (these are also more or less given on Github after you initialized the empty repository).</p>
+<p>To do so –</p>
+<ol type="1">
+<li><p>Switch to ‘Terminal’</p>
+<ul>
+<li>Lower left pane, next to ‘Console’<br>
+</li>
+<li>Type in the following –</li>
+</ul></li>
+<li><p><code>git add .gitignore</code> or <code>git add *</code> (all files)</p></li>
+<li><p><code>git commit -m "Adding data folder to .gitignore"</code></p></li>
+<li><p><code>git pull origin main</code> (<em>This will fail, why?</em>)</p>
+<ul>
+<li>Even though this won’t do anything, it’s good practice to get in the habit</li>
+</ul></li>
+<li><p><code>git branch -M main</code> (Create new branch <code>main</code> and access it)</p></li>
+<li><p><code>git remote add origin https://github.com/&lt;your_github_username&gt;/example.github.io</code></p></li>
+<li><p><code>git push origin main</code> (Push your local <code>main</code> to the new <code>main</code> on Github)</p>
+<ul>
+<li>It may/will prompt your Github username and password</li>
+<li>There’s been an update to Github where one needs to generate a temporary <em>token</em> (instructions <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">here</a>) to be used as the ‘password’ in the prompt above</li>
+<li>Save your token in a .txt file <strong>outside of the repository</strong> (otherwise it will invalidate the token, why?)</li>
+<li>Copy and paste the token</li>
+<li>When prompted above, input your regular Github username and paste the access token for the password</li>
+</ul></li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 91%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">#### Git flow after connecting to remote</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Big Note</strong> - In the future you <strong>do not</strong> need to repeat Steps 5 and 6 (<code>git branch</code> and <code>git remote add</code>) because those added a new <code>main</code> branch and connecting it to the <code>remote</code> repository already. Once this is done, all you need to do to push your changes to the remote repository are –</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1. <code>git add *</code> (all files) - Can also select individual files but if you’ve set up your .gitignore properly, this should usually suffice</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. <code>git commit -m "&lt;informative message&gt;"</code> - Commit changes to be pushed to Github</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. <code>git pull origin main</code> (<em>This will fail, why?</em>) - Even though you’re working alone and there won’t be any new changes, it’s good practice to get in the habit of pulling before pushing.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. <code>git push origin main</code> (Push your local <code>main</code> to the new <code>main</code> on Github)</td>
+</tr>
+</tbody>
+</table>
+<section id="rstudio-gui-git-flow-after-connecting-to-remote" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-gui-git-flow-after-connecting-to-remote">Rstudio GUI Git flow after connecting to remote</h3>
+<p>In the future, you can also use te Rstudio GUI to interact with .git/Github. To do so –</p>
+<ol type="1">
+<li><p>Click the ‘git’ tab in the upper right pane (global environment)</p></li>
+<li><p>Click on ‘Commit’</p>
+<ul>
+<li>‘Rstudio: Review Changes’ window will appear</li>
+</ul></li>
+<li><p>Check the ‘Staged’ box for both files</p>
+<ul>
+<li>Same as <code>git add *</code></li>
+</ul></li>
+<li><p>Write a commit message in the upper right pane and then click commit</p>
+<ul>
+<li>Same as <code>git commit -m " "</code></li>
+</ul></li>
+<li><p>Click the ‘Pull’ button in the upper right</p></li>
+<li><p>Click the ‘Push’ button in the upper right</p>
+<ul>
+<li>Follow the directions above to generate a personal access token</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="step-4.-one-yaml-to-rule-them-all" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-one-yaml-to-rule-them-all">Step 4. One YAML to Rule Them All</h2>
+<p>The two most important and necessary features of a website are the <strong><em>.yml</em></strong> (directions) and <strong><em>index.qmd</em></strong> (home page). These two files must be in the “home” directory not a subdirectory of <em>example.github.io</em>, most everything else can be organized in subdirectory by page, src, data, etc.</p>
+<section id="lets-first-inspect-_quarto.yml" class="level3">
+<h3 class="anchored" data-anchor-id="lets-first-inspect-_quarto.yml">Let’s first inspect <code>_quarto.yml</code></h3>
+<p>By default, this is what the YAML will look like –</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-5_eb1a12bcb70a5b60f2eb24c056ba635e">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> website</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>website<span class="sc">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"example.github.io"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  navbar<span class="sc">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    left<span class="sc">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> href<span class="sc">:</span> index.qmd</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        text<span class="sc">:</span> Home</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> about.qmd</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> cosmo</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    css<span class="sc">:</span> styles.css</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>project: type: website</code> defines the quarto document/project type to website</li>
+<li><code>title:</code> defines the name of the “Home Button”</li>
+<li><code>navbar:</code> defines the navigation bar at the top of the website<br>
+</li>
+<li><code>left:</code> on the lefthand side of the navbar</li>
+<li><code>- href:</code> Add a button/link on our website to this page, document, file, etc.</li>
+<li><code>text:</code> Name of the associated <code>-href:</code> button</li>
+<li><code>format: html:</code> Please render to <code>.html</code> webside</li>
+<li><code>theme:</code> comes from Bootswatch <code>bslib</code>
+<ul>
+<li>To ensure you have the most recent Bootswatch themes type <code>install.packages("bslib")</code> into your console to obtain the most recent stable release from CRAN</li>
+<li>The Bootswatch theme gallery can be found <a href="https://bootswatch.com/">here</a></li>
+<li>An introduction to further thematic customization can be found <a href="https://rstudio.github.io/bslib/articles/bslib.html">here</a></li>
+<li><em>Note</em> – the above has <code>.rmd</code> examples but the syntax is roughly the same</li>
+</ul></li>
+</ul>
+</section>
+<section id="now-lets-add-to-_quarto.yml" class="level3">
+<h3 class="anchored" data-anchor-id="now-lets-add-to-_quarto.yml">Now let’s add to <code>_quarto.yml</code></h3>
+<p>Recall that the YAML dictates the aesthetics and structure of the entire website, so anytime we edit the YAML we have to re-render the website to ensure all the pages link together properly, with a consistent theme.</p>
+<p>For this example, let’s add the following –</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-6_aabc7f241e4c7c6c19d913398a56c24b">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Define the type of quarto project (new from .RMD)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> website <span class="co">#Make sure to add `touch .nojekyll` in terminal to supress github jekyll auto </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> docs <span class="co">#Need to specify an output directory for Github pages (contains knitted html, pictures, etc.) </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  render<span class="sc">:</span> <span class="co">#Specify what files to render (*) means all and (!) means not</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> <span class="st">"*.qmd"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> <span class="st">"*.rmd"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> <span class="st">"!flexdashboard*"</span> <span class="co">#This is a type of .rmd/.qmd that needs to be rendered separately due to it's on YAML</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Defines the main part(s) of the website: navbar, buttons, icons, links, etc.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>website<span class="sc">:</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"&lt;Your Name&gt;"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  navbar<span class="sc">:</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    type<span class="sc">:</span> default</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    left<span class="sc">:</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Home"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> index.qmd</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Resume"</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> resume.qmd</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Recent Work"</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        menu<span class="sc">:</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Some Recent Work"</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            href<span class="sc">:</span> some_recent_work.qmd</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    right<span class="sc">:</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> github</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span><span class="er">&lt;</span>your_username<span class="sc">&gt;</span><span class="er">/</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> linkedin</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>www.linkedin.com<span class="sc">/</span><span class="cf">in</span><span class="sc">/</span><span class="er">&lt;</span>your_username<span class="sc">&gt;</span><span class="er">/</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> envelope</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> mailto<span class="sc">:</span><span class="er">&lt;</span>your_email<span class="sc">&gt;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#Define output format, .css, and other basic style options</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> lux <span class="co">#Kind of a cool theme &amp; font</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    css<span class="sc">:</span> styles.css <span class="co">#Generated automatically, .css allows for more aesthetic control</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true <span class="co">#Table of contents</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    page<span class="sc">-</span>layout<span class="sc">:</span> full <span class="co">#This uses the full width of the page</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">#Execution (warning, message, echo, eval, etc.)</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#Can define global options here like hide all code chunks</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a> execute<span class="sc">:</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>   echo<span class="sc">:</span> false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We added quite a few things! Let’s break down by section with a link to <em>additional resources</em> for more granular detail and more options.</p>
+<section id="yml-scoping-matters" class="level4">
+<h4 class="anchored" data-anchor-id="yml-scoping-matters">1. <code>.yml</code> Scoping Matters</h4>
+<p>‘Scoping’ here refers to the horizontal alignment of each line in the <em>.yml</em>. You’ll notice that everything in the <em>yaml</em> has a “nested” structure, in that every sub-option, sub-button, sub-directory, etc. is <strong>1 tab</strong> to the right.</p>
+</section>
+<section id="you-must-have-a-_quarto.yml-and-index.qmd-in-the-home-directory-of-the-website-example.github.io-here" class="level4">
+<h4 class="anchored" data-anchor-id="you-must-have-a-_quarto.yml-and-index.qmd-in-the-home-directory-of-the-website-example.github.io-here">2. You must have a <code>_quarto.yml</code> and <code>index.qmd</code> in the “home” directory of the website (<em>example.github.io</em> here)</h4>
+<p>These are the only two necessary things for a website to knit/build. It’s worth noting that you can use a mix of <code>.qmd</code> and <code>.rmd</code> reference files with no issues as they’re both handled by <code>knitr</code> on the back end – so feel free to include <code>.rmd</code> files as well.</p>
+</section>
+<section id="project-section" class="level4">
+<h4 class="anchored" data-anchor-id="project-section">3. <code>project:</code> section</h4>
+<p>Here we’ve added - <code>output-dir: &lt;name of folder&gt;</code> to defines the output folder to put all the knitted files &amp; built website into a new <code>/docs</code> folder - This is important because later we’ll need to ask Github Pages to build our website from a particular folder (hint, it’s gonna be <code>/docs</code>!) - Lastly we’ve added <code>render:</code> which tells Quarto which files/folders to render when you click Render Website, and which to not (!) - In general you want knit all <code>.qmd</code>/<code>.rmd</code> files, but for a <code>flexdashboard.rmd</code> type markdown file these need to be rendered separately - Why would some files need to be rendered seperately? If they also have a <code>.yml</code> statement that conflicts with <code>_quarto.yml</code> - More detail can be found here at <a href="https://quarto.org/docs/reference/projects/websites.html"><strong>Quarto Website Options</strong></a></p>
+</section>
+<section id="website-navbar-section" class="level4">
+<h4 class="anchored" data-anchor-id="website-navbar-section">4. <code>website:</code> &amp; <code>navbar:</code> section</h4>
+<p>Here we’ve added –</p>
+<div class="cell" data-layout-align="center" data-hash="quarto_websites_cache/html/unnamed-chunk-7_5b9008c5aff16d67dc9e291da1affef9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    type<span class="sc">:</span> default</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    left<span class="sc">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Home"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> index.qmd</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Resume"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> resume.qmd</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Recent Work"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        menu<span class="sc">:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span> text<span class="sc">:</span> <span class="st">"Some Recent Work"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            href<span class="sc">:</span> recent_work<span class="sc">/</span>some_recent_work.rmd</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    right<span class="sc">:</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> github</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span><span class="er">&lt;</span>your_username<span class="sc">&gt;</span><span class="er">/</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> linkedin</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>www.linkedin.com<span class="sc">/</span><span class="cf">in</span><span class="sc">/</span><span class="er">&lt;</span>your_username<span class="sc">&gt;</span><span class="er">/</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> envelope</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> mailto<span class="sc">:</span><span class="er">&lt;</span>your_email<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>resume.qmd</code> is referencing a file that we’ve haven’t yet created, but will soon!</li>
+<li>Same with <code>some_recent_work.qmd</code>!</li>
+<li>We’ve added a <code>right:</code> section to the <code>navbar:</code> with –
+<ul>
+<li>3 <code>- icon:</code>’s (Github, Linkedin, Email)</li>
+<li>That link or <code>href:</code> to your Github, LinkedIn, and Email!</li>
+</ul></li>
+<li>More in-depth details are discussed in <a href="https://quarto.org/docs/websites/website-navigation.html"><strong>Quarto Website Navigation</strong></a></li>
+<li>Can also add a <em>sidebar</em> for navigation via the link above</li>
+</ul>
+</section>
+<section id="format-html-section" class="level4">
+<h4 class="anchored" data-anchor-id="format-html-section">5. <code>format:</code> <code>html:</code> section</h4>
+<ul>
+<li>Changed the theme to <a href="https://bootswatch.com/lux/">Bootswatch’s Lux Theme</a> with <code>theme: lux</code> (<a href="https://bootswatch.com/">Gallery</a>, <a href="https://rstudio.github.io/bslib/articles/bslib.html">Intro to <code>bslib</code></a>)</li>
+<li>Told each page to use the full-width of the page via <code>page-layout: full</code></li>
+<li>You may want to change the <code>page-layout</code> if you add a sidebar, display a different document, etc.</li>
+<li>A comprehensive directory of all <code>format: html</code> options and usage is given here in <a href="https://quarto.org/docs/reference/formats/html.html"><strong>Quarto HTML Options</strong></a></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="step-5.-add-the-.qmd-files-we-referenced" class="level2">
+<h2 class="anchored" data-anchor-id="step-5.-add-the-.qmd-files-we-referenced">Step 5. Add the .qmd file(s) we referenced</h2>
+<p>We’re almost ready to publish our site but recall that we created <code>href:</code> references in our YAML to the documents <code>resume.qmd</code> and <code>some_recent_work.qmd</code>. These are just placeholders for you to fill in with your own CV/resume and work but we can generate a quick <code>.qmd</code> easy enough!</p>
+<ol type="1">
+<li>Click the blank white page with green circle, white plus sign in the top left under “File” - Select “Quarto Document” - Title: “Resume” - Author: “” - Output - select HTML</li>
+<li>Save the document <em>with the same name as referenced in the YAML (<code>resume.qmd</code>)</em></li>
+<li>Create a new <em>folder</em> or <em>directory</em> called <code>/recent_work</code></li>
+<li>Repeat 1 &amp; 2 for an <em><strong>Rmakrdown</strong></em> (<code>.rmd</code>) and save as <code>some_recent_work.rmd</code> in the <code>/recent_work</code> folder</li>
+</ol>
+</section>
+<section id="step-6.-render-your-website" class="level2">
+<h2 class="anchored" data-anchor-id="step-6.-render-your-website">Step 6. Render your website</h2>
+<p>Detailed directions for hosting and trouble shooting an R <span class="math inline">\(\longleftrightarrow\)</span> Github Pages website is given here at <a href="https://quarto.org/docs/publishing/github-pages.html"><strong>Quarto Github Pages</strong></a></p>
+<ol type="1">
+<li>Click on the build tab (top right by default) which normally has ‘Environment’, ‘Git’, etc.</li>
+<li>Click “Render Website” (renders all documents not ignored by the <code>.yml</code>)
+<ul>
+<li>Can also “Preview website if you’ve just knitted a single doc &amp; want to see the changes</li>
+<li>If you’ve change <em>anything</em> in the YAML you need to re-render the entire website</li>
+<li>If there’s an issue knitting a specific file, it will tell you which one and why</li>
+<li>If there’s an issue with the YAML it will tell you which line (and it’s probably a scoping/spacing issue)</li>
+</ul></li>
+<li>Make sure the YAML is set to <code>output-dir: docs</code></li>
+<li>In terminal, next we need to override the default Jekyll engine used by Github Pages (in favour of the Bootswatch <code>bslib</code> <code>.css</code>)
+<ul>
+<li>Mac/Linux/R Terminal – simply type <code>touch .nojekyll</code> into terminal and hit enter</li>
+<li>Windows Terminal – <code>copy NUL .nojekyll</code> (R Terminal is probably preferable to windows cmd)</li>
+<li>A new file called <code>.nojekyll</code> should be visible in your file explorer (not necessarily the one within Rstudio)</li>
+</ul></li>
+<li>Once 1-4 are complete, re-render the site just to be safe!</li>
+<li>Repeat “<strong>Git flow after connecting to remote</strong>” in <strong>Step 3</strong> above (or navigate to by clicking on the right)
+<ul>
+<li>I.e. add, commit, pull, push your changes (GUI is fine here)</li>
+</ul></li>
+</ol>
+</section>
+<section id="step-7.-deploy-to-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="step-7.-deploy-to-github-pages">Step 7. Deploy to Github Pages</h2>
+<p>Once you’ve pushed all your changes to Github the actual website deployment is taken care of by Github Actions, but the website itself is hosted via <strong>Github Pages</strong>. There are a few <em>really important steps</em> to make sure the site actually makes it to the internet –</p>
+<ol type="1">
+<li>Go to Github and click on your <code>example.github.io</code> repository</li>
+<li>Click on “Settings” (top right of navigation bar) and navigate to the lower lefthand sidebar entitled “Pages”, under the “Code and Automation” section of the sidebar – click on “Pages”.</li>
+<li>Select the appropriate <code>output_dir</code> folder from the <code>.yml</code> as the folder to build the site from (on the <code>main</code> branch)
+<ul>
+<li>In our case this is the <code>/docs</code> folder</li>
+</ul></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./pics/github_pages.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Github Pages</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Once that’s complete – click on “Github Actions”, Deployment, and it will tell you when the site has been deployed; with a link to see for yourself!</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./pics/github_actions.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Github Actions</figcaption><p></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>That’s it, pretty neat-o right?!</li>
+</ol>
+</section>
+</section>
+<section id="v.-quarto-website-example" class="level1 jumbotron">
+<h1 class="jumbotron">V. Quarto Website Example</h1>
+<p>We’re on it…. right now. This whole document is a quarto document, hosted inside of my own quarto website! Truly a quarto nesting doll.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022 | QN</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/nevilleq/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/quinton-neville/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:<nevil066@umn.edu>">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

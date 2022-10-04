@@ -36,8 +36,8 @@ website:
             href: pubh_7462/lecture_week_4/lecture_week_4.Rmd
           - text: "Lecture: Interactive Plots, Tables & Dashboards"
             href: pubh_7462/lecture_week_7/lecture_week_7.Rmd
-          - text: "Lecture: Websites with `R` & Github"
-            href: pubh_7462/lecture_week_9/lecture_week_9.Rmd
+          - text: "Lecture: R Websites with Quarto & Github"
+            href: pubh_7462/lecture_quarto_websites/quarto_websites.QMD
           - text: "Lecture: Advanced Spatial Mapping"
             href: pubh_7462/lecture_week_11/lecture_week_11.Rmd
           - text: "Lecture: Git Collaboration & Intro to `shiny`"
