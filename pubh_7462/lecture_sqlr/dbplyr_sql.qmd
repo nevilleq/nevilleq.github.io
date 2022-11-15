@@ -1,0 +1,473 @@
+---
+title: "Introduction to SQL for R Users w/Examples"
+subtitle: "SQL - *Structured Query Language*"
+author: "Quinton Neville"
+date: "2022/11/1"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+```{r include = FALSE, error = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(dplyr)
+
+#Working directory for .RMD
+knitr::opts_knit$set(echo = TRUE,
+                     root.dir = rprojroot::find_rstudio_root_file())
+
+#Controlling figure output in markdown
+knitr::opts_chunk$set(
+#  fig.height =   
+  fig.width = 6,
+#  fig.asp = .5,
+  out.width = "90%",
+#  out.height = 
+ fig.align = "center",
+  cache = TRUE,
+  echo  = TRUE
+)
+
+#My Colours (from viridis)
+my_purple <- "#440154FF"
+my_yellow <- "#FDE725FF"
+
+#Set Theme for ggplot2
+theme_set(theme_minimal() + 
+          theme(plot.title = element_text(hjust = 0.5),
+                plot.subtitle = element_text(hjust = 0.5),
+                legend.position = "bottom"))
+
+#Set Scientific notation output for knitr
+options(scipen = 999)
+```
+
+First and foremost, unlike `R`, SQL is a procedural language in that it is quite literally an ordered list of instructions or procedures for a computer to follow. It's also a language that operates on tabular data, which in a not so technical way can be described as any data you can feasibly put into an Excel spreadsheet. Being procedural does make the language less flexible in many ways, but the trade-off in increased speed, efficiency, and ability to wrangle data without bringing it all into active memory is truly astounding -- hence why it's still around today!  
+
+### Resources for Today's Lecture  
+
+This lecture is by no means comprehensive and is just meant to serve as an introduction for those with an intermediate level of `R` and `tidyverse` knowledge. To that end, here are a list of resources from today's lecture for more in-depth explanations and examples by people who are much smarter than me, as well as resources for the core `R` packages implemented in the examples.  
+
+#### SQL Resources  
+
+- [10 Steps to Understanding SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/) (**Highly Recommended**)
+- [SQL Explained](https://www.techtarget.com/searchdatamanagement/definition/SQL#:~:text=Structured%20Query%20Language%20(SQL)%20is,on%20the%20data%20in%20them.) (**Highly Recommended**)
+- [Code Academy SQL](https://www.codecademy.com/learn/learn-sql)
+- [Indexes & Planning Queries with SQLite](https://www.sqlite.org/queryplanner.html)
+- [SQL Wikipedia](https://en.wikipedia.org/wiki/SQL)
+    - More on the origins of SQL, relational databases, etc. (actually a decent read)
+
+#### R Package Vignettes
+
+- [`dplyr`](https://dplyr.tidyverse.org/)
+- [`dbplyr`](https://dbplyr.tidyverse.org/)
+- [`pool`](https://shiny.rstudio.com/articles/pool-basics.html)
+- [`RMySQL`](https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf)
+- [`RSQLite`](https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html)
+
+*Note* -- Personally, I find SQLite is easier to work with, RSQLite is better maintained, and Rstudio developers seem to prefer both as well. **However** coding assessment websites may not support SQLite, but seem to support MySQL pretty much across the board -- hence why it's included in the examples.    
+
+#### Practice for Job Interviews  
+
+- [Free practice and preparation with Hackerrank.com](https://www.hackerrank.com/products/main/)
+
+# 1. Intro to SQL  
+
+Let's start with an anology and a simple example:  
+
+A *query* is to **SQL** as a *pipe* is to `dplyr`.
+
+Recall that a pipe operator `%>% or \>` takes the output from the l.h.s. of the pipe and passes it as an input to the right hand side of the pipe. So when using a general dplyr pipeline flow, such as 
+
+```{r eval = FALSE}
+df %>%                   # FROM df
+  filter(var_1 > 0) %>%  # WHERE var_1 > 0
+  mutate(chr_var = as.character(num_var)) %>% # SELECT CAST(num_var AS CHAR)
+  group_by(chr_var) %>%  #GROUP BY fct_var
+  summarise(             #Select COUNT(*) as n, AVG(sum_var) as mean
+    n    = n(),
+    mean = mean(sum_var)
+  ) %>%
+  select(chr_var, n, sum_var) #SELECT ...
+```
+
+the *data wrangling pipe* from `df %>% $\cdots$ %>% select(...)` is equivalent to the MySQL *query* given by  
+
+```{r eval = FALSE}
+SELECT chr_var, COUNT(*) AS n, mean AS AVG(sum_var) #* means all `everything()`
+  FROM(
+  SELECT *, CAST(num_var AS CHAR)
+  FROM df
+  WHERE var_1 > 0
+  ) q01 #MySQL requires derived tables to be named 
+GROUP BY chr_var
+```
+
+While the output and individual data wrangling steps are the same, the order of operations ($\S 1.1$) and need for *derived tables* ($\S 1.2$) are super different -- but have no fear, once you get the hang of it translating `dplyr` back to `SQL` isn't too bad! Fundamentally, the goal of the R pipe and SQL query is the same: *to wrangle data*. Below, we discuss the differences in syntax vs. execution, Q & A about SQL and SQL within the R ecosystem, followed by a variety of examples for how to translating data wrangling in `dplyr` to SQL.   
+
+## 1.1 Order of Execution $\neq$ Syntax Order of SQL Procedures  
+
+### Syntax Order of Operations  
+
+1. SELECT [ DISTINCT ] (`select() %>% distinct()` / `mutate` / `summarise`)
+    - Selects columns from table *AND* performs `mutate`/`summarise`
+    - AS/as for renaming, ex. SELECT var_1 * 100 AS new_var $\iff$ `mutate(new_var = var_1 * 100)`
+    - *Cannot* access a new 'mutated' variable in the same SELECT where it was created
+      - ex. `mutate(a = b + 1, c = a - 1)` $\neq$ SELECT b + 1 AS a, a - 1 AS c (won't run)
+      - See $\S 1.2$ Derived Tables below for more detail  
+2. FROM (`df %>% .`)
+    - Which table are we working with
+3. WHERE (`filter()`)
+    - Remove obs. that are not of interest
+4. GROUP BY (`group_by()`)
+    - Set up for group-wise summary stats
+    - SQL ex. SELECT sum_var = AVG(var) FROM table GROUP BY category
+    - `dplyr` ex. table %>% group_by(category) %>% summarise(sum_var = mean(var))`
+    - SELECT is used for both `mutate` and `summarise` in SQL 
+5. HAVING (*`filter()`)
+    - Same as `WHERE` (`filter`) but for post-grouping summaries (or just summaries `over()`)
+    - However, SQLite accepts WHERE for both types of filtering
+6. UNION (`*_join()`)
+    - Merging data from multiple sources by column/key
+    - ex. FROM data_a as a JOIN data_b on a.key = b.key
+7. ORDER BY [ DESC/ASC ] (`arrange(desc())`)  
+    - No factor structure, just ordering the table layout
+
+### Order of Execution   
+
+1. FROM (`df %>% .`)
+2. WHERE (`filter()`)
+3. GROUP BY (`group_by()`)
+4. HAVING (another `filter()`)
+5. SELECT (`select()`)
+6. DISTINCT (`distinct()` retain only unique obs.)
+7. UNION (`*_join()`)
+8. ORDER BY [DESC/ASC] (`arrange(desc())`)  
+
+### Summary  
+
+You may have noticed that the order SQL procedures are actually run in is the same general workflow for data wrangling in R with `dplyr`, and I don't think that's a coincidence! SQL, born in the 70's, is hyper efficient at what it is designed to do 
+
+## 1.2 Derived Tables  
+
+Derived tables are going to feel unnatural compared to the way we can manipulate data with `mutate` in `dplyr`, but they are necessary for more complex queries. What is a derived table you ask? Similar to piping in `R` where `f(a) %>% g(.)` means takes the output of `f(a)` and passes it as an input to `g()`, when performing a mutate statement  
+
+
+## 1.3 Sub-queries  
+
+Very similar in syntax and flavour to derived tables, sub-queries can only contain *one column* and are generally used within `filter`/WHERE/HAVING. For example, in `R` we can pass data manipulations, functions, and other variables within the `filter` without thinking anything much of it -- 
+
+```{r eval = FALSE}
+df %>%
+  filter(var1 < max(var2))
+```
+
+However, SQL procedures/queries don't operate like pipes and in order to `mutate` any variable *AND* have access to it in the same procedure simultaneously, we need *sub-queries*. The MySQL sub-query equivalent to the above is given by
+
+```{r eval = FALSE}
+FROM df
+WHERE var < (SELECT MAX(var2) OVER() as max_var2 FROM df LIMIT 1)
+```
+
+Here, the sub-query is itself a stand alone query *but it must have only 1 column* and generally will only contain a single value/character. Example use of sub-queries in WHERE/HAVING statements is found near the end of the examples in $\S 3$.  
+
+```{r eval = FALSE}
+#Sub-query is a valid query (1 col, 1 val)
+SELECT MAX(var2) OVER() as max_var2 #This is equiv. to mutate(max_var2 = max(var2))
+FROM df #df %>%
+LIMIT 1 #Only want first occurrence (it's a column of the same number)
+```
+
+# 2. But what *is* a Structured Query Language?
+
+How does it work, are there alternatives, and when is `dbplyr` sufficient? (Q & A)  
+
+### Q: Why procedural instead of functional or dynamic?  
+
+*Answer* -- because under the hood, SQL is actually a collection of hyper-efficient algorithms which seek to optimally complete the query you've requested. Since it doesn't pull data into memory until the query is complete (the whole point of db languages), if it weren't procedural, I imagine the complexity and compute time would become astronomical. Plus, as the name suggests, a set of relatively few procedures, instructions, or functions, is great for computers and maximizes efficient db querying -- whereas a language like R which is much more flexible and user-friendly *but* does not use pre-defined memory types or allocation, is *interpretted* rather than compiled, and inherently pulls all data into memory prior to a `dplyr` pipe (by default, however there are many ways to connect with db's & use SQL without every leaving the R ecosystem!)  
+
+### Q: How do these algorithms check memory and wrangle data without pulling it all into active memory (RAM)?
+
+*Answer* -- No idea!  
+
+But if I was to speculate wildly, familiarity with C++ and dynamic versus static memory allocation (pointers) would suggest that it may have something to do dynamic memory allocation. In that vein, a very high level view suggests that each individual algorithm (behind the SQL procedures) is accessing small pieces of data with dynamic memory allocation *very very very quickly* and then just as quickly removing that allocation to make way for the next one. They "compete" with each other in the sense that some algorithms will be faster than others given the specific type of data or request -- in a very capitalist sort of way that produces the most efficient solution to wrangle data larger than memory or any tabular data very quickly.
+
+### Q: SQL is super efficient, but what can't it do?  
+
+*Answer* -- As far as I can tell, it only handles tabular data (maybe it can handle list columns but again, additional complexity in data structure comes at the cost of compute time). There are many types of data that don't fit into tabular data, MRI/fMRI data is now generally stored in standardized NIFTI format and we also usually zip those NIFTI files up to save space (a single subject, even zipped, can take up 1 gig of memory in fMRI as it's sort of a collection of MRI's in time). That data is also not "human readable" and it seems to me like anything not human readable can't really be dealt with via SQL because again, it's not really tabular or able to be looked at in a spreadsheet. 
+
+Even though SQL has limitations, in a production environment or Shiny app setting where speed of data wrangling and access is critical, there's nothing that can really compete with it in terms of efficiency -- which is why it's still in use almost everywhere 50+ years after it's inception. Again, I think there are way to many versions with basic or fundamental syntax conflicts because it wasn't developed cohesively (but companies have tried to make it slightly easier to use, SQLite for ex.). 
+
+### Q: Are their alternatives to SQL?  
+
+*Answer* -- Yes and no, it's been around for so long that there are so many different versions and flavours of SQL that to be honest, if you are starting from square 1 it can be super confusing because fundamental syntax is slightly different between them. Kind of like how base `R` is self-consistent syntactically but individual packages, like those in the `tidyverse`, can be utterly unrecognizeable by comparison. There are also other data base languages / data structures like Apache `arrow` parquette files (in `R` it interfaces directly with `dplyr` just like `dbplyr` below), Apache Spark (`sparklr`) is another way to handle data larger than memory, and then there are also a whole suite of proprietary and open source languages for interacting with cloud databases and cloud computing (like AWS). 
+
+### Q: If I know `dplyr` well, do I really need to know SQL?  
+
+*Answer* -- If you want to be a well-rounded data scientist in a production environment, or even just want to speed up your own data wrangling workflow with SQL data bases, *yes you need to know SQL* (to the point that you can use the internet to create a more complex query if you need to for work). As mentioned above, yes there are tons of ways to handle data bigger than memory without leaving the `R` ecosystem but SQL is used almost everywhere whereas `R` is much less prevalent (i.e. though the number of `R` users measured by proxy through Github `R` package development has skyrocketed in the last decade).  
+
+### Q: When is `dbplyr` sufficient and when do I need to use SQL?  
+
+While `dplyr` was surely built with SQL procedures in mind (the flow/verbs are very similar) and `dbplyr` will work for most basic to intermediate SQL queries, there's no such thing as a free lunch. One of the biggest downsides to relying on a translator is that there are lots of data wrangling functions, workflows, and the ability to supply user defined functions almost anywhere that I use everyday in `R` but can't use with `dbplyr` because there is no SQL equivalent (or nobody has gotten around to writing a transator/wrapper for it yet, looking at you `stringr`). *However*, though it may not be able to generate the exact SQL query you need in a giving setting, you can certainly build a pretty comprehensive skeleton for a query with `show_query` (the syntax is also generally sub-optimal for both readability and reproducibility due to translation so copy and pasting queries is inadvisable).  
+
+# 3. How to use `DBI` to connect to db and `dbplyr` to generate queries   
+
+In general, you don't really use SQL locally but for practice and learning it's best to start there. However, Creating and maintaining databases is it's own distinct field and trying to create one locally, depending on the SQL version, can be complicated and time consuming. At work most likely experts will handle that aspect of the data pipeline, you'll just connect and query the data you need to model, visualize, report, etc.  
+
+```{r}
+#SQLite
+con_sqlite <- DBI::dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+
+#MySQL
+con_mysql <- pool::dbPool(
+  RMySQL::MySQL(), 
+  dbname = "shinydemo",
+  host = "shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com",
+  username = "guest",
+  password = "guest"
+)
+
+dplyr::copy_to(con_sqlite, nycflights13::flights, "flights",
+  temporary = FALSE, 
+  indexes = list(
+    c("year", "month", "day"), 
+    "carrier", 
+    "tailnum",
+    "dest"
+  )
+)
+
+dplyr::copy_to(con_sqlite, nycflights13::airports, "airports")
+
+#Pull table (FROM flights or FROM City)
+flights_db <- dplyr::tbl(con_sqlite, "flights")
+airport_db <- dplyr::tbl(con_sqlite, "airports")
+city_db    <- dplyr::tbl(con_mysql, "City")
+```
+
+# 4. Let's Wrangle Some Data! (Examples w/Explanation)    
+
+## 4.1 NYC Flights 'basic' grouped summary stats (SQLite)     
+
+```{r flights_db}
+flights_db %>%
+  select(year:day, contains("time"), origin) %>%
+  filter(year == 2013, day < 30, origin %in% c("LGA", "JFK", "EWR")) %>%
+  mutate(
+    dep_dif = dep_tim - schedule_dep_time,
+    arr_dif = arr_time - sched_arr_time,
+  ) %>%
+  group_by(origin) %>%
+  summarise(
+    mean_dep = mean(dep_dif, na.rm = TRUE),
+    mean_arr = mean(arr_dif, na.rm = TRUE),
+  ) %>%
+  filter(mean_dep > 0) %>%
+  arrange(desc(mean_dep)) %>%
+  show_query()
+```
+
+## 4.2 Filtering by the max and min city name, by string length (MySQL)  
+
+Consider the question "Return the min and max length city name and it's length. Return only the first alphabetical occurance if there are multiple."
+
+```{r}
+city_db %>%
+  mutate(city_len = length(Name)) %>%
+  filter(city_len == max(city_len) | city_len == min(city_len)) %>%
+  select(Name, city_len) %>%
+    show_query()
+```
+
+However, this query is a bit messy and not all verisons of SQL support WINDOW doesn't -- OVER() does seem to work fine though. Here was my solution to the question "return the min and max length city name and it's length. Return only the first alphabetical occurance if there are multiple." This was the solution that worked --
+
+```{r eval = FALSE, echo = TRUE}
+SELECT CITY, city_len
+  FROM (
+    SELECT
+      *,
+      MAX(city_len) OVER() AS max_len,
+      MIN(city_len) OVER() AS min_len
+    FROM (
+      SELECT *, length(CITY) AS city_len
+      FROM STATION
+    ) q01
+  ) q02 
+WHERE (city_len = max_len OR city_len = min_len)
+ORDER BY city_len DESC, CITY ASC 
+LIMIT 2 #Top 2
+```
+
+Here you can't just call max(len) or min(lin) directly in the filter/WHERE statement because they are *two distinct procedures in SQL*. Instead we need to use a WINDOW function via OVER() to obtain the aggregate max and min, have access to it later (mutate), without changing the current structure of the data (mutate vs. summarise).  
+
+### Key Takeaways  
+
+1. Derived tables are necessary to access new columns (mutate) or summary/WINDOW columns
+2. Continuously pass derived tables in 'reverse nesting-doll order nested fashion via SELECT
+3. Generally I don't like using arrange/ORDER BY to ensure ordering of things as it can break fairly easily if the data isn't immaculately clean (I trust factor structure/ordinal undercoding more in general), but it seems to work here.
+4. No user defined functions in SQL queries like `mutate(new_var = my_func(old_var))`, unfortunately
+
+## 4.3 More complex group_by + summarise in (MySQL)  
+
+```{r}
+city_db %>%
+  filter(CountryCode %in% c("AFG", "NLD"), Population > 1) %>%
+  mutate(population_k = Population / 1000) %>%
+  group_by(CountryCode, District) %>%
+  summarise(
+    max = max(population_k),
+    avg = mean(population_k, na.rm = TRUE),
+    var = sd(population_k, na.rm = TRUE)^2
+  ) %>%
+  filter(max > 0) %>%
+  rename(Country = CountryCode) %>%
+  arrange(desc(avg)) %>%
+  show_query()
+```
+
+
+```{r summary_no_group}
+city_db %>%
+  summarise(
+    n      = count(CountryCode),
+    n_dist = count(distinct(CountryCode)),
+  ) %>%
+  mutate(
+    n_diff = n - n_dist
+  ) %>%
+  dplyr::select(n_diff) %>%
+  show_query
+
+# SELECT n - n_dist AS n_diff
+# FROM (
+#   SELECT count(*) AS n, count(distinct(city)) AS n_dist
+#   FROM STATION
+# ) n_dist
+```
+
+## 4.4 Simple regex queries, makes me miss `stringr`! (MySQL)    
+
+Select based on starts and/or ends with -- 
+
+```{r regex_str, eval = FALSE}
+SELECT DISTINCT CITY
+FROM   STATION
+WHERE  CITY RLIKE '^[aeiouAEIOU]'
+
+#IF starts AND ends with 
+'^[regex].*[regex]$'
+#If ends with 
+.*[regex]$
+#DOES NOT start with
+'^(?![aeiouAEIOU])'
+#DOES NOT end with
+'.*(?![aeiouAEIOU])$'
+
+#DOES NOT START or DOES NOT END WITH
+SELECT DISTINCT city
+FROM station
+WHERE city NOT REGEXP '^[aeiou]' OR city NOT REGEXP '[aeiou]$'
+```
+
+```{r eval = FALSE, echo = TRUE}
+SELECT NAME
+FROM STUDENTS
+WHERE MARKS > 75
+ORDER BY RIGHT(NAME, 3), ID ASC #Order by last 3 chars
+```
+
+
+## 4.6 Table Joins on Table Joins (MySQL)  
+
+### Joining with no shared columns  
+
+You can combine variables from tables without an explicit join when they have no shared columns --
+
+```{r eval = FALSE, echo = TRUE}
+SELECT *
+CASE WHEN grd.grade < 8 THEN NULL 
+     WHEN grd.grade >= 8 THEN std.name END,
+     grd.grade, std.marks 
+FROM students std, grades grd
+WHERE std.marks BETWEEN grd.min_mark AND grd.max_mark # <= max & >= min, not equal(!) is (<>) in sql btw
+ORDER BY grd.grade DESC, std.name ASC;
+```
+
+### Joining multiple tables in a pipe/query  
+
+Here we need to use explicit JOIN's and while I almost always use `left_join`, as long as you've placed the JOIN's in the right order to match the relationship between the data and question of interest, just JOIN seems to be fine -- 
+
+```{r echo = TRUE, eval = FALSE}
+SELECT h.hacker_id, h.name    #LAST select
+FROM Submissions AS s         #FIRST, data to be joined
+JOIN Hackers AS h             #Join with hacker data by hacker id
+  on s.hacker_id = h.hacker_id 
+JOIN Challenges as c          #Join with challenge data on challenge id
+  on s.challenge_id = c.challenge_id
+JOIN Difficulty as d          #Join with difficulty on Difficulty_level 
+  on c.Difficulty_level = d.Difficulty_level
+WHERE s.score = d.score             #Max score 
+GROUP BY h.hacker_id, h.name        #group_by id and name
+HAVING count(*) > 1                 #WHERE but for summarise
+ORDER BY count(*) DESC, h.hacker_id #arrange
+```
+
+And here's the `dplyr` pipe translation of that SQL query --
+
+```{r eval = FALSE, echo = TRUE}
+submission.df %>%
+  left_join(., hacker.df,     by = "hacker_id") %>%
+  left_join(., challenge.df,  by = "challenge_id") %>%
+  left_join(., difficulty.df, by = "Difficulty_level") %>%
+  filter(x.score = y.score) %>%
+  group_by(hacker_id, name) %>%
+  summarise(
+    n = n()
+  ) %>%
+  filter(n > 1) %>%
+  arrange(desc(n), hacker_id)
+```
+
+
+### More complicated table joins and queries (and one sub-query!)  
+
+Here we're joining a few tables to answer a more complicated question, which will require us to employ a sub-query to get the reproducible `filter`/WHERE statement we need at the end. In `R`, we don't need sub-queries because we can simply perform a 2-step process: (1) run the sub-query or pipe prior and store the result as a variable in our global/local env and (2) pass that variable through the `filter`/WHERE procedure in the main query/pipe.   
+
+```{r eval = FALSE, echo = TRUE}
+SELECT w.id, p.age, w.coins_needed, w.power
+FROM Wands AS w 
+JOIN Wands_Property AS p # Join
+    ON w.code = p.code
+WHERE w.coins_needed = (SELECT min(coins_needed) #Filter by sub-query 
+                        FROM Wands w2            #From wand data
+                        INNER JOIN Wands_Property p2 #Inner join by wand property (join then filter missing)
+                          ON w2.code = p2.code   #Conditions below pertain to the specific question
+                        WHERE p2.is_evil = 0 AND p.age = p2.age AND w.power = w2.power)
+ORDER BY w.power DESC, p.age DESC;
+```
+
+### A join and two sub-queries  
+
+```{r echo = TRUE, eval = FALSE}
+SELECT c.hacker_id, h.name, count(c.challenge_id) AS cnt 
+FROM Hackers AS h
+JOIN Challenges AS c 
+  ON h.hacker_id = c.hacker_id
+GROUP BY c.hacker_id, h.name 
+HAVING cnt = (SELECT count(c1.challenge_id) 
+              FROM Challenges AS c1
+              GROUP BY c1.hacker_id 
+              ORDER BY count(*) desc limit 1) OR
+       cnt NOT IN (SELECT count(c2.challenge_id)
+              FROM Challenges AS c2 
+              GROUP BY c2.hacker_id 
+              HAVING c2.hacker_id <> c.hacker_id) #not equal to (<>)
+ORDER BY cnt DESC, c.hacker_id;
+```
+
+
+```{r disconnect, eval = FALSE, echo = FALSE}
+DBI::dbDisconnect(con_sqlite)
+pool::poolClose(con_mysql)
+```

@@ -277,7 +277,7 @@ sht_pct.gt %>%
     columns = contains("Shooting"),
     palette = "ggsci::red_material", #paleteer
   #  palette = c("white", my_purple),
-    use_paletteer = TRUE #Turn this false to use manual colors
+  #  use_paletteer = TRUE #Turn this false to use manual colors
   )  %>%
   gt_theme_nytimes() %>% #NY Times theme
   gt_highlight_rows(
@@ -478,12 +478,13 @@ sparkline.gt <- disney.df %>%
 As of now, there are only lineplot (sparkline), density, histogram, or barplot; I'm sure more will be developed soon.  
 
 ```{r}
-#New and improved gt
+#New and improved gts
 sparkline.gt %>%
-  gt_sparkline(`Rating Distribution`, 
+  gt_plt_dist(.,
+               column     = `Rating Distribution`,
                type       = "histogram", 
                line_color = "white", 
-               fill_color = "coral1", 
+               fill_color = "coral1",
                bw         = 1) %>%
   gt_theme_nytimes() #NY Times theme
 ```

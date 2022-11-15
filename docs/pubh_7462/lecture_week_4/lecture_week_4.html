@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -184,6 +184,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Lecture: R Websites with Quarto &amp; Github</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../pubh_7462/lecture_sqlr/dbplyr_sql.html">
+ <span class="dropdown-text">Lecture: Intro to SQL for R Users</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../pubh_7462/lecture_week_11/lecture_week_11.html">
  <span class="dropdown-text">Lecture: Advanced Spatial Mapping</span></a>
   </li>  
@@ -194,6 +198,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li>
     <a class="dropdown-item" href="../../pubh_7462/lecture_week_14/lecture_week_14.html">
  <span class="dropdown-text">Lecture: <code>shiny</code> Apps &amp; Dashboards</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
+        <li>
+    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
+ <span class="dropdown-text">Bayesian Robust Random Covariance Model (RCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
+ <span class="dropdown-text">RCM Task-based fMRI Study of Adolescent Depression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://arxiv.org/abs/2108.05034">
+ <span class="dropdown-text">Bayesian Functional Graphical Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/ml_theory.html">
+ <span class="dropdown-text">ML-Boosting SNP Classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../old_work/stat_gen.html">
+ <span class="dropdown-text">TCGA Differential Methylation in Kidney Cancer</span></a>
   </li>  
     </ul>
   </li>
@@ -215,27 +244,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li>
     <a class="dropdown-item" href="../../old_work/dog_bites.html">
  <span class="dropdown-text">Dog Bites in NYC</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biostatistics" role="button" data-bs-toggle="dropdown" aria-expanded="false">Biostatistics</a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-biostatistics">    
-        <li>
-    <a class="dropdown-item" href="https://nevilleq.github.io/bayesRCM/">
- <span class="dropdown-text">Bayesian Robust RCM</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://docs.google.com/presentation/d/1andU17E2c4d0fsUdMi3aWm1-B1P7Fm-QqzXcEXmNA9Q/edit?usp=sharing">
- <span class="dropdown-text">RCM for Task-based fMRI</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../old_work/ml_theory.html">
- <span class="dropdown-text">ML-Boosting SNP Classification</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../old_work/stat_gen.html">
- <span class="dropdown-text">TCGA Bumphunting for Differential Methylation</span></a>
   </li>  
     </ul>
   </li>
@@ -534,13 +542,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Table of general info</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">introduce</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 x 9
-   rows columns discrete_columns conti~1 all_m~2 total~3 compl~4 total~5 memor~6
+<pre><code># A tibble: 1 × 9
+   rows columns discrete_columns conti…¹ all_m…² total…³ compl…⁴ total…⁵ memor…⁶
   &lt;int&gt;   &lt;int&gt;            &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt;
 1 42656       6                4       2       0    2613   40043  255936  3.40e7
-# ... with abbreviated variable names 1: continuous_columns,
-#   2: all_missing_columns, 3: total_missing_values, 4: complete_rows,
-#   5: total_observations, 6: memory_usage</code></pre>
+# … with abbreviated variable names ¹​continuous_columns, ²​all_missing_columns,
+#   ³​total_missing_values, ⁴​complete_rows, ⁵​total_observations, ⁶​memory_usage</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A random few observations</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">36</span>)</span>
@@ -550,19 +557,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 x 6
+<pre><code># A tibble: 10 × 6
    review_id rating year_month reviewer_location review_text              branch
        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                    &lt;chr&gt; 
- 1 326116517      4 2015-10    United States     My family had a good ti~ Disne~
- 2 561114590      4 2018-2     Indonesia         I'll start by reminding~ Disne~
- 3  65297363      5 &lt;NA&gt;       Canada            I just got back from a ~ Disne~
- 4 174308145      3 2013-8     United Kingdom    The two parks are withi~ Disne~
- 5 155788938      5 &lt;NA&gt;       Belgium           The only ride that REAL~ Disne~
- 6 421639027      5 2016-3     Philippines       I enjoyed our whole day~ Disne~
- 7 126485364      5 2012-3     United States     After visiting Disney W~ Disne~
- 8 202672130      4 2014-4     Australia         Having not been to a Di~ Disne~
- 9 574949379      5 2018-4     United States     Great fun for first or ~ Disne~
-10 250866714      5 2015-1     United States     I actually went Tuesday~ Disne~</code></pre>
+ 1 326116517      4 2015-10    United States     My family had a good ti… Disne…
+ 2 561114590      4 2018-2     Indonesia         I'll start by reminding… Disne…
+ 3  65297363      5 &lt;NA&gt;       Canada            I just got back from a … Disne…
+ 4 174308145      3 2013-8     United Kingdom    The two parks are withi… Disne…
+ 5 155788938      5 &lt;NA&gt;       Belgium           The only ride that REAL… Disne…
+ 6 421639027      5 2016-3     Philippines       I enjoyed our whole day… Disne…
+ 7 126485364      5 2012-3     United States     After visiting Disney W… Disne…
+ 8 202672130      4 2014-4     Australia         Having not been to a Di… Disne…
+ 9 574949379      5 2018-4     United States     Great fun for first or … Disne…
+10 250866714      5 2015-1     United States     I actually went Tuesday… Disne…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot str() (names and types)</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(disney.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -658,20 +665,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>disney.df <span class="sc">%&gt;%</span></span>
 <span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 x 10
-   id       rating locat~1 branch date       year  month n_words avg_l~2 n_uni~3
+<pre><code># A tibble: 10 × 10
+   id       rating locat…¹ branch date       year  month n_words avg_l…² n_uni…³
    &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;fct&gt;  &lt;date&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 3261165~      4 United~ Calif~ 2015-10-01 2015  Octo~     120    4.25      91
- 2 5611145~      4 Indone~ Hong ~ 2018-02-01 2018  Febr~     126    4.71      93
- 3 65297363      5 Canada  Calif~ NA         &lt;NA&gt;  &lt;NA&gt;      160    4.25     112
- 4 1743081~      3 United~ Calif~ 2013-08-01 2013  Augu~     120    4.18      85
- 5 1557889~      5 Belgium Paris  NA         &lt;NA&gt;  &lt;NA&gt;       34    4.76      30
- 6 4216390~      5 Philip~ Hong ~ 2016-03-01 2016  March      38    4.82      31
- 7 1264853~      5 United~ Calif~ 2012-03-01 2012  March     117    4.32      85
- 8 2026721~      4 Austra~ Hong ~ 2014-04-01 2014  April     140    4.34     103
- 9 5749493~      5 United~ Calif~ 2018-04-01 2018  April      85    4.35      69
-10 2508667~      5 United~ Calif~ 2015-01-01 2015  Janu~      84    4.26      76
-# ... with abbreviated variable names 1: location, 2: avg_length, 3: n_unique</code></pre>
+ 1 3261165…      4 United… Calif… 2015-10-01 2015  Octo…     120    4.25      91
+ 2 5611145…      4 Indone… Hong … 2018-02-01 2018  Febr…     126    4.71      93
+ 3 65297363      5 Canada  Calif… NA         &lt;NA&gt;  &lt;NA&gt;      160    4.25     112
+ 4 1743081…      3 United… Calif… 2013-08-01 2013  Augu…     120    4.18      85
+ 5 1557889…      5 Belgium Paris  NA         &lt;NA&gt;  &lt;NA&gt;       34    4.76      30
+ 6 4216390…      5 Philip… Hong … 2016-03-01 2016  March      38    4.82      31
+ 7 1264853…      5 United… Calif… 2012-03-01 2012  March     117    4.32      85
+ 8 2026721…      4 Austra… Hong … 2014-04-01 2014  April     140    4.34     103
+ 9 5749493…      5 United… Calif… 2018-04-01 2018  April      85    4.35      69
+10 2508667…      5 United… Calif… 2015-01-01 2015  Janu…      84    4.26      76
+# … with abbreviated variable names ¹​location, ²​avg_length, ³​n_unique</code></pre>
 </div>
 </div>
 <p>Note that not every observation is independent, as 20 ID’s submitted 2 reviews –</p>
@@ -683,7 +690,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 x 2
+<pre><code># A tibble: 20 × 2
    f             n
    &lt;fct&gt;     &lt;int&gt;
  1 121568004     2
@@ -1154,15 +1161,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   font-size: 65%;
 }
 
-:where(#hnzkavqvyd) .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 :where(#hnzkavqvyd) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1175,35 +1173,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: 0;
 }
 
-:where(#hnzkavqvyd) .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+:where(#hnzkavqvyd) .gt_indent_1 {
+  text-indent: 5px;
 }
 
-:where(#hnzkavqvyd) .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+:where(#hnzkavqvyd) .gt_indent_2 {
+  text-indent: 10px;
 }
 
-:where(#hnzkavqvyd) .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+:where(#hnzkavqvyd) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#hnzkavqvyd) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#hnzkavqvyd) .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</th>
+      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Location of Origin</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"># Reviews<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Location of Origin</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col"># Reviews<sup class="gt_footnote_marks">1</sup></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1664,15 +1664,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   font-size: 65%;
 }
 
-:where(#gzxeqqkljd) .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 :where(#gzxeqqkljd) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1685,35 +1676,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: 0;
 }
 
-:where(#gzxeqqkljd) .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+:where(#gzxeqqkljd) .gt_indent_1 {
+  text-indent: 5px;
 }
 
-:where(#gzxeqqkljd) .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+:where(#gzxeqqkljd) .gt_indent_2 {
+  text-indent: 10px;
 }
 
-:where(#gzxeqqkljd) .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+:where(#gzxeqqkljd) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#gzxeqqkljd) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#gzxeqqkljd) .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Average Rating by Branch</th>
+      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Average Rating by Branch</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Branch</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Average Rating<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col">Branch</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Average Rating<sup class="gt_footnote_marks">1</sup></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -2225,15 +2218,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   font-size: 65%;
 }
 
-:where(#ixdnhrthzr) .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 :where(#ixdnhrthzr) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -2246,36 +2230,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: 0;
 }
 
-:where(#ixdnhrthzr) .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+:where(#ixdnhrthzr) .gt_indent_1 {
+  text-indent: 5px;
 }
 
-:where(#ixdnhrthzr) .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+:where(#ixdnhrthzr) .gt_indent_2 {
+  text-indent: 10px;
 }
 
-:where(#ixdnhrthzr) .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+:where(#ixdnhrthzr) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#ixdnhrthzr) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#ixdnhrthzr) .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</th>
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Top 5 Reviewer Locations by Branch</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Location of Origin</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Average Rating<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"># Reviews</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Location of Origin</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Average Rating<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col"># Reviews</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
