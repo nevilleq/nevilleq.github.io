@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Quinton Neville">
-<meta name="dcterms.date" content="2022-11-01">
+<meta name="dcterms.date" content="2023-02-14">
 
 <title>Quinton Neville - Introduction to SQL for R Users w/Examples</title>
 <style>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 1, 2022</p>
+      <p class="date">February 14, 2023</p>
     </div>
   </div>
     
@@ -330,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>First and foremost, unlike <code>R</code>, SQL is a procedural language in that it is quite literally an ordered list of instructions or procedures for a computer to follow. It’s also a language that operates on tabular data, which in a not so technical way can be described as any data you can feasibly put into an Excel spreadsheet. Being procedural does make the language less flexible in many ways, but the trade-off in increased speed, efficiency, and ability to wrangle data without bringing it all into active memory is truly astounding – hence why it’s still around today!</p>
+<p>First and foremost, unlike <code>R</code>, SQL is a <em>procedural language</em> in that it is quite literally an ordered list of instructions or procedures for a computer to follow. It’s also a language that operates on <em>tabular data</em>, which in a not so technical way can be described as any data you can feasibly put into an Excel spreadsheet. Being procedural does make the language less flexible in many ways, but the trade-off in increased speed, efficiency, and ability to wrangle data without bringing it all into active memory is truly astounding – hence why it’s still around today!</p>
 <section id="resources-for-todays-lecture" class="level3">
 <h3 class="anchored" data-anchor-id="resources-for-todays-lecture">Resources for Today’s Lecture</h3>
 <p>This lecture is by no means comprehensive and is just meant to serve as an introduction for those with an intermediate level of <code>R</code> and <code>tidyverse</code> knowledge. To that end, here are a list of resources from today’s lecture for more in-depth explanations and examples by people who are much smarter than me, as well as resources for the core <code>R</code> packages implemented in the examples.</p>
@@ -362,6 +362,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="practice-for-job-interviews">Practice for Job Interviews</h4>
 <ul>
 <li><a href="https://www.hackerrank.com/products/main/">Free practice and preparation with Hackerrank.com</a></li>
+<li>If you have access to DataCamp through PUBH 7461/7462 lots of SQL practice</li>
 </ul>
 </section>
 </section>
@@ -369,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>1. Intro to SQL</h1>
 <p>Let’s start with an anology and a simple example:</p>
 <p>A <em>query</em> is to <strong>SQL</strong> as a <em>pipe</em> is to <code>dplyr</code>.</p>
-<p>Recall that a pipe operator <code>%&gt;% or \&gt;</code> takes the output from the l.h.s. of the pipe and passes it as an input to the right hand side of the pipe. So when using a general dplyr pipeline flow, such as</p>
+<p>Recall that a pipe operator <code>%&gt;% or |&gt;</code> takes the output from the l.h.s. of the pipe and passes it as an input to the r.h.s. of the pipe. So when using a general dplyr pipeline flow, such as</p>
 <div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-2_79862b89bb636f1e158eef7ce4e98539">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span>                   <span class="co"># FROM df</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(var_1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span>  <span class="co"># WHERE var_1 &gt; 0</span></span>
@@ -459,26 +460,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="derived-tables" class="level2">
 <h2 class="anchored" data-anchor-id="derived-tables">1.2 Derived Tables</h2>
-<p>Derived tables are going to feel unnatural compared to the way we can manipulate data with <code>mutate</code> in <code>dplyr</code>, but they are necessary for more complex queries. What is a derived table you ask? Similar to piping in <code>R</code> where <code>f(a) %&gt;% g(.)</code> means takes the output of <code>f(a)</code> and passes it as an input to <code>g()</code>, when performing a mutate statement</p>
+<p>Derived tables are going to feel unnatural compared to the way we can manipulate data with <code>mutate</code> in <code>dplyr</code>, but they are necessary for more complex queries. What is a derived table you ask? Similar to piping in <code>R</code> where <code>f() %&gt;% g(.)</code> means takes the output of <code>f()</code> and passes it as an input to <code>g()</code>, when performing a series of wrangling functions like <code>filter</code>, <code>mutate</code>, <code>*_join</code>, etc. statement that pipeline is producing at least 1 derived table in the SQL translation.</p>
+<p>A derived table is a subquery in a <code>FROM</code> statement which produces an intermediate table and in most SQL versions must be named with <code>AS</code>. For example this is a simple derived table/subquery –</p>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-4_47f8badeb5b76a27960ab2a997d2612e">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span> <span class="fu">FROM</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  SELECT var_1 <span class="sc">+</span> var_2 AS sum_1</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  FROM df</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>) AS tbl_1</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>WHERE sum_1 <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now why do need a subquery? Why can’t we just simple say?</p>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-5_c859439e79e51a118169447331455a56">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span> FROM df <span class="fu">WHERE</span> (var_1 <span class="sc">+</span> var_2) <span class="sc">&gt;</span> <span class="dv">0</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We need a subqueries (below)!</p>
 </section>
 <section id="sub-queries" class="level2">
 <h2 class="anchored" data-anchor-id="sub-queries">1.3 Sub-queries</h2>
-<p>Very similar in syntax and flavour to derived tables, sub-queries can only contain <em>one column</em> and are generally used within <code>filter</code>/WHERE/HAVING. For example, in <code>R</code> we can pass data manipulations, functions, and other variables within the <code>filter</code> without thinking anything much of it –</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-4_52fbd7f3029163ee8268d8f642440a1a">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(var1 <span class="sc">&lt;</span> <span class="fu">max</span>(var2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Very similar in syntax and flavour to derived tables, sub-queries are just derived tables which only contain <em>one column</em> and are generally used within <code>filter</code>/<code>WHERE</code>/<code>HAVING</code>. For example, in <code>R</code> we can pass data manipulations, functions, and other variables within the <code>filter</code> without thinking anything much of it –</p>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-6_b568b6c6c70e83c3f0e964e11735d901">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(var1 <span class="sc">&lt;</span> <span class="fu">max</span>(var2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>However, SQL procedures/queries don’t operate like pipes and in order to <code>mutate</code> any variable <em>AND</em> have access to it in the same procedure simultaneously, we need <em>sub-queries</em>. The MySQL sub-query equivalent to the above is given by</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-5_9ff4f608ac5e0b4008fee71c7d6b4968">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>FROM df</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>WHERE var <span class="sc">&lt;</span> (SELECT <span class="fu">MAX</span>(var2) <span class="fu">OVER</span>() as max_var2 FROM df LIMIT <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-7_7458b77c013428037188e5cc4fa4e318">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>FROM df</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>WHERE var <span class="sc">&lt;</span> (SELECT <span class="fu">MAX</span>(var2) <span class="fu">OVER</span>() as max_var2 FROM df LIMIT <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, the sub-query is itself a stand alone query <em>but it must have only 1 column</em> and generally will only contain a single value/character. Example use of sub-queries in WHERE/HAVING statements is found near the end of the examples in <span class="math inline">\(\S 3\)</span>.</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-6_0466c98b1139d86a3162b60fef37c461">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Sub-query is a valid query (1 col, 1 val)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="fu">MAX</span>(var2) <span class="fu">OVER</span>() as max_var2 <span class="co">#This is equiv. to mutate(max_var2 = max(var2))</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>FROM df <span class="co">#df %&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="dv">1</span> <span class="co">#Only want first occurrence (it's a column of the same number)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-8_8f388b16f93d32f5dd23569429907a2b">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Sub-query is a valid query (1 col, 1 val)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="fu">MAX</span>(var2) <span class="fu">OVER</span>() as max_var2 <span class="co">#This is equiv. to mutate(max_var2 = max(var2))</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>FROM df <span class="co">#df %&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="dv">1</span> <span class="co">#Only want first occurrence (it's a column of the same number)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -487,17 +501,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>How does it work, are there alternatives, and when is <code>dbplyr</code> sufficient? (Q &amp; A)</p>
 <section id="q-why-procedural-instead-of-functional-or-dynamic" class="level3">
 <h3 class="anchored" data-anchor-id="q-why-procedural-instead-of-functional-or-dynamic">Q: Why procedural instead of functional or dynamic?</h3>
-<p><em>Answer</em> – because under the hood, SQL is actually a collection of hyper-efficient algorithms which seek to optimally complete the query you’ve requested. Since it doesn’t pull data into memory until the query is complete (the whole point of db languages), if it weren’t procedural, I imagine the complexity and compute time would become astronomical. Plus, as the name suggests, a set of relatively few procedures, instructions, or functions, is great for computers and maximizes efficient db querying – whereas a language like R which is much more flexible and user-friendly <em>but</em> does not use pre-defined memory types or allocation, is <em>interpretted</em> rather than compiled, and inherently pulls all data into memory prior to a <code>dplyr</code> pipe (by default, however there are many ways to connect with db’s &amp; use SQL without every leaving the R ecosystem!)</p>
-</section>
-<section id="q-how-do-these-algorithms-check-memory-and-wrangle-data-without-pulling-it-all-into-active-memory-ram" class="level3">
-<h3 class="anchored" data-anchor-id="q-how-do-these-algorithms-check-memory-and-wrangle-data-without-pulling-it-all-into-active-memory-ram">Q: How do these algorithms check memory and wrangle data without pulling it all into active memory (RAM)?</h3>
-<p><em>Answer</em> – No idea!</p>
-<p>But if I was to speculate wildly, familiarity with C++ and dynamic versus static memory allocation (pointers) would suggest that it may have something to do dynamic memory allocation. In that vein, a very high level view suggests that each individual algorithm (behind the SQL procedures) is accessing small pieces of data with dynamic memory allocation <em>very very very quickly</em> and then just as quickly removing that allocation to make way for the next one. They “compete” with each other in the sense that some algorithms will be faster than others given the specific type of data or request – in a very capitalist sort of way that produces the most efficient solution to wrangle data larger than memory or any tabular data very quickly.</p>
+<p><em>Answer</em> – because under the hood, SQL is actually a collection of hyper-efficient algorithms which seek to optimally complete the query you’ve requested. Since it doesn’t pull data into memory until the query is complete, this necessitates a pre-defined procedural set of instructions to be completed. This makes it less flexible but very fast!</p>
 </section>
 <section id="q-sql-is-super-efficient-but-what-cant-it-do" class="level3">
 <h3 class="anchored" data-anchor-id="q-sql-is-super-efficient-but-what-cant-it-do">Q: SQL is super efficient, but what can’t it do?</h3>
-<p><em>Answer</em> – As far as I can tell, it only handles tabular data (maybe it can handle list columns but again, additional complexity in data structure comes at the cost of compute time). There are many types of data that don’t fit into tabular data, MRI/fMRI data is now generally stored in standardized NIFTI format and we also usually zip those NIFTI files up to save space (a single subject, even zipped, can take up 1 gig of memory in fMRI as it’s sort of a collection of MRI’s in time). That data is also not “human readable” and it seems to me like anything not human readable can’t really be dealt with via SQL because again, it’s not really tabular or able to be looked at in a spreadsheet.</p>
-<p>Even though SQL has limitations, in a production environment or Shiny app setting where speed of data wrangling and access is critical, there’s nothing that can really compete with it in terms of efficiency – which is why it’s still in use almost everywhere 50+ years after it’s inception. Again, I think there are way to many versions with basic or fundamental syntax conflicts because it wasn’t developed cohesively (but companies have tried to make it slightly easier to use, SQLite for ex.).</p>
+<p><em>Answer</em> – Can’t handle non-tabular data and/or more complex data structures like lists, arrays, etc.</p>
 </section>
 <section id="q-are-their-alternatives-to-sql" class="level3">
 <h3 class="anchored" data-anchor-id="q-are-their-alternatives-to-sql">Q: Are their alternatives to SQL?</h3>
@@ -505,45 +513,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="q-if-i-know-dplyr-well-do-i-really-need-to-know-sql" class="level3">
 <h3 class="anchored" data-anchor-id="q-if-i-know-dplyr-well-do-i-really-need-to-know-sql">Q: If I know <code>dplyr</code> well, do I really need to know SQL?</h3>
-<p><em>Answer</em> – If you want to be a well-rounded data scientist in a production environment, or even just want to speed up your own data wrangling workflow with SQL data bases, <em>yes you need to know SQL</em> (to the point that you can use the internet to create a more complex query if you need to for work). As mentioned above, yes there are tons of ways to handle data bigger than memory without leaving the <code>R</code> ecosystem but SQL is used almost everywhere whereas <code>R</code> is much less prevalent (i.e.&nbsp;though the number of <code>R</code> users measured by proxy through Github <code>R</code> package development has skyrocketed in the last decade).</p>
+<p><em>Answer</em> – If you want to be a well-rounded data scientist in a production environment, or even just want to speed up your own data wrangling workflow with SQL data bases, <em>yes you need to know SQL</em> (to the point that you can use the internet to create a more complex query if you need to for work). As mentioned above, yes there are tons of ways to handle data bigger than memory without leaving the <code>R</code> ecosystem but SQL is standard in most all industrial environments.</p>
 </section>
 <section id="q-when-is-dbplyr-sufficient-and-when-do-i-need-to-use-sql" class="level3">
 <h3 class="anchored" data-anchor-id="q-when-is-dbplyr-sufficient-and-when-do-i-need-to-use-sql">Q: When is <code>dbplyr</code> sufficient and when do I need to use SQL?</h3>
-<p>While <code>dplyr</code> was surely built with SQL procedures in mind (the flow/verbs are very similar) and <code>dbplyr</code> will work for most basic to intermediate SQL queries, there’s no such thing as a free lunch. One of the biggest downsides to relying on a translator is that there are lots of data wrangling functions, workflows, and the ability to supply user defined functions almost anywhere that I use everyday in <code>R</code> but can’t use with <code>dbplyr</code> because there is no SQL equivalent (or nobody has gotten around to writing a transator/wrapper for it yet, looking at you <code>stringr</code>). <em>However</em>, though it may not be able to generate the exact SQL query you need in a giving setting, you can certainly build a pretty comprehensive skeleton for a query with <code>show_query</code> (the syntax is also generally sub-optimal for both readability and reproducibility due to translation so copy and pasting queries is inadvisable).</p>
+<p>While <code>dplyr</code> was surely built with SQL procedures in mind (the flow/verbs are very similar) and <code>dbplyr</code> will work for most basic to intermediate SQL queries, there’s no such thing as a free lunch. One of the biggest downsides to relying on a translator is that there are lots of data wrangling functions, workflows, and the ability to supply user defined functions almost anywhere that I use everyday in <code>R</code> but can’t use with <code>dbplyr</code> because there is no SQL equivalent. <em>However</em>, though it may not be able to generate the exact SQL query you need in a giving setting, you can certainly build a pretty comprehensive skeleton for a query with <code>show_query</code> (the syntax is also generally sub-optimal for both readability and reproducibility due to translation so copy and pasting queries is inadvisable).</p>
 </section>
 </section>
 <section id="how-to-use-dbi-to-connect-to-db-and-dbplyr-to-generate-queries" class="level1">
 <h1>3. How to use <code>DBI</code> to connect to db and <code>dbplyr</code> to generate queries</h1>
 <p>In general, you don’t really use SQL locally but for practice and learning it’s best to start there. However, Creating and maintaining databases is it’s own distinct field and trying to create one locally, depending on the SQL version, can be complicated and time consuming. At work most likely experts will handle that aspect of the data pipeline, you’ll just connect and query the data you need to model, visualize, report, etc.</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-7_840e1d9c3e8f315681b4d95290661507">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SQLite</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>con_sqlite <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">dbname =</span> <span class="st">":memory:"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#MySQL</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>con_mysql <span class="ot">&lt;-</span> pool<span class="sc">::</span><span class="fu">dbPool</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">"shinydemo"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"guest"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">"guest"</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">copy_to</span>(con_sqlite, nycflights13<span class="sc">::</span>flights, <span class="st">"flights"</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporary =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">indexes =</span> <span class="fu">list</span>(</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>), </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"carrier"</span>, </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tailnum"</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dest"</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">copy_to</span>(con_sqlite, nycflights13<span class="sc">::</span>airports, <span class="st">"airports"</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#Pull table (FROM flights or FROM City)</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>flights_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_sqlite, <span class="st">"flights"</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>airport_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_sqlite, <span class="st">"airports"</span>)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>city_db    <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_mysql, <span class="st">"City"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-9_296ce70c91349c1ec6e0d65cf386b843">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SQLite</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>con_sqlite <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">dbname =</span> <span class="st">":memory:"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#MySQL</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>con_mysql <span class="ot">&lt;-</span> pool<span class="sc">::</span><span class="fu">dbPool</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">"shinydemo"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"guest"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">"guest"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">copy_to</span>(con_sqlite, nycflights13<span class="sc">::</span>flights, <span class="st">"flights"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporary =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">indexes =</span> <span class="fu">list</span>(</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>), </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"carrier"</span>, </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tailnum"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dest"</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">copy_to</span>(con_sqlite, nycflights13<span class="sc">::</span>airports, <span class="st">"airports"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#Pull table (FROM flights or FROM City)</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>flights_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_sqlite, <span class="st">"flights"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>airport_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_sqlite, <span class="st">"airports"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>city_db    <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_mysql, <span class="st">"City"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-wrangle-some-data-examples-wexplanation" class="level1">
@@ -551,21 +559,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="nyc-flights-basic-grouped-summary-stats-sqlite" class="level2">
 <h2 class="anchored" data-anchor-id="nyc-flights-basic-grouped-summary-stats-sqlite">4.1 NYC Flights ‘basic’ grouped summary stats (SQLite)</h2>
 <div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/flights_db_5ad3b48478d1a224fe7b8044e4519eac">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year<span class="sc">:</span>day, <span class="fu">contains</span>(<span class="st">"time"</span>), origin) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2013</span>, day <span class="sc">&lt;</span> <span class="dv">30</span>, origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"LGA"</span>, <span class="st">"JFK"</span>, <span class="st">"EWR"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">dep_dif =</span> dep_tim <span class="sc">-</span> schedule_dep_time,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">arr_dif =</span> arr_time <span class="sc">-</span> sched_arr_time,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_dep =</span> <span class="fu">mean</span>(dep_dif, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_arr =</span> <span class="fu">mean</span>(arr_dif, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mean_dep <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_dep)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year<span class="sc">:</span>day, <span class="fu">contains</span>(<span class="st">"time"</span>), origin) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2013</span>, day <span class="sc">&lt;</span> <span class="dv">30</span>, origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"LGA"</span>, <span class="st">"JFK"</span>, <span class="st">"EWR"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">dep_dif =</span> dep_tim <span class="sc">-</span> schedule_dep_time,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">arr_dif =</span> arr_time <span class="sc">-</span> sched_arr_time,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_dep =</span> <span class="fu">mean</span>(dep_dif, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_arr =</span> <span class="fu">mean</span>(arr_dif, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mean_dep <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_dep)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT *
@@ -605,12 +613,12 @@ ORDER BY `mean_dep` DESC</code></pre>
 <section id="filtering-by-the-max-and-min-city-name-by-string-length-mysql" class="level2">
 <h2 class="anchored" data-anchor-id="filtering-by-the-max-and-min-city-name-by-string-length-mysql">4.2 Filtering by the max and min city name, by string length (MySQL)</h2>
 <p>Consider the question “Return the min and max length city name and it’s length. Return only the first alphabetical occurance if there are multiple.”</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-8_f9f755d8aefec3f745beacea3e3b0134">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city_len =</span> <span class="fu">length</span>(Name)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city_len <span class="sc">==</span> <span class="fu">max</span>(city_len) <span class="sc">|</span> city_len <span class="sc">==</span> <span class="fu">min</span>(city_len)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, city_len) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-10_81df49966680ccfba69da5fdccd122f2">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city_len =</span> <span class="fu">length</span>(Name)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city_len <span class="sc">==</span> <span class="fu">max</span>(city_len) <span class="sc">|</span> city_len <span class="sc">==</span> <span class="fu">min</span>(city_len)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, city_len) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: &lt;Pool&gt; uses an old dbplyr interface
 ℹ Please install a newer version of the package or contact the maintainer
@@ -629,34 +637,34 @@ FROM (
   FROM (
     SELECT
       *,
-      MAX(`city_len`) OVER `win1` AS `q01`,
-      MIN(`city_len`) OVER `win1` AS `q02`
+      MAX(`city_len`) OVER `win1` AS `q04`,
+      MIN(`city_len`) OVER `win1` AS `q05`
     FROM (
       SELECT *, length(`Name`) AS `city_len`
       FROM `City`
     ) `q01`
     WINDOW `win1` AS ()
   ) `q02`
-  WHERE (`city_len` = `q01` OR `city_len` = `q02`)
+  WHERE (`city_len` = `q04` OR `city_len` = `q05`)
 ) `q03`</code></pre>
 </div>
 </div>
 <p>However, this query is a bit messy and not all verisons of SQL support WINDOW doesn’t – OVER() does seem to work fine though. Here was my solution to the question “return the min and max length city name and it’s length. Return only the first alphabetical occurance if there are multiple.” This was the solution that worked –</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-9_b2ed759f2066f1eab2a342fbc856fd53">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SELECT CITY, city_len</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">FROM</span> (</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    SELECT</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="sc">*</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">MAX</span>(city_len) <span class="fu">OVER</span>() AS max_len,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">MIN</span>(city_len) <span class="fu">OVER</span>() AS min_len</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">FROM</span> (</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      SELECT <span class="sc">*</span>, <span class="fu">length</span>(CITY) AS city_len</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      FROM STATION</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    ) q01</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  ) q02 </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">WHERE</span> (<span class="at">city_len =</span> max_len OR <span class="at">city_len =</span> min_len)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>ORDER BY city_len DESC, CITY ASC </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="dv">2</span> <span class="co">#Top 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-11_3fcac3304676dda0f1a5bb5b7eb85d37">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>SELECT CITY, city_len</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">FROM</span> (</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    SELECT</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="sc">*</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">MAX</span>(city_len) <span class="fu">OVER</span>() AS max_len,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">MIN</span>(city_len) <span class="fu">OVER</span>() AS min_len</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">FROM</span> (</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>      SELECT <span class="sc">*</span>, <span class="fu">length</span>(CITY) AS city_len</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>      FROM STATION</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    ) q01</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  ) q02 </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">WHERE</span> (<span class="at">city_len =</span> max_len OR <span class="at">city_len =</span> min_len)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ORDER BY city_len DESC, CITY ASC </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="dv">2</span> <span class="co">#Top 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here you can’t just call max(len) or min(lin) directly in the filter/WHERE statement because they are <em>two distinct procedures in SQL</em>. Instead we need to use a WINDOW function via OVER() to obtain the aggregate max and min, have access to it later (mutate), without changing the current structure of the data (mutate vs.&nbsp;summarise).</p>
 <section id="key-takeaways" class="level3">
@@ -671,20 +679,20 @@ FROM (
 </section>
 <section id="more-complex-group_by-summarise-in-mysql" class="level2">
 <h2 class="anchored" data-anchor-id="more-complex-group_by-summarise-in-mysql">4.3 More complex group_by + summarise in (MySQL)</h2>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-10_532ba81fca1c784d368fc5fdcccc8c1a">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CountryCode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AFG"</span>, <span class="st">"NLD"</span>), Population <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">population_k =</span> Population <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CountryCode, District) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(population_k),</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg =</span> <span class="fu">mean</span>(population_k, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">var =</span> <span class="fu">sd</span>(population_k, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(max <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Country =</span> CountryCode) <span class="sc">%&gt;%</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-12_7f356504ba96c5a972274f28935ff7e8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CountryCode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AFG"</span>, <span class="st">"NLD"</span>), Population <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">population_k =</span> Population <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CountryCode, District) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(population_k),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg =</span> <span class="fu">mean</span>(population_k, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">var =</span> <span class="fu">sd</span>(population_k, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(max <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Country =</span> CountryCode) <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by "CountryCode". You can override using the
 `.groups` argument.</code></pre>
@@ -711,16 +719,16 @@ ORDER BY `avg` DESC</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/summary_no_group_7a719ad49d76a37df6d5d1974415fbf0">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n      =</span> <span class="fu">count</span>(CountryCode),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_dist =</span> <span class="fu">count</span>(<span class="fu">distinct</span>(CountryCode)),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_diff =</span> n <span class="sc">-</span> n_dist</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(n_diff) <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  show_query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>city_db <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n      =</span> <span class="fu">count</span>(CountryCode),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_dist =</span> <span class="fu">count</span>(<span class="fu">distinct</span>(CountryCode)),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_diff =</span> n <span class="sc">-</span> n_dist</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(n_diff) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  show_query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT `n` - `n_dist` AS `n_diff`
@@ -729,40 +737,40 @@ FROM (
   FROM `City`
 ) `q01`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT n - n_dist AS n_diff</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># FROM (</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   SELECT count(*) AS n, count(distinct(city)) AS n_dist</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   FROM STATION</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ) n_dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT n - n_dist AS n_diff</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># FROM (</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   SELECT count(*) AS n, count(distinct(city)) AS n_dist</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   FROM STATION</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ) n_dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="simple-regex-queries-makes-me-miss-stringr-mysql" class="level2">
 <h2 class="anchored" data-anchor-id="simple-regex-queries-makes-me-miss-stringr-mysql">4.4 Simple regex queries, makes me miss <code>stringr</code>! (MySQL)</h2>
 <p>Select based on starts and/or ends with –</p>
 <div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/regex_str_da8f2c7c560df8d0d5476b513e87585d">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT CITY</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>FROM   STATION</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>WHERE  CITY RLIKE <span class="st">'^[aeiouAEIOU]'</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#IF starts AND ends with </span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="st">'^[regex].*[regex]$'</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#If ends with </span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>.<span class="sc">*</span>[regex]<span class="sc">$</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT start with</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">'^(?![aeiouAEIOU])'</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT end with</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st">'.*(?![aeiouAEIOU])$'</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT START or DOES NOT </span><span class="re">END</span><span class="co"> WITH</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT city</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>FROM station</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>WHERE city NOT REGEXP <span class="st">'^[aeiou]'</span> OR city NOT REGEXP <span class="st">'[aeiou]$'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT CITY</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>FROM   STATION</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>WHERE  CITY RLIKE <span class="st">'^[aeiouAEIOU]'</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#IF starts AND ends with </span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">'^[regex].*[regex]$'</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#If ends with </span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>.<span class="sc">*</span>[regex]<span class="sc">$</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT start with</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">'^(?![aeiouAEIOU])'</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT end with</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="st">'.*(?![aeiouAEIOU])$'</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#DOES NOT START or DOES NOT </span><span class="re">END</span><span class="co"> WITH</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT city</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>FROM station</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>WHERE city NOT REGEXP <span class="st">'^[aeiou]'</span> OR city NOT REGEXP <span class="st">'[aeiou]$'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-11_ff1076b680e829a4c6e0a64f43669ee8">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>SELECT NAME</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>FROM STUDENTS</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>WHERE MARKS <span class="sc">&gt;</span> <span class="dv">75</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ORDER BY <span class="fu">RIGHT</span>(NAME, <span class="dv">3</span>), ID ASC <span class="co">#Order by last 3 chars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-13_5a9ec0225f03b43b77690e48c5a66394">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>SELECT NAME</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>FROM STUDENTS</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>WHERE MARKS <span class="sc">&gt;</span> <span class="dv">75</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>ORDER BY <span class="fu">RIGHT</span>(NAME, <span class="dv">3</span>), ID ASC <span class="co">#Order by last 3 chars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="table-joins-on-table-joins-mysql" class="level2">
@@ -770,81 +778,81 @@ FROM (
 <section id="joining-with-no-shared-columns" class="level3">
 <h3 class="anchored" data-anchor-id="joining-with-no-shared-columns">Joining with no shared columns</h3>
 <p>You can combine variables from tables without an explicit join when they have no shared columns –</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-12_c5bd387c9995f6005b154f663aca0116">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>CASE WHEN grd.grade <span class="sc">&lt;</span> <span class="dv">8</span> THEN <span class="cn">NULL</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>     WHEN grd.grade <span class="sc">&gt;=</span> <span class="dv">8</span> THEN std.name END,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>     grd.grade, std.marks </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>FROM students std, grades grd</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>WHERE std.marks BETWEEN grd.min_mark AND grd.max_mark <span class="co"># &lt;= max &amp; &gt;= min, not equal(!) is (&lt;&gt;) in sql btw</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>ORDER BY grd.grade DESC, std.name ASC;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-14_2b67cb471272f897f0606b6e03604583">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>CASE WHEN grd.grade <span class="sc">&lt;</span> <span class="dv">8</span> THEN <span class="cn">NULL</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     WHEN grd.grade <span class="sc">&gt;=</span> <span class="dv">8</span> THEN std.name END,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     grd.grade, std.marks </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>FROM students std, grades grd</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>WHERE std.marks BETWEEN grd.min_mark AND grd.max_mark <span class="co"># &lt;= max &amp; &gt;= min, not equal(!) is (&lt;&gt;) in sql btw</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>ORDER BY grd.grade DESC, std.name ASC;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="joining-multiple-tables-in-a-pipequery" class="level3">
 <h3 class="anchored" data-anchor-id="joining-multiple-tables-in-a-pipequery">Joining multiple tables in a pipe/query</h3>
 <p>Here we need to use explicit JOIN’s and while I almost always use <code>left_join</code>, as long as you’ve placed the JOIN’s in the right order to match the relationship between the data and question of interest, just JOIN seems to be fine –</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-13_da9399182b43196af6b0010be4c251e0">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>SELECT h.hacker_id, h.name    <span class="co">#LAST select</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>FROM Submissions AS s         <span class="co">#FIRST, data to be joined</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>JOIN Hackers AS h             <span class="co">#Join with hacker data by hacker id</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  on s.hacker_id <span class="ot">=</span> h.hacker_id </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>JOIN Challenges as c          <span class="co">#Join with challenge data on challenge id</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  on s.challenge_id <span class="ot">=</span> c.challenge_id</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>JOIN Difficulty as d          <span class="co">#Join with difficulty on Difficulty_level </span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  on c.Difficulty_level <span class="ot">=</span> d.Difficulty_level</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>WHERE s.score <span class="ot">=</span> d.score             <span class="co">#Max score </span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>GROUP BY h.hacker_id, h.name        <span class="co">#group_by id and name</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>HAVING <span class="fu">count</span>(<span class="sc">*</span>) <span class="sc">&gt;</span> <span class="dv">1</span>                 <span class="co">#WHERE but for summarise</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>ORDER BY <span class="fu">count</span>(<span class="sc">*</span>) DESC, h.hacker_id <span class="co">#arrange</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-15_b498d53fca21062b1b756e444c921fa4">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>SELECT h.hacker_id, h.name    <span class="co">#LAST select</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>FROM Submissions AS s         <span class="co">#FIRST, data to be joined</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>JOIN Hackers AS h             <span class="co">#Join with hacker data by hacker id</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  on s.hacker_id <span class="ot">=</span> h.hacker_id </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>JOIN Challenges as c          <span class="co">#Join with challenge data on challenge id</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  on s.challenge_id <span class="ot">=</span> c.challenge_id</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>JOIN Difficulty as d          <span class="co">#Join with difficulty on Difficulty_level </span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  on c.Difficulty_level <span class="ot">=</span> d.Difficulty_level</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>WHERE s.score <span class="ot">=</span> d.score             <span class="co">#Max score </span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>GROUP BY h.hacker_id, h.name        <span class="co">#group_by id and name</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>HAVING <span class="fu">count</span>(<span class="sc">*</span>) <span class="sc">&gt;</span> <span class="dv">1</span>                 <span class="co">#WHERE but for summarise</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>ORDER BY <span class="fu">count</span>(<span class="sc">*</span>) DESC, h.hacker_id <span class="co">#arrange</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And here’s the <code>dplyr</code> pipe translation of that SQL query –</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-14_abd75d36b9adf94e16a74d2602672b26">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>submission.df <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., hacker.df,     <span class="at">by =</span> <span class="st">"hacker_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., challenge.df,  <span class="at">by =</span> <span class="st">"challenge_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., difficulty.df, <span class="at">by =</span> <span class="st">"Difficulty_level"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="at">x.score =</span> y.score) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hacker_id, name) <span class="sc">%&gt;%</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n), hacker_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-16_e21bbd677ac587d936cfd6380bb5860c">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>submission.df <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., hacker.df,     <span class="at">by =</span> <span class="st">"hacker_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., challenge.df,  <span class="at">by =</span> <span class="st">"challenge_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., difficulty.df, <span class="at">by =</span> <span class="st">"Difficulty_level"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="at">x.score =</span> y.score) <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hacker_id, name) <span class="sc">%&gt;%</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n), hacker_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="more-complicated-table-joins-and-queries-and-one-sub-query" class="level3">
 <h3 class="anchored" data-anchor-id="more-complicated-table-joins-and-queries-and-one-sub-query">More complicated table joins and queries (and one sub-query!)</h3>
 <p>Here we’re joining a few tables to answer a more complicated question, which will require us to employ a sub-query to get the reproducible <code>filter</code>/WHERE statement we need at the end. In <code>R</code>, we don’t need sub-queries because we can simply perform a 2-step process: (1) run the sub-query or pipe prior and store the result as a variable in our global/local env and (2) pass that variable through the <code>filter</code>/WHERE procedure in the main query/pipe.</p>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-15_ed32015b3341faa2eefe6834e3dc0e68">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>SELECT w.id, p.age, w.coins_needed, w.power</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>FROM Wands AS w </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>JOIN Wands_Property AS p <span class="co"># Join</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    ON w.code <span class="ot">=</span> p.code</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>WHERE w.coins_needed <span class="ot">=</span> (SELECT <span class="fu">min</span>(coins_needed) <span class="co">#Filter by sub-query </span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                        FROM Wands w2            <span class="co">#From wand data</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                        INNER JOIN Wands_Property p2 <span class="co">#Inner join by wand property (join then filter missing)</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                          ON <span class="at">w2.code =</span> p2.code   <span class="co">#Conditions below pertain to the specific question</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                        WHERE <span class="at">p2.is_evil =</span> <span class="dv">0</span> AND <span class="at">p.age =</span> p2.age AND <span class="at">w.power =</span> w2.power)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ORDER BY w.power DESC, p.age DESC;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-17_38c605f0b30f03c0827b09aedd1026a4">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>SELECT w.id, p.age, w.coins_needed, w.power</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>FROM Wands AS w </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>JOIN Wands_Property AS p <span class="co"># Join</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    ON w.code <span class="ot">=</span> p.code</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>WHERE w.coins_needed <span class="ot">=</span> (SELECT <span class="fu">min</span>(coins_needed) <span class="co">#Filter by sub-query </span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                        FROM Wands w2            <span class="co">#From wand data</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                        INNER JOIN Wands_Property p2 <span class="co">#Inner join by wand property (join then filter missing)</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                          ON <span class="at">w2.code =</span> p2.code   <span class="co">#Conditions below pertain to the specific question</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                        WHERE <span class="at">p2.is_evil =</span> <span class="dv">0</span> AND <span class="at">p.age =</span> p2.age AND <span class="at">w.power =</span> w2.power)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>ORDER BY w.power DESC, p.age DESC;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="a-join-and-two-sub-queries" class="level3">
 <h3 class="anchored" data-anchor-id="a-join-and-two-sub-queries">A join and two sub-queries</h3>
-<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-16_7c13932b125eb11659670949cfc61f63">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>SELECT c.hacker_id, h.name, <span class="fu">count</span>(c.challenge_id) AS cnt </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>FROM Hackers AS h</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>JOIN Challenges AS c </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  ON h.hacker_id <span class="ot">=</span> c.hacker_id</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>GROUP BY c.hacker_id, h.name </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>HAVING cnt <span class="ot">=</span> (SELECT <span class="fu">count</span>(c1.challenge_id) </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>              FROM Challenges AS c1</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>              GROUP BY c1.hacker_id </span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>              ORDER BY <span class="fu">count</span>(<span class="sc">*</span>) desc limit <span class="dv">1</span>) OR</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>       cnt NOT <span class="fu">IN</span> (SELECT <span class="fu">count</span>(c2.challenge_id)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>              FROM Challenges AS c2 </span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>              GROUP BY c2.hacker_id </span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>              HAVING c2.hacker_id <span class="sc">&lt;</span><span class="er">&gt;</span> c.hacker_id) <span class="co">#not equal to (&lt;&gt;)</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>ORDER BY cnt DESC, c.hacker_id;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/unnamed-chunk-18_882f7aefaca4590bfe9a804d52483274">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>SELECT c.hacker_id, h.name, <span class="fu">count</span>(c.challenge_id) AS cnt </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>FROM Hackers AS h</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>JOIN Challenges AS c </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  ON h.hacker_id <span class="ot">=</span> c.hacker_id</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>GROUP BY c.hacker_id, h.name </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>HAVING cnt <span class="ot">=</span> (SELECT <span class="fu">count</span>(c1.challenge_id) </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>              FROM Challenges AS c1</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>              GROUP BY c1.hacker_id </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>              ORDER BY <span class="fu">count</span>(<span class="sc">*</span>) desc limit <span class="dv">1</span>) OR</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>       cnt NOT <span class="fu">IN</span> (SELECT <span class="fu">count</span>(c2.challenge_id)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>              FROM Challenges AS c2 </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>              GROUP BY c2.hacker_id </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>              HAVING c2.hacker_id <span class="sc">&lt;</span><span class="er">&gt;</span> c.hacker_id) <span class="co">#not equal to (&lt;&gt;)</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>ORDER BY cnt DESC, c.hacker_id;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="dbplyr_sql_cache/html/disconnect_45f37fcb240e7c359bace1233c8ba955">
 

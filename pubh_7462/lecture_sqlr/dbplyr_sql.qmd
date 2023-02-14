@@ -2,7 +2,7 @@
 title: "Introduction to SQL for R Users w/Examples"
 subtitle: "SQL - *Structured Query Language*"
 author: "Quinton Neville"
-date: "2022/11/1"
+date: "2023/02/14"
 format: 
   html:
     toc: true
@@ -43,9 +43,9 @@ theme_set(theme_minimal() +
 options(scipen = 999)
 ```
 
-First and foremost, unlike `R`, SQL is a procedural language in that it is quite literally an ordered list of instructions or procedures for a computer to follow. It's also a language that operates on tabular data, which in a not so technical way can be described as any data you can feasibly put into an Excel spreadsheet. Being procedural does make the language less flexible in many ways, but the trade-off in increased speed, efficiency, and ability to wrangle data without bringing it all into active memory is truly astounding -- hence why it's still around today!  
+First and foremost, unlike `R`, SQL is a *procedural language* in that it is quite literally an ordered list of instructions or procedures for a computer to follow. It's also a language that operates on *tabular data*, which in a not so technical way can be described as any data you can feasibly put into an Excel spreadsheet. Being procedural does make the language less flexible in many ways, but the trade-off in increased speed, efficiency, and ability to wrangle data without bringing it all into active memory is truly astounding -- hence why it's still around today!  
 
-### Resources for Today's Lecture  
+### Resources for Today's Lecture   
 
 This lecture is by no means comprehensive and is just meant to serve as an introduction for those with an intermediate level of `R` and `tidyverse` knowledge. To that end, here are a list of resources from today's lecture for more in-depth explanations and examples by people who are much smarter than me, as well as resources for the core `R` packages implemented in the examples.  
 
@@ -71,6 +71,8 @@ This lecture is by no means comprehensive and is just meant to serve as an intro
 #### Practice for Job Interviews  
 
 - [Free practice and preparation with Hackerrank.com](https://www.hackerrank.com/products/main/)
+- If you have access to DataCamp through PUBH 7461/7462 lots of SQL practice
+
 
 # 1. Intro to SQL  
 
@@ -78,7 +80,7 @@ Let's start with an anology and a simple example:
 
 A *query* is to **SQL** as a *pipe* is to `dplyr`.
 
-Recall that a pipe operator `%>% or \>` takes the output from the l.h.s. of the pipe and passes it as an input to the right hand side of the pipe. So when using a general dplyr pipeline flow, such as 
+Recall that a pipe operator `%>% or |>` takes the output from the l.h.s. of the pipe and passes it as an input to the r.h.s. of the pipe. So when using a general dplyr pipeline flow, such as 
 
 ```{r eval = FALSE}
 df %>%                   # FROM df
@@ -151,12 +153,29 @@ You may have noticed that the order SQL procedures are actually run in is the sa
 
 ## 1.2 Derived Tables  
 
-Derived tables are going to feel unnatural compared to the way we can manipulate data with `mutate` in `dplyr`, but they are necessary for more complex queries. What is a derived table you ask? Similar to piping in `R` where `f(a) %>% g(.)` means takes the output of `f(a)` and passes it as an input to `g()`, when performing a mutate statement  
+Derived tables are going to feel unnatural compared to the way we can manipulate data with `mutate` in `dplyr`, but they are necessary for more complex queries. What is a derived table you ask? Similar to piping in `R` where `f() %>% g(.)` means takes the output of `f()` and passes it as an input to `g()`, when performing a series of wrangling functions like `filter`, `mutate`, `*_join`, etc. statement that pipeline is producing at least 1 derived table in the SQL translation. 
 
+A derived table is a subquery in a `FROM` statement which produces an intermediate table and in most SQL versions must be named with `AS`. For example this is a simple derived table/subquery --
+
+```{r, eval = FALSE}
+SELECT * FROM (
+  SELECT var_1 + var_2 AS sum_1
+  FROM df
+) AS tbl_1
+WHERE sum_1 > 0
+```
+
+Now why do need a subquery? Why can't we just simple say?
+
+```{r eval = FALSE}
+SELECT * FROM df WHERE (var_1 + var_2) > 0 
+```
+
+We need a subqueries (below)!  
 
 ## 1.3 Sub-queries  
 
-Very similar in syntax and flavour to derived tables, sub-queries can only contain *one column* and are generally used within `filter`/WHERE/HAVING. For example, in `R` we can pass data manipulations, functions, and other variables within the `filter` without thinking anything much of it -- 
+Very similar in syntax and flavour to derived tables, sub-queries are just derived tables which only contain *one column* and are generally used within `filter`/`WHERE`/`HAVING`. For example, in `R` we can pass data manipulations, functions, and other variables within the `filter` without thinking anything much of it -- 
 
 ```{r eval = FALSE}
 df %>%
@@ -185,19 +204,12 @@ How does it work, are there alternatives, and when is `dbplyr` sufficient? (Q & 
 
 ### Q: Why procedural instead of functional or dynamic?  
 
-*Answer* -- because under the hood, SQL is actually a collection of hyper-efficient algorithms which seek to optimally complete the query you've requested. Since it doesn't pull data into memory until the query is complete (the whole point of db languages), if it weren't procedural, I imagine the complexity and compute time would become astronomical. Plus, as the name suggests, a set of relatively few procedures, instructions, or functions, is great for computers and maximizes efficient db querying -- whereas a language like R which is much more flexible and user-friendly *but* does not use pre-defined memory types or allocation, is *interpretted* rather than compiled, and inherently pulls all data into memory prior to a `dplyr` pipe (by default, however there are many ways to connect with db's & use SQL without every leaving the R ecosystem!)  
+*Answer* -- because under the hood, SQL is actually a collection of hyper-efficient algorithms which seek to optimally complete the query you've requested. Since it doesn't pull data into memory until the query is complete, this necessitates a pre-defined procedural set of instructions to be completed. This makes it less flexible but very fast!
 
-### Q: How do these algorithms check memory and wrangle data without pulling it all into active memory (RAM)?
-
-*Answer* -- No idea!  
-
-But if I was to speculate wildly, familiarity with C++ and dynamic versus static memory allocation (pointers) would suggest that it may have something to do dynamic memory allocation. In that vein, a very high level view suggests that each individual algorithm (behind the SQL procedures) is accessing small pieces of data with dynamic memory allocation *very very very quickly* and then just as quickly removing that allocation to make way for the next one. They "compete" with each other in the sense that some algorithms will be faster than others given the specific type of data or request -- in a very capitalist sort of way that produces the most efficient solution to wrangle data larger than memory or any tabular data very quickly.
 
 ### Q: SQL is super efficient, but what can't it do?  
 
-*Answer* -- As far as I can tell, it only handles tabular data (maybe it can handle list columns but again, additional complexity in data structure comes at the cost of compute time). There are many types of data that don't fit into tabular data, MRI/fMRI data is now generally stored in standardized NIFTI format and we also usually zip those NIFTI files up to save space (a single subject, even zipped, can take up 1 gig of memory in fMRI as it's sort of a collection of MRI's in time). That data is also not "human readable" and it seems to me like anything not human readable can't really be dealt with via SQL because again, it's not really tabular or able to be looked at in a spreadsheet. 
-
-Even though SQL has limitations, in a production environment or Shiny app setting where speed of data wrangling and access is critical, there's nothing that can really compete with it in terms of efficiency -- which is why it's still in use almost everywhere 50+ years after it's inception. Again, I think there are way to many versions with basic or fundamental syntax conflicts because it wasn't developed cohesively (but companies have tried to make it slightly easier to use, SQLite for ex.). 
+*Answer* -- Can't handle non-tabular data and/or more complex data structures like lists, arrays, etc.  
 
 ### Q: Are their alternatives to SQL?  
 
@@ -205,11 +217,11 @@ Even though SQL has limitations, in a production environment or Shiny app settin
 
 ### Q: If I know `dplyr` well, do I really need to know SQL?  
 
-*Answer* -- If you want to be a well-rounded data scientist in a production environment, or even just want to speed up your own data wrangling workflow with SQL data bases, *yes you need to know SQL* (to the point that you can use the internet to create a more complex query if you need to for work). As mentioned above, yes there are tons of ways to handle data bigger than memory without leaving the `R` ecosystem but SQL is used almost everywhere whereas `R` is much less prevalent (i.e. though the number of `R` users measured by proxy through Github `R` package development has skyrocketed in the last decade).  
+*Answer* -- If you want to be a well-rounded data scientist in a production environment, or even just want to speed up your own data wrangling workflow with SQL data bases, *yes you need to know SQL* (to the point that you can use the internet to create a more complex query if you need to for work). As mentioned above, yes there are tons of ways to handle data bigger than memory without leaving the `R` ecosystem but SQL is standard in most all industrial environments.  
 
 ### Q: When is `dbplyr` sufficient and when do I need to use SQL?  
 
-While `dplyr` was surely built with SQL procedures in mind (the flow/verbs are very similar) and `dbplyr` will work for most basic to intermediate SQL queries, there's no such thing as a free lunch. One of the biggest downsides to relying on a translator is that there are lots of data wrangling functions, workflows, and the ability to supply user defined functions almost anywhere that I use everyday in `R` but can't use with `dbplyr` because there is no SQL equivalent (or nobody has gotten around to writing a transator/wrapper for it yet, looking at you `stringr`). *However*, though it may not be able to generate the exact SQL query you need in a giving setting, you can certainly build a pretty comprehensive skeleton for a query with `show_query` (the syntax is also generally sub-optimal for both readability and reproducibility due to translation so copy and pasting queries is inadvisable).  
+While `dplyr` was surely built with SQL procedures in mind (the flow/verbs are very similar) and `dbplyr` will work for most basic to intermediate SQL queries, there's no such thing as a free lunch. One of the biggest downsides to relying on a translator is that there are lots of data wrangling functions, workflows, and the ability to supply user defined functions almost anywhere that I use everyday in `R` but can't use with `dbplyr` because there is no SQL equivalent. *However*, though it may not be able to generate the exact SQL query you need in a giving setting, you can certainly build a pretty comprehensive skeleton for a query with `show_query` (the syntax is also generally sub-optimal for both readability and reproducibility due to translation so copy and pasting queries is inadvisable).  
 
 # 3. How to use `DBI` to connect to db and `dbplyr` to generate queries   
 
