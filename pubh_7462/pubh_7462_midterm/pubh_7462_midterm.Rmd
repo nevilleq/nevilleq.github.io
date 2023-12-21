@@ -238,6 +238,9 @@ aggregate.df <- read_csv("./data/covid19_aggregate_data.csv", show_col_types = F
 ```
 
 ```{r aggregate_table, echo = FALSE, include = TRUE}
+max_case <- max(aggregate.df$total_cases)
+max_death <- max(aggregate.df$total_deaths)
+
 #Aggregate gt()
 aggregate.df %>%
   mutate(
@@ -256,14 +259,14 @@ aggregate.df %>%
     columns = `Total Cases`,
     colors = scales::col_numeric(
       palette = c("white", my_purple),
-      domain  = c(0, max(`Total Cases`))
+      domain  = c(0, max_case)
     )
   ) %>%
   data_color(
     columns = `Total Deaths`,
     colors = scales::col_numeric(
       palette = c("white", my_purple),
-      domain  = c(0, max(`Total Deaths`))
+      domain  = c(0, max_death)
     )
   ) %>%
   fmt_number(
@@ -462,7 +465,8 @@ continent_sum.df %>%
 You may answer the question with a table, plot, or simply inline `R` to report your answer; your choice.  
 
 ```{r}
-covid.df %>%
+table.df <-
+  covid.df %>%
   group_by(country, day) %>%
   summarise(
     n_deaths = sum(new_deaths, na.rm = TRUE),
@@ -479,21 +483,26 @@ covid.df %>%
           fct_reorder2(`Total Deaths`, `Total Cases`)
   ) %>%
   rename(`Day of the Week` = day) %>%
-  arrange(`Day of the Week`) %>%
+  arrange(`Day of the Week`)
+
+case_lim <- c(min(table.df$`Total Cases`), max(table.df$`Total Cases`))
+death_lim <- c(min(table.df$`Total Deaths`), max(table.df$`Total Deaths`))
+
+table.df %>%
   gt() %>%
   tab_header("COVID-19 Cases & Deaths Reported by Day of the Week") %>%
   data_color(
     columns = `Total Cases`,
     colors = scales::col_numeric(
       palette = c("white", my_purple),
-      domain  = c(min(`Total Cases`), max(`Total Cases`))
+      domain  = case_lim
     )
   ) %>%
   data_color(
     columns = `Total Deaths`,
     colors = scales::col_numeric(
       palette = c("white", my_purple),
-      domain  = c(min(`Total Deaths`), max(`Total Deaths`))
+      domain  = death_lim
     )
   ) %>%
   fmt_number(

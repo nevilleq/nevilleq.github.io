@@ -1,0 +1,446 @@
+---
+title: 'Week 12: Github Collaboration & Intro to Shiny'
+author: "Quinton Neville"
+date: "April 8th, 2022"
+output:
+  html_document: default
+---
+
+```{r setup, include = FALSE, echo = FALSE}
+#Load the good stuff
+library(tidyverse)
+library(lubridate)
+library(gt)
+library(paletteer)
+library(ggridges)
+library(plotly)
+library(gtExtras)
+library(sf)
+library(ggmap)
+library(tidycensus)
+library(leaflet)
+library(osmdata)
+library(tigris)
+library(ggsflabel)
+library(ggthemes)
+
+#Working directory for .RMD
+knitr::opts_knit$set(echo = TRUE,
+                     root.dir = rprojroot::find_rstudio_root_file())
+
+#Controlling figure output in markdown
+knitr::opts_chunk$set(
+#  fig.height =   
+  fig.width = 6,
+#  fig.asp = .5,
+  out.width = "90%",
+#  out.height = 
+ fig.align  = "center",
+  cache = FALSE,
+  eval  = TRUE,
+  echo  = TRUE,
+  warning = FALSE
+)
+
+#My Colours (from viridis)
+my_purple <- "#440154FF"
+my_yellow <- "#FDE725FF"
+
+#Set Theme for ggplot2
+theme_set(theme_bw() + theme(plot.title = element_text(hjust = 0.5), legend.position = "bottom"))
+
+#Set Scientific notation output and decimal places for knitr
+options(scipen = 999)
+options(digits = 4)
+options(dplyr.summarise.inform = FALSE)
+```
+
+# I. Introduction {.jumbotron}  
+
+$~$
+$~$
+
+## Where we've been --
+
+The midterm assessment was designed to evaluate your 'fundamental' skills as a data scientist, corresponding to _Course Objectives_ (1)-(4,5) in the [syllabus](https://canvas.umn.edu/courses/293049/files?preview=26516582). Those skills break down into -- 
+
+1. **Workflow** 
+    - .Rprojects + Github, Rmarkdown, best `R` practices, reproducibility
+2. **Data Wrangling**
+    - `dplyr`, `tidyr`, `forcats`, `stringr`, `lubridate`
+    - plus iteration with `purrr::map` family
+3. **Data Visualization** 
+    - `ggplot2`,`gt`
+4. **Exploratory Data Analysis**
+    - Use the above to read, explore, clean/tidy, prepare for analysis and visualize _new_ data   
+
+$~$
+$~$
+
+## Where we're going --    
+
+As we move forward this semester (today and after Spring Break 3/5 - 3/13), we will continuously utilize and extend these 'fundamental' skills to maximize `R` and Rstudio's potential for data science and analysis. With the aforementioned fundamentals in hand, we are going to learn how to use these 'advanced' communication and analysis tools --
+
+5. **Enhanced Visualization** 
+    - Interactivity w/ `ggplotly`, `reactable`
+    - Enhance `gt` with `gtExtras` (and `flextable`, `ftExtra`)
+    - Intro to `flexdashboard`
+6. **Websites in R + Github**
+    - Basics, personal webpage 
+    - Websites as analytical display tools
+        - Embedding `flexdashboard`
+7. **Spatial Visualization**
+    - 'Tidy Maps' w/ `sf`or`sp` + `tidyverse` + `ggmaps` and `ggplot2`
+    - Introduction to interactive maps with `ggplotly` and/or `leaflet`
+8. **Github Collaboration & Shiny Apps** (**today**)
+    - Working with others in the same Github repository
+        - Best practices
+        - Branching, merging, merge conflicts
+        - reseting to previous versions
+    - Developing a basic Shiny app
+    - Embed Shiny in an `R` hosted website
+    - Embed Shiny in a `flexdashboard`
+    - Resources for more advanced Shiny
+9. **Miscellaneous**
+    - *Working with big data in R `dt_plyr`, `collapse`, `h2o`, `sparklyr`
+    - *Working with databases in R `db_plyr`
+    - *How to develop a package with Rstudio & Github
+    - *Webscraping with R
+
+$~$
+$~$
+
+# {.panel .panel-primary}
+## {.panel-heading}
+### So what exactly are we going to do today? {.panel-title}
+## {.panel-body}
+
+## Github Collaboration  
+
+We're going to explore utilizing Github *as a collaborator* to ensure you and your team have a successful final project, as well as the skills to transfer directly into a professional, collaborative, team-oriented 'data-sciency' role. We'll cover a wider range of **git tools** and **commands** (yes, you're going to need to start using the terminal/command-line unfortunately) and explore/visualize how these tools allow us to work in 'tree-like' shared directories w/ version control. Finally, we will cover an example which I will also do live.  
+
+## Shiny  
+
+**Today** we're just going to discuss some basic, fundamental components of Shiny applications. These include, but are not limited to -- 
+
+- 'The User Experience'
+- 'Reactive' programming
+    - UI & Server
+    - Acquiring and storing user *inputs*
+    - Producing *outputs* for the user
+- Hosting a Shiny App on your Website (indirectly) 
+- Examples
+
+**Next week**, we'll cover how to embed an app in a `flexdashboard` with a live demonstration, tutorial, and activity.  
+
+## Looking ahead  
+
+So in theory, if you're thinking about developing a Shiny app within your final project, you should have everything you need to get started next Friday 4/14 -- which is still a little over three weeks from the due date. Not every project will need one, nor is it required, and remember that the approach, data science skills, and final product are much more important than how 'fancy' your website or applications are. Remember -- 
+
+
+> _**Good applications** supplement **good data science.**_
+
+> _**Bad data science** creates **bad applications**, regardless of how **fancy.**_ 
+
+$~$
+$~$
+
+# II. Github Collaboration {.jumbotron}  
+
+# i. The 'Basics'  
+
+![The general individual workflow that you've been using all semester thus far.](./git_resources/github_viz_basics.jpg)  
+
+Recall the basic, individual workflow from earlier this semester --  
+
+- `git add` stages your changes (packages them up for a `push`, but still needs an *address* and *tape*)
+- `git commit -m " "` commits your changes (*tapes it up*) with an informative message (*greeting card*)
+- Now you're ready to send it off to it's final address (*remote repository*)
+- **But first**, we need to `pull` (or `rebase`) to ensure no changes that could induce a *merge conflict* have been made to the repository (by you or someone else), prior to mailing package
+- Once we're satisfied we can send the package with no issues, we `git push` to send our commit to the remote repository
+- `git status` will also let you know what's going on in your local repo right now (i.e. what's staged, commited, conflicts, etc.)
+
+$~$
+
+# ii. Now Let's Complicate Things  
+
+![A very useful cheat sheet & visualization](./git_resources/git_cheatshet_viz.png)  
+
+## Important notes  
+
+### 1. `pull` and `push` are both generalized as **merge requests**  
+
+- `pull` is from some branch 
+- `push` is to some branch
+- *can be done to, from, or within any branch*
+
+### 2. `git fetch origin <branch>` (grab changes from <branch>) vs. `git pull origin <branch>` (grab changes from <branch> **and** merge with your local repository)  
+
+### 3. You should `fetch` often (everytime you open the project locally) and `pull` when appropriate (i.e. when changes are made that don't conflict with you're work)
+
+### 4. `git pull origin <branch>` is *usually* how you want to engage a pull/merge request  
+
+- **Do not use** `git pull --rebase` *until* you've read [this Stack Overflow thread](https://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase)
+- It's a little tricky, but useful if you find yourself in a situation like the one described in the article
+
+### 5. Commit **early** and **often**! 
+
+Think of committing changes like saving files. We save files frequently to protect ourselves from the event that the program or your computer crashes and all your hard work is lost.
+
+Similarly, we commit early and often so that if and when something goes wrong on our branch or elsewhere, we have a recent version to revert to (see below on how to undo a commit).
+
+$~$
+
+# iii. Resources  
+
+Here are a couple resources for reference if and when you run into an issue with Git collaboration. However, if you spend a little time on the frontend familiarizing yourself with these materials now, I guarantee you will inevitably save yourself significantly more time if and when something goes wrong. I will cover the main points from these materials, with some nice graphics (thanks Reddit), but for a full picture I'd read these *few brief* resources for yourself -- 
+
+1. [Jenny Bryan's Git Basics (20-22)](https://happygitwithr.com/git-intro.html)
+2. [Jenny Bryan's Useful Git Patterns for Real Life (26-29)](https://happygitwithr.com/workflows-intro.html)
+3. [Hadley Wickham's R Packages: Git & Github (18)](https://r-pkgs.org/git.html)
+4. [Stack Overflow Forking vs. Branching](https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github)  
+
+For quick reference, you can also always check the [Github Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+
+$~$
+
+# iv. The FULL Scope of a Git repo  
+
+## Branches  
+
+Starting from the main branch (blue), we grow seperate development branches (purple, green) to work on specific aspects of a project, separately from the `main` or `master` (synonymous) branch.
+
+![](./git_resources/branches.png)
+
+You can think of the `master` like the trunk of a tree, from the roots all the way to the top, and it hosts every version of our final product and everything is developed on `branches` from the `master`. Eventually, when our `branch`'s product, feature, or development is complete, we will merge that `branch` back to master (inducing a new 'version' of our final product).  
+
+# {.panel .panel-primary}
+## {.panel-heading}
+### Example 1. Websites with R and Github {.panel-title}
+## {.panel-body}
+
+Recall that all of our websites on Github Pages are being sourced from the `master` or `main` branch. The <span style="color: green;">green</span> below then represents the `master` branch of a website via R & Github (*the final product*), and each circle denotes a *version*. The leftmost and rightmost points in <span style="color: green;">green</span> must necessarily then represent the initialization (empty) and most current version, respectively.     
+
+![](./git_resources/git-branches-merge.png)
+
+
+## <span style="color: green;">Green</span>  
+Now, let's say **someone else on your team** is currently developing 'final product', i.e. the website's structure and aesthetics (i.e. the `_site.yml` and index/home page) on the <span style="color: green;">green</span> `master` branch.    
+
+## <span style="color: blue;">Blue</span> 
+**You** (in <span style="color: blue;">blue</span>), on the other hand, are tasked with developing a tab or section on the website like an EDA with visualizations, `flexdashboard`, or Shiny app. Since this only requires editing a *distinct set* of file(s) (.RMD) which are *unrelated* to what is being done on the `master` branch, you should probably **create a new development branch for your 'feature' on the website**.  
+
+Let's first note that once we initialized a branch (leftmost <span style="color: blue;">blue</span> circle), we are working on a *copy* of the `main` branch at the moment we decided to branch off. Once you're on this branch **only edit your distinct set of files** or files that you've created on the branch. This will ensure when you've completed your work and are ready to merge back to the `master` website (rightmost <span style="color: blue;">blue</span> circle), there shouldn't be any conflicts with what those on the `master` have been doing. (Assuming they haven't changed any files you've been working on, but we'll get to that later as a *conflict between versions*).
+
+## <span style="color: orange;">Orange</span>  
+
+Same as above, but **your teammate's** <span style="color: orange;">orange</span> branch is developing another feature for the website -- which is why it is likewise separate of both the `master` and your development `branch`.  
+
+$~$
+$~$
+
+# {.panel .panel-warning}
+## {.panel-heading}
+### Question 1. What files in the repository should the person in orange (not you) be working on? {.panel-title}
+## {.panel-body} 
+
+A) Any file they want
+B) Any file besides the `_site.yml` or `index.RMD`
+C) Any file besides what you are working 
+D) B. & C., and any file they create  
+E) Only files they create
+
+$~$
+$~$
+
+# {.panel .panel-warning}
+## {.panel-heading}
+### Question 2. What happens if either <span style="color: blue;">you</span> or <span style="color: orange;">your teammate's</span> branch is merged back to `master` and *a file  has been edited that shouldn't have* or _a new **different** version exists on the master_? {.panel-title}
+## {.panel-body}
+
+![Oh NoOoOoOooOo!! A Merge Conflict :/](./git_resources/conflict_bike.jpg)
+
+
+$~$
+$~$
+
+# {.panel .panel-warning}
+## {.panel-heading}
+### Question 3. Well, how do we fix a merge conflict? {.panel-title}
+## {.panel-body}
+
+![](./git_resources/one-does-not-simply.jpg)
+
+
+Boromir from Lord of the Rings, played by the wonderful Sean Bean, is right! But in all seriousness, the best way to fix a merge conflict is **not to make one**.  
+
+$~$
+
+# v. "I did bad and made a merge conflict, are we doomed??"  
+
+Not by any means! It's not that conflicts are unresolveable, we'll learn some tools and give some resources to do so below, it's just that *they are almost always a big headache*. However, we are not defenseless! There are ways to protect your repository and branches from merge conflicts.  
+
+## Protect your Branches!  
+
+![](./git_resources/branch_protection.png)
+
+Follow this [Managing a branch protection rule](https://docs.github.com/en/enterprise-server@3.1/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#creating-a-branch-protection-rule) link for step by step instructions on how to protect a branch (`master` or `main`) from merge conflicts.  
+
+![](./git_resources/branch_protection_2.png)  
+
+These are the 2 most important protections to select - but what do they really do?  
+
+1. When you `git push origin master` to the protected branch (`master`), it won't occur immediately. Instead a 'pull request' (i.e. merge request) will be created.
+
+2. The request must be *reviewed* and approved by at least 1 person prior to being allowed to go through.  
+
+You may need to mess with the email notification settings to ensure everyone in the repository get's an email when there's a request to the `master` branch (i.e. final product, website, etc.).  
+
+## How to undo your last git commit or revert to an earlier version (if something goes wrong)
+
+This [devconnected blog post](https://devconnected.com/how-to-undo-last-git-commit/#:~:text=Commit%20with%20revert-,Undo%20Last%20Git%20Commit%20with%20reset,removed%20from%20your%20Git%20history.) regarding how to undo your last commit is a great step by step guide (with explanation) about how to --
+
+1. Undo commit with `git reset`
+2. Selecting the previous version 
+    - `HEAD~1` (last one), 
+    - `HEAD~2` (one before that)
+    - etc.
+3. `git reset --soft` 
+    - 'small' problem fixer
+    - Undoes your commit, reverts to specified version, **but** keeps the local changes you made since the last commit
+4. `git reset -- hard`
+    - 'big' problem fix
+    - *use with caution* and read the article above first
+    - Undoes your commit, reverts to specified version, **and** removes all local changes and their versions  
+    
+## What if neither of the above seem to be able to fix the specific merge or version conflict in our repository?  
+
+1. Make sure you read through the above materials fully, those tools can prevent and fix most problems
+2. Google is your best friend w.r.t. git, it's a universal tool
+3. Send the teaching team an email with screenshots of the problem, error message, and/or terminal output from `git status` & `git log`  
+
+$~$
+$~$
+
+# III. Introduction to Shiny {.jumbotron}  
+
+Thus far, we've covered how to make stellar static and interactive visualizations **to communicate data sceince** with `ggplot`, `plotly`, and `leaflet`; and also embed them in `flexdashboards` on an R/Github website. These skills and tools will take you almost anywhere you need to go as a functional data scientist or analyst. 
+
+The last remaining communication/learning tool we need isn't really more interactivity or a fancier app -- **it's a user experience**. 
+
+> _**Good applications** supplement **good data science.**_
+
+> _**Bad data science** creates **bad applications**, regardless of how **fancy.**_ 
+
+$~$
+$~$
+
+# i. 'The User Experience'  
+
+Most simply put, Shiny is Rstudio's framework for building interactive visualizations, tools, and web-like applications. However, it's purpose is to allow *users* (the public, your peers, your company) to *interact* with, *experience*, and *learn* from your work.  
+
+How does Shiny accomplish this? Like most applications, including the wonderful Rstudio you and I are currently using, with a *Graphical User Interface (GUI)*. 
+
+On the backend, just like `leaflet` and `rmarkdown`/`knitr` Shiny allows us to *translate R code into HTML, CSS, and JavaScript (look at the coding language composition in your website's repository and you'll see almost none of it is actually `R`).  
+
+$~$
+
+# ii. 'Reactive' programming  
+
+I think of reactive programming as a particular type of software which allows users not just to *interact* with our code, but to *experience* it in a *reactive environment* -- meaning that the changes are *fluid & persistent* based on the users interaction.  
+
+The syntax for doing so is unlike most things we've learned thus far, but just like `plotly` and `leaflet`, if you have strong fundamentals in `R` and put in a little work, you can readily extend your knowledge to another syntax with some practice (though some amount of banging your head against a wall is to be expected).
+
+Here is a nice built-in example, with code...
+
+```{r eval = FALSE}
+shiny::runExample("01_hello")
+```
+
+... but what exactly is going on?!
+
+## UI & Server  
+
+Here, the `ui` and `server` are in the same script but that's because it's a minimal example for teaching purposes. In practice, these *functions* are stored in seperate `.R` files or `{r chunks}`.  
+
+*Note* - In practice, to keep more complex workflows tidy and easy to follow we usually write separate `.R` scripts for different functions or collections of functions (i.e. a package) and load them into our global environment (like a package) with `source(my_functions.R)`  
+
+### User interface (ui.R)  
+
+This component defines (1) type of interface (fluidPage), (2) structure (panels, layout, etc.), (3) *acquires user inputs* (sliderInput), (4) *displays user outputs* (plotOutput). Each is a function with inputs/options like usual.  
+
+### Server (server.R)  
+
+This component is the source of *reactivity* -- it is a function of *input & output*, taking inputs from the `ui.R` and rendering outputs (renderPlot).  
+
+Notes -- 
+
+**UI**  
+
+1. Input object names are given in the `inputId = "bins"` option
+    - Meaning that the object called `input` stores the input
+    - Within that object, a new object `bins` will exist
+    - `bins` is going to store and update the value the user selects from the slider
+2. Thus, when selecting bins for the histogram output in the `server.R` below, it's called with `input$bins`
+3. No different than a usual `list$object`
+
+**SERVER**  
+
+1. It is a function of `input` (acquired by `ui.R`) and a self-referential `output` (simultaneously created by `server.R` for `ui.R`) 
+    - Inputs are called like above `input$bins`
+3. Note that `output$distPlot <-` is base R for `mutate`
+    - Means "create or change" the object called `distPlot` within the list `output`
+    - That change utilizes the `input` object (reactivity)
+4. In the `ui.R`, the function `plotOutput` renders the plot with the option `outputId = "distPlot"`
+    - Means use the `output$distPlot` from the server to render the plot in the user interface.
+ 
+**APP**  
+
+The relationship between the UI and the Server is what induces 'reactivity' between the user and the application. It does so by *reacting* every time a user interacts with the UI by *altering the input* to `ui.R`, which *induces a call and response* from `server.R` to send new output back to the UI. 
+
+In plain English, this means it reacts to the user input (`ui.R`) by re-rendering (`server.R`) *continuously* while the app is running.  
+
+$~$
+ 
+# iii. Hosting a Shiny App on your Website (indirectly) 
+
+This last point, "when the app is running", is very important -- in order for something to be reactive in the `R` language it has to be hosted on a server (not the script, an actual server) which supports `R` (i.e. can run it in the background to host your app).  
+
+Unfortunately Github and consequently Github Pages does no support `R` this way, *so you can't simply embed it in your website like a dashboard or leaflet* (why?)  
+
+But that's okay! You can still display your Shiny apps on your website or elsewhere, you just need to host it elsewhere.  
+
+Here is a [shinyapps.io](https://shiny.rstudio.com/articles/shinyapps.html) tutorial to do just that! Following the directions will allow you to deploy a Shiny app on your group's or personal website.  
+
+Alternatively, [here](https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/) is an another step-by-step screenshot guide for setting up and hosting with `shinyapps.io`.   
+
+$~$
+
+# iv. Examples & Resources    
+
+- Here is an [awesome gallery](https://shiny.rstudio.com/gallery/) of Shiny apps for motivation, inspiration, or just awe.  
+- Here is [Rstudio's official tutorial](https://shiny.rstudio.com/tutorial/) before next week's class
+- Here is a slightly shorter, [interactive tutorial](https://deanattali.com/blog/building-shiny-apps-tutorial/) from Dean Attali  
+
+$~$
+$~$
+
+# IV. Next Week {.jumbotron}  
+
+$~$
+$~$
+
+# To-do's 
+
+1. Finish up project proposals
+2. Finish up Homework 6
+3. Before class next, please skim [Rstudio's (Part 1)](https://shiny.rstudio.com/tutorial/) or [Dean Attali's](https://deanattali.com/blog/building-shiny-apps-tutorial/) tutorial
+
+# Looking Ahead  
+
+Next week we'll dive deeper into Shiny, develop our own example app, transform an old dashboard into a Shiny dashboard, and *you* will edit the app(s) in an activity.  
+
+
+
+
+

@@ -15,6 +15,7 @@ library(paletteer)
 library(ggridges)
 library(plotly)
 library(gtExtras)
+library(scales)
 
 #Working directory for .RMD
 # knitr::opts_knit$set(echo = TRUE,
@@ -141,7 +142,12 @@ if (!require(devtools)) {
 }
 
 #Install via github
-devtools::install_github("jthomasmock/gtExtras")
+#devtools::install_github("jthomasmock/gtExtras")
+
+#Instal via CRAN now!
+if (!require(gtExtras)) {
+  install.packages("gtExtras")
+}
 
 #Call the library just to make sure it all went fine
 library(gtExtras)
@@ -335,45 +341,6 @@ disney.df <- read_csv("./data/disneyland_reviews.csv",
                             fct_relevel("California", "Paris")
              ) %>%
              dplyr::select(id, rating, location, branch, everything(), -c(year_month, text))
-
-#Original gt
-review.gt <- disney.df %>%
-  group_by(branch, location) %>%
-  summarise(
-    avg_rating = mean(rating),
-    N          = n()
-  ) %>%
-  arrange(branch, desc(N)) %>%
-  group_by(branch) %>%
-  slice(1:5) %>%
-  arrange(branch, desc(avg_rating), desc(N)) %>%
-  rename(
-    `# Reviews`          = N,
-    `Average Rating`     = avg_rating,
-    `Location of Origin` = location) %>%
-  gt() %>%
-  tab_header("Top 5 Reviewer Locations by Branch") %>%
-  tab_footnote(
-    footnote = "Reviews extracted from Trip Advisor 2010-2019",
-    locations = cells_column_labels(
-      columns = `Average Rating`
-    )
-  ) %>%
-    data_color(
-    columns = `# Reviews`,
-    colors = scales::col_numeric(
-      palette = c("white", "red"),
-      domain  = c(0, max(`# Reviews`) + 100)
-    )
-  ) %>%
-  data_color(
-    columns = `Average Rating`,
-    colors = scales::col_numeric(
-      palette = c("blue", "white", "red"),
-      domain  = c(min(`Average Rating`) - 0.4, 
-                  max(`Average Rating`))
-    )
-  )
 ```
 
 
@@ -572,7 +539,8 @@ tibble(
               str_replace_all(x, "_", " ") %>%
               str_to_title()
              }
-  )
+  ) %>%
+  gt()
 ```
 
 
@@ -623,7 +591,7 @@ Let's make a spatial scatterplot, with a point for each listing and a label whic
 nyc_airbnb.df %>%
   mutate(
     text_label = str_c(neighbourhood, 
-                       "\nPrice - $"  ,  price, 
+                       "\nPrice - $"  ,  scales::dollar(price), 
                        "\nRating - ",    rating,
                        "\n# Reviews - ", number_of_reviews)
   ) %>%
@@ -642,6 +610,7 @@ nyc_airbnb.df %>%
     yaxis  = list(title = "Longitude"),
     legend = list(title = "Price") #Not working?
   )
+  
 ```
 
 
@@ -793,7 +762,7 @@ bar.gg <- nyc_airbnb.df %>%
   mutate(
     neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE),
     text_label    = str_c(neighbourhood, #add as text aesthetic
-                          "\nAvg. Rating - ", round(avg_rating, 2), 
+                          "\nAvg. Rating - ", scales::dollar(avg_rating), 
                           "\n# Reviews - ",   N)
   ) %>%
   ggplot(aes(x = neighbourhood, y = N, fill = avg_rating, text = text_label)) +
@@ -939,7 +908,7 @@ bar.gg <- nyc_airbnb.df %>%
   mutate(
     neighbourhood = fct_reorder(neighbourhood, N, .desc = FALSE),
     text_label    = str_c(neighbourhood, #add as text aesthetic
-                          "\nAvg. Rating - ", round(avg_rating, 2), 
+                          "\nAvg. Rating - ", scales::dollar(avg_rating), 
                           "\n# Reviews - ",   N)
   ) %>%
   ggplot(aes(x = neighbourhood, y = N, fill = avg_rating, text = text_label)) +

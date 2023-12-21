@@ -11,6 +11,7 @@ project:
     - "!flexdashboard*"
     - "!nyc_airbnb_shiny_dashboard_leaflet.RMD"
     - "!pubh_7462/lecture_week_14_shiny_app"
+    - "!pubh_7462/lecture_week_11/lecture_week_11.RMD"
     
 #Defines the main part(s) of the website: navbar, buttons, icons, links, etc.
 website:
@@ -41,7 +42,7 @@ website:
           - text: "Lecture: Intro to SQL for R Users"
             href: pubh_7462/lecture_sqlr/dbplyr_sql.qmd
           - text: "Lecture: Advanced Spatial Mapping"
-            href: pubh_7462/lecture_week_11/lecture_week_11.Rmd
+            href: pubh_7462/lecture_week_11/lecture_week_11.nb.html
           - text: "Lecture: Git Collaboration & Intro to `shiny`"
             href: pubh_7462/lecture_week_12/lecture_week_12.Rmd
           - text: "Lecture: `shiny` Apps & Dashboards"
